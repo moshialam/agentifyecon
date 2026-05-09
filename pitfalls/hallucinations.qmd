@@ -1,0 +1,63 @@
+---
+title: "Hallucinations"
+subtitle: "Things Claude can confidently make up — and how to catch them."
+---
+
+::: {.callout-warning}
+**Coming soon.** A field guide to the specific kinds of hallucinations
+that hurt empirical economists, and the verification habits that catch
+each one.
+:::
+
+## Outline — what gets hallucinated
+
+### 1. Citations and references
+
+- Bibliography entries that don't exist.
+- Cited claims that the paper doesn't actually make.
+- Slightly wrong years, page numbers, or author orders.
+
+**Catch:** before any new `\cite{...}` lands in your paper, open the
+source paper and confirm.
+
+### 2. Regression results
+
+- Coefficients reported without the regression having actually been run.
+- "I ran your model and got…" when no `Bash` tool call was made.
+
+**Catch:** re-run the regression yourself, or insist Claude show you the
+log/output from a real run.
+
+### 3. Function and option names
+
+- A Stata command that doesn't exist, or has a different syntax than
+  Claude reports.
+- An R function from the wrong package, or with arguments that don't
+  exist.
+- A LaTeX package that doesn't behave the way Claude described.
+
+**Catch:** for unfamiliar commands, check the documentation. For Stata:
+`help <command>`. For R: `?fn` or the package's website.
+
+### 4. File contents
+
+- A claim about what's in a file that Claude didn't actually read.
+
+**Catch:** Claude shows you tool calls. If it claims to have looked at
+`paper.tex` but you don't see a `Read` tool call for it, push back: "Did
+you actually read it? Show me."
+
+### 5. Replication-package completeness
+
+- "I ran the master script and everything worked" when it didn't.
+- "All your tables are reproduced" without checking.
+
+**Catch:** `diff` the produced output against what's in your paper.
+
+## The general rule
+
+Claude is a confident colleague who occasionally lies with no
+self-awareness. Treat its outputs the way you'd treat a draft from a
+new RA on day one: gratefully, and with full verification.
+
+> Tell me which of these to expand into a full case study.

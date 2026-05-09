@@ -1,0 +1,58 @@
+---
+title: "Memory, CLAUDE.md, and skills"
+subtitle: "How to teach Claude Code your project once, instead of every session."
+---
+
+::: {.callout-note}
+**Coming soon.** A practical tour of three mechanisms that let you avoid
+re-explaining things to Claude every session: project-level `CLAUDE.md`,
+auto-memory, and reusable skills.
+:::
+
+## Outline
+
+### `CLAUDE.md` (per-project instructions)
+
+A plain-text Markdown file at the root of your project that Claude reads
+at the start of every session. Use it for things like:
+
+- Which version of Stata/R/Matlab/Julia you use.
+- Conventions: naming, file structure, table styles.
+- Things to never do: "Do not modify files in `raw/`", "Do not commit
+  without explicit confirmation."
+- Pointers: "The main analysis script is `03-analysis.do`. Tables go to
+  `output/tables/` as `.tex` files."
+
+Have Claude write the first draft for you: `/init` walks the project and
+proposes a `CLAUDE.md`.
+
+### Auto-memory (across-project preferences)
+
+Claude Code keeps a memory store of things you've told it across all
+sessions — your role, your preferences, your tools. You don't have to
+manage it; it builds up. You can ask Claude what it remembers and edit
+it.
+
+### Skills (reusable workflows)
+
+A skill is a Markdown file describing a recurring task and how to do it
+your way. Once written, you invoke it by name (`/your-skill`).
+
+You already have some good ones in your `myccskills` repo:
+
+- **`plutonb`** — scaffold a Pluto.jl notebook for structural
+  econometrics simulations (your work).
+- **`evolution`** — analyze git history to show how a project developed.
+- **`remind`** — snapshot the current project state when returning to
+  work after time away.
+
+For a department-facing site like this one, candidate new skills are:
+
+- `/audit-replication` — run the [replication-package audit](../examples/replication-package.qmd)
+  end-to-end on whatever folder you're in.
+- `/refresh-syllabus` — update dates, readings, and sidebar in a Quarto
+  course site for the new semester.
+- `/clean-bib` — the bibliography cleanup from the
+  [LaTeX paper example](../examples/latex-paper.qmd).
+
+> Tell me which of these to write up first as a real worked example.

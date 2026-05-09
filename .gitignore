@@ -1,0 +1,12 @@
+/.quarto/
+/_site/
+/.DS_Store
+.DS_Store
+*.log
+.Rproj.user/
+.Rhistory
+.Rapp.history
+.ipynb_checkpoints/
+__pycache__/
+.venv/
+node_modules/

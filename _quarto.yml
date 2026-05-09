@@ -1,0 +1,127 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "LLMs for Economists"
+  description: "Big-picture and example-based guidance for using Claude Code in economics research."
+  page-navigation: true
+  navbar:
+    pinned: true
+    right:
+      - text: "Big picture"
+        menu:
+          - href: big-picture/what-is-agentic.qmd
+            text: "What is agentic coding?"
+          - href: big-picture/why-claude-code.qmd
+            text: "Why Claude Code"
+          - href: big-picture/landscape.qmd
+            text: "How it compares"
+          - href: big-picture/what-changes.qmd
+            text: "What changes for your workflow"
+      - text: "Getting started"
+        menu:
+          - href: getting-started/install.qmd
+            text: "Install Claude Code"
+          - href: getting-started/first-project.qmd
+            text: "Your first project"
+          - href: getting-started/plan-mode-and-todo.qmd
+            text: "Plan mode, todos, slash commands"
+      - text: "Examples"
+        menu:
+          - href: examples/latex-paper.qmd
+            text: "LaTeX paper editing"
+          - href: examples/replication-package.qmd
+            text: "Replication package audit"
+          - href: examples/stata-cleaning.qmd
+            text: "Stata: cleaning data"
+          - href: examples/r-analysis.qmd
+            text: "R: analysis & tables"
+          - href: examples/python-analysis.qmd
+            text: "Python: pandas & statsmodels"
+          - href: examples/matlab.qmd
+            text: "Matlab: numerical work"
+          - href: examples/julia-structural.qmd
+            text: "Julia: structural models"
+          - href: examples/refereeing.qmd
+            text: "Refereeing"
+          - href: examples/teaching-prep.qmd
+            text: "Teaching prep"
+      - text: "Workflow"
+        menu:
+          - href: workflow/how-to-ask.qmd
+            text: "How to ask"
+          - href: workflow/memory-and-claude-md.qmd
+            text: "Memory, CLAUDE.md, skills"
+          - href: workflow/verifying.qmd
+            text: "Verifying output"
+      - text: "Pitfalls"
+        menu:
+          - href: pitfalls/hallucinations.qmd
+            text: "Hallucinations"
+          - href: pitfalls/confidential-data.qmd
+            text: "Confidential data"
+          - href: pitfalls/judgment.qmd
+            text: "What you must still do"
+      - icon: github
+        href: https://github.com/
+        aria-label: GitHub repository
+  sidebar:
+    - title: "Big picture"
+      style: "docked"
+      contents:
+        - section: "Big picture"
+          contents:
+            - big-picture/what-is-agentic.qmd
+            - big-picture/why-claude-code.qmd
+            - big-picture/landscape.qmd
+            - big-picture/what-changes.qmd
+    - title: "Getting started"
+      contents:
+        - section: "Getting started"
+          contents:
+            - getting-started/install.qmd
+            - getting-started/first-project.qmd
+            - getting-started/plan-mode-and-todo.qmd
+    - title: "Examples"
+      contents:
+        - section: "Worked examples"
+          contents:
+            - examples/latex-paper.qmd
+            - examples/replication-package.qmd
+            - examples/stata-cleaning.qmd
+            - examples/r-analysis.qmd
+            - examples/python-analysis.qmd
+            - examples/matlab.qmd
+            - examples/julia-structural.qmd
+            - examples/refereeing.qmd
+            - examples/teaching-prep.qmd
+    - title: "Workflow"
+      contents:
+        - section: "Day-to-day workflow"
+          contents:
+            - workflow/how-to-ask.qmd
+            - workflow/memory-and-claude-md.qmd
+            - workflow/verifying.qmd
+    - title: "Pitfalls"
+      contents:
+        - section: "Pitfalls"
+          contents:
+            - pitfalls/hallucinations.qmd
+            - pitfalls/confidential-data.qmd
+            - pitfalls/judgment.qmd
+  page-footer:
+    left: "© 2026 · For colleagues at the Department of Economics"
+    right: "Built with [Quarto](https://quarto.org/)"
+
+format:
+  html:
+    theme: united
+    css: styles.css
+    toc: true
+    toc-depth: 3
+    link-external-newwindow: true
+    link-external-icon: false
+    smooth-scroll: true
+    code-copy: true
+    code-overflow: wrap

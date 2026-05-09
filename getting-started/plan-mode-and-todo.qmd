@@ -1,0 +1,44 @@
+---
+title: "Plan mode, todos, and slash commands"
+subtitle: "The three features that turn the chatbot into a research assistant."
+---
+
+::: {.callout-note}
+**Coming soon.** A short tour of the three features that most change how
+the tool feels day-to-day.
+:::
+
+## Outline
+
+### 1. Plan mode
+
+What: Claude reads the relevant files, thinks about the change, and writes
+a **plan** for your approval *before* touching anything.
+
+Why it matters: catches misunderstandings before they become bad edits.
+Especially valuable for multi-file changes.
+
+How: hit `Shift+Tab` until the prompt says "plan mode", or type
+`/plan` style invocations.
+
+### 2. Todos
+
+What: for any non-trivial task, Claude maintains a visible list of steps
+it's working through and updates it as it goes.
+
+Why it matters: you can see where it is, interrupt cleanly, and notice if
+it's wandered off.
+
+### 3. Slash commands and skills
+
+What: shortcuts for repeatable workflows. You can write your own.
+
+Examples already on your machine: `/review`, `/security-review`, `/init`.
+Your `myccskills` repo (the `plutonb`, `evolution`, `remind` skills) is
+exactly this idea — package up "the way I want this done" once, reuse it
+forever.
+
+See [Memory, CLAUDE.md, skills](../workflow/memory-and-claude-md.qmd) for
+how to write your own.
+
+> Tell me which of the three you'd most like a worked walkthrough for.

@@ -1,0 +1,57 @@
+---
+title: "Verifying output"
+subtitle: "The most important habit on this site."
+---
+
+::: {.callout-warning}
+**This is the page that matters most.** Every other shortcut is fine if
+you do this one thing. Skip this and you will eventually publish something
+wrong with your name on it.
+:::
+
+## The rule
+
+Read the diff. Run the code. Open the file. Compare to your expectation.
+
+Every time, even when you're tired.
+
+## Outline — what "verify" means in concrete cases
+
+### Code edits
+
+- Read the diff before accepting. Quarto, Stata, R, Python, LaTeX —
+  doesn't matter. If you're not reading diffs, you're not in control.
+- For multi-file changes, read every file's diff. The boring ones are
+  where the bugs hide.
+
+### Numerical output
+
+- If Claude reports a coefficient, **re-run the regression yourself** in
+  your usual environment before believing it. Cloud LLMs can confidently
+  report numbers from a hallucinated run.
+- For estimation, save random seeds explicitly and confirm reproducibility
+  on a re-run.
+
+### Citations and references
+
+- Any new `\cite{...}` Claude adds: **confirm the entry exists** in your
+  `.bib` and that the cited paper actually says what you're attributing
+  to it. See [Hallucinations](../pitfalls/hallucinations.qmd).
+
+### Files that disappear
+
+- For deletions, refactors, or replication-package reorganization, work
+  in a copy, not in your live project. Or use git: commit before, branch,
+  and you can always undo.
+
+## Outline — habits that make verification cheap
+
+- Use git. Even if you don't push to GitHub, commit locally before any
+  big change so `git diff` is meaningful.
+- Use plan mode for multi-file changes. Reading a plan first and then
+  reviewing the diffs that match it is much easier than parsing surprise
+  edits.
+- Run the build/test after every change. If your project has a `make`
+  or a master `do` file, ask Claude to run it after each meaningful edit.
+
+> Tell me which of these you'd most like fully worked through.

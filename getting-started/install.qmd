@@ -1,0 +1,155 @@
+---
+title: "Install Claude Code"
+subtitle: "From zero to a working session in about twenty minutes."
+---
+
+This page walks you through getting Claude Code on your machine and running
+it for the first time. It assumes you have **never** used the terminal in
+anger before. If you're a terminal regular, skim past the basics.
+
+## What you need
+
+- A Mac, a Windows machine with WSL, or a Linux box. (Most economists are
+  on a Mac; the rest of this page assumes that. The differences for
+  Windows/Linux are tiny and noted where they matter.)
+- An **Anthropic account** at [claude.ai](https://claude.ai). A free
+  account works to start; you'll be prompted to set up billing the first
+  time you use Claude Code.
+- About 20 minutes.
+
+## Step 1 — Open a terminal
+
+On a Mac:
+
+- Press `Cmd + Space` to open Spotlight.
+- Type `Terminal` and hit `Return`.
+- A small window with a blinking prompt appears. That's your terminal.
+
+::: {.callout-tip}
+The terminal is just another app. It can't do anything you didn't ask it
+to. The only commands you'll need are the ones on this page; you don't
+need to learn the rest.
+:::
+
+## Step 2 — Install Node.js (if you don't have it)
+
+Claude Code is distributed as a Node.js package. Check whether you already
+have Node:
+
+```bash
+node --version
+```
+
+If that prints something like `v20.11.0`, you're set — skip to Step 3.
+
+If it says "command not found", install Node from
+[nodejs.org](https://nodejs.org). Pick the **LTS** download, run the
+installer, accept the defaults. When it's done, close and reopen the
+terminal, then re-run `node --version` to confirm.
+
+::: {.callout-note}
+**Mac users with Homebrew** can install with `brew install node` instead.
+**Windows users** install Node inside WSL, not on Windows directly.
+:::
+
+## Step 3 — Install Claude Code
+
+In the terminal, run:
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+This downloads Claude Code and makes the `claude` command available
+system-wide. It takes a minute or two. When it's done, verify:
+
+```bash
+claude --version
+```
+
+::: {.callout-warning}
+If you see a permission error mentioning `EACCES` or `permission denied`,
+**don't** prefix the command with `sudo`. Instead, follow the
+[npm fix-permissions instructions](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally).
+This is a one-time fix and protects you from a class of problems later.
+:::
+
+## Step 4 — Point Claude Code at one of your projects
+
+Pick a project folder you'd like Claude Code to work in. **Do not start
+with your most sensitive project.** Pick a paper draft, a teaching repo, or
+a side project. In the terminal, change into that folder:
+
+```bash
+cd ~/Desktop/some-paper-draft
+```
+
+Then run:
+
+```bash
+claude
+```
+
+The first time you run it, you'll be prompted to log in (a browser tab
+will open) and to choose a few preferences. Accept the defaults.
+
+You're now at the Claude Code prompt. It looks like a chat input but
+everything you type is being read by an agent that can see — and edit —
+the files in this folder.
+
+## Step 5 — Try it on something small
+
+Three good first prompts, in increasing order of "letting it do things":
+
+::: {.callout-tip appearance="simple"}
+**Prompt 1 — read-only**
+
+> "What is in this folder? Give me a one-paragraph summary of what this
+> project does."
+
+Claude will list files, peek at a few, and summarize. You'll see it call
+out tools like `Read` and `Bash`. Nothing is modified.
+:::
+
+::: {.callout-tip appearance="simple"}
+**Prompt 2 — small edit, with review**
+
+> "Add a comment at the top of every `.do` file naming the script and what
+> it does. Show me each diff before applying."
+
+Claude proposes a change per file; you approve or reject each one.
+:::
+
+::: {.callout-tip appearance="simple"}
+**Prompt 3 — real work**
+
+> "Read `paper.tex` and tell me which references in the bibliography are
+> never cited. Then remove the unused ones."
+
+This reads files, runs analysis, and edits. You approve the deletion.
+:::
+
+## Step 6 — Quit and come back
+
+To leave a Claude Code session, type `/exit` or press `Ctrl-C` twice.
+
+To come back later, just `cd` into the same folder and run `claude` again.
+Claude Code keeps a memory of your project (in a file called `CLAUDE.md`,
+covered later) so the next session doesn't start from zero.
+
+## Where to go next
+
+- [Your first project](first-project.qmd) — what to actually do in your
+  first hour of using Claude Code on real work.
+- [Plan mode, todos, slash commands](plan-mode-and-todo.qmd) — the three
+  features that make Claude Code feel like a research assistant rather
+  than a chatbot.
+- [LaTeX paper editing](../examples/latex-paper.qmd) — a fully worked
+  example.
+
+::: {.callout-warning}
+**Before you point Claude Code at a project with confidential or
+restricted-access data**, read [Confidential
+data](../pitfalls/confidential-data.qmd). Some data should never go to a
+cloud LLM, full stop.
+:::

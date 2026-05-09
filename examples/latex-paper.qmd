@@ -1,0 +1,161 @@
+---
+title: "Worked example — editing a LaTeX paper"
+subtitle: "Bibliography cleanup, table reformatting, and a careful section rewrite, with Claude Code in the driver's seat."
+---
+
+This walks through using Claude Code on a paper draft. The tasks are
+intentionally pedestrian — they're the kind of thing you'd otherwise hand
+to an RA, except the loop here is minutes instead of days.
+
+::: {.callout-note}
+The prompts below are verbatim — you can copy them. Replace file names
+with yours.
+:::
+
+## Setup
+
+```bash
+cd ~/Desktop/papers/wage-paper
+claude
+```
+
+Before doing anything, give Claude an orientation pass:
+
+> "Read the project. Tell me what's here, what `paper.tex` is about in one
+> paragraph, and which auxiliary files (.bib, tables, figures) it depends
+> on."
+
+This takes 30 seconds. The benefit is that subsequent prompts can refer to
+"the main paper" or "the auxiliary files" without you re-explaining each
+time.
+
+## Task 1 — bibliography cleanup
+
+Bibtex files rot. Entries get added during a co-author binge and never
+cleaned up; some are cited, some aren't, some have subtly wrong years.
+
+> "Look at every `\cite`, `\citet`, and `\citep` in `paper.tex` and
+> appendix.tex. List entries in `references.bib` that are **never** cited.
+> Don't delete anything — just give me the list."
+
+You'll get something like:
+
+```
+Unused entries (12 of 87):
+  - smith2003
+  - jones1999  (note: cited as `jones99` elsewhere — possible typo)
+  - ...
+```
+
+The flag on `jones1999` is a real win: it's the kind of thing you'd miss
+on a manual pass. Now:
+
+> "Remove the unused entries from `references.bib`. For `jones1999`, fix
+> the citation key inconsistency: replace `\cite{jones99}` with
+> `\cite{jones1999}` everywhere, and keep the `jones1999` entry."
+
+Read the diff before approving. Compile. Done.
+
+## Task 2 — table reformatting
+
+You inherit a paper from a co-author and the tables are a mix of
+hand-written `tabular` environments, `booktabs`, and one orphaned
+`longtable`. You want everything on `booktabs` with a consistent style.
+
+> "Show me the source of each `table` environment in `paper.tex` and the
+> standalone .tex files in `tables/`. Identify which use `\toprule`,
+> `\midrule`, `\bottomrule` (booktabs) and which still use `\hline`. Don't
+> change anything yet."
+
+Once you see the inventory:
+
+> "Convert all `\hline`-based tables to booktabs style: `\toprule` at the
+> top, `\midrule` between header and body and around any subgroup, and
+> `\bottomrule` at the end. Keep column alignments and content untouched.
+> Make sure `\usepackage{booktabs}` is in `paper.tex`."
+
+::: {.callout-warning}
+Here is where you must read the diffs carefully. Table edits are the
+classic place where an LLM "tidies up" content you didn't ask it to tidy
+— a stray digit gets reformatted, a column header gets rephrased. Read
+every diff and reject anything that touches the *content* rather than the
+*formatting*.
+:::
+
+## Task 3 — a careful section rewrite
+
+This is the one where you should slow down. Claude can rewrite prose
+beautifully and confidently, including arguments you don't actually make.
+Treat this as **collaborative editing**, not delegation.
+
+> "Read section 3 (Empirical Strategy) of `paper.tex`. Don't change
+> anything yet. Tell me: (a) what the central identification claim is in
+> your reading; (b) any place where the text references something that's
+> not in the data section or the appendix; (c) any sentences that are
+> longer than 35 words or have more than two subordinate clauses."
+
+That's an audit, not a rewrite. Read what it says.
+
+If you agree with the audit:
+
+> "Rewrite only the sentences you flagged in (c) for length. Preserve every
+> claim. Do not introduce new arguments. Do not change any numbers or
+> citations. Show me the diff sentence by sentence."
+
+Approve, reject, or tweak each sentence individually. You stay the author.
+
+## Task 4 — compile and check
+
+> "Run `latexmk -pdf paper.tex` and tell me if there are any errors,
+> warnings, or unresolved citations."
+
+Claude runs the build, parses the log, and tells you what's broken. If a
+table now has a misaligned column, you'll find out before you re-read the
+PDF.
+
+## What this saved you
+
+- **Bibliography cleanup:** ~2 hours of grunt work compressed to ~10
+  minutes of supervision.
+- **Table reformatting:** would have taken half a day; now ~15 minutes.
+- **Section audit:** the slowest task, but most valuable — Claude is
+  willing to flag long sentences your eye no longer sees.
+
+## What it did not do
+
+- It did not decide what your contribution is.
+- It did not check whether your identification strategy is credible — it
+  read what you wrote and described it back to you.
+- It did not fact-check your citations against the cited papers.
+
+These remain your job.
+
+## Common traps in this workflow
+
+::: {.callout-warning}
+**Don't let it "improve" prose you didn't ask it to.** Tell it explicitly
+what to change and what to leave alone. "Don't introduce new arguments"
+is a sentence worth typing every single time.
+:::
+
+::: {.callout-warning}
+**Don't trust new citations it adds.** If it adds a `\cite{...}` for a
+paper you didn't tell it about, treat that as a hallucinated citation
+until you've personally confirmed the entry exists in your `.bib` and
+the cited claim matches the source. See
+[Hallucinations](../pitfalls/hallucinations.qmd).
+:::
+
+::: {.callout-tip}
+**Use plan mode for multi-file edits.** Hit `Shift+Tab` until you see
+"plan mode", then ask. Claude will write a plan ("I'll change these 4
+files, here's what each change does"), wait for your approval, and only
+then edit.
+:::
+
+## Next
+
+- [Replication package audit →](replication-package.qmd) — the other
+  fully-worked example.
+- [How to ask →](../workflow/how-to-ask.qmd) — the prompting habits this
+  page uses, made explicit.

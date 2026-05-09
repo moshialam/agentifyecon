@@ -1,0 +1,53 @@
+---
+title: "What you must still do yourself"
+subtitle: "The parts of research that don't get delegated, ever."
+---
+
+::: {.callout-note}
+**Coming soon.** A short reminder that agentic coding accelerates the
+mechanical parts of research and leaves the substantive parts exactly
+where they were — with you.
+:::
+
+## The list
+
+### Specification
+
+What's the right model? What controls? What functional form? What sample
+restriction? Claude can implement any of these; it cannot tell you which
+is correct for your question.
+
+### Identification
+
+Why does this design recover a causal effect? What threats remain? What
+robustness checks address them? The model can list textbook threats; it
+cannot judge whether *your* setting has them.
+
+### Interpretation
+
+What does the coefficient mean? Is it economically large? Is it consistent
+with prior estimates? What's the policy or theoretical takeaway? Claude
+can produce confident-sounding interpretations that are wrong about your
+context.
+
+### Contribution
+
+What's new here? Why should anyone care? Where does this sit in the
+literature? Claude has read a lot but has no taste — it cannot tell you
+whether your contribution is interesting.
+
+### Authorship
+
+Anything you submit goes out under your name. Claude is not a co-author;
+it's a tool. Don't list it; don't pretend it didn't help; do disclose
+LLM use as your journal requires.
+
+### The hard problem
+
+The model is good enough that you'll be tempted to outsource judgment
+disguised as code: "write the empirical strategy section", "decide which
+controls to include", "write the limitations section". Notice when you're
+about to do this. The cost of bad judgment doesn't go down because the
+typing got faster.
+
+> Tell me which of these to expand.

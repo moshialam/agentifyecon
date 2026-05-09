@@ -1,0 +1,41 @@
+---
+title: "Teaching prep — slides, problem sets, syllabi"
+---
+
+::: {.callout-note}
+**Coming soon.** A worked example of using Claude Code on the perpetual
+small jobs of teaching: refreshing slides, writing problem sets,
+maintaining a syllabus, generating solutions and grading rubrics.
+:::
+
+## Outline
+
+1. **Beamer slides.** "Look at last year's slide deck for Lecture 4. Update
+   the dates, the example dataset URL, and the news clipping on slide 17.
+   Don't change the content otherwise." Read the diff before compiling.
+2. **Problem sets.** "Write a problem set on instrumental variables that
+   builds on the material in `lecture05.tex`. Five problems, increasing
+   difficulty. Provide a separate solution file."
+3. **Solutions and rubrics.** Have Claude work each problem and produce
+   step-by-step solutions plus a point-allocation rubric. **Verify each
+   solution yourself** before posting — the model can confidently produce
+   wrong answers.
+4. **Syllabus maintenance.** "Update the reading list to include three
+   recent (2024–2026) papers on the topics in weeks 7–9. List the citations
+   and one-sentence relevance for each. Don't add anything to the syllabus
+   yet."
+5. **Reusing previous semesters.** Point Claude at last year's full course
+   directory and your current `_quarto.yml` (or whatever you use). Have
+   it propose a refresh.
+
+## Notes (will be expanded)
+
+- For LaTeX/Beamer, the [LaTeX paper editing](latex-paper.qmd) example
+  applies almost verbatim.
+- For Quarto-based teaching sites (like your `metrics-phd-course`),
+  Claude is well-suited to keeping `_quarto.yml`, sidebar, and weekly
+  pages in sync.
+- Solutions you generate **must be checked**. A wrong solution posted to
+  students costs more time than you saved generating it.
+
+> Tell me which step you'd most like worked through.

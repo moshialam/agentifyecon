@@ -1,0 +1,47 @@
+---
+title: "Julia — structural models and Pluto notebooks"
+---
+
+::: {.callout-note}
+**Coming soon.** A worked example of using Claude Code on a Julia project
+for structural econometrics: model setup, MLE/GMM estimation, identification
+diagnostics, and Pluto notebooks for interactive teaching.
+:::
+
+## Outline
+
+1. **Setup.** Point Claude at a Julia project (`Project.toml` + `src/`).
+   Ask for a summary of the model: primitives, parameters, what's being
+   estimated, what data inputs are required.
+2. **Estimation routines.** Build/refactor MLE or GMM estimation with
+   `Optim.jl` or `JuMP.jl`. Have Claude add gradient checks and
+   multi-start robustness.
+3. **Identification diagnostics.** "Visualize the objective function as a
+   function of each parameter near the estimated optimum. Flag any
+   parameters that look weakly identified."
+4. **Counterfactuals.** Set up a clean counterfactual harness: a single
+   function that takes parameters and produces the counterfactual moments
+   you care about.
+5. **Interactive Pluto notebook.** Wrap the model in a Pluto.jl notebook
+   with interactive sliders for teaching or for showing colleagues.
+
+## Julia/Pluto-specific notes (will be expanded)
+
+- You already have a Claude Code skill for exactly this:
+  **[`plutonb`](https://github.com/) in your `myccskills` repo**. It
+  templates a Pluto notebook with model primitives, sliders, estimation,
+  identification, and LaTeX formulas. Use it: `/plutonb` in any project.
+- Julia is well-represented in Claude's training data; structural
+  econometrics in Julia less so. Be explicit about your conventions
+  (variable names, what's a parameter vs. a state, etc.) in `CLAUDE.md`.
+- For replication packages, prefer `Manifest.toml` checked in — Claude
+  can set this up if you ask.
+
+## Why this is a strong fit for agentic coding
+
+Structural work involves a lot of small, mechanical steps where bugs
+silently change your results: index off-by-ones, forgotten Jacobian
+entries, mis-stacked moment vectors. Claude is good at the bookkeeping;
+you focus on the model.
+
+> Tell me which step you'd most like elaborated.

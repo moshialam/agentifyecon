@@ -1,0 +1,178 @@
+---
+title: "Worked example — auditing a replication package"
+subtitle: "Take a folder of inherited code and turn it into something a stranger could run."
+---
+
+The single highest-value use of agentic coding for an empirical economist
+is **replication-package work**. Whether you're preparing a package for
+submission, refereeing one, or trying to run a coauthor's old project on
+a fresh machine, the pattern is the same: someone has to read every file,
+trace dependencies, and figure out why the master script breaks on line
+237. Claude Code is unusually good at this.
+
+This page walks through both directions: **auditing** a package you've
+inherited or are refereeing, and **building** one from your own working
+project for journal submission.
+
+## Setup
+
+```bash
+cd ~/Dropbox/Projects/wage-paper-replication
+claude
+```
+
+Same orientation pass as always:
+
+> "Read the project. List every file. For each subfolder, tell me what it
+> appears to contain. Identify any 'master' script — something a user
+> would run to reproduce the results."
+
+## Direction A — auditing an existing package
+
+### Step 1 — produce a dependency map
+
+> "I want a dependency map of this replication package. Trace which scripts
+> read which raw data files, which scripts produce which intermediate
+> data files, which intermediate files are inputs to which analysis
+> scripts, and which analysis scripts produce which tables/figures in the
+> paper. Output as a Markdown list. Don't run anything yet."
+
+This is the kind of task that takes a careful human a full day. Claude
+will do it in a few minutes, and it will catch things like "table_3.do
+reads `clean_data_v2.dta` but no script in the package produces
+`clean_data_v2.dta` — only `clean_data_v3.dta`." That's the bug you're
+hunting for.
+
+### Step 2 — identify what's missing
+
+> "Based on the dependency map, list everything required to reproduce this
+> paper that is **not** in the package: missing raw data files, missing
+> intermediate files that no script produces, packages or libraries used
+> in the code but not declared, hard-coded paths that point outside the
+> package."
+
+Claude will give you a clean punch list. Common findings:
+
+- A path like `/Users/coauthor/Dropbox/...` hardcoded into a `.do` file.
+- A `library(haven)` call without `haven` declared in a `requirements.R`
+  or `renv.lock`.
+- A `merge` step that requires a file you got from the IRB and didn't put
+  in the package.
+
+### Step 3 — try to actually run it
+
+> "Try to run the master script. If you hit an error, stop, tell me what
+> happened, and propose a minimal fix. Don't auto-fix anything — just
+> propose."
+
+This is the test that matters. A package that "should run" and a package
+that *runs on a clean machine* are different things. Claude is patient
+about this loop in a way humans are not.
+
+::: {.callout-warning}
+For Stata, R, etc., Claude can call out to your installed interpreter.
+**Make sure you're running in the right environment** — the same Stata
+version your coauthor used, the same R packages, etc. If you're refereeing,
+this is part of the audit: the package should declare its environment.
+:::
+
+### Step 4 — document the gaps
+
+> "Write a `REVIEW.md` that lists everything I'd ask the authors to fix
+> before this package is ready for publication. Group by severity: blockers
+> (won't run at all), important (runs but doesn't reproduce a result),
+> minor (style/clarity)."
+
+You now have your referee report's "replication" section, drafted in 30
+minutes instead of 3 days.
+
+## Direction B — building a package from your own project
+
+You've got a paper accepted; the journal wants a replication package.
+
+### Step 1 — inventory what you actually used
+
+> "Look at every script in this project. List the ones that produce
+> something cited in `paper.tex` (a number, a table, a figure). Anything
+> not on that list is dead code or exploratory work that doesn't belong
+> in the public package."
+
+### Step 2 — produce a clean structure
+
+> "Propose a folder structure for a public replication package: separate
+> raw data, intermediate data, code, output. Don't touch the files yet —
+> just propose the layout."
+
+Approve the proposal.
+
+> "Now reorganize accordingly, *copying* (not moving) files from the
+> current project into a new `replication-package/` directory. Update
+> path references in scripts so the package is self-contained."
+
+::: {.callout-warning}
+Have Claude **copy, not move**. Replication-package surgery is a one-way
+trip if you let it move things; you want your working project untouched
+until you're sure the package builds.
+:::
+
+### Step 3 — write the README the way the AEA wants it
+
+> "Write a `README.md` for this replication package following the AEA
+> data and code availability standards: data sources and access,
+> computational requirements (software, packages, expected runtime),
+> instructions to run, and a mapping from each table/figure in the paper
+> to the script and output file that produces it."
+
+This README is the single most important document in your package. Read it
+critically — Claude can write a plausible-looking one that overstates
+how complete the package is.
+
+### Step 4 — confirm reproducibility on a fresh state
+
+> "Pretend you've never seen this project before. Following only the
+> README, run every step from scratch. Stop and tell me if anything is
+> ambiguous, missing, or fails."
+
+This is the test you can't easily run yourself — your machine has all
+your packages installed and your data sitting around. Claude can simulate
+the cold-start experience.
+
+## Why this is the highest-value use case
+
+- **Tedious.** Every step is mechanical but requires care.
+- **Error-prone for humans.** Reading 40 files in order is exactly the
+  task we're worst at.
+- **High stakes.** A package that doesn't reproduce is a paper that gets
+  flagged by the data editor. A package with hardcoded paths is a paper
+  that the field can't build on.
+- **Easy to verify.** "Does it run on a fresh machine?" is a binary test.
+  You'll know if Claude's audit was right.
+
+## Common traps
+
+::: {.callout-warning}
+**Claude can hallucinate that a script produces a table.** Always
+spot-check the dependency map against a few of the actual results. Open
+the script Claude says produces Table 3, check that it does.
+:::
+
+::: {.callout-warning}
+**Don't let Claude commit changes to your real project automatically.**
+Especially during reorganization, you want a manual checkpoint. Use
+[plan mode](../getting-started/plan-mode-and-todo.qmd) for the destructive
+steps.
+:::
+
+::: {.callout-tip}
+**Build a `/audit-replication` slash command.** If you do this twice, write
+a skill — see [Memory, CLAUDE.md, skills](../workflow/memory-and-claude-md.qmd).
+Your `myccskills` repo is the right place for it.
+:::
+
+## Next
+
+- [LaTeX paper editing →](latex-paper.qmd) — the other fully-worked
+  example.
+- [Confidential data →](../pitfalls/confidential-data.qmd) — read this
+  before pointing Claude at any project containing IRB-protected or
+  restricted-access data.

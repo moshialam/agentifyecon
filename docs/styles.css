@@ -1,0 +1,120 @@
+/* Palette + typography matching moshialam.github.io and metrics-phd-course */
+
+body {
+  background-color: #FFFDF8;
+  color: #3A3A3A;
+  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  line-height: 1.7;
+}
+
+a {
+  color: #B8653A;
+}
+
+a:hover {
+  color: #8B4513;
+}
+
+.navbar {
+  background-color: #FFFDF8 !important;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.navbar-brand, .nav-link {
+  color: #3A3A3A !important;
+}
+
+.nav-link:hover {
+  color: #B8653A !important;
+}
+
+h1, h2, h3, h4 {
+  color: #3A3A3A;
+}
+
+h1 { font-weight: 600; margin-top: 1.2rem; }
+h2 { font-weight: 600; margin-top: 2.2rem; }
+h3 { font-weight: 600; margin-top: 1.6rem; }
+
+.btn-primary {
+  background-color: #B8653A;
+  border-color: #B8653A;
+}
+
+.btn-primary:hover {
+  background-color: #8B4513;
+  border-color: #8B4513;
+}
+
+table {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+iframe {
+  max-width: 100%;
+}
+
+/* Sidebar tweaks for the multi-section layout */
+.sidebar-title {
+  color: #3A3A3A;
+  font-weight: 600;
+}
+
+.sidebar nav[role="doc-toc"] ul > li > a:hover,
+.sidebar a:hover {
+  color: #B8653A !important;
+}
+
+/* Code blocks: a touch warmer than default */
+pre, code {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+}
+
+div.sourceCode {
+  background-color: #FAF6EE;
+  border-radius: 4px;
+  border: 1px solid #EFE8D8;
+}
+
+code:not(.sourceCode) {
+  background-color: #FAF6EE;
+  color: #6B3A1A;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+/* Quarto callouts: warmer borders to match the palette */
+.callout.callout-style-default .callout-body {
+  background-color: #FFFDF8;
+}
+
+/* Landing-page hero bits */
+.lead-large {
+  font-size: 1.25rem;
+  color: #5A5A5A;
+  margin: 1rem 0 1.5rem 0;
+}
+
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.tile {
+  border: 1px solid #EFE8D8;
+  background-color: #FAF6EE;
+  border-radius: 6px;
+  padding: 1rem 1.1rem;
+}
+
+.tile h4 {
+  margin-top: 0;
+  font-size: 1.05rem;
+}
+
+.tile a {
+  text-decoration: none;
+}

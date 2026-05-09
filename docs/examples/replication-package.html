@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Worked example — auditing a replication package – LLMs for Economists</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../examples/stata-cleaning.html" rel="next">
+<link href="../examples/latex-paper.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c1ec2f13949b0fc3e8a909c901142637.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">LLMs for Economists</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-big-picture" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Big picture</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-big-picture">    
+        <li>
+    <a class="dropdown-item" href="../big-picture/what-is-agentic.html">
+ <span class="dropdown-text">What is agentic coding?</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../big-picture/why-claude-code.html">
+ <span class="dropdown-text">Why Claude Code</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../big-picture/landscape.html">
+ <span class="dropdown-text">How it compares</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../big-picture/what-changes.html">
+ <span class="dropdown-text">What changes for your workflow</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-getting-started" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Getting started</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-getting-started">    
+        <li>
+    <a class="dropdown-item" href="../getting-started/install.html">
+ <span class="dropdown-text">Install Claude Code</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../getting-started/first-project.html">
+ <span class="dropdown-text">Your first project</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../getting-started/plan-mode-and-todo.html">
+ <span class="dropdown-text">Plan mode, todos, slash commands</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-examples" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Examples</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-examples">    
+        <li>
+    <a class="dropdown-item" href="../examples/latex-paper.html">
+ <span class="dropdown-text">LaTeX paper editing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../examples/replication-package.html">
+ <span class="dropdown-text">Replication package audit</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../examples/stata-cleaning.html">
+ <span class="dropdown-text">Stata: cleaning data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../examples/r-analysis.html">
+ <span class="dropdown-text">R: analysis &amp; tables</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../examples/python-analysis.html">
+ <span class="dropdown-text">Python: pandas &amp; statsmodels</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../examples/matlab.html">
+ <span class="dropdown-text">Matlab: numerical work</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../examples/julia-structural.html">
+ <span class="dropdown-text">Julia: structural models</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../examples/refereeing.html">
+ <span class="dropdown-text">Refereeing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../examples/teaching-prep.html">
+ <span class="dropdown-text">Teaching prep</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-workflow" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Workflow</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-workflow">    
+        <li>
+    <a class="dropdown-item" href="../workflow/how-to-ask.html">
+ <span class="dropdown-text">How to ask</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../workflow/memory-and-claude-md.html">
+ <span class="dropdown-text">Memory, CLAUDE.md, skills</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../workflow/verifying.html">
+ <span class="dropdown-text">Verifying output</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pitfalls" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Pitfalls</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-pitfalls">    
+        <li>
+    <a class="dropdown-item" href="../pitfalls/hallucinations.html">
+ <span class="dropdown-text">Hallucinations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../pitfalls/confidential-data.html">
+ <span class="dropdown-text">Confidential data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../pitfalls/judgment.html">
+ <span class="dropdown-text">What you must still do</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img" aria-label="GitHub repository">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../examples/latex-paper.html">Worked examples</a></li><li class="breadcrumb-item"><a href="../examples/replication-package.html">Worked example — auditing a replication package</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Worked examples</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/latex-paper.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Worked example — editing a LaTeX paper</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/replication-package.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Worked example — auditing a replication package</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/stata-cleaning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Stata — cleaning data and writing reproducible .do files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/r-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R — analysis, regression tables, ggplot</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/python-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python — pandas, statsmodels, and notebooks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/matlab.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Matlab — numerical work and structural estimation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/julia-structural.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Julia — structural models and Pluto notebooks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/refereeing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Refereeing — using Claude Code to support (not replace) your judgment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/teaching-prep.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teaching prep — slides, problem sets, syllabi</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#direction-a-auditing-an-existing-package" id="toc-direction-a-auditing-an-existing-package" class="nav-link" data-scroll-target="#direction-a-auditing-an-existing-package">Direction A — auditing an existing package</a>
+  <ul class="collapse">
+  <li><a href="#step-1-produce-a-dependency-map" id="toc-step-1-produce-a-dependency-map" class="nav-link" data-scroll-target="#step-1-produce-a-dependency-map">Step 1 — produce a dependency map</a></li>
+  <li><a href="#step-2-identify-whats-missing" id="toc-step-2-identify-whats-missing" class="nav-link" data-scroll-target="#step-2-identify-whats-missing">Step 2 — identify what’s missing</a></li>
+  <li><a href="#step-3-try-to-actually-run-it" id="toc-step-3-try-to-actually-run-it" class="nav-link" data-scroll-target="#step-3-try-to-actually-run-it">Step 3 — try to actually run it</a></li>
+  <li><a href="#step-4-document-the-gaps" id="toc-step-4-document-the-gaps" class="nav-link" data-scroll-target="#step-4-document-the-gaps">Step 4 — document the gaps</a></li>
+  </ul></li>
+  <li><a href="#direction-b-building-a-package-from-your-own-project" id="toc-direction-b-building-a-package-from-your-own-project" class="nav-link" data-scroll-target="#direction-b-building-a-package-from-your-own-project">Direction B — building a package from your own project</a>
+  <ul class="collapse">
+  <li><a href="#step-1-inventory-what-you-actually-used" id="toc-step-1-inventory-what-you-actually-used" class="nav-link" data-scroll-target="#step-1-inventory-what-you-actually-used">Step 1 — inventory what you actually used</a></li>
+  <li><a href="#step-2-produce-a-clean-structure" id="toc-step-2-produce-a-clean-structure" class="nav-link" data-scroll-target="#step-2-produce-a-clean-structure">Step 2 — produce a clean structure</a></li>
+  <li><a href="#step-3-write-the-readme-the-way-the-aea-wants-it" id="toc-step-3-write-the-readme-the-way-the-aea-wants-it" class="nav-link" data-scroll-target="#step-3-write-the-readme-the-way-the-aea-wants-it">Step 3 — write the README the way the AEA wants it</a></li>
+  <li><a href="#step-4-confirm-reproducibility-on-a-fresh-state" id="toc-step-4-confirm-reproducibility-on-a-fresh-state" class="nav-link" data-scroll-target="#step-4-confirm-reproducibility-on-a-fresh-state">Step 4 — confirm reproducibility on a fresh state</a></li>
+  </ul></li>
+  <li><a href="#why-this-is-the-highest-value-use-case" id="toc-why-this-is-the-highest-value-use-case" class="nav-link" data-scroll-target="#why-this-is-the-highest-value-use-case">Why this is the highest-value use case</a></li>
+  <li><a href="#common-traps" id="toc-common-traps" class="nav-link" data-scroll-target="#common-traps">Common traps</a></li>
+  <li><a href="#next" id="toc-next" class="nav-link" data-scroll-target="#next">Next</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../examples/latex-paper.html">Worked examples</a></li><li class="breadcrumb-item"><a href="../examples/replication-package.html">Worked example — auditing a replication package</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Worked example — auditing a replication package</h1>
+<p class="subtitle lead">Take a folder of inherited code and turn it into something a stranger could run.</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>The single highest-value use of agentic coding for an empirical economist is <strong>replication-package work</strong>. Whether you’re preparing a package for submission, refereeing one, or trying to run a coauthor’s old project on a fresh machine, the pattern is the same: someone has to read every file, trace dependencies, and figure out why the master script breaks on line 237. Claude Code is unusually good at this.</p>
+<p>This page walks through both directions: <strong>auditing</strong> a package you’ve inherited or are refereeing, and <strong>building</strong> one from your own working project for journal submission.</p>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Dropbox/Projects/wage-paper-replication</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Same orientation pass as always:</p>
+<blockquote class="blockquote">
+<p>“Read the project. List every file. For each subfolder, tell me what it appears to contain. Identify any ‘master’ script — something a user would run to reproduce the results.”</p>
+</blockquote>
+</section>
+<section id="direction-a-auditing-an-existing-package" class="level2">
+<h2 class="anchored" data-anchor-id="direction-a-auditing-an-existing-package">Direction A — auditing an existing package</h2>
+<section id="step-1-produce-a-dependency-map" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-produce-a-dependency-map">Step 1 — produce a dependency map</h3>
+<blockquote class="blockquote">
+<p>“I want a dependency map of this replication package. Trace which scripts read which raw data files, which scripts produce which intermediate data files, which intermediate files are inputs to which analysis scripts, and which analysis scripts produce which tables/figures in the paper. Output as a Markdown list. Don’t run anything yet.”</p>
+</blockquote>
+<p>This is the kind of task that takes a careful human a full day. Claude will do it in a few minutes, and it will catch things like “table_3.do reads <code>clean_data_v2.dta</code> but no script in the package produces <code>clean_data_v2.dta</code> — only <code>clean_data_v3.dta</code>.” That’s the bug you’re hunting for.</p>
+</section>
+<section id="step-2-identify-whats-missing" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-identify-whats-missing">Step 2 — identify what’s missing</h3>
+<blockquote class="blockquote">
+<p>“Based on the dependency map, list everything required to reproduce this paper that is <strong>not</strong> in the package: missing raw data files, missing intermediate files that no script produces, packages or libraries used in the code but not declared, hard-coded paths that point outside the package.”</p>
+</blockquote>
+<p>Claude will give you a clean punch list. Common findings:</p>
+<ul>
+<li>A path like <code>/Users/coauthor/Dropbox/...</code> hardcoded into a <code>.do</code> file.</li>
+<li>A <code>library(haven)</code> call without <code>haven</code> declared in a <code>requirements.R</code> or <code>renv.lock</code>.</li>
+<li>A <code>merge</code> step that requires a file you got from the IRB and didn’t put in the package.</li>
+</ul>
+</section>
+<section id="step-3-try-to-actually-run-it" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-try-to-actually-run-it">Step 3 — try to actually run it</h3>
+<blockquote class="blockquote">
+<p>“Try to run the master script. If you hit an error, stop, tell me what happened, and propose a minimal fix. Don’t auto-fix anything — just propose.”</p>
+</blockquote>
+<p>This is the test that matters. A package that “should run” and a package that <em>runs on a clean machine</em> are different things. Claude is patient about this loop in a way humans are not.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For Stata, R, etc., Claude can call out to your installed interpreter. <strong>Make sure you’re running in the right environment</strong> — the same Stata version your coauthor used, the same R packages, etc. If you’re refereeing, this is part of the audit: the package should declare its environment.</p>
+</div>
+</div>
+</section>
+<section id="step-4-document-the-gaps" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-document-the-gaps">Step 4 — document the gaps</h3>
+<blockquote class="blockquote">
+<p>“Write a <code>REVIEW.md</code> that lists everything I’d ask the authors to fix before this package is ready for publication. Group by severity: blockers (won’t run at all), important (runs but doesn’t reproduce a result), minor (style/clarity).”</p>
+</blockquote>
+<p>You now have your referee report’s “replication” section, drafted in 30 minutes instead of 3 days.</p>
+</section>
+</section>
+<section id="direction-b-building-a-package-from-your-own-project" class="level2">
+<h2 class="anchored" data-anchor-id="direction-b-building-a-package-from-your-own-project">Direction B — building a package from your own project</h2>
+<p>You’ve got a paper accepted; the journal wants a replication package.</p>
+<section id="step-1-inventory-what-you-actually-used" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-inventory-what-you-actually-used">Step 1 — inventory what you actually used</h3>
+<blockquote class="blockquote">
+<p>“Look at every script in this project. List the ones that produce something cited in <code>paper.tex</code> (a number, a table, a figure). Anything not on that list is dead code or exploratory work that doesn’t belong in the public package.”</p>
+</blockquote>
+</section>
+<section id="step-2-produce-a-clean-structure" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-produce-a-clean-structure">Step 2 — produce a clean structure</h3>
+<blockquote class="blockquote">
+<p>“Propose a folder structure for a public replication package: separate raw data, intermediate data, code, output. Don’t touch the files yet — just propose the layout.”</p>
+</blockquote>
+<p>Approve the proposal.</p>
+<blockquote class="blockquote">
+<p>“Now reorganize accordingly, <em>copying</em> (not moving) files from the current project into a new <code>replication-package/</code> directory. Update path references in scripts so the package is self-contained.”</p>
+</blockquote>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Have Claude <strong>copy, not move</strong>. Replication-package surgery is a one-way trip if you let it move things; you want your working project untouched until you’re sure the package builds.</p>
+</div>
+</div>
+</section>
+<section id="step-3-write-the-readme-the-way-the-aea-wants-it" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-write-the-readme-the-way-the-aea-wants-it">Step 3 — write the README the way the AEA wants it</h3>
+<blockquote class="blockquote">
+<p>“Write a <code>README.md</code> for this replication package following the AEA data and code availability standards: data sources and access, computational requirements (software, packages, expected runtime), instructions to run, and a mapping from each table/figure in the paper to the script and output file that produces it.”</p>
+</blockquote>
+<p>This README is the single most important document in your package. Read it critically — Claude can write a plausible-looking one that overstates how complete the package is.</p>
+</section>
+<section id="step-4-confirm-reproducibility-on-a-fresh-state" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-confirm-reproducibility-on-a-fresh-state">Step 4 — confirm reproducibility on a fresh state</h3>
+<blockquote class="blockquote">
+<p>“Pretend you’ve never seen this project before. Following only the README, run every step from scratch. Stop and tell me if anything is ambiguous, missing, or fails.”</p>
+</blockquote>
+<p>This is the test you can’t easily run yourself — your machine has all your packages installed and your data sitting around. Claude can simulate the cold-start experience.</p>
+</section>
+</section>
+<section id="why-this-is-the-highest-value-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="why-this-is-the-highest-value-use-case">Why this is the highest-value use case</h2>
+<ul>
+<li><strong>Tedious.</strong> Every step is mechanical but requires care.</li>
+<li><strong>Error-prone for humans.</strong> Reading 40 files in order is exactly the task we’re worst at.</li>
+<li><strong>High stakes.</strong> A package that doesn’t reproduce is a paper that gets flagged by the data editor. A package with hardcoded paths is a paper that the field can’t build on.</li>
+<li><strong>Easy to verify.</strong> “Does it run on a fresh machine?” is a binary test. You’ll know if Claude’s audit was right.</li>
+</ul>
+</section>
+<section id="common-traps" class="level2">
+<h2 class="anchored" data-anchor-id="common-traps">Common traps</h2>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Claude can hallucinate that a script produces a table.</strong> Always spot-check the dependency map against a few of the actual results. Open the script Claude says produces Table 3, check that it does.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Don’t let Claude commit changes to your real project automatically.</strong> Especially during reorganization, you want a manual checkpoint. Use <a href="../getting-started/plan-mode-and-todo.html">plan mode</a> for the destructive steps.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Build a <code>/audit-replication</code> slash command.</strong> If you do this twice, write a skill — see <a href="../workflow/memory-and-claude-md.html">Memory, CLAUDE.md, skills</a>. Your <code>myccskills</code> repo is the right place for it.</p>
+</div>
+</div>
+</section>
+<section id="next" class="level2">
+<h2 class="anchored" data-anchor-id="next">Next</h2>
+<ul>
+<li><a href="../examples/latex-paper.html">LaTeX paper editing →</a> — the other fully-worked example.</li>
+<li><a href="../pitfalls/confidential-data.html">Confidential data →</a> — read this before pointing Claude at any project containing IRB-protected or restricted-access data.</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../examples/latex-paper.html" class="pagination-link" aria-label="Worked example — editing a LaTeX paper">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Worked example — editing a LaTeX paper</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../examples/stata-cleaning.html" class="pagination-link" aria-label="Stata — cleaning data and writing reproducible .do files">
+        <span class="nav-page-text">Stata — cleaning data and writing reproducible .do files</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 · For colleagues at the Department of Economics</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org/">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

@@ -1,0 +1,25 @@
+---
+title: "Your first project"
+---
+
+::: {.callout-note}
+**Coming soon.** Practical guidance for the first hour you spend with
+Claude Code on a real project of yours.
+:::
+
+## Outline
+
+- **Pick the right project to start with.** A paper draft, a teaching
+  repo, or a side project. Not your sensitive replication package.
+- **Spend ten minutes letting it read the project.** Ask it to summarize
+  what's there. You'll learn what *it* sees, which is roughly what a
+  smart RA would see.
+- **Pick one annoying task you've been putting off.** "Reformat all my
+  tables to use `booktabs`." "Standardize variable names across my
+  .do files." "Write a README for this repo." Watch it do that.
+- **Read every diff.** This is the habit that matters most.
+- **Quit, come back tomorrow.** Notice that it remembers what you were
+  doing. That memory is `CLAUDE.md`, covered in
+  [Memory, CLAUDE.md, skills](../workflow/memory-and-claude-md.qmd).
+
+> Tell me which step you'd most like worked through.

@@ -1,0 +1,38 @@
+---
+title: "Matlab — numerical work and structural estimation"
+---
+
+::: {.callout-note}
+**Coming soon.** A worked example of using Claude Code on a Matlab
+project: vectorized numerical routines, structural estimation loops,
+optimization with `fminunc`/`fmincon`, and converting `.m` scripts into
+clean function-based code.
+:::
+
+## Outline
+
+1. **Setup.** Point Claude at a Matlab project. Have it list functions,
+   identify the entry point, and summarize the model being estimated.
+2. **Vectorization audit.** "Find loops in this project that could be
+   vectorized for a noticeable speedup. Show me each, with the proposed
+   replacement, before changing anything."
+3. **Numerical sanity checks.** Have Claude add finite-difference checks
+   for analytic gradients, or compare `fminunc` results across starting
+   values.
+4. **Refactor scripts to functions.** Convert top-level scripts into
+   functions with explicit inputs and outputs — easier to test, easier to
+   parallelize.
+5. **Documentation.** Generate `% description` headers for every function
+   in a consistent style.
+
+## Matlab-specific notes (will be expanded)
+
+- Matlab is less common in Claude's training data than Python/R. Be more
+  explicit about what you want; verify outputs against known-good runs.
+- Claude can call Matlab from the command line if `matlab -batch` works
+  on your machine. On a Mac, that means Matlab is installed and on the
+  PATH.
+- For structural work in Matlab, the same logic as the Julia/Pluto
+  examples applies — see also [Julia: structural models](julia-structural.qmd).
+
+> Tell me which step you'd most like elaborated.

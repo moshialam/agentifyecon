@@ -1,0 +1,35 @@
+---
+title: "What changes for your research workflow"
+---
+
+::: {.callout-note}
+**Coming soon.** This page will lay out — honestly — what shifts when you
+add an agentic coding tool to your research workflow, and what does *not*.
+:::
+
+## Outline
+
+**What changes:**
+
+- Tedious code (variable renaming, table reformatting, replication-package
+  cleanup, `.bib` fixes) becomes minutes instead of hours.
+- You stop avoiding small-but-annoying improvements ("I'll fix that figure
+  formatting later") because the friction drops to near zero.
+- A second pair of eyes is always available: "what's wrong with this
+  regression specification?" gets a useful answer in seconds.
+- Onboarding to an unfamiliar codebase (your old paper from five years
+  ago, a coauthor's repo, a published replication package) is dramatically
+  faster.
+
+**What does not change:**
+
+- Your responsibility for the **specification, identification, and
+  interpretation**. The model can suggest; you decide.
+- The need to **read the diff** before accepting code into your project.
+- The need to **run the regression yourself** before believing the number
+  in your table.
+- Your **research taste** — what's interesting, what's worth doing, what
+  the contribution is. The model has none of this and will happily help
+  you do bad work very efficiently.
+
+> Tell me which side of this you want elaborated.

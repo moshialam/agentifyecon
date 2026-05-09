@@ -1,0 +1,103 @@
+---
+title: "LLMs for Economists"
+subtitle: "A short, example-driven introduction to agentic coding with Claude Code — for economics professors who'd rather spend their time doing economics."
+toc: false
+---
+
+::: {.lead-large}
+This is a colleagues-only field guide to a particular way of using LLMs:
+**giving an AI agent direct access to your project files** so it can write
+code, edit your LaTeX, audit a replication package, and run things on your
+behalf — under your supervision.
+
+It is *not* about chatting with ChatGPT in a browser. That is useful too,
+but it isn't what's changed in the last year.
+:::
+
+## Who this is for
+
+You are an economist who:
+
+- Spends real hours writing Stata/R/Python/Matlab/Julia code, formatting
+  LaTeX papers, building tables, or wrangling a replication package.
+- Has heard "AI agents" get hyped and would like a non-marketing
+  explanation of what's actually useful and what is not.
+- Wants the **shortest possible path** from "I've heard of Claude Code"
+  to "Claude Code is editing my paper while I review the diff."
+
+You don't need to know git, the terminal, or any web technology beyond
+the basics. We'll cover the parts that matter.
+
+## Where to start
+
+::: {.tile-grid}
+::: {.tile}
+#### 1. The big picture {.unnumbered}
+What "agentic coding" means and why it's different from chatting with an
+LLM. Five-minute read.
+
+[Start here →](big-picture/what-is-agentic.qmd)
+:::
+
+::: {.tile}
+#### 2. Install and first session {.unnumbered}
+Get Claude Code on your machine and pointed at one of your projects.
+Twenty minutes.
+
+[Install Claude Code →](getting-started/install.qmd)
+:::
+
+::: {.tile}
+#### 3. Worked examples {.unnumbered}
+Concrete examples for the things you actually do: editing a paper, auditing
+a replication package, cleaning data in your language of choice.
+
+[See examples →](examples/latex-paper.qmd)
+:::
+
+::: {.tile}
+#### 4. Workflow and pitfalls {.unnumbered}
+How to ask well, when to verify, what to keep out of the model's hands.
+Read these before letting Claude touch anything serious.
+
+[Day-to-day workflow →](workflow/how-to-ask.qmd)
+:::
+:::
+
+## What this guide is *not*
+
+- **Not a sales pitch.** Claude Code is one tool in a busy landscape. The
+  [comparison page](big-picture/landscape.qmd) explains where it fits next
+  to Cursor, ChatGPT, and Copilot, and when each is the right call.
+- **Not for confidential or restricted-access data.** If you work with
+  IRB-protected, FERPA-covered, Census, IRS, or other restricted data,
+  read the [confidential data page](pitfalls/confidential-data.qmd) before
+  doing anything else.
+- **Not a substitute for your judgment as an economist.** Claude can write
+  the code; it cannot identify your effect, defend your specification, or
+  decide whether your design is credible. See
+  [what you must still do](pitfalls/judgment.qmd).
+
+## Suggested reading order
+
+If you have **30 minutes**, read:
+
+1. [What is agentic coding?](big-picture/what-is-agentic.qmd)
+2. [Install Claude Code](getting-started/install.qmd)
+3. [LaTeX paper editing](examples/latex-paper.qmd) *or*
+   [Replication package audit](examples/replication-package.qmd)
+
+If you have **a free afternoon**, add:
+
+4. [Plan mode, todos, slash commands](getting-started/plan-mode-and-todo.qmd)
+5. The example page for your language: Stata, R, Python, Matlab, or Julia.
+6. [How to ask](workflow/how-to-ask.qmd) and
+   [Verifying output](workflow/verifying.qmd).
+
+## A note on what's "fleshed out" right now
+
+This site is a living draft. The two long-form examples (LaTeX paper editing
+and replication-package audit) and the install guide are the most complete.
+Other pages are short outlines that I'll fill in as colleagues use them and
+tell me what's missing. If you find a section that would help you and
+isn't there yet, **tell me** — that's the fastest way to make this useful.

@@ -1,0 +1,968 @@
+[
+  {
+    "objectID": "big-picture/what-is-agentic.html",
+    "href": "big-picture/what-is-agentic.html",
+    "title": "What is agentic coding?",
+    "section": "",
+    "text": "Until recently, using an LLM meant typing into a chat box and copy-pasting the answer back into your editor. That works, but it puts you in the loop for every small action: copy this, paste here, run it, paste the error back, ask again. “Agentic coding” tools cut that loop. You give the model direct access to your project — it can read files, edit them, run code, see the output, and decide what to do next. You stay in the loop for direction and review, not for clerical handoffs.\nThat is the whole shift. Everything else on this site is a consequence of it.",
+    "crumbs": [
+      "Big picture",
+      "What is agentic coding?"
+    ]
+  },
+  {
+    "objectID": "big-picture/what-is-agentic.html#the-shift-in-one-paragraph",
+    "href": "big-picture/what-is-agentic.html#the-shift-in-one-paragraph",
+    "title": "What is agentic coding?",
+    "section": "",
+    "text": "Until recently, using an LLM meant typing into a chat box and copy-pasting the answer back into your editor. That works, but it puts you in the loop for every small action: copy this, paste here, run it, paste the error back, ask again. “Agentic coding” tools cut that loop. You give the model direct access to your project — it can read files, edit them, run code, see the output, and decide what to do next. You stay in the loop for direction and review, not for clerical handoffs.\nThat is the whole shift. Everything else on this site is a consequence of it.",
+    "crumbs": [
+      "Big picture",
+      "What is agentic coding?"
+    ]
+  },
+  {
+    "objectID": "big-picture/what-is-agentic.html#a-concrete-contrast",
+    "href": "big-picture/what-is-agentic.html#a-concrete-contrast",
+    "title": "What is agentic coding?",
+    "section": "A concrete contrast",
+    "text": "A concrete contrast\n\n\n\n\n\n\nChat-style (what you might be doing now)\n\nYou: “Write me a Stata loop that runs a regression for each year and stores coefficients.”\nLLM: (gives a snippet)\nYou: (paste into Stata, hit run, get an error about a missing variable)\nYou: “I got this error: variable wage_resid not found”\nLLM: (apologizes, gives a new snippet)\nYou: (paste, run, repeat 3 more times)\n\n\n\n\n\n\n\n\n\n\nAgentic (what Claude Code does)\n\nYou: “Write a loop that runs my main regression for each year and stores the coefficients. Look at analysis.do to see how I’ve set up the covariates.”\nClaude Code: (reads analysis.do, writes the loop, runs it, sees the wage_resid not found error, reads 02-build-vars.do, notices that wage_resid is generated only when a flag is set, fixes the loop, runs it again, shows you the diff and the resulting coefficients)\n\n\n\n\nThe chat version takes ten minutes of attention. The agentic version takes ten minutes of clock time but maybe one minute of yours.",
+    "crumbs": [
+      "Big picture",
+      "What is agentic coding?"
+    ]
+  },
+  {
+    "objectID": "big-picture/what-is-agentic.html#what-you-give-up-and-what-you-keep",
+    "href": "big-picture/what-is-agentic.html#what-you-give-up-and-what-you-keep",
+    "title": "What is agentic coding?",
+    "section": "What you give up, and what you keep",
+    "text": "What you give up, and what you keep\nYou give up the moment-by-moment control of every keystroke. You can’t inspect the model’s reasoning step by step in real time, and you have to trust that it’s editing the right files in the right way.\nYou keep — and must exercise — direction and review. You decide what to ask for. You read the diff before accepting it. You run the regression yourself before believing the number. The page on verifying output is the most important one on this site.",
+    "crumbs": [
+      "Big picture",
+      "What is agentic coding?"
+    ]
+  },
+  {
+    "objectID": "big-picture/what-is-agentic.html#why-this-matters-for-an-economist-specifically",
+    "href": "big-picture/what-is-agentic.html#why-this-matters-for-an-economist-specifically",
+    "title": "What is agentic coding?",
+    "section": "Why this matters for an economist specifically",
+    "text": "Why this matters for an economist specifically\nThree reasons it lands harder in our field than most:\n\nOur work is heavy on small, tedious code. Renaming variables across a dozen .do files, regenerating tables in a different format, fixing a bibtex file with 200 entries — these are exactly the kinds of jobs where the agentic loop pays off.\nReproducibility matters. The model can read your whole replication package and tell you what’s missing or what won’t run on a fresh machine. A human RA would take a day; the model takes minutes.\nYou probably have several projects in different languages. The same tool works on Stata, R, Python, Matlab, Julia, LaTeX, and shell scripts — you don’t need to learn a different assistant for each.",
+    "crumbs": [
+      "Big picture",
+      "What is agentic coding?"
+    ]
+  },
+  {
+    "objectID": "big-picture/what-is-agentic.html#next",
+    "href": "big-picture/what-is-agentic.html#next",
+    "title": "What is agentic coding?",
+    "section": "Next",
+    "text": "Next\n\nSee why Claude Code for why this site focuses on one specific tool.\nOr jump to installing Claude Code and try it on a real project of yours.",
+    "crumbs": [
+      "Big picture",
+      "What is agentic coding?"
+    ]
+  },
+  {
+    "objectID": "big-picture/landscape.html",
+    "href": "big-picture/landscape.html",
+    "title": "How Claude Code compares",
+    "section": "",
+    "text": "Note\n\n\n\nComing soon. A short, opinionated comparison so you can place Claude Code in the broader landscape and decide which tool is right for which task.",
+    "crumbs": [
+      "Big picture",
+      "How Claude Code compares"
+    ]
+  },
+  {
+    "objectID": "big-picture/landscape.html#outline",
+    "href": "big-picture/landscape.html#outline",
+    "title": "How Claude Code compares",
+    "section": "Outline",
+    "text": "Outline\n\n\n\n\n\n\n\n\nTool\nWhat it is\nWhen it’s the right call\n\n\n\n\nClaude Code\nAgent in your terminal that can read/edit files and run code in any folder\nEditing papers, auditing replication packages, multi-file refactors, working in Stata/Matlab/Julia\n\n\nCursor\nA code editor (VS Code fork) with an LLM bolted in\nIf you live in an IDE and want inline completions + chat in the same window\n\n\nChatGPT / Claude.ai (web)\nChat in a browser; can do “code interpreter”-style work in a sandbox\nOne-off questions; quick scripts where uploading a file is faster than installing anything\n\n\nGitHub Copilot\nAutocomplete-as-you-type, plus a chat panel\nFast inline suggestions in VS Code or JetBrains; less useful for multi-file work",
+    "crumbs": [
+      "Big picture",
+      "How Claude Code compares"
+    ]
+  },
+  {
+    "objectID": "big-picture/landscape.html#a-pragmatic-recommendation",
+    "href": "big-picture/landscape.html#a-pragmatic-recommendation",
+    "title": "How Claude Code compares",
+    "section": "A pragmatic recommendation",
+    "text": "A pragmatic recommendation\n\nIf you have one quick code question and your project isn’t open: use Claude.ai or ChatGPT in a browser.\nIf you want inline autocomplete while you type: use Copilot or Cursor.\nIf you want the AI to work on a real project of yours — reading several files, making coordinated edits, running things, and reporting back — use Claude Code (or Cursor’s agent mode, which is similar in spirit).",
+    "crumbs": [
+      "Big picture",
+      "How Claude Code compares"
+    ]
+  },
+  {
+    "objectID": "big-picture/landscape.html#what-this-guide-does-not-claim",
+    "href": "big-picture/landscape.html#what-this-guide-does-not-claim",
+    "title": "How Claude Code compares",
+    "section": "What this guide does not claim",
+    "text": "What this guide does not claim\n\nThat Claude Code is best at every task. It is the right default for the econ-research workflows on this site, not a universal winner.\nThat you have to pick one. Most colleagues end up using two: one agentic tool (Claude Code or Cursor) and one chat tool (Claude.ai or ChatGPT) for quick questions away from the keyboard.\n\n\nTell me which comparisons you’d like fleshed out and I’ll prioritize.",
+    "crumbs": [
+      "Big picture",
+      "How Claude Code compares"
+    ]
+  },
+  {
+    "objectID": "workflow/verifying.html",
+    "href": "workflow/verifying.html",
+    "title": "Verifying output",
+    "section": "",
+    "text": "Warning\n\n\n\nThis is the page that matters most. Every other shortcut is fine if you do this one thing. Skip this and you will eventually publish something wrong with your name on it.",
+    "crumbs": [
+      "Day-to-day workflow",
+      "Verifying output"
+    ]
+  },
+  {
+    "objectID": "workflow/verifying.html#the-rule",
+    "href": "workflow/verifying.html#the-rule",
+    "title": "Verifying output",
+    "section": "The rule",
+    "text": "The rule\nRead the diff. Run the code. Open the file. Compare to your expectation.\nEvery time, even when you’re tired.",
+    "crumbs": [
+      "Day-to-day workflow",
+      "Verifying output"
+    ]
+  },
+  {
+    "objectID": "workflow/verifying.html#outline-what-verify-means-in-concrete-cases",
+    "href": "workflow/verifying.html#outline-what-verify-means-in-concrete-cases",
+    "title": "Verifying output",
+    "section": "Outline — what “verify” means in concrete cases",
+    "text": "Outline — what “verify” means in concrete cases\n\nCode edits\n\nRead the diff before accepting. Quarto, Stata, R, Python, LaTeX — doesn’t matter. If you’re not reading diffs, you’re not in control.\nFor multi-file changes, read every file’s diff. The boring ones are where the bugs hide.\n\n\n\nNumerical output\n\nIf Claude reports a coefficient, re-run the regression yourself in your usual environment before believing it. Cloud LLMs can confidently report numbers from a hallucinated run.\nFor estimation, save random seeds explicitly and confirm reproducibility on a re-run.\n\n\n\nCitations and references\n\nAny new \\cite{...} Claude adds: confirm the entry exists in your .bib and that the cited paper actually says what you’re attributing to it. See Hallucinations.\n\n\n\nFiles that disappear\n\nFor deletions, refactors, or replication-package reorganization, work in a copy, not in your live project. Or use git: commit before, branch, and you can always undo.",
+    "crumbs": [
+      "Day-to-day workflow",
+      "Verifying output"
+    ]
+  },
+  {
+    "objectID": "workflow/verifying.html#outline-habits-that-make-verification-cheap",
+    "href": "workflow/verifying.html#outline-habits-that-make-verification-cheap",
+    "title": "Verifying output",
+    "section": "Outline — habits that make verification cheap",
+    "text": "Outline — habits that make verification cheap\n\nUse git. Even if you don’t push to GitHub, commit locally before any big change so git diff is meaningful.\nUse plan mode for multi-file changes. Reading a plan first and then reviewing the diffs that match it is much easier than parsing surprise edits.\nRun the build/test after every change. If your project has a make or a master do file, ask Claude to run it after each meaningful edit.\n\n\nTell me which of these you’d most like fully worked through.",
+    "crumbs": [
+      "Day-to-day workflow",
+      "Verifying output"
+    ]
+  },
+  {
+    "objectID": "workflow/memory-and-claude-md.html",
+    "href": "workflow/memory-and-claude-md.html",
+    "title": "Memory, CLAUDE.md, and skills",
+    "section": "",
+    "text": "Note\n\n\n\nComing soon. A practical tour of three mechanisms that let you avoid re-explaining things to Claude every session: project-level CLAUDE.md, auto-memory, and reusable skills.",
+    "crumbs": [
+      "Day-to-day workflow",
+      "Memory, CLAUDE.md, and skills"
+    ]
+  },
+  {
+    "objectID": "workflow/memory-and-claude-md.html#outline",
+    "href": "workflow/memory-and-claude-md.html#outline",
+    "title": "Memory, CLAUDE.md, and skills",
+    "section": "Outline",
+    "text": "Outline\n\nCLAUDE.md (per-project instructions)\nA plain-text Markdown file at the root of your project that Claude reads at the start of every session. Use it for things like:\n\nWhich version of Stata/R/Matlab/Julia you use.\nConventions: naming, file structure, table styles.\nThings to never do: “Do not modify files in raw/”, “Do not commit without explicit confirmation.”\nPointers: “The main analysis script is 03-analysis.do. Tables go to output/tables/ as .tex files.”\n\nHave Claude write the first draft for you: /init walks the project and proposes a CLAUDE.md.\n\n\nAuto-memory (across-project preferences)\nClaude Code keeps a memory store of things you’ve told it across all sessions — your role, your preferences, your tools. You don’t have to manage it; it builds up. You can ask Claude what it remembers and edit it.\n\n\nSkills (reusable workflows)\nA skill is a Markdown file describing a recurring task and how to do it your way. Once written, you invoke it by name (/your-skill).\nYou already have some good ones in your myccskills repo:\n\nplutonb — scaffold a Pluto.jl notebook for structural econometrics simulations (your work).\nevolution — analyze git history to show how a project developed.\nremind — snapshot the current project state when returning to work after time away.\n\nFor a department-facing site like this one, candidate new skills are:\n\n/audit-replication — run the replication-package audit end-to-end on whatever folder you’re in.\n/refresh-syllabus — update dates, readings, and sidebar in a Quarto course site for the new semester.\n/clean-bib — the bibliography cleanup from the LaTeX paper example.\n\n\nTell me which of these to write up first as a real worked example.",
+    "crumbs": [
+      "Day-to-day workflow",
+      "Memory, CLAUDE.md, and skills"
+    ]
+  },
+  {
+    "objectID": "examples/r-analysis.html",
+    "href": "examples/r-analysis.html",
+    "title": "R — analysis, regression tables, ggplot",
+    "section": "",
+    "text": "Note\n\n\n\nComing soon. A worked example of using Claude Code on an R project: tidyverse-based cleaning, fixest/modelsummary regression tables, ggplot2 figures, and a reproducible renv setup.",
+    "crumbs": [
+      "Worked examples",
+      "R — analysis, regression tables, ggplot"
+    ]
+  },
+  {
+    "objectID": "examples/r-analysis.html#outline",
+    "href": "examples/r-analysis.html#outline",
+    "title": "R — analysis, regression tables, ggplot",
+    "section": "Outline",
+    "text": "Outline\n\nSetup. Point Claude at a project with .R and/or .Rmd files. Ask it to summarize the structure and which packages are in use.\nCleaning with tidyverse. “Read raw/survey.csv. Propose a dplyr-based cleaning pipeline. Show me each step before applying.”\nRegression tables. Build a publication-quality table with modelsummary or fixest::etable, including clustered SEs.\nFigures. Iterate on a ggplot2 figure — Claude is well-suited to “make this look like the figure on page 14 of Smith (2024)” if you describe the differences.\nReproducibility. Use renv to lock package versions. Have Claude set this up if you haven’t.",
+    "crumbs": [
+      "Worked examples",
+      "R — analysis, regression tables, ggplot"
+    ]
+  },
+  {
+    "objectID": "examples/r-analysis.html#r-specific-notes-will-be-expanded",
+    "href": "examples/r-analysis.html#r-specific-notes-will-be-expanded",
+    "title": "R — analysis, regression tables, ggplot",
+    "section": "R-specific notes (will be expanded)",
+    "text": "R-specific notes (will be expanded)\n\nClaude Code can run R interactively via Rscript if R is on the PATH.\nIt is strong on tidyverse idioms, fixest, lme4, ggplot2.\nIt can be overly fond of rewriting your code in tidyverse style even when you’d rather stay in base R. Say so explicitly in your prompt or in CLAUDE.md.\n\n\nTell me which step you’d most like elaborated.",
+    "crumbs": [
+      "Worked examples",
+      "R — analysis, regression tables, ggplot"
+    ]
+  },
+  {
+    "objectID": "examples/stata-cleaning.html",
+    "href": "examples/stata-cleaning.html",
+    "title": "Stata — cleaning data and writing reproducible .do files",
+    "section": "",
+    "text": "Note\n\n\n\nComing soon. A worked example of using Claude Code on a real Stata project: cleaning a messy dataset, writing a master do file, producing regression tables, and refactoring across multiple .do files.",
+    "crumbs": [
+      "Worked examples",
+      "Stata — cleaning data and writing reproducible .do files"
+    ]
+  },
+  {
+    "objectID": "examples/stata-cleaning.html#outline",
+    "href": "examples/stata-cleaning.html#outline",
+    "title": "Stata — cleaning data and writing reproducible .do files",
+    "section": "Outline",
+    "text": "Outline\n\nSetup. Point Claude at a project with a few .dta files and an existing .do file or two. Have it summarize the data and the code.\nCleaning. “Look at raw/wages.dta. Document the variables, flag suspicious values (negatives where they shouldn’t be, implausible ranges, missing-value codes like -99), and propose a cleaning script. Don’t write it yet — show me the proposal.”\nReproducible structure. Refactor a flat collection of .do files into a master.do + 01-clean.do, 02-build-vars.do, 03-analysis.do pattern.\nTables. Produce regression tables with esttab or outreg2 in a consistent style.\nVerification. Re-run the master script from scratch in a fresh Stata session and confirm output matches.",
+    "crumbs": [
+      "Worked examples",
+      "Stata — cleaning data and writing reproducible .do files"
+    ]
+  },
+  {
+    "objectID": "examples/stata-cleaning.html#stata-specific-notes-will-be-expanded",
+    "href": "examples/stata-cleaning.html#stata-specific-notes-will-be-expanded",
+    "title": "Stata — cleaning data and writing reproducible .do files",
+    "section": "Stata-specific notes (will be expanded)",
+    "text": "Stata-specific notes (will be expanded)\n\nClaude Code can run Stata via the command line if your Stata is on the PATH. On a Mac, that’s typically a one-line setup once.\nClaude is good at mechanical things in Stata (variable renaming, egen group operations, table generation, regex’ing the log file).\nClaude is less reliable on old Stata idioms (#delimit, version pragmas, pre-Stata-15 syntax). Tell it your Stata version explicitly in your project’s CLAUDE.md.\n\n\nTell me which step you’d most like elaborated.",
+    "crumbs": [
+      "Worked examples",
+      "Stata — cleaning data and writing reproducible .do files"
+    ]
+  },
+  {
+    "objectID": "examples/matlab.html",
+    "href": "examples/matlab.html",
+    "title": "Matlab — numerical work and structural estimation",
+    "section": "",
+    "text": "Note\n\n\n\nComing soon. A worked example of using Claude Code on a Matlab project: vectorized numerical routines, structural estimation loops, optimization with fminunc/fmincon, and converting .m scripts into clean function-based code.",
+    "crumbs": [
+      "Worked examples",
+      "Matlab — numerical work and structural estimation"
+    ]
+  },
+  {
+    "objectID": "examples/matlab.html#outline",
+    "href": "examples/matlab.html#outline",
+    "title": "Matlab — numerical work and structural estimation",
+    "section": "Outline",
+    "text": "Outline\n\nSetup. Point Claude at a Matlab project. Have it list functions, identify the entry point, and summarize the model being estimated.\nVectorization audit. “Find loops in this project that could be vectorized for a noticeable speedup. Show me each, with the proposed replacement, before changing anything.”\nNumerical sanity checks. Have Claude add finite-difference checks for analytic gradients, or compare fminunc results across starting values.\nRefactor scripts to functions. Convert top-level scripts into functions with explicit inputs and outputs — easier to test, easier to parallelize.\nDocumentation. Generate % description headers for every function in a consistent style.",
+    "crumbs": [
+      "Worked examples",
+      "Matlab — numerical work and structural estimation"
+    ]
+  },
+  {
+    "objectID": "examples/matlab.html#matlab-specific-notes-will-be-expanded",
+    "href": "examples/matlab.html#matlab-specific-notes-will-be-expanded",
+    "title": "Matlab — numerical work and structural estimation",
+    "section": "Matlab-specific notes (will be expanded)",
+    "text": "Matlab-specific notes (will be expanded)\n\nMatlab is less common in Claude’s training data than Python/R. Be more explicit about what you want; verify outputs against known-good runs.\nClaude can call Matlab from the command line if matlab -batch works on your machine. On a Mac, that means Matlab is installed and on the PATH.\nFor structural work in Matlab, the same logic as the Julia/Pluto examples applies — see also Julia: structural models.\n\n\nTell me which step you’d most like elaborated.",
+    "crumbs": [
+      "Worked examples",
+      "Matlab — numerical work and structural estimation"
+    ]
+  },
+  {
+    "objectID": "examples/julia-structural.html",
+    "href": "examples/julia-structural.html",
+    "title": "Julia — structural models and Pluto notebooks",
+    "section": "",
+    "text": "Note\n\n\n\nComing soon. A worked example of using Claude Code on a Julia project for structural econometrics: model setup, MLE/GMM estimation, identification diagnostics, and Pluto notebooks for interactive teaching.",
+    "crumbs": [
+      "Worked examples",
+      "Julia — structural models and Pluto notebooks"
+    ]
+  },
+  {
+    "objectID": "examples/julia-structural.html#outline",
+    "href": "examples/julia-structural.html#outline",
+    "title": "Julia — structural models and Pluto notebooks",
+    "section": "Outline",
+    "text": "Outline\n\nSetup. Point Claude at a Julia project (Project.toml + src/). Ask for a summary of the model: primitives, parameters, what’s being estimated, what data inputs are required.\nEstimation routines. Build/refactor MLE or GMM estimation with Optim.jl or JuMP.jl. Have Claude add gradient checks and multi-start robustness.\nIdentification diagnostics. “Visualize the objective function as a function of each parameter near the estimated optimum. Flag any parameters that look weakly identified.”\nCounterfactuals. Set up a clean counterfactual harness: a single function that takes parameters and produces the counterfactual moments you care about.\nInteractive Pluto notebook. Wrap the model in a Pluto.jl notebook with interactive sliders for teaching or for showing colleagues.",
+    "crumbs": [
+      "Worked examples",
+      "Julia — structural models and Pluto notebooks"
+    ]
+  },
+  {
+    "objectID": "examples/julia-structural.html#juliapluto-specific-notes-will-be-expanded",
+    "href": "examples/julia-structural.html#juliapluto-specific-notes-will-be-expanded",
+    "title": "Julia — structural models and Pluto notebooks",
+    "section": "Julia/Pluto-specific notes (will be expanded)",
+    "text": "Julia/Pluto-specific notes (will be expanded)\n\nYou already have a Claude Code skill for exactly this: plutonb in your myccskills repo. It templates a Pluto notebook with model primitives, sliders, estimation, identification, and LaTeX formulas. Use it: /plutonb in any project.\nJulia is well-represented in Claude’s training data; structural econometrics in Julia less so. Be explicit about your conventions (variable names, what’s a parameter vs. a state, etc.) in CLAUDE.md.\nFor replication packages, prefer Manifest.toml checked in — Claude can set this up if you ask.",
+    "crumbs": [
+      "Worked examples",
+      "Julia — structural models and Pluto notebooks"
+    ]
+  },
+  {
+    "objectID": "examples/julia-structural.html#why-this-is-a-strong-fit-for-agentic-coding",
+    "href": "examples/julia-structural.html#why-this-is-a-strong-fit-for-agentic-coding",
+    "title": "Julia — structural models and Pluto notebooks",
+    "section": "Why this is a strong fit for agentic coding",
+    "text": "Why this is a strong fit for agentic coding\nStructural work involves a lot of small, mechanical steps where bugs silently change your results: index off-by-ones, forgotten Jacobian entries, mis-stacked moment vectors. Claude is good at the bookkeeping; you focus on the model.\n\nTell me which step you’d most like elaborated.",
+    "crumbs": [
+      "Worked examples",
+      "Julia — structural models and Pluto notebooks"
+    ]
+  },
+  {
+    "objectID": "getting-started/install.html",
+    "href": "getting-started/install.html",
+    "title": "Install Claude Code",
+    "section": "",
+    "text": "This page walks you through getting Claude Code on your machine and running it for the first time. It assumes you have never used the terminal in anger before. If you’re a terminal regular, skim past the basics.",
+    "crumbs": [
+      "Getting started",
+      "Install Claude Code"
+    ]
+  },
+  {
+    "objectID": "getting-started/install.html#what-you-need",
+    "href": "getting-started/install.html#what-you-need",
+    "title": "Install Claude Code",
+    "section": "What you need",
+    "text": "What you need\n\nA Mac, a Windows machine with WSL, or a Linux box. (Most economists are on a Mac; the rest of this page assumes that. The differences for Windows/Linux are tiny and noted where they matter.)\nAn Anthropic account at claude.ai. A free account works to start; you’ll be prompted to set up billing the first time you use Claude Code.\nAbout 20 minutes.",
+    "crumbs": [
+      "Getting started",
+      "Install Claude Code"
+    ]
+  },
+  {
+    "objectID": "getting-started/install.html#step-1-open-a-terminal",
+    "href": "getting-started/install.html#step-1-open-a-terminal",
+    "title": "Install Claude Code",
+    "section": "Step 1 — Open a terminal",
+    "text": "Step 1 — Open a terminal\nOn a Mac:\n\nPress Cmd + Space to open Spotlight.\nType Terminal and hit Return.\nA small window with a blinking prompt appears. That’s your terminal.\n\n\n\n\n\n\n\nTip\n\n\n\nThe terminal is just another app. It can’t do anything you didn’t ask it to. The only commands you’ll need are the ones on this page; you don’t need to learn the rest.",
+    "crumbs": [
+      "Getting started",
+      "Install Claude Code"
+    ]
+  },
+  {
+    "objectID": "getting-started/install.html#step-2-install-node.js-if-you-dont-have-it",
+    "href": "getting-started/install.html#step-2-install-node.js-if-you-dont-have-it",
+    "title": "Install Claude Code",
+    "section": "Step 2 — Install Node.js (if you don’t have it)",
+    "text": "Step 2 — Install Node.js (if you don’t have it)\nClaude Code is distributed as a Node.js package. Check whether you already have Node:\nnode --version\nIf that prints something like v20.11.0, you’re set — skip to Step 3.\nIf it says “command not found”, install Node from nodejs.org. Pick the LTS download, run the installer, accept the defaults. When it’s done, close and reopen the terminal, then re-run node --version to confirm.\n\n\n\n\n\n\nNote\n\n\n\nMac users with Homebrew can install with brew install node instead. Windows users install Node inside WSL, not on Windows directly.",
+    "crumbs": [
+      "Getting started",
+      "Install Claude Code"
+    ]
+  },
+  {
+    "objectID": "getting-started/install.html#step-3-install-claude-code",
+    "href": "getting-started/install.html#step-3-install-claude-code",
+    "title": "Install Claude Code",
+    "section": "Step 3 — Install Claude Code",
+    "text": "Step 3 — Install Claude Code\nIn the terminal, run:\nnpm install -g @anthropic-ai/claude-code\nThis downloads Claude Code and makes the claude command available system-wide. It takes a minute or two. When it’s done, verify:\nclaude --version\n\n\n\n\n\n\nWarning\n\n\n\nIf you see a permission error mentioning EACCES or permission denied, don’t prefix the command with sudo. Instead, follow the npm fix-permissions instructions. This is a one-time fix and protects you from a class of problems later.",
+    "crumbs": [
+      "Getting started",
+      "Install Claude Code"
+    ]
+  },
+  {
+    "objectID": "getting-started/install.html#step-4-point-claude-code-at-one-of-your-projects",
+    "href": "getting-started/install.html#step-4-point-claude-code-at-one-of-your-projects",
+    "title": "Install Claude Code",
+    "section": "Step 4 — Point Claude Code at one of your projects",
+    "text": "Step 4 — Point Claude Code at one of your projects\nPick a project folder you’d like Claude Code to work in. Do not start with your most sensitive project. Pick a paper draft, a teaching repo, or a side project. In the terminal, change into that folder:\ncd ~/Desktop/some-paper-draft\nThen run:\nclaude\nThe first time you run it, you’ll be prompted to log in (a browser tab will open) and to choose a few preferences. Accept the defaults.\nYou’re now at the Claude Code prompt. It looks like a chat input but everything you type is being read by an agent that can see — and edit — the files in this folder.",
+    "crumbs": [
+      "Getting started",
+      "Install Claude Code"
+    ]
+  },
+  {
+    "objectID": "getting-started/install.html#step-5-try-it-on-something-small",
+    "href": "getting-started/install.html#step-5-try-it-on-something-small",
+    "title": "Install Claude Code",
+    "section": "Step 5 — Try it on something small",
+    "text": "Step 5 — Try it on something small\nThree good first prompts, in increasing order of “letting it do things”:\n\n\n\n\n\n\nPrompt 1 — read-only\n\n“What is in this folder? Give me a one-paragraph summary of what this project does.”\n\nClaude will list files, peek at a few, and summarize. You’ll see it call out tools like Read and Bash. Nothing is modified.\n\n\n\n\n\n\n\n\n\nPrompt 2 — small edit, with review\n\n“Add a comment at the top of every .do file naming the script and what it does. Show me each diff before applying.”\n\nClaude proposes a change per file; you approve or reject each one.\n\n\n\n\n\n\n\n\n\nPrompt 3 — real work\n\n“Read paper.tex and tell me which references in the bibliography are never cited. Then remove the unused ones.”\n\nThis reads files, runs analysis, and edits. You approve the deletion.",
+    "crumbs": [
+      "Getting started",
+      "Install Claude Code"
+    ]
+  },
+  {
+    "objectID": "getting-started/install.html#step-6-quit-and-come-back",
+    "href": "getting-started/install.html#step-6-quit-and-come-back",
+    "title": "Install Claude Code",
+    "section": "Step 6 — Quit and come back",
+    "text": "Step 6 — Quit and come back\nTo leave a Claude Code session, type /exit or press Ctrl-C twice.\nTo come back later, just cd into the same folder and run claude again. Claude Code keeps a memory of your project (in a file called CLAUDE.md, covered later) so the next session doesn’t start from zero.",
+    "crumbs": [
+      "Getting started",
+      "Install Claude Code"
+    ]
+  },
+  {
+    "objectID": "getting-started/install.html#where-to-go-next",
+    "href": "getting-started/install.html#where-to-go-next",
+    "title": "Install Claude Code",
+    "section": "Where to go next",
+    "text": "Where to go next\n\nYour first project — what to actually do in your first hour of using Claude Code on real work.\nPlan mode, todos, slash commands — the three features that make Claude Code feel like a research assistant rather than a chatbot.\nLaTeX paper editing — a fully worked example.\n\n\n\n\n\n\n\nWarning\n\n\n\nBefore you point Claude Code at a project with confidential or restricted-access data, read Confidential data. Some data should never go to a cloud LLM, full stop.",
+    "crumbs": [
+      "Getting started",
+      "Install Claude Code"
+    ]
+  },
+  {
+    "objectID": "getting-started/plan-mode-and-todo.html",
+    "href": "getting-started/plan-mode-and-todo.html",
+    "title": "Plan mode, todos, and slash commands",
+    "section": "",
+    "text": "Note\n\n\n\nComing soon. A short tour of the three features that most change how the tool feels day-to-day.",
+    "crumbs": [
+      "Getting started",
+      "Plan mode, todos, and slash commands"
+    ]
+  },
+  {
+    "objectID": "getting-started/plan-mode-and-todo.html#outline",
+    "href": "getting-started/plan-mode-and-todo.html#outline",
+    "title": "Plan mode, todos, and slash commands",
+    "section": "Outline",
+    "text": "Outline\n\n1. Plan mode\nWhat: Claude reads the relevant files, thinks about the change, and writes a plan for your approval before touching anything.\nWhy it matters: catches misunderstandings before they become bad edits. Especially valuable for multi-file changes.\nHow: hit Shift+Tab until the prompt says “plan mode”, or type /plan style invocations.\n\n\n2. Todos\nWhat: for any non-trivial task, Claude maintains a visible list of steps it’s working through and updates it as it goes.\nWhy it matters: you can see where it is, interrupt cleanly, and notice if it’s wandered off.\n\n\n3. Slash commands and skills\nWhat: shortcuts for repeatable workflows. You can write your own.\nExamples already on your machine: /review, /security-review, /init. Your myccskills repo (the plutonb, evolution, remind skills) is exactly this idea — package up “the way I want this done” once, reuse it forever.\nSee Memory, CLAUDE.md, skills for how to write your own.\n\nTell me which of the three you’d most like a worked walkthrough for.",
+    "crumbs": [
+      "Getting started",
+      "Plan mode, todos, and slash commands"
+    ]
+  },
+  {
+    "objectID": "pitfalls/judgment.html",
+    "href": "pitfalls/judgment.html",
+    "title": "What you must still do yourself",
+    "section": "",
+    "text": "Note\n\n\n\nComing soon. A short reminder that agentic coding accelerates the mechanical parts of research and leaves the substantive parts exactly where they were — with you.",
+    "crumbs": [
+      "Pitfalls",
+      "What you must still do yourself"
+    ]
+  },
+  {
+    "objectID": "pitfalls/judgment.html#the-list",
+    "href": "pitfalls/judgment.html#the-list",
+    "title": "What you must still do yourself",
+    "section": "The list",
+    "text": "The list\n\nSpecification\nWhat’s the right model? What controls? What functional form? What sample restriction? Claude can implement any of these; it cannot tell you which is correct for your question.\n\n\nIdentification\nWhy does this design recover a causal effect? What threats remain? What robustness checks address them? The model can list textbook threats; it cannot judge whether your setting has them.\n\n\nInterpretation\nWhat does the coefficient mean? Is it economically large? Is it consistent with prior estimates? What’s the policy or theoretical takeaway? Claude can produce confident-sounding interpretations that are wrong about your context.\n\n\nContribution\nWhat’s new here? Why should anyone care? Where does this sit in the literature? Claude has read a lot but has no taste — it cannot tell you whether your contribution is interesting.\n\n\nAuthorship\nAnything you submit goes out under your name. Claude is not a co-author; it’s a tool. Don’t list it; don’t pretend it didn’t help; do disclose LLM use as your journal requires.\n\n\nThe hard problem\nThe model is good enough that you’ll be tempted to outsource judgment disguised as code: “write the empirical strategy section”, “decide which controls to include”, “write the limitations section”. Notice when you’re about to do this. The cost of bad judgment doesn’t go down because the typing got faster.\n\nTell me which of these to expand.",
+    "crumbs": [
+      "Pitfalls",
+      "What you must still do yourself"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "LLMs for Economists",
+    "section": "",
+    "text": "This is a colleagues-only field guide to a particular way of using LLMs: giving an AI agent direct access to your project files so it can write code, edit your LaTeX, audit a replication package, and run things on your behalf — under your supervision.\nIt is not about chatting with ChatGPT in a browser. That is useful too, but it isn’t what’s changed in the last year."
+  },
+  {
+    "objectID": "index.html#who-this-is-for",
+    "href": "index.html#who-this-is-for",
+    "title": "LLMs for Economists",
+    "section": "Who this is for",
+    "text": "Who this is for\nYou are an economist who:\n\nSpends real hours writing Stata/R/Python/Matlab/Julia code, formatting LaTeX papers, building tables, or wrangling a replication package.\nHas heard “AI agents” get hyped and would like a non-marketing explanation of what’s actually useful and what is not.\nWants the shortest possible path from “I’ve heard of Claude Code” to “Claude Code is editing my paper while I review the diff.”\n\nYou don’t need to know git, the terminal, or any web technology beyond the basics. We’ll cover the parts that matter."
+  },
+  {
+    "objectID": "index.html#where-to-start",
+    "href": "index.html#where-to-start",
+    "title": "LLMs for Economists",
+    "section": "Where to start",
+    "text": "Where to start\n\n\n1. The big picture\nWhat “agentic coding” means and why it’s different from chatting with an LLM. Five-minute read.\nStart here →\n\n\n2. Install and first session\nGet Claude Code on your machine and pointed at one of your projects. Twenty minutes.\nInstall Claude Code →\n\n\n3. Worked examples\nConcrete examples for the things you actually do: editing a paper, auditing a replication package, cleaning data in your language of choice.\nSee examples →\n\n\n4. Workflow and pitfalls\nHow to ask well, when to verify, what to keep out of the model’s hands. Read these before letting Claude touch anything serious.\nDay-to-day workflow →"
+  },
+  {
+    "objectID": "index.html#what-this-guide-is-not",
+    "href": "index.html#what-this-guide-is-not",
+    "title": "LLMs for Economists",
+    "section": "What this guide is not",
+    "text": "What this guide is not\n\nNot a sales pitch. Claude Code is one tool in a busy landscape. The comparison page explains where it fits next to Cursor, ChatGPT, and Copilot, and when each is the right call.\nNot for confidential or restricted-access data. If you work with IRB-protected, FERPA-covered, Census, IRS, or other restricted data, read the confidential data page before doing anything else.\nNot a substitute for your judgment as an economist. Claude can write the code; it cannot identify your effect, defend your specification, or decide whether your design is credible. See what you must still do."
+  },
+  {
+    "objectID": "index.html#suggested-reading-order",
+    "href": "index.html#suggested-reading-order",
+    "title": "LLMs for Economists",
+    "section": "Suggested reading order",
+    "text": "Suggested reading order\nIf you have 30 minutes, read:\n\nWhat is agentic coding?\nInstall Claude Code\nLaTeX paper editing or Replication package audit\n\nIf you have a free afternoon, add:\n\nPlan mode, todos, slash commands\nThe example page for your language: Stata, R, Python, Matlab, or Julia.\nHow to ask and Verifying output."
+  },
+  {
+    "objectID": "index.html#a-note-on-whats-fleshed-out-right-now",
+    "href": "index.html#a-note-on-whats-fleshed-out-right-now",
+    "title": "LLMs for Economists",
+    "section": "A note on what’s “fleshed out” right now",
+    "text": "A note on what’s “fleshed out” right now\nThis site is a living draft. The two long-form examples (LaTeX paper editing and replication-package audit) and the install guide are the most complete. Other pages are short outlines that I’ll fill in as colleagues use them and tell me what’s missing. If you find a section that would help you and isn’t there yet, tell me — that’s the fastest way to make this useful."
+  },
+  {
+    "objectID": "pitfalls/hallucinations.html",
+    "href": "pitfalls/hallucinations.html",
+    "title": "Hallucinations",
+    "section": "",
+    "text": "Warning\n\n\n\nComing soon. A field guide to the specific kinds of hallucinations that hurt empirical economists, and the verification habits that catch each one.",
+    "crumbs": [
+      "Pitfalls",
+      "Hallucinations"
+    ]
+  },
+  {
+    "objectID": "pitfalls/hallucinations.html#outline-what-gets-hallucinated",
+    "href": "pitfalls/hallucinations.html#outline-what-gets-hallucinated",
+    "title": "Hallucinations",
+    "section": "Outline — what gets hallucinated",
+    "text": "Outline — what gets hallucinated\n\n1. Citations and references\n\nBibliography entries that don’t exist.\nCited claims that the paper doesn’t actually make.\nSlightly wrong years, page numbers, or author orders.\n\nCatch: before any new \\cite{...} lands in your paper, open the source paper and confirm.\n\n\n2. Regression results\n\nCoefficients reported without the regression having actually been run.\n“I ran your model and got…” when no Bash tool call was made.\n\nCatch: re-run the regression yourself, or insist Claude show you the log/output from a real run.\n\n\n3. Function and option names\n\nA Stata command that doesn’t exist, or has a different syntax than Claude reports.\nAn R function from the wrong package, or with arguments that don’t exist.\nA LaTeX package that doesn’t behave the way Claude described.\n\nCatch: for unfamiliar commands, check the documentation. For Stata: help &lt;command&gt;. For R: ?fn or the package’s website.\n\n\n4. File contents\n\nA claim about what’s in a file that Claude didn’t actually read.\n\nCatch: Claude shows you tool calls. If it claims to have looked at paper.tex but you don’t see a Read tool call for it, push back: “Did you actually read it? Show me.”\n\n\n5. Replication-package completeness\n\n“I ran the master script and everything worked” when it didn’t.\n“All your tables are reproduced” without checking.\n\nCatch: diff the produced output against what’s in your paper.",
+    "crumbs": [
+      "Pitfalls",
+      "Hallucinations"
+    ]
+  },
+  {
+    "objectID": "pitfalls/hallucinations.html#the-general-rule",
+    "href": "pitfalls/hallucinations.html#the-general-rule",
+    "title": "Hallucinations",
+    "section": "The general rule",
+    "text": "The general rule\nClaude is a confident colleague who occasionally lies with no self-awareness. Treat its outputs the way you’d treat a draft from a new RA on day one: gratefully, and with full verification.\n\nTell me which of these to expand into a full case study.",
+    "crumbs": [
+      "Pitfalls",
+      "Hallucinations"
+    ]
+  },
+  {
+    "objectID": "pitfalls/confidential-data.html",
+    "href": "pitfalls/confidential-data.html",
+    "title": "Confidential and restricted-access data",
+    "section": "",
+    "text": "Warning\n\n\n\nRead this page before pointing Claude Code at any project containing IRB-protected, restricted-access, or otherwise confidential data. When in doubt, default to “no” and ask your IRB.",
+    "crumbs": [
+      "Pitfalls",
+      "Confidential and restricted-access data"
+    ]
+  },
+  {
+    "objectID": "pitfalls/confidential-data.html#outline-what-to-never-send",
+    "href": "pitfalls/confidential-data.html#outline-what-to-never-send",
+    "title": "Confidential and restricted-access data",
+    "section": "Outline — what to never send",
+    "text": "Outline — what to never send\n\nIRB-protected human-subjects data (interviews, identifiable surveys, health data) unless your IRB protocol explicitly permits cloud LLM processing — most don’t.\nFERPA-covered student records.\nRestricted-access administrative data (Census, IRS, state longitudinal data systems, etc.) — almost universally prohibited from any cloud transmission. RDC/FSRDC environments forbid it outright.\nConfidential firm or proprietary data under NDA.\nRefereed manuscripts without checking journal policy.",
+    "crumbs": [
+      "Pitfalls",
+      "Confidential and restricted-access data"
+    ]
+  },
+  {
+    "objectID": "pitfalls/confidential-data.html#outline-what-is-generally-safe",
+    "href": "pitfalls/confidential-data.html#outline-what-is-generally-safe",
+    "title": "Confidential and restricted-access data",
+    "section": "Outline — what is generally safe",
+    "text": "Outline — what is generally safe\n\nPublic datasets (IPUMS, Compustat extracts you’d freely share, BLS microdata releases, etc.).\nYour own simulated data.\nCode that doesn’t reveal the underlying observations.\nPaper drafts on your own work (with co-author awareness).",
+    "crumbs": [
+      "Pitfalls",
+      "Confidential and restricted-access data"
+    ]
+  },
+  {
+    "objectID": "pitfalls/confidential-data.html#outline-pragmatic-workarounds",
+    "href": "pitfalls/confidential-data.html#outline-pragmatic-workarounds",
+    "title": "Confidential and restricted-access data",
+    "section": "Outline — pragmatic workarounds",
+    "text": "Outline — pragmatic workarounds\nWhen you have a restricted dataset and want help with the code:\n\nSynthesize a fake version. Have Claude generate fake data with the same schema and let it work on that.\nPoint it at code only, never data. Most “clean this .do file” work doesn’t need the actual data; it needs the script.\nRun sensitive jobs on the secure environment with no cloud LLM involved, then bring back outputs you’re allowed to share.\nUse Claude Code only for non-restricted side projects until you’ve talked to your IRB about an explicit policy.",
+    "crumbs": [
+      "Pitfalls",
+      "Confidential and restricted-access data"
+    ]
+  },
+  {
+    "objectID": "pitfalls/confidential-data.html#outline-institutional-questions-to-resolve",
+    "href": "pitfalls/confidential-data.html#outline-institutional-questions-to-resolve",
+    "title": "Confidential and restricted-access data",
+    "section": "Outline — institutional questions to resolve",
+    "text": "Outline — institutional questions to resolve\n\nDoes your university have a policy on LLM use with research data?\nDoes your IRB have boilerplate language for cloud LLM processing?\nDo data agreements (DUAs) you’ve signed permit transmission to third-party services?\n\n\nTell me which of these you’d most like turned into a real decision-flowchart.",
+    "crumbs": [
+      "Pitfalls",
+      "Confidential and restricted-access data"
+    ]
+  },
+  {
+    "objectID": "getting-started/first-project.html",
+    "href": "getting-started/first-project.html",
+    "title": "Your first project",
+    "section": "",
+    "text": "Note\n\n\n\nComing soon. Practical guidance for the first hour you spend with Claude Code on a real project of yours.",
+    "crumbs": [
+      "Getting started",
+      "Your first project"
+    ]
+  },
+  {
+    "objectID": "getting-started/first-project.html#outline",
+    "href": "getting-started/first-project.html#outline",
+    "title": "Your first project",
+    "section": "Outline",
+    "text": "Outline\n\nPick the right project to start with. A paper draft, a teaching repo, or a side project. Not your sensitive replication package.\nSpend ten minutes letting it read the project. Ask it to summarize what’s there. You’ll learn what it sees, which is roughly what a smart RA would see.\nPick one annoying task you’ve been putting off. “Reformat all my tables to use booktabs.” “Standardize variable names across my .do files.” “Write a README for this repo.” Watch it do that.\nRead every diff. This is the habit that matters most.\nQuit, come back tomorrow. Notice that it remembers what you were doing. That memory is CLAUDE.md, covered in Memory, CLAUDE.md, skills.\n\n\nTell me which step you’d most like worked through.",
+    "crumbs": [
+      "Getting started",
+      "Your first project"
+    ]
+  },
+  {
+    "objectID": "examples/python-analysis.html",
+    "href": "examples/python-analysis.html",
+    "title": "Python — pandas, statsmodels, and notebooks",
+    "section": "",
+    "text": "Note\n\n\n\nComing soon. A worked example of using Claude Code on a Python data project: pandas-based cleaning, statsmodels or linearmodels for regressions, and Jupyter or .py script workflows.",
+    "crumbs": [
+      "Worked examples",
+      "Python — pandas, statsmodels, and notebooks"
+    ]
+  },
+  {
+    "objectID": "examples/python-analysis.html#outline",
+    "href": "examples/python-analysis.html#outline",
+    "title": "Python — pandas, statsmodels, and notebooks",
+    "section": "Outline",
+    "text": "Outline\n\nSetup. Point Claude at a Python project. If you use uv, poetry, or a plain requirements.txt, ask it to surface that.\nCleaning with pandas. “Read raw/wages.parquet with pandas. Document columns, flag suspicious values, and propose a cleaning pipeline. Show me before applying.”\nRegressions. Use statsmodels.formula.api.ols or linearmodels.PanelOLS for panel data. Have Claude build a .summary() printout and a LaTeX export.\nPlots. matplotlib for journal style, seaborn for quick EDA.\nNotebook vs. script. Claude works equally well in .ipynb and .py. For replication packages, prefer .py — easier to diff, easier to run from the command line.",
+    "crumbs": [
+      "Worked examples",
+      "Python — pandas, statsmodels, and notebooks"
+    ]
+  },
+  {
+    "objectID": "examples/python-analysis.html#python-specific-notes-will-be-expanded",
+    "href": "examples/python-analysis.html#python-specific-notes-will-be-expanded",
+    "title": "Python — pandas, statsmodels, and notebooks",
+    "section": "Python-specific notes (will be expanded)",
+    "text": "Python-specific notes (will be expanded)\n\nClaude is comfortable with virtual environments. Tell it which one you’re using; it’ll respect it.\nFor econometrics specifically, linearmodels is more familiar than statsmodels for IV/panel/cluster work — say so up front.\nType hints are optional but make Claude noticeably better at suggesting correct edits in larger codebases.\n\n\nTell me which step you’d most like elaborated.",
+    "crumbs": [
+      "Worked examples",
+      "Python — pandas, statsmodels, and notebooks"
+    ]
+  },
+  {
+    "objectID": "examples/latex-paper.html",
+    "href": "examples/latex-paper.html",
+    "title": "Worked example — editing a LaTeX paper",
+    "section": "",
+    "text": "This walks through using Claude Code on a paper draft. The tasks are intentionally pedestrian — they’re the kind of thing you’d otherwise hand to an RA, except the loop here is minutes instead of days.",
+    "crumbs": [
+      "Worked examples",
+      "Worked example — editing a LaTeX paper"
+    ]
+  },
+  {
+    "objectID": "examples/latex-paper.html#setup",
+    "href": "examples/latex-paper.html#setup",
+    "title": "Worked example — editing a LaTeX paper",
+    "section": "Setup",
+    "text": "Setup\ncd ~/Desktop/papers/wage-paper\nclaude\nBefore doing anything, give Claude an orientation pass:\n\n“Read the project. Tell me what’s here, what paper.tex is about in one paragraph, and which auxiliary files (.bib, tables, figures) it depends on.”\n\nThis takes 30 seconds. The benefit is that subsequent prompts can refer to “the main paper” or “the auxiliary files” without you re-explaining each time.",
+    "crumbs": [
+      "Worked examples",
+      "Worked example — editing a LaTeX paper"
+    ]
+  },
+  {
+    "objectID": "examples/latex-paper.html#task-1-bibliography-cleanup",
+    "href": "examples/latex-paper.html#task-1-bibliography-cleanup",
+    "title": "Worked example — editing a LaTeX paper",
+    "section": "Task 1 — bibliography cleanup",
+    "text": "Task 1 — bibliography cleanup\nBibtex files rot. Entries get added during a co-author binge and never cleaned up; some are cited, some aren’t, some have subtly wrong years.\n\n“Look at every \\cite, \\citet, and \\citep in paper.tex and appendix.tex. List entries in references.bib that are never cited. Don’t delete anything — just give me the list.”\n\nYou’ll get something like:\nUnused entries (12 of 87):\n  - smith2003\n  - jones1999  (note: cited as `jones99` elsewhere — possible typo)\n  - ...\nThe flag on jones1999 is a real win: it’s the kind of thing you’d miss on a manual pass. Now:\n\n“Remove the unused entries from references.bib. For jones1999, fix the citation key inconsistency: replace \\cite{jones99} with \\cite{jones1999} everywhere, and keep the jones1999 entry.”\n\nRead the diff before approving. Compile. Done.",
+    "crumbs": [
+      "Worked examples",
+      "Worked example — editing a LaTeX paper"
+    ]
+  },
+  {
+    "objectID": "examples/latex-paper.html#task-2-table-reformatting",
+    "href": "examples/latex-paper.html#task-2-table-reformatting",
+    "title": "Worked example — editing a LaTeX paper",
+    "section": "Task 2 — table reformatting",
+    "text": "Task 2 — table reformatting\nYou inherit a paper from a co-author and the tables are a mix of hand-written tabular environments, booktabs, and one orphaned longtable. You want everything on booktabs with a consistent style.\n\n“Show me the source of each table environment in paper.tex and the standalone .tex files in tables/. Identify which use \\toprule, \\midrule, \\bottomrule (booktabs) and which still use \\hline. Don’t change anything yet.”\n\nOnce you see the inventory:\n\n“Convert all \\hline-based tables to booktabs style: \\toprule at the top, \\midrule between header and body and around any subgroup, and \\bottomrule at the end. Keep column alignments and content untouched. Make sure \\usepackage{booktabs} is in paper.tex.”\n\n\n\n\n\n\n\nWarning\n\n\n\nHere is where you must read the diffs carefully. Table edits are the classic place where an LLM “tidies up” content you didn’t ask it to tidy — a stray digit gets reformatted, a column header gets rephrased. Read every diff and reject anything that touches the content rather than the formatting.",
+    "crumbs": [
+      "Worked examples",
+      "Worked example — editing a LaTeX paper"
+    ]
+  },
+  {
+    "objectID": "examples/latex-paper.html#task-3-a-careful-section-rewrite",
+    "href": "examples/latex-paper.html#task-3-a-careful-section-rewrite",
+    "title": "Worked example — editing a LaTeX paper",
+    "section": "Task 3 — a careful section rewrite",
+    "text": "Task 3 — a careful section rewrite\nThis is the one where you should slow down. Claude can rewrite prose beautifully and confidently, including arguments you don’t actually make. Treat this as collaborative editing, not delegation.\n\n“Read section 3 (Empirical Strategy) of paper.tex. Don’t change anything yet. Tell me: (a) what the central identification claim is in your reading; (b) any place where the text references something that’s not in the data section or the appendix; (c) any sentences that are longer than 35 words or have more than two subordinate clauses.”\n\nThat’s an audit, not a rewrite. Read what it says.\nIf you agree with the audit:\n\n“Rewrite only the sentences you flagged in (c) for length. Preserve every claim. Do not introduce new arguments. Do not change any numbers or citations. Show me the diff sentence by sentence.”\n\nApprove, reject, or tweak each sentence individually. You stay the author.",
+    "crumbs": [
+      "Worked examples",
+      "Worked example — editing a LaTeX paper"
+    ]
+  },
+  {
+    "objectID": "examples/latex-paper.html#task-4-compile-and-check",
+    "href": "examples/latex-paper.html#task-4-compile-and-check",
+    "title": "Worked example — editing a LaTeX paper",
+    "section": "Task 4 — compile and check",
+    "text": "Task 4 — compile and check\n\n“Run latexmk -pdf paper.tex and tell me if there are any errors, warnings, or unresolved citations.”\n\nClaude runs the build, parses the log, and tells you what’s broken. If a table now has a misaligned column, you’ll find out before you re-read the PDF.",
+    "crumbs": [
+      "Worked examples",
+      "Worked example — editing a LaTeX paper"
+    ]
+  },
+  {
+    "objectID": "examples/latex-paper.html#what-this-saved-you",
+    "href": "examples/latex-paper.html#what-this-saved-you",
+    "title": "Worked example — editing a LaTeX paper",
+    "section": "What this saved you",
+    "text": "What this saved you\n\nBibliography cleanup: ~2 hours of grunt work compressed to ~10 minutes of supervision.\nTable reformatting: would have taken half a day; now ~15 minutes.\nSection audit: the slowest task, but most valuable — Claude is willing to flag long sentences your eye no longer sees.",
+    "crumbs": [
+      "Worked examples",
+      "Worked example — editing a LaTeX paper"
+    ]
+  },
+  {
+    "objectID": "examples/latex-paper.html#what-it-did-not-do",
+    "href": "examples/latex-paper.html#what-it-did-not-do",
+    "title": "Worked example — editing a LaTeX paper",
+    "section": "What it did not do",
+    "text": "What it did not do\n\nIt did not decide what your contribution is.\nIt did not check whether your identification strategy is credible — it read what you wrote and described it back to you.\nIt did not fact-check your citations against the cited papers.\n\nThese remain your job.",
+    "crumbs": [
+      "Worked examples",
+      "Worked example — editing a LaTeX paper"
+    ]
+  },
+  {
+    "objectID": "examples/latex-paper.html#common-traps-in-this-workflow",
+    "href": "examples/latex-paper.html#common-traps-in-this-workflow",
+    "title": "Worked example — editing a LaTeX paper",
+    "section": "Common traps in this workflow",
+    "text": "Common traps in this workflow\n\n\n\n\n\n\nWarning\n\n\n\nDon’t let it “improve” prose you didn’t ask it to. Tell it explicitly what to change and what to leave alone. “Don’t introduce new arguments” is a sentence worth typing every single time.\n\n\n\n\n\n\n\n\nWarning\n\n\n\nDon’t trust new citations it adds. If it adds a \\cite{...} for a paper you didn’t tell it about, treat that as a hallucinated citation until you’ve personally confirmed the entry exists in your .bib and the cited claim matches the source. See Hallucinations.\n\n\n\n\n\n\n\n\nTip\n\n\n\nUse plan mode for multi-file edits. Hit Shift+Tab until you see “plan mode”, then ask. Claude will write a plan (“I’ll change these 4 files, here’s what each change does”), wait for your approval, and only then edit.",
+    "crumbs": [
+      "Worked examples",
+      "Worked example — editing a LaTeX paper"
+    ]
+  },
+  {
+    "objectID": "examples/latex-paper.html#next",
+    "href": "examples/latex-paper.html#next",
+    "title": "Worked example — editing a LaTeX paper",
+    "section": "Next",
+    "text": "Next\n\nReplication package audit → — the other fully-worked example.\nHow to ask → — the prompting habits this page uses, made explicit.",
+    "crumbs": [
+      "Worked examples",
+      "Worked example — editing a LaTeX paper"
+    ]
+  },
+  {
+    "objectID": "examples/replication-package.html",
+    "href": "examples/replication-package.html",
+    "title": "Worked example — auditing a replication package",
+    "section": "",
+    "text": "The single highest-value use of agentic coding for an empirical economist is replication-package work. Whether you’re preparing a package for submission, refereeing one, or trying to run a coauthor’s old project on a fresh machine, the pattern is the same: someone has to read every file, trace dependencies, and figure out why the master script breaks on line 237. Claude Code is unusually good at this.\nThis page walks through both directions: auditing a package you’ve inherited or are refereeing, and building one from your own working project for journal submission.",
+    "crumbs": [
+      "Worked examples",
+      "Worked example — auditing a replication package"
+    ]
+  },
+  {
+    "objectID": "examples/replication-package.html#setup",
+    "href": "examples/replication-package.html#setup",
+    "title": "Worked example — auditing a replication package",
+    "section": "Setup",
+    "text": "Setup\ncd ~/Dropbox/Projects/wage-paper-replication\nclaude\nSame orientation pass as always:\n\n“Read the project. List every file. For each subfolder, tell me what it appears to contain. Identify any ‘master’ script — something a user would run to reproduce the results.”",
+    "crumbs": [
+      "Worked examples",
+      "Worked example — auditing a replication package"
+    ]
+  },
+  {
+    "objectID": "examples/replication-package.html#direction-a-auditing-an-existing-package",
+    "href": "examples/replication-package.html#direction-a-auditing-an-existing-package",
+    "title": "Worked example — auditing a replication package",
+    "section": "Direction A — auditing an existing package",
+    "text": "Direction A — auditing an existing package\n\nStep 1 — produce a dependency map\n\n“I want a dependency map of this replication package. Trace which scripts read which raw data files, which scripts produce which intermediate data files, which intermediate files are inputs to which analysis scripts, and which analysis scripts produce which tables/figures in the paper. Output as a Markdown list. Don’t run anything yet.”\n\nThis is the kind of task that takes a careful human a full day. Claude will do it in a few minutes, and it will catch things like “table_3.do reads clean_data_v2.dta but no script in the package produces clean_data_v2.dta — only clean_data_v3.dta.” That’s the bug you’re hunting for.\n\n\nStep 2 — identify what’s missing\n\n“Based on the dependency map, list everything required to reproduce this paper that is not in the package: missing raw data files, missing intermediate files that no script produces, packages or libraries used in the code but not declared, hard-coded paths that point outside the package.”\n\nClaude will give you a clean punch list. Common findings:\n\nA path like /Users/coauthor/Dropbox/... hardcoded into a .do file.\nA library(haven) call without haven declared in a requirements.R or renv.lock.\nA merge step that requires a file you got from the IRB and didn’t put in the package.\n\n\n\nStep 3 — try to actually run it\n\n“Try to run the master script. If you hit an error, stop, tell me what happened, and propose a minimal fix. Don’t auto-fix anything — just propose.”\n\nThis is the test that matters. A package that “should run” and a package that runs on a clean machine are different things. Claude is patient about this loop in a way humans are not.\n\n\n\n\n\n\nWarning\n\n\n\nFor Stata, R, etc., Claude can call out to your installed interpreter. Make sure you’re running in the right environment — the same Stata version your coauthor used, the same R packages, etc. If you’re refereeing, this is part of the audit: the package should declare its environment.\n\n\n\n\nStep 4 — document the gaps\n\n“Write a REVIEW.md that lists everything I’d ask the authors to fix before this package is ready for publication. Group by severity: blockers (won’t run at all), important (runs but doesn’t reproduce a result), minor (style/clarity).”\n\nYou now have your referee report’s “replication” section, drafted in 30 minutes instead of 3 days.",
+    "crumbs": [
+      "Worked examples",
+      "Worked example — auditing a replication package"
+    ]
+  },
+  {
+    "objectID": "examples/replication-package.html#direction-b-building-a-package-from-your-own-project",
+    "href": "examples/replication-package.html#direction-b-building-a-package-from-your-own-project",
+    "title": "Worked example — auditing a replication package",
+    "section": "Direction B — building a package from your own project",
+    "text": "Direction B — building a package from your own project\nYou’ve got a paper accepted; the journal wants a replication package.\n\nStep 1 — inventory what you actually used\n\n“Look at every script in this project. List the ones that produce something cited in paper.tex (a number, a table, a figure). Anything not on that list is dead code or exploratory work that doesn’t belong in the public package.”\n\n\n\nStep 2 — produce a clean structure\n\n“Propose a folder structure for a public replication package: separate raw data, intermediate data, code, output. Don’t touch the files yet — just propose the layout.”\n\nApprove the proposal.\n\n“Now reorganize accordingly, copying (not moving) files from the current project into a new replication-package/ directory. Update path references in scripts so the package is self-contained.”\n\n\n\n\n\n\n\nWarning\n\n\n\nHave Claude copy, not move. Replication-package surgery is a one-way trip if you let it move things; you want your working project untouched until you’re sure the package builds.\n\n\n\n\nStep 3 — write the README the way the AEA wants it\n\n“Write a README.md for this replication package following the AEA data and code availability standards: data sources and access, computational requirements (software, packages, expected runtime), instructions to run, and a mapping from each table/figure in the paper to the script and output file that produces it.”\n\nThis README is the single most important document in your package. Read it critically — Claude can write a plausible-looking one that overstates how complete the package is.\n\n\nStep 4 — confirm reproducibility on a fresh state\n\n“Pretend you’ve never seen this project before. Following only the README, run every step from scratch. Stop and tell me if anything is ambiguous, missing, or fails.”\n\nThis is the test you can’t easily run yourself — your machine has all your packages installed and your data sitting around. Claude can simulate the cold-start experience.",
+    "crumbs": [
+      "Worked examples",
+      "Worked example — auditing a replication package"
+    ]
+  },
+  {
+    "objectID": "examples/replication-package.html#why-this-is-the-highest-value-use-case",
+    "href": "examples/replication-package.html#why-this-is-the-highest-value-use-case",
+    "title": "Worked example — auditing a replication package",
+    "section": "Why this is the highest-value use case",
+    "text": "Why this is the highest-value use case\n\nTedious. Every step is mechanical but requires care.\nError-prone for humans. Reading 40 files in order is exactly the task we’re worst at.\nHigh stakes. A package that doesn’t reproduce is a paper that gets flagged by the data editor. A package with hardcoded paths is a paper that the field can’t build on.\nEasy to verify. “Does it run on a fresh machine?” is a binary test. You’ll know if Claude’s audit was right.",
+    "crumbs": [
+      "Worked examples",
+      "Worked example — auditing a replication package"
+    ]
+  },
+  {
+    "objectID": "examples/replication-package.html#common-traps",
+    "href": "examples/replication-package.html#common-traps",
+    "title": "Worked example — auditing a replication package",
+    "section": "Common traps",
+    "text": "Common traps\n\n\n\n\n\n\nWarning\n\n\n\nClaude can hallucinate that a script produces a table. Always spot-check the dependency map against a few of the actual results. Open the script Claude says produces Table 3, check that it does.\n\n\n\n\n\n\n\n\nWarning\n\n\n\nDon’t let Claude commit changes to your real project automatically. Especially during reorganization, you want a manual checkpoint. Use plan mode for the destructive steps.\n\n\n\n\n\n\n\n\nTip\n\n\n\nBuild a /audit-replication slash command. If you do this twice, write a skill — see Memory, CLAUDE.md, skills. Your myccskills repo is the right place for it.",
+    "crumbs": [
+      "Worked examples",
+      "Worked example — auditing a replication package"
+    ]
+  },
+  {
+    "objectID": "examples/replication-package.html#next",
+    "href": "examples/replication-package.html#next",
+    "title": "Worked example — auditing a replication package",
+    "section": "Next",
+    "text": "Next\n\nLaTeX paper editing → — the other fully-worked example.\nConfidential data → — read this before pointing Claude at any project containing IRB-protected or restricted-access data.",
+    "crumbs": [
+      "Worked examples",
+      "Worked example — auditing a replication package"
+    ]
+  },
+  {
+    "objectID": "examples/teaching-prep.html",
+    "href": "examples/teaching-prep.html",
+    "title": "Teaching prep — slides, problem sets, syllabi",
+    "section": "",
+    "text": "Note\n\n\n\nComing soon. A worked example of using Claude Code on the perpetual small jobs of teaching: refreshing slides, writing problem sets, maintaining a syllabus, generating solutions and grading rubrics.",
+    "crumbs": [
+      "Worked examples",
+      "Teaching prep — slides, problem sets, syllabi"
+    ]
+  },
+  {
+    "objectID": "examples/teaching-prep.html#outline",
+    "href": "examples/teaching-prep.html#outline",
+    "title": "Teaching prep — slides, problem sets, syllabi",
+    "section": "Outline",
+    "text": "Outline\n\nBeamer slides. “Look at last year’s slide deck for Lecture 4. Update the dates, the example dataset URL, and the news clipping on slide 17. Don’t change the content otherwise.” Read the diff before compiling.\nProblem sets. “Write a problem set on instrumental variables that builds on the material in lecture05.tex. Five problems, increasing difficulty. Provide a separate solution file.”\nSolutions and rubrics. Have Claude work each problem and produce step-by-step solutions plus a point-allocation rubric. Verify each solution yourself before posting — the model can confidently produce wrong answers.\nSyllabus maintenance. “Update the reading list to include three recent (2024–2026) papers on the topics in weeks 7–9. List the citations and one-sentence relevance for each. Don’t add anything to the syllabus yet.”\nReusing previous semesters. Point Claude at last year’s full course directory and your current _quarto.yml (or whatever you use). Have it propose a refresh.",
+    "crumbs": [
+      "Worked examples",
+      "Teaching prep — slides, problem sets, syllabi"
+    ]
+  },
+  {
+    "objectID": "examples/teaching-prep.html#notes-will-be-expanded",
+    "href": "examples/teaching-prep.html#notes-will-be-expanded",
+    "title": "Teaching prep — slides, problem sets, syllabi",
+    "section": "Notes (will be expanded)",
+    "text": "Notes (will be expanded)\n\nFor LaTeX/Beamer, the LaTeX paper editing example applies almost verbatim.\nFor Quarto-based teaching sites (like your metrics-phd-course), Claude is well-suited to keeping _quarto.yml, sidebar, and weekly pages in sync.\nSolutions you generate must be checked. A wrong solution posted to students costs more time than you saved generating it.\n\n\nTell me which step you’d most like worked through.",
+    "crumbs": [
+      "Worked examples",
+      "Teaching prep — slides, problem sets, syllabi"
+    ]
+  },
+  {
+    "objectID": "examples/refereeing.html",
+    "href": "examples/refereeing.html",
+    "title": "Refereeing — using Claude Code to support (not replace) your judgment",
+    "section": "",
+    "text": "Note\n\n\n\nComing soon. A careful walkthrough of using Claude Code to support the mechanical parts of refereeing — without delegating the judgment that is the entire reason you were asked.",
+    "crumbs": [
+      "Worked examples",
+      "Refereeing — using Claude Code to support (not replace) your judgment"
+    ]
+  },
+  {
+    "objectID": "examples/refereeing.html#outline",
+    "href": "examples/refereeing.html#outline",
+    "title": "Refereeing — using Claude Code to support (not replace) your judgment",
+    "section": "Outline",
+    "text": "Outline\n\nWhat Claude can do for you\n\nRead the paper end to end and produce a tight summary you can sanity-check against your own reading.\nCross-check claims against tables. “The text on p. 14 says the coefficient on educ is significant at 1%. Find the table this refers to and confirm the t-statistic.”\nAudit the replication package if one is provided. Use the replication-package walkthrough verbatim.\nFlag missing standard things — pre-trends not shown, robustness to alternative specifications not reported, clustering not justified, etc.\nDraft routine sections of the report (“Summary of the paper”, “Replicability”) for you to revise.\n\n\n\nWhat Claude must not do\n\nForm your opinion. The whole point of you being the referee is your judgment about contribution, identification credibility, and fit. The model has none of these.\nWrite the verdict. “Reject”, “R&R”, “minor revision” — that is your call, not the model’s.\nSpeak in your voice without your edit. Anything you submit goes out under your name and your reputation. Rewrite, don’t paste.\n\n\n\nConfidentiality\nRefereed manuscripts are confidential. Before pointing Claude Code at one, read Confidential data. The short version: ask the editor / journal whether sending the manuscript text to a cloud LLM provider is permitted under their policy. Some journals have explicit guidance now; many do not.\n\nTell me which step you’d most like worked through, including the confidentiality decision tree.",
+    "crumbs": [
+      "Worked examples",
+      "Refereeing — using Claude Code to support (not replace) your judgment"
+    ]
+  },
+  {
+    "objectID": "workflow/how-to-ask.html",
+    "href": "workflow/how-to-ask.html",
+    "title": "How to ask",
+    "section": "",
+    "text": "Note\n\n\n\nComing soon. A short guide to the prompting habits that show up across every worked example on this site.",
+    "crumbs": [
+      "Day-to-day workflow",
+      "How to ask"
+    ]
+  },
+  {
+    "objectID": "workflow/how-to-ask.html#outline-the-habits",
+    "href": "workflow/how-to-ask.html#outline-the-habits",
+    "title": "How to ask",
+    "section": "Outline — the habits",
+    "text": "Outline — the habits\n\nOrientation pass first. Before asking for changes, ask Claude to read the project and summarize. Cheap; saves rework.\nSeparate audit from action. “Tell me what you’d change. Don’t change it yet.” — almost always the right first prompt for non-trivial tasks.\nBe explicit about what to leave alone. “Don’t introduce new arguments. Don’t change numbers. Don’t reformat unrelated code.” Saying it costs nothing; not saying it costs a careful re-read.\nUse plan mode for multi-file work. Shift+Tab until you see “plan mode”. Claude writes a plan, you approve, then it acts.\nQuote files by name. “Read paper.tex and tell me…” works better than “look at my paper”. Names are unambiguous; descriptions aren’t.\nOne commit per logical change. Don’t let Claude do five unrelated things in one session — each one is harder to review and harder to roll back.",
+    "crumbs": [
+      "Day-to-day workflow",
+      "How to ask"
+    ]
+  },
+  {
+    "objectID": "workflow/how-to-ask.html#outline-anti-patterns",
+    "href": "workflow/how-to-ask.html#outline-anti-patterns",
+    "title": "How to ask",
+    "section": "Outline — anti-patterns",
+    "text": "Outline — anti-patterns\n\n“Make this better.” Without specifics, Claude will reformat, reorganize, and rephrase, often making it worse.\n“Just trust me, run it.” For destructive operations (delete files, drop database tables, force-push), make Claude pause for explicit approval. It will by default; don’t override.\n“Write a complete X from scratch.” For real research code, prefer iterative: skeleton → fill in one piece → verify → next piece.\n\n\nTell me which habit you’d most like worked through.",
+    "crumbs": [
+      "Day-to-day workflow",
+      "How to ask"
+    ]
+  },
+  {
+    "objectID": "big-picture/what-changes.html",
+    "href": "big-picture/what-changes.html",
+    "title": "What changes for your research workflow",
+    "section": "",
+    "text": "Note\n\n\n\nComing soon. This page will lay out — honestly — what shifts when you add an agentic coding tool to your research workflow, and what does not.",
+    "crumbs": [
+      "Big picture",
+      "What changes for your research workflow"
+    ]
+  },
+  {
+    "objectID": "big-picture/what-changes.html#outline",
+    "href": "big-picture/what-changes.html#outline",
+    "title": "What changes for your research workflow",
+    "section": "Outline",
+    "text": "Outline\nWhat changes:\n\nTedious code (variable renaming, table reformatting, replication-package cleanup, .bib fixes) becomes minutes instead of hours.\nYou stop avoiding small-but-annoying improvements (“I’ll fix that figure formatting later”) because the friction drops to near zero.\nA second pair of eyes is always available: “what’s wrong with this regression specification?” gets a useful answer in seconds.\nOnboarding to an unfamiliar codebase (your old paper from five years ago, a coauthor’s repo, a published replication package) is dramatically faster.\n\nWhat does not change:\n\nYour responsibility for the specification, identification, and interpretation. The model can suggest; you decide.\nThe need to read the diff before accepting code into your project.\nThe need to run the regression yourself before believing the number in your table.\nYour research taste — what’s interesting, what’s worth doing, what the contribution is. The model has none of this and will happily help you do bad work very efficiently.\n\n\nTell me which side of this you want elaborated.",
+    "crumbs": [
+      "Big picture",
+      "What changes for your research workflow"
+    ]
+  },
+  {
+    "objectID": "big-picture/why-claude-code.html",
+    "href": "big-picture/why-claude-code.html",
+    "title": "Why Claude Code",
+    "section": "",
+    "text": "Note\n\n\n\nComing soon. This page will explain why this guide focuses on Claude Code specifically: terminal-native (no IDE lock-in), strong on long-context tasks like reading a whole replication package, comfortable with non-web languages (Stata/Matlab/Julia), and easy to point at any folder on your machine.\nFor the head-to-head with Cursor, ChatGPT, and Copilot, see How it compares.",
+    "crumbs": [
+      "Big picture",
+      "Why Claude Code"
+    ]
+  },
+  {
+    "objectID": "big-picture/why-claude-code.html#outline",
+    "href": "big-picture/why-claude-code.html#outline",
+    "title": "Why Claude Code",
+    "section": "Outline",
+    "text": "Outline\n\n“It works wherever your project lives” — runs in your terminal, no separate editor required, no need to move your project into a special directory.\n“It reads a lot at once” — long context window matters when you ask it to audit a 30-file replication package or revise a 50-page paper.\n“It does not pretend to know what it does not” — relatively conservative about admitting when it needs to look at a file before answering.\n“It treats you as the principal” — plan mode, todos, and explicit permission prompts before risky actions.\n\n\nIf you’d like this page filled in sooner, tell me which of those points you most want elaborated.",
+    "crumbs": [
+      "Big picture",
+      "Why Claude Code"
+    ]
+  }
+]

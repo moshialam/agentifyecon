@@ -1,0 +1,33 @@
+---
+title: "R — analysis, regression tables, ggplot"
+---
+
+::: {.callout-note}
+**Coming soon.** A worked example of using Claude Code on an R project:
+tidyverse-based cleaning, `fixest`/`modelsummary` regression tables,
+`ggplot2` figures, and a reproducible `renv` setup.
+:::
+
+## Outline
+
+1. **Setup.** Point Claude at a project with `.R` and/or `.Rmd` files. Ask
+   it to summarize the structure and which packages are in use.
+2. **Cleaning with tidyverse.** "Read `raw/survey.csv`. Propose a
+   `dplyr`-based cleaning pipeline. Show me each step before applying."
+3. **Regression tables.** Build a publication-quality table with
+   `modelsummary` or `fixest::etable`, including clustered SEs.
+4. **Figures.** Iterate on a `ggplot2` figure — Claude is well-suited to
+   "make this look like the figure on page 14 of Smith (2024)" if you
+   describe the differences.
+5. **Reproducibility.** Use `renv` to lock package versions. Have Claude
+   set this up if you haven't.
+
+## R-specific notes (will be expanded)
+
+- Claude Code can run R interactively via `Rscript` if R is on the PATH.
+- It is **strong on** tidyverse idioms, `fixest`, `lme4`, `ggplot2`.
+- It can be **overly fond of** rewriting your code in tidyverse style
+  even when you'd rather stay in base R. Say so explicitly in your prompt
+  or in `CLAUDE.md`.
+
+> Tell me which step you'd most like elaborated.

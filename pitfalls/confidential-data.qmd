@@ -1,0 +1,59 @@
+---
+title: "Confidential and restricted-access data"
+subtitle: "When you must not point a cloud LLM at your project."
+---
+
+::: {.callout-warning}
+**Read this page before pointing Claude Code at any project containing
+IRB-protected, restricted-access, or otherwise confidential data.** When
+in doubt, default to "no" and ask your IRB.
+:::
+
+::: {.callout-note}
+**Coming soon.** A practical decision tree for what data is and isn't
+safe to send to a cloud LLM, plus pragmatic workarounds for the cases
+where it's not.
+:::
+
+## Outline — what to never send
+
+- **IRB-protected human-subjects data** (interviews, identifiable surveys,
+  health data) unless your IRB protocol explicitly permits cloud LLM
+  processing — most don't.
+- **FERPA-covered student records.**
+- **Restricted-access administrative data** (Census, IRS, state
+  longitudinal data systems, etc.) — almost universally prohibited from
+  any cloud transmission. RDC/FSRDC environments forbid it outright.
+- **Confidential firm or proprietary data** under NDA.
+- **Refereed manuscripts** without checking journal policy.
+
+## Outline — what is generally safe
+
+- Public datasets (IPUMS, Compustat extracts you'd freely share, BLS
+  microdata releases, etc.).
+- Your own simulated data.
+- Code that doesn't reveal the underlying observations.
+- Paper drafts on your own work (with co-author awareness).
+
+## Outline — pragmatic workarounds
+
+When you have a restricted dataset and want help with the *code*:
+
+1. **Synthesize a fake version.** Have Claude generate fake data with
+   the same schema and let it work on that.
+2. **Point it at code only, never data.** Most "clean this `.do` file"
+   work doesn't need the actual data; it needs the script.
+3. **Run sensitive jobs on the secure environment** with no cloud LLM
+   involved, then bring back outputs you're allowed to share.
+4. **Use Claude Code only for non-restricted side projects** until you've
+   talked to your IRB about an explicit policy.
+
+## Outline — institutional questions to resolve
+
+- Does your university have a policy on LLM use with research data?
+- Does your IRB have boilerplate language for cloud LLM processing?
+- Do data agreements (DUAs) you've signed permit transmission to
+  third-party services?
+
+> Tell me which of these you'd most like turned into a real
+> decision-flowchart.

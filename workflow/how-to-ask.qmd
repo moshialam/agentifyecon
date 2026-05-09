@@ -1,0 +1,39 @@
+---
+title: "How to ask"
+subtitle: "Prompting habits that work for code, drawn from the examples on this site."
+---
+
+::: {.callout-note}
+**Coming soon.** A short guide to the prompting habits that show up across
+every worked example on this site.
+:::
+
+## Outline — the habits
+
+1. **Orientation pass first.** Before asking for changes, ask Claude to
+   read the project and summarize. Cheap; saves rework.
+2. **Separate audit from action.** "Tell me what you'd change. Don't
+   change it yet." — almost always the right first prompt for non-trivial
+   tasks.
+3. **Be explicit about what to leave alone.** "Don't introduce new
+   arguments. Don't change numbers. Don't reformat unrelated code." Saying
+   it costs nothing; not saying it costs a careful re-read.
+4. **Use plan mode for multi-file work.** `Shift+Tab` until you see "plan
+   mode". Claude writes a plan, you approve, then it acts.
+5. **Quote files by name.** "Read `paper.tex` and tell me…" works better
+   than "look at my paper". Names are unambiguous; descriptions aren't.
+6. **One commit per logical change.** Don't let Claude do five unrelated
+   things in one session — each one is harder to review and harder to
+   roll back.
+
+## Outline — anti-patterns
+
+- "Make this better." Without specifics, Claude will reformat,
+  reorganize, and rephrase, often making it worse.
+- "Just trust me, run it." For destructive operations (delete files,
+  drop database tables, force-push), make Claude pause for explicit
+  approval. It will by default; don't override.
+- "Write a complete X from scratch." For real research code, prefer
+  iterative: skeleton → fill in one piece → verify → next piece.
+
+> Tell me which habit you'd most like worked through.

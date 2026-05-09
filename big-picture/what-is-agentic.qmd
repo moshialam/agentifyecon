@@ -1,0 +1,84 @@
+---
+title: "What is agentic coding?"
+---
+
+## The shift in one paragraph
+
+Until recently, using an LLM meant **typing into a chat box** and copy-pasting
+the answer back into your editor. That works, but it puts you in the loop
+for every small action: copy this, paste here, run it, paste the error back,
+ask again. "Agentic coding" tools cut that loop. You give the model **direct
+access to your project** — it can read files, edit them, run code, see the
+output, and decide what to do next. You stay in the loop for *direction* and
+*review*, not for clerical handoffs.
+
+That is the whole shift. Everything else on this site is a consequence of it.
+
+## A concrete contrast
+
+::: {.callout-note appearance="simple" icon=false}
+**Chat-style (what you might be doing now)**
+
+> *You:* "Write me a Stata loop that runs a regression for each year and
+> stores coefficients."
+>
+> *LLM:* (gives a snippet)
+>
+> *You:* (paste into Stata, hit run, get an error about a missing variable)
+>
+> *You:* "I got this error: `variable wage_resid not found`"
+>
+> *LLM:* (apologizes, gives a new snippet)
+>
+> *You:* (paste, run, repeat 3 more times)
+:::
+
+::: {.callout-note appearance="simple" icon=false}
+**Agentic (what Claude Code does)**
+
+> *You:* "Write a loop that runs my main regression for each year and stores
+> the coefficients. Look at `analysis.do` to see how I've set up the
+> covariates."
+>
+> *Claude Code:* (reads `analysis.do`, writes the loop, runs it, sees the
+> `wage_resid not found` error, reads `02-build-vars.do`, notices that
+> `wage_resid` is generated only when a flag is set, fixes the loop, runs
+> it again, shows you the diff and the resulting coefficients)
+:::
+
+The chat version takes ten minutes of attention. The agentic version takes
+ten minutes of clock time but maybe one minute of yours.
+
+## What you give up, and what you keep
+
+You give up the **moment-by-moment control** of every keystroke. You can't
+inspect the model's reasoning step by step in real time, and you have to
+trust that it's editing the right files in the right way.
+
+You keep — and *must* exercise — **direction and review**. You decide what
+to ask for. You read the diff before accepting it. You run the regression
+yourself before believing the number. The page on
+[verifying output](../workflow/verifying.qmd) is the most important one on
+this site.
+
+## Why this matters for an economist specifically
+
+Three reasons it lands harder in our field than most:
+
+1. **Our work is heavy on small, tedious code.** Renaming variables across
+   a dozen `.do` files, regenerating tables in a different format, fixing
+   a bibtex file with 200 entries — these are exactly the kinds of jobs
+   where the agentic loop pays off.
+2. **Reproducibility matters.** The model can read your whole replication
+   package and tell you what's missing or what won't run on a fresh
+   machine. A human RA would take a day; the model takes minutes.
+3. **You probably have several projects in different languages.** The same
+   tool works on Stata, R, Python, Matlab, Julia, LaTeX, and shell scripts
+   — you don't need to learn a different assistant for each.
+
+## Next
+
+- See [why Claude Code](why-claude-code.qmd) for why this site focuses on
+  one specific tool.
+- Or jump to [installing Claude Code](../getting-started/install.qmd) and
+  try it on a real project of yours.

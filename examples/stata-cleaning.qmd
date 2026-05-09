@@ -1,0 +1,37 @@
+---
+title: "Stata — cleaning data and writing reproducible .do files"
+---
+
+::: {.callout-note}
+**Coming soon.** A worked example of using Claude Code on a real Stata
+project: cleaning a messy dataset, writing a master `do` file, producing
+regression tables, and refactoring across multiple `.do` files.
+:::
+
+## Outline
+
+1. **Setup.** Point Claude at a project with a few `.dta` files and an
+   existing `.do` file or two. Have it summarize the data and the code.
+2. **Cleaning.** "Look at `raw/wages.dta`. Document the variables, flag
+   suspicious values (negatives where they shouldn't be, implausible
+   ranges, missing-value codes like `-99`), and propose a cleaning script.
+   Don't write it yet — show me the proposal."
+3. **Reproducible structure.** Refactor a flat collection of `.do` files
+   into a `master.do` + `01-clean.do`, `02-build-vars.do`, `03-analysis.do`
+   pattern.
+4. **Tables.** Produce regression tables with `esttab` or `outreg2` in a
+   consistent style.
+5. **Verification.** Re-run the master script from scratch in a fresh
+   Stata session and confirm output matches.
+
+## Stata-specific notes (will be expanded)
+
+- Claude Code can run Stata via the command line if your Stata is on the
+  PATH. On a Mac, that's typically a one-line setup once.
+- Claude is **good at** mechanical things in Stata (variable renaming,
+  `egen` group operations, table generation, regex'ing the log file).
+- Claude is **less reliable on** old Stata idioms (`#delimit`, version
+  pragmas, pre-Stata-15 syntax). Tell it your Stata version explicitly in
+  your project's `CLAUDE.md`.
+
+> Tell me which step you'd most like elaborated.
