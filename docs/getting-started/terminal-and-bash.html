@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>What changes for your research workflow – LLMs for Economists</title>
+<title>The terminal and bash, for GUI users – LLMs for Economists</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -29,7 +63,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../big-picture/landscape.html" rel="prev">
+<link href="../getting-started/install.html" rel="next">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -236,7 +270,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../big-picture/what-is-agentic.html">Big picture</a></li><li class="breadcrumb-item"><a href="../big-picture/what-changes.html">What changes for your research workflow</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../getting-started/terminal-and-bash.html">Getting started</a></li><li class="breadcrumb-item"><a href="../getting-started/terminal-and-bash.html">The terminal and bash, for GUI users</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -251,7 +285,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Big picture</span></a>
+ <span class="menu-text">Getting started</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -259,26 +293,26 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../big-picture/what-is-agentic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What is agentic coding?</span></a>
+  <a href="../getting-started/terminal-and-bash.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">The terminal and bash, for GUI users</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../big-picture/why-claude-code.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Why Claude Code</span></a>
+  <a href="../getting-started/install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Install Claude Code</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../big-picture/landscape.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">How Claude Code compares</span></a>
+  <a href="../getting-started/first-project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Your first project</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../big-picture/what-changes.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">What changes for your research workflow</span></a>
+  <a href="../getting-started/plan-mode-and-todo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plan mode, todos, and slash commands</span></a>
   </div>
 </li>
       </ul>
@@ -293,16 +327,25 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#outline" id="toc-outline" class="nav-link active" data-scroll-target="#outline">Outline</a></li>
+  <li><a href="#what-the-terminal-actually-is" id="toc-what-the-terminal-actually-is" class="nav-link active" data-scroll-target="#what-the-terminal-actually-is">What “the terminal” actually is</a></li>
+  <li><a href="#how-to-open-a-terminal-mac" id="toc-how-to-open-a-terminal-mac" class="nav-link" data-scroll-target="#how-to-open-a-terminal-mac">How to open a terminal (Mac)</a></li>
+  <li><a href="#the-seven-commands-you-will-see-most-often" id="toc-the-seven-commands-you-will-see-most-often" class="nav-link" data-scroll-target="#the-seven-commands-you-will-see-most-often">The seven commands you will see most often</a></li>
+  <li><a href="#what-bash-really-is-in-one-paragraph" id="toc-what-bash-really-is-in-one-paragraph" class="nav-link" data-scroll-target="#what-bash-really-is-in-one-paragraph">What “bash” really is, in one paragraph</a></li>
+  <li><a href="#what-claude-code-actually-runs-in-your-terminal" id="toc-what-claude-code-actually-runs-in-your-terminal" class="nav-link" data-scroll-target="#what-claude-code-actually-runs-in-your-terminal">What Claude Code actually runs in your terminal</a></li>
+  <li><a href="#safety-commands-to-never-type-without-thinking" id="toc-safety-commands-to-never-type-without-thinking" class="nav-link" data-scroll-target="#safety-commands-to-never-type-without-thinking">Safety: commands to never type without thinking</a></li>
+  <li><a href="#when-to-let-claude-drive-vs.-type-yourself" id="toc-when-to-let-claude-drive-vs.-type-yourself" class="nav-link" data-scroll-target="#when-to-let-claude-drive-vs.-type-yourself">When to let Claude drive vs.&nbsp;type yourself</a></li>
+  <li><a href="#a-five-minute-exercise" id="toc-a-five-minute-exercise" class="nav-link" data-scroll-target="#a-five-minute-exercise">A five-minute exercise</a></li>
+  <li><a href="#where-to-go-next" id="toc-where-to-go-next" class="nav-link" data-scroll-target="#where-to-go-next">Where to go next</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../big-picture/what-is-agentic.html">Big picture</a></li><li class="breadcrumb-item"><a href="../big-picture/what-changes.html">What changes for your research workflow</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../getting-started/terminal-and-bash.html">Getting started</a></li><li class="breadcrumb-item"><a href="../getting-started/terminal-and-bash.html">The terminal and bash, for GUI users</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">What changes for your research workflow</h1>
+<h1 class="title">The terminal and bash, for GUI users</h1>
+<p class="subtitle lead">If your career has been in Stata, Matlab, or RStudio, this is the missing ten minutes of context that makes Claude Code feel ordinary instead of intimidating.</p>
 </div>
 
 
@@ -319,6 +362,44 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>Most economists I know have spent a career in <strong>graphical</strong> software: the Stata window with its menus, Matlab’s IDE, RStudio, Excel. None of those require you to think about the terminal. So when Claude Code starts typing things like <code>Rscript analysis.R</code> or <code>git status</code> in a black window, it can feel like a different planet.</p>
+<p>It isn’t. The terminal is just the original way to talk to a computer: type a command, hit Return, see the output. There are no menus and no icons — just text in, text out. This page covers the <strong>minimum</strong> terminal vocabulary you need to (a) follow what Claude Code is doing on your behalf, and (b) type the few commands you’ll actually need yourself.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You do not need to <em>learn</em> the terminal to use Claude Code. You only need to <strong>read</strong> what Claude does in it. Once you can read its output, you can work confidently.</p>
+</div>
+</div>
+<section id="what-the-terminal-actually-is" class="level2">
+<h2 class="anchored" data-anchor-id="what-the-terminal-actually-is">What “the terminal” actually is</h2>
+<p>A terminal is just a window where you type a command and your computer runs it. That’s the whole concept.</p>
+<ul>
+<li>The window is called a <strong>terminal emulator</strong> (on a Mac, it’s the app called <em>Terminal</em>; iTerm and Warp are popular alternatives).</li>
+<li>Inside that window, a small program called a <strong>shell</strong> is reading what you type and running it. On modern Macs the default shell is <code>zsh</code>. On Linux and on most Windows-WSL setups it’s <code>bash</code>. The two are nearly identical for our purposes; people use the names interchangeably.</li>
+<li>Each line you type is a <strong>command</strong> — usually a program name, sometimes followed by <strong>arguments</strong> (what to run it on) and <strong>flags</strong> (options starting with <code>-</code> or <code>--</code>).</li>
+</ul>
+<p>So when you see Claude Code run:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> <span class="at">--vanilla</span> analysis.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>That’s three pieces: the program (<code>Rscript</code>), a flag (<code>--vanilla</code>, meaning “don’t load my personal R settings”), and the file to run (<code>analysis.R</code>).</p>
+</section>
+<section id="how-to-open-a-terminal-mac" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-open-a-terminal-mac">How to open a terminal (Mac)</h2>
+<p>The fastest way:</p>
+<ol type="1">
+<li>Press <code>Cmd + Space</code> to open Spotlight.</li>
+<li>Type <code>Terminal</code> and hit <code>Return</code>.</li>
+<li>A small window with a blinking cursor appears.</li>
+</ol>
+<p>You’ll see something like:</p>
+<pre><code>yourname@your-mac ~ %</code></pre>
+<p>That’s the <strong>prompt</strong>, telling you it’s ready for a command. Type a command, hit Return.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -329,28 +410,159 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Coming soon.</strong> This page will lay out — honestly — what shifts when you add an agentic coding tool to your research workflow, and what does <em>not</em>.</p>
+<p><strong>Windows users:</strong> install <a href="https://learn.microsoft.com/en-us/windows/wsl/install">WSL</a> and open “Ubuntu” from the Start menu. Inside, everything on this page works identically.</p>
+<p><strong>Linux users:</strong> you already know how to open a terminal.</p>
 </div>
 </div>
-<section id="outline" class="level2">
-<h2 class="anchored" data-anchor-id="outline">Outline</h2>
-<p><strong>What changes:</strong></p>
+</section>
+<section id="the-seven-commands-you-will-see-most-often" class="level2">
+<h2 class="anchored" data-anchor-id="the-seven-commands-you-will-see-most-often">The seven commands you will see most often</h2>
+<p>These cover ~90% of what Claude Code does in the terminal and 100% of what you’ll ever need to type yourself.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>What it does</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>pwd</code></td>
+<td>Print working directory — “where am I?”</td>
+<td><code>pwd</code></td>
+</tr>
+<tr class="even">
+<td><code>ls</code></td>
+<td>List files in the current directory</td>
+<td><code>ls</code> (or <code>ls -la</code> for details)</td>
+</tr>
+<tr class="odd">
+<td><code>cd</code></td>
+<td>Change directory — “move into this folder”</td>
+<td><code>cd ~/Desktop/papers</code></td>
+</tr>
+<tr class="even">
+<td><code>mkdir</code></td>
+<td>Make a new (empty) folder</td>
+<td><code>mkdir tables</code></td>
+</tr>
+<tr class="odd">
+<td><code>cat</code></td>
+<td>Show a file’s contents in the terminal</td>
+<td><code>cat README.md</code></td>
+</tr>
+<tr class="even">
+<td><code>cp</code></td>
+<td>Copy a file</td>
+<td><code>cp data.csv data_backup.csv</code></td>
+</tr>
+<tr class="odd">
+<td><code>mv</code></td>
+<td>Move or rename a file</td>
+<td><code>mv old.do new.do</code></td>
+</tr>
+</tbody>
+</table>
+<p>Two notes:</p>
 <ul>
-<li>Tedious code (variable renaming, table reformatting, replication-package cleanup, <code>.bib</code> fixes) becomes minutes instead of hours.</li>
-<li>You stop avoiding small-but-annoying improvements (“I’ll fix that figure formatting later”) because the friction drops to near zero.</li>
-<li>A second pair of eyes is always available: “what’s wrong with this regression specification?” gets a useful answer in seconds.</li>
-<li>Onboarding to an unfamiliar codebase (your old paper from five years ago, a coauthor’s repo, a published replication package) is dramatically faster.</li>
+<li>The <code>~</code> symbol means “my home directory” — the one with <code>Desktop/</code>, <code>Documents/</code>, etc. So <code>cd ~/Desktop/papers</code> is unambiguous from anywhere.</li>
+<li>Hit <code>Tab</code> to autocomplete file and folder names. Type <code>cd ~/Des</code> then Tab → it fills in <code>~/Desktop/</code>. This is the single most useful keypress in the terminal.</li>
 </ul>
-<p><strong>What does not change:</strong></p>
+</section>
+<section id="what-bash-really-is-in-one-paragraph" class="level2">
+<h2 class="anchored" data-anchor-id="what-bash-really-is-in-one-paragraph">What “bash” really is, in one paragraph</h2>
+<p>A “bash script” (or “shell script”) is just a plain-text file with a list of these commands in it. When you “run” the script, the shell goes through the file line by line and runs each command in order. That’s all. A <code>master.do</code> file is a Stata script. A <code>.bash</code> or <code>.sh</code> file is a shell script. Same idea, different language.</p>
+<p>Claude Code can read your shell scripts, write new ones, and run them. It can also string together one-off commands without writing a script. You don’t need to learn shell scripting to use Claude Code — but knowing it exists helps you read what Claude is doing.</p>
+</section>
+<section id="what-claude-code-actually-runs-in-your-terminal" class="level2">
+<h2 class="anchored" data-anchor-id="what-claude-code-actually-runs-in-your-terminal">What Claude Code actually runs in your terminal</h2>
+<p>When you watch Claude Code work, you’ll see it call out tools. The most common one is <code>Bash</code>, which means “run this in the terminal”. For econ-research projects, the commands you’ll see most are:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspecting a project</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> README.md</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status                  <span class="co"># what files have changed since last save</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff paper.tex          <span class="co"># what specifically changed in paper.tex</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Running your code</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> scripts/01-clean.R              <span class="co"># run an R script</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ex">stata-mp</span> <span class="at">-b</span> master.do                   <span class="co"># run a Stata .do file in batch mode</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> statsmodels analysis.py       <span class="co"># run a Python script</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ex">matlab</span> <span class="at">-batch</span> <span class="st">"run('main.m')"</span>           <span class="co"># run a Matlab file</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">--project</span> main.jl                 <span class="co"># run a Julia program</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Building a paper</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ex">latexmk</span> <span class="at">-pdf</span> paper.tex                  <span class="co"># compile a LaTeX document end-to-end</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspecting output</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> output/table_3.tex                 <span class="co"># peek at the first lines of a file</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> data/clean.csv                    <span class="co"># count lines in a file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You don’t need to memorize any of these. You just need to recognize that when Claude says “I’ll run the master script now” and you see a <code>Bash</code> tool call with <code>stata-mp -b master.do</code>, that’s the same thing you’d do by clicking “Run” in Stata’s window — Claude is just doing it in a way that lets it read the output and decide what to do next.</p>
+</section>
+<section id="safety-commands-to-never-type-without-thinking" class="level2">
+<h2 class="anchored" data-anchor-id="safety-commands-to-never-type-without-thinking">Safety: commands to never type without thinking</h2>
+<p>Most terminal commands are harmless. A few are not. Treat the following the way you’d treat a power tool — fine when you mean to use it, dangerous when you don’t:</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong><code>rm -rf &lt;folder&gt;</code></strong> — recursively, forcefully deletes a folder and everything inside it. <strong>No trash, no undo.</strong> Especially dangerous near <code>~</code>, <code>/</code>, or <code>*</code> wildcards. Claude Code will prompt before doing this; don’t blanket-allow it.</p>
+<p><strong><code>sudo &lt;anything&gt;</code></strong> — runs the command as the system administrator. Almost never necessary for econ-research workflows. If something is asking you to <code>sudo</code>, slow down and figure out why. (The most common honest reason is <code>sudo apt install</code> on Linux to install software.)</p>
+<p><strong><code>chmod 777 &lt;file&gt;</code></strong> — makes a file readable, writable, and executable by everyone. The internet is full of “fix it with chmod 777” advice that “fixes” the problem by making your machine less safe. Don’t.</p>
+<p><strong><code>curl ... | bash</code></strong> or <strong><code>wget ... | sh</code></strong> — downloads code from the internet and immediately runs it without you reading it. Even from “trusted” sources, this is risky. Download first, read, then run.</p>
+<p><strong><code>git push --force</code></strong> to a shared branch — overwrites your coauthors’ work with no warning. If you’re sharing a repo, never force-push without talking to your coauthors first.</p>
+</div>
+</div>
+<p>The pattern: be suspicious whenever a command is <strong>destructive</strong>, <strong>privileged</strong>, or <strong>fetched from the internet and run sight-unseen</strong>. For everything else, the worst case is usually “type it again”.</p>
+</section>
+<section id="when-to-let-claude-drive-vs.-type-yourself" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-let-claude-drive-vs.-type-yourself">When to let Claude drive vs.&nbsp;type yourself</h2>
+<p>A pragmatic rule of thumb:</p>
 <ul>
-<li>Your responsibility for the <strong>specification, identification, and interpretation</strong>. The model can suggest; you decide.</li>
-<li>The need to <strong>read the diff</strong> before accepting code into your project.</li>
-<li>The need to <strong>run the regression yourself</strong> before believing the number in your table.</li>
-<li>Your <strong>research taste</strong> — what’s interesting, what’s worth doing, what the contribution is. The model has none of this and will happily help you do bad work very efficiently.</li>
+<li><strong>Reading commands</strong> (<code>ls</code>, <code>pwd</code>, <code>cat</code>, <code>git status</code>, <code>git diff</code>) — always fine for Claude to run automatically. They can’t break anything.</li>
+<li><strong>Building / running code</strong> (<code>Rscript</code>, <code>stata-mp -b</code>, <code>latexmk</code>) — fine for Claude to run, but watch for the failure mode where the script has side effects (writes files, sends an email, etc.). The first time you run a script under Claude, watch what it does.</li>
+<li><strong>Edits to your project files</strong> — Claude does these via its <code>Edit</code> and <code>Write</code> tools, which show you a diff. Read the diff. Always.</li>
+<li><strong>Destructive shell commands</strong> (<code>rm</code>, <code>mv</code> over an existing file, <code>git checkout</code> that discards work) — Claude prompts. Don’t blanket-allow.</li>
+<li><strong><code>git push</code>, <code>git push --force</code>, deploying anything</strong> — type yourself, always. These are visible to other people. Make the decision consciously.</li>
 </ul>
-<blockquote class="blockquote">
-<p>Tell me which side of this you want elaborated.</p>
-</blockquote>
+</section>
+<section id="a-five-minute-exercise" class="level2">
+<h2 class="anchored" data-anchor-id="a-five-minute-exercise">A five-minute exercise</h2>
+<p>Open Terminal. Type each of these in order; press Return after each:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> terminal-test</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> terminal-test</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"I survived the terminal"</span> <span class="op">&gt;</span> note.txt</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> note.txt</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You just: checked where you were, moved to your Desktop, listed the contents, made a folder, moved into it, created a text file in it, read the file, went back up one level, and listed the contents again. That is the <strong>entire</strong> terminal vocabulary you need to start using Claude Code.</p>
+<p>When you’re done, you can clean up:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> terminal-test/note.txt</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rmdir</span> terminal-test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>(Note: <code>rmdir</code> only removes <em>empty</em> folders, so it’s safer than <code>rm -rf</code>.)</p>
+</section>
+<section id="where-to-go-next" class="level2">
+<h2 class="anchored" data-anchor-id="where-to-go-next">Where to go next</h2>
+<ul>
+<li><a href="../getting-started/install.html">Install Claude Code</a> — now that the terminal isn’t intimidating, install Claude Code and try it on a real project.</li>
+<li><a href="../getting-started/plan-mode-and-todo.html">Plan mode, todos, slash commands</a> — the Claude-Code-specific features that make the terminal feel collaborative rather than lonely.</li>
+<li><a href="../workflow/verifying.html">Verifying output</a> — once Claude is running bash commands on your behalf, this is the page that matters most.</li>
+</ul>
 
 
 </section>
@@ -780,11 +992,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../big-picture/landscape.html" class="pagination-link" aria-label="How Claude Code compares">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">How Claude Code compares</span>
-      </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../getting-started/install.html" class="pagination-link" aria-label="Install Claude Code">
+        <span class="nav-page-text">Install Claude Code</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

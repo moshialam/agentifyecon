@@ -1,0 +1,176 @@
+---
+title: "Principles"
+subtitle: "Where the efficiency gains actually come from — written from one user's experience."
+---
+
+So I thought I will put my thoughts in here after our department meeting
+with the help of Claude Code. Most of this is based on my experience of
+using chatbot AI and agentic AI. So most of my thoughts are based on my
+usage of LLM products from Anthropic (Claude, Claude Code), OpenAI (Chat
+GPT, Codex) and a little of Github (Github copilot). I use Claude most of
+the times. The efficiency gains that can be had depends heavily on how our
+workflow is aligned with how large language models (LLMs) work.
+
+The difference between chatbot AI tools like Claude (and Chat GPT) and
+agentic AI like Claude code (and Codex) is that in the former you are in a
+chat session and in the latter the AI does stuff on your behalf and uses
+your computer to implement stuff using Bash scripts, after you give it
+directory level permissions to run things. The major efficiency gains come
+from using agentic AI over chatbot AI. In the latter there is a wide
+variety of how much you let your LLM do your work. I used to think that
+this depends on how risk averse you are. But in my experience, I think it
+more depends on how detailed your prompting is such that the LLM
+understands the context, how robust your system such that it has
+fail-safes, and how do you design your workflow so that the agent can
+verify its own work and can hence iterate on its mistakes minimizing your
+intervention.
+
+The rest of this page expands on those three things, because they are what
+I would have wanted someone to tell me a year ago.
+
+::: {.callout-note}
+The pages on this site are organized around these three principles. The
+[examples](examples/latex-paper.qmd) show what they look like in practice;
+the [workflow](workflow/how-to-ask.qmd) and [pitfalls](pitfalls/hallucinations.qmd)
+sections are the operational consequences. If you only have time for one
+page besides this one, read the
+[replication-package example](examples/replication-package.qmd) — it puts
+all three principles to work at once.
+:::
+
+## 1. Detailed prompting and context
+
+The single biggest predictor of whether Claude Code does something useful
+on the first try is whether I gave it enough context to understand what I
+actually want. "Detailed prompting" is not a euphemism for writing long
+prompts. It means giving the model the information a smart RA would need
+to do the job — no more, no less.
+
+In practice, this is three things:
+
+- **Name the files.** "Read `paper.tex` and tell me…" beats "look at my
+  paper" every time. The model can find files; it cannot read your mind
+  about which one you mean.
+- **State the constraint, not just the goal.** "Reformat all my tables
+  using booktabs" is the goal. "Reformat all my tables using booktabs;
+  do not change any numbers, captions, or column headers" is the
+  constraint that prevents Claude from "tidying up" content you didn't
+  ask it to tidy.
+- **Provide stable context once, not every session.** A `CLAUDE.md` file
+  at the root of your project — saying which Stata version you use,
+  which scripts produce which outputs, what's off-limits — is read at
+  the start of every session. Writing it once saves you re-explaining.
+  See [Memory, CLAUDE.md, skills](workflow/memory-and-claude-md.qmd).
+
+The mental model that helped me: a chatbot prompt is a Google query, but
+an agentic prompt is a memo to a new RA on day one. Different audience,
+different register.
+
+What this looks like in our examples:
+
+- The first paragraph of every prompt in the [LaTeX paper
+  walkthrough](examples/latex-paper.qmd) is an orientation pass — having
+  Claude read the project before doing anything.
+- The [replication-package audit](examples/replication-package.qmd) starts
+  by asking Claude to *describe* the dependency map before *changing*
+  anything. The audit is the context for the action.
+
+## 2. A robust system with fail-safes
+
+This was the principle that took me longest to internalize because it
+requires admitting up front that the model will sometimes do the wrong
+thing — and designing your environment so a wrong action is recoverable
+rather than catastrophic.
+
+The fail-safes I rely on are not exotic:
+
+- **Git, even just locally.** I commit before any non-trivial change. If
+  Claude makes an edit I don't like, `git checkout .` undoes everything
+  in the working directory. You don't need to push to GitHub for this to
+  save you.
+- **Plan mode.** For any change touching multiple files, I hit
+  `Shift+Tab` until the prompt says "plan mode". Claude reads, thinks,
+  and writes a plan for my approval. I read the plan; if it misunderstands,
+  I correct before any file is touched. See [Plan mode, todos, slash
+  commands](getting-started/plan-mode-and-todo.qmd).
+- **Don't blanket-allow destructive operations.** Claude Code prompts
+  before things like deleting files, force-pushing to git, or running
+  `rm -rf`. Don't override those prompts. The two-second pause is the
+  difference between a recoverable mistake and a Saturday spent
+  reconstructing your project from memory.
+- **A working "master script" in every project.** A single `master.do`,
+  `master.R`, or `make all` that rebuilds your results from scratch.
+  After any meaningful change, ask Claude to re-run it and confirm
+  outputs match. This is your reproducibility check *and* your fail-safe.
+- **Read-only patterns for restricted data.** When I work on projects
+  with IRB-protected or restricted-access data, Claude only ever sees the
+  *code*, never the data. The data lives in a folder Claude is not
+  pointed at. See [Confidential data](pitfalls/confidential-data.qmd).
+
+A useful test: before starting a task, ask yourself "if Claude does the
+worst plausible thing here, what is my recovery?" If the answer is "git
+checkout", you're fine. If the answer is "rebuild from backups" or "email
+my coauthor", slow down and add a fail-safe first.
+
+## 3. A workflow the agent can verify on its own
+
+This is the principle with the highest payoff and the one most colleagues
+miss. The point is not to write better prompts. It is to **structure the
+task so the agent can check its own work** — and then iterate without
+needing you in the loop for every step.
+
+A few examples of what this looks like in econ work:
+
+- **Replication.** "Re-run `master.do` and tell me whether each table in
+  `output/tables/` matches the version checked into git." The agent runs
+  the script, diffs the outputs, and either reports "all match" or "Table
+  3 changed — here's the diff". One human-readable status; no per-step
+  babysitting.
+- **Cleaning.** Add assertions to your cleaning scripts:
+  `assert wage > 0 if inrange(year, 2000, 2020)`. When Claude edits the
+  cleaning code and an assertion fails, the script halts and the agent
+  sees exactly what broke. It can iterate to fix the bug without you.
+- **LaTeX.** After every edit to a `.tex` file, Claude can compile and
+  read the log. Unresolved references, overfull boxes, missing citations
+  — all surface immediately, and the agent can either fix them or escalate
+  to you.
+- **Numerical work.** A test that checks the sign and rough magnitude of
+  the main coefficient (not its exact value) is enough for Claude to
+  notice when a refactor silently breaks the analysis.
+- **Code review.** For non-trivial edits I ask Claude to run `/review`
+  on its own diff before showing it to me. It catches its own clumsy
+  edits about half the time.
+
+When this principle is in place, my supervision shifts from "every
+keystroke" to "every milestone". I check in when the agent reports
+something done, not while it works.
+
+## Putting it together
+
+These three principles compound. Detailed prompting alone is wasted if
+the agent can't recover from a wrong turn. Fail-safes alone keep you
+safe but not productive. Self-verification alone is impossible without
+context to verify against.
+
+The way I'd phrase it now, after a year of this:
+
+> The efficiency you get from agentic AI is roughly **(quality of context)
+> × (recoverability of the system) × (degree to which the agent can check
+> its own work)**. If any one of those is near zero, your effective
+> productivity gain is near zero too — even if the model is brilliant.
+
+Most of my own learning has been about raising the third factor. The
+model is plenty capable; the bottleneck has been giving it the
+scaffolding to use that capability without me hovering over it.
+
+## Where to go from here
+
+- See these principles applied end-to-end in the
+  [replication-package audit](examples/replication-package.qmd) and the
+  [LaTeX paper walkthrough](examples/latex-paper.qmd).
+- For the operational habits — what to type, what to leave alone, when
+  to hit plan mode — see [How to ask](workflow/how-to-ask.qmd) and
+  [Verifying output](workflow/verifying.qmd).
+- For what these principles *don't* protect you from — research
+  judgment, identification, interpretation — see [What you must still
+  do](pitfalls/judgment.qmd).

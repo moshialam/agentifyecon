@@ -1,0 +1,235 @@
+---
+title: "The terminal and bash, for GUI users"
+subtitle: "If your career has been in Stata, Matlab, or RStudio, this is the missing ten minutes of context that makes Claude Code feel ordinary instead of intimidating."
+---
+
+Most economists I know have spent a career in **graphical** software: the
+Stata window with its menus, Matlab's IDE, RStudio, Excel. None of those
+require you to think about the terminal. So when Claude Code starts
+typing things like `Rscript analysis.R` or `git status` in a black window,
+it can feel like a different planet.
+
+It isn't. The terminal is just the original way to talk to a computer:
+type a command, hit Return, see the output. There are no menus and no
+icons — just text in, text out. This page covers the **minimum** terminal
+vocabulary you need to (a) follow what Claude Code is doing on your
+behalf, and (b) type the few commands you'll actually need yourself.
+
+::: {.callout-tip}
+You do not need to *learn* the terminal to use Claude Code. You only need
+to **read** what Claude does in it. Once you can read its output, you can
+work confidently.
+:::
+
+## What "the terminal" actually is
+
+A terminal is just a window where you type a command and your computer
+runs it. That's the whole concept.
+
+- The window is called a **terminal emulator** (on a Mac, it's the app
+  called *Terminal*; iTerm and Warp are popular alternatives).
+- Inside that window, a small program called a **shell** is reading what
+  you type and running it. On modern Macs the default shell is `zsh`. On
+  Linux and on most Windows-WSL setups it's `bash`. The two are nearly
+  identical for our purposes; people use the names interchangeably.
+- Each line you type is a **command** — usually a program name, sometimes
+  followed by **arguments** (what to run it on) and **flags** (options
+  starting with `-` or `--`).
+
+So when you see Claude Code run:
+
+```bash
+Rscript --vanilla analysis.R
+```
+
+That's three pieces: the program (`Rscript`), a flag (`--vanilla`,
+meaning "don't load my personal R settings"), and the file to run
+(`analysis.R`).
+
+## How to open a terminal (Mac)
+
+The fastest way:
+
+1. Press `Cmd + Space` to open Spotlight.
+2. Type `Terminal` and hit `Return`.
+3. A small window with a blinking cursor appears.
+
+You'll see something like:
+
+```
+yourname@your-mac ~ %
+```
+
+That's the **prompt**, telling you it's ready for a command. Type a
+command, hit Return.
+
+::: {.callout-note}
+**Windows users:** install [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
+and open "Ubuntu" from the Start menu. Inside, everything on this page
+works identically.
+
+**Linux users:** you already know how to open a terminal.
+:::
+
+## The seven commands you will see most often
+
+These cover ~90% of what Claude Code does in the terminal and 100% of
+what you'll ever need to type yourself.
+
+| Command | What it does | Example |
+|---|---|---|
+| `pwd` | Print working directory — "where am I?" | `pwd` |
+| `ls` | List files in the current directory | `ls` (or `ls -la` for details) |
+| `cd` | Change directory — "move into this folder" | `cd ~/Desktop/papers` |
+| `mkdir` | Make a new (empty) folder | `mkdir tables` |
+| `cat` | Show a file's contents in the terminal | `cat README.md` |
+| `cp` | Copy a file | `cp data.csv data_backup.csv` |
+| `mv` | Move or rename a file | `mv old.do new.do` |
+
+Two notes:
+
+- The `~` symbol means "my home directory" — the one with `Desktop/`,
+  `Documents/`, etc. So `cd ~/Desktop/papers` is unambiguous from
+  anywhere.
+- Hit `Tab` to autocomplete file and folder names. Type `cd ~/Des` then
+  Tab → it fills in `~/Desktop/`. This is the single most useful keypress
+  in the terminal.
+
+## What "bash" really is, in one paragraph
+
+A "bash script" (or "shell script") is just a plain-text file with a
+list of these commands in it. When you "run" the script, the shell goes
+through the file line by line and runs each command in order. That's
+all. A `master.do` file is a Stata script. A `.bash` or `.sh` file is a
+shell script. Same idea, different language.
+
+Claude Code can read your shell scripts, write new ones, and run them.
+It can also string together one-off commands without writing a script.
+You don't need to learn shell scripting to use Claude Code — but knowing
+it exists helps you read what Claude is doing.
+
+## What Claude Code actually runs in your terminal
+
+When you watch Claude Code work, you'll see it call out tools. The most
+common one is `Bash`, which means "run this in the terminal". For
+econ-research projects, the commands you'll see most are:
+
+```bash
+# Inspecting a project
+ls
+pwd
+cat README.md
+git status                  # what files have changed since last save
+git diff paper.tex          # what specifically changed in paper.tex
+
+# Running your code
+Rscript scripts/01-clean.R              # run an R script
+stata-mp -b master.do                   # run a Stata .do file in batch mode
+python -m statsmodels analysis.py       # run a Python script
+matlab -batch "run('main.m')"           # run a Matlab file
+julia --project main.jl                 # run a Julia program
+
+# Building a paper
+latexmk -pdf paper.tex                  # compile a LaTeX document end-to-end
+
+# Inspecting output
+head output/table_3.tex                 # peek at the first lines of a file
+wc -l data/clean.csv                    # count lines in a file
+```
+
+You don't need to memorize any of these. You just need to recognize that
+when Claude says "I'll run the master script now" and you see a `Bash`
+tool call with `stata-mp -b master.do`, that's the same thing you'd do
+by clicking "Run" in Stata's window — Claude is just doing it in a way
+that lets it read the output and decide what to do next.
+
+## Safety: commands to never type without thinking
+
+Most terminal commands are harmless. A few are not. Treat the following
+the way you'd treat a power tool — fine when you mean to use it,
+dangerous when you don't:
+
+::: {.callout-warning}
+**`rm -rf <folder>`** — recursively, forcefully deletes a folder and
+everything inside it. **No trash, no undo.** Especially dangerous near
+`~`, `/`, or `*` wildcards. Claude Code will prompt before doing this;
+don't blanket-allow it.
+
+**`sudo <anything>`** — runs the command as the system administrator. Almost
+never necessary for econ-research workflows. If something is asking you
+to `sudo`, slow down and figure out why. (The most common honest reason
+is `sudo apt install` on Linux to install software.)
+
+**`chmod 777 <file>`** — makes a file readable, writable, and executable
+by everyone. The internet is full of "fix it with chmod 777" advice that
+"fixes" the problem by making your machine less safe. Don't.
+
+**`curl ... | bash`** or **`wget ... | sh`** — downloads code from the
+internet and immediately runs it without you reading it. Even from
+"trusted" sources, this is risky. Download first, read, then run.
+
+**`git push --force`** to a shared branch — overwrites your coauthors'
+work with no warning. If you're sharing a repo, never force-push without
+talking to your coauthors first.
+:::
+
+The pattern: be suspicious whenever a command is **destructive**,
+**privileged**, or **fetched from the internet and run sight-unseen**.
+For everything else, the worst case is usually "type it again".
+
+## When to let Claude drive vs. type yourself
+
+A pragmatic rule of thumb:
+
+- **Reading commands** (`ls`, `pwd`, `cat`, `git status`, `git diff`) —
+  always fine for Claude to run automatically. They can't break anything.
+- **Building / running code** (`Rscript`, `stata-mp -b`, `latexmk`) —
+  fine for Claude to run, but watch for the failure mode where the script
+  has side effects (writes files, sends an email, etc.). The first time
+  you run a script under Claude, watch what it does.
+- **Edits to your project files** — Claude does these via its `Edit` and
+  `Write` tools, which show you a diff. Read the diff. Always.
+- **Destructive shell commands** (`rm`, `mv` over an existing file,
+  `git checkout` that discards work) — Claude prompts. Don't blanket-allow.
+- **`git push`, `git push --force`, deploying anything** — type yourself,
+  always. These are visible to other people. Make the decision consciously.
+
+## A five-minute exercise
+
+Open Terminal. Type each of these in order; press Return after each:
+
+```bash
+pwd
+cd ~/Desktop
+ls
+mkdir terminal-test
+cd terminal-test
+echo "I survived the terminal" > note.txt
+cat note.txt
+cd ..
+ls
+```
+
+You just: checked where you were, moved to your Desktop, listed the
+contents, made a folder, moved into it, created a text file in it, read
+the file, went back up one level, and listed the contents again. That is
+the **entire** terminal vocabulary you need to start using Claude Code.
+
+When you're done, you can clean up:
+
+```bash
+rm terminal-test/note.txt
+rmdir terminal-test
+```
+
+(Note: `rmdir` only removes *empty* folders, so it's safer than `rm -rf`.)
+
+## Where to go next
+
+- [Install Claude Code](install.qmd) — now that the terminal isn't
+  intimidating, install Claude Code and try it on a real project.
+- [Plan mode, todos, slash commands](plan-mode-and-todo.qmd) — the
+  Claude-Code-specific features that make the terminal feel collaborative
+  rather than lonely.
+- [Verifying output](../workflow/verifying.qmd) — once Claude is running
+  bash commands on your behalf, this is the page that matters most.

@@ -19,8 +19,12 @@ website:
             text: "How it compares"
           - href: big-picture/what-changes.qmd
             text: "What changes for your workflow"
+      - text: "Principles"
+        href: principles.qmd
       - text: "Getting started"
         menu:
+          - href: getting-started/terminal-and-bash.qmd
+            text: "Terminal & bash for GUI users"
           - href: getting-started/install.qmd
             text: "Install Claude Code"
           - href: getting-started/first-project.qmd
@@ -76,10 +80,14 @@ website:
             - big-picture/why-claude-code.qmd
             - big-picture/landscape.qmd
             - big-picture/what-changes.qmd
+    - title: "Principles"
+      contents:
+        - principles.qmd
     - title: "Getting started"
       contents:
         - section: "Getting started"
           contents:
+            - getting-started/terminal-and-bash.qmd
             - getting-started/install.qmd
             - getting-started/first-project.qmd
             - getting-started/plan-mode-and-todo.qmd
