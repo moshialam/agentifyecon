@@ -21,6 +21,16 @@ to **read** what Claude does in it. Once you can read its output, you can
 work confidently.
 :::
 
+::: {.callout-note}
+**If you'd rather not work in a bare terminal at all**, see
+[Using Claude Code inside VS Code](vscode.qmd). VS Code gives you a
+graphical environment with an integrated terminal, so Claude Code edits
+appear in a familiar diff view instead of a wall of text. Most colleagues
+coming from RStudio/Stata/Matlab will find that route easier. You'll
+still benefit from skimming this page — it explains what's happening in
+the terminal pane at the bottom of VS Code.
+:::
+
 ## What "the terminal" actually is
 
 A terminal is just a window where you type a command and your computer

@@ -1,0 +1,208 @@
+---
+title: "Using Claude Code inside VS Code"
+subtitle: "The friendlier entry point for colleagues who'd rather not live in a black terminal window."
+---
+
+If you've spent your career in graphical environments — RStudio, Stata's
+window, Matlab's IDE — running Claude Code in a bare terminal can feel
+like working with one hand tied behind your back. **Visual Studio Code
+("VS Code") is the gentlest landing pad.** It is free, it is graphical,
+it has a built-in terminal, it shows you proposed code edits in a normal
+side-by-side diff view, and it knows about Git. For most colleagues I
+recommend starting here — and dropping back to the bare terminal only if
+and when it stops getting in the way.
+
+::: {.callout-tip}
+You'll still want to skim the [terminal primer](terminal-and-bash.qmd) so
+you can read what Claude Code is doing in the terminal pane at the bottom
+of VS Code. But you don't need to be comfortable with the terminal; you
+just need to be able to read it.
+:::
+
+## Why this is the easier starting point
+
+| In a bare terminal | In VS Code |
+|---|---|
+| Code edits show up as a wall of text diffs | Edits appear in a familiar side-by-side diff pane |
+| File paths in Claude's output are just strings | File paths are clickable; Cmd-click jumps you to line and column |
+| You alt-tab between Stata/RStudio and the terminal | The integrated terminal sits at the bottom of the same window |
+| Recovering from a bad edit means `git checkout` | Cmd-Z works in the file you're looking at, just like always |
+| Git status is a separate command | The Source Control pane shows changes file-by-file in real time |
+
+None of these are revolutionary. Together they remove enough small friction
+that "I'll try Claude Code today" stops feeling like a project of its own.
+
+## Step 1 — Install VS Code
+
+Download from [code.visualstudio.com](https://code.visualstudio.com).
+The installer is signed and behaves like any other Mac app — drag to
+Applications, open, accept the security prompt the first time.
+
+If your colleague already has VS Code, this step is a no-op.
+
+## Step 2 — Install the Claude Code extension
+
+VS Code has an extension marketplace. The official **Claude Code**
+extension by Anthropic gives you in-editor integration with the
+CLI you installed earlier. It is optional — you can use Claude Code in
+VS Code's integrated terminal without it — but it is a small install
+that pays for itself the first time you accept a diff inside the editor
+instead of squinting at one in the terminal.
+
+To install:
+
+1. Click the Extensions icon in the left sidebar (or press
+   `Cmd+Shift+X`).
+2. Search for `Claude Code`.
+3. Install the one published by **Anthropic**.
+
+What the extension adds (paraphrased — see the extension's own page for
+the canonical list):
+
+- **Native diff view.** When Claude proposes an edit, the change opens
+  in VS Code's diff editor instead of being printed to the terminal. You
+  approve or reject with a button.
+- **Open-file and selection awareness.** Claude can see which file you
+  have focused and what you have selected, so prompts like "rewrite the
+  highlighted paragraph" Just Work.
+- **Tighter back-and-forth** when you're switching between editing a
+  file by hand and asking Claude to take over.
+
+If you skip the extension, everything still works — just through the
+integrated terminal. The next steps are the same either way.
+
+## Step 3 — Open your project folder
+
+`File → Open Folder…` and pick the project you want Claude to work on
+(a paper draft, a teaching repo, a replication package — whatever you
+chose for your [first project](first-project.qmd)).
+
+The left sidebar now shows the file tree of that folder. This is the
+mental anchor: **the folder you opened is the folder Claude Code will
+have access to**, nothing more.
+
+## Step 4 — Open the integrated terminal
+
+Press `Ctrl+`` (the backtick key, top-left on most keyboards). A terminal
+pane appears at the bottom of the VS Code window.
+
+This is the same terminal from the [terminal primer](terminal-and-bash.qmd)
+— it just lives inside VS Code now. Two things to notice:
+
+- It already starts in the folder you opened. No `cd` needed.
+- You can drag its top edge up and down to give it more or less space.
+
+## Step 5 — Start Claude Code
+
+In the integrated terminal, type:
+
+```bash
+claude
+```
+
+…and hit Return. The first time, you'll be prompted to log in (a browser
+tab will open) and to choose a few preferences. Accept the defaults.
+
+You're now at Claude Code's prompt, **inside the VS Code window of your
+project**. Type a question or instruction the same way you would in a
+bare terminal. The difference is what happens next: when Claude proposes
+to edit a file, the diff appears in the editor pane above, not in the
+terminal below. Click *Accept*, *Reject*, or open the file to edit
+yourself.
+
+## A first session in VS Code, end to end
+
+Try this with any project of yours:
+
+1. `File → Open Folder…` and pick a small project.
+2. `Ctrl+`` to open the terminal; type `claude`; Return.
+3. At the prompt: *"Read the project. In one paragraph, what does it do?"*
+4. Watch the editor: as Claude reads files, you'll see it open them in
+   the editor pane (with the extension) or just see the `Read` tool
+   calls in the terminal (without).
+5. Now: *"Add a one-line comment at the top of every `.do` file naming
+   the script. Show me each diff before applying."*
+6. Each proposed edit opens in a diff view. Click through, approve or
+   reject, watch the file tree's Git indicators (M for modified) light
+   up in the sidebar.
+7. Open the Source Control pane (`Ctrl+Shift+G`) — every change Claude
+   has accepted is right there, with line-by-line diffs, ready to
+   commit if you want.
+
+The first time you run this loop, the difference from "chat in a browser"
+is obvious. The friction has gone somewhere; you're now spending it on
+deciding what to ask, not on shuttling text back and forth.
+
+## Language extensions worth installing
+
+VS Code is a general editor. The extensions below add the language
+support most economists need. All are free and well-maintained.
+
+| You write… | Install |
+|---|---|
+| **R** | "R" by REditorSupport, plus "R Debugger" |
+| **Python** | "Python" by Microsoft (covers pylance, debugger, formatter) |
+| **Julia** | "Julia" by julialang |
+| **Stata** | "Stata Enhanced" by Kyle Barron — syntax highlighting + run-in-Stata |
+| **Matlab** | "MATLAB" by MathWorks |
+| **LaTeX** | "LaTeX Workshop" by James Yu — compile + preview + jump-to-source |
+| **Quarto** | "Quarto" by quarto.dev — render + preview .qmd files |
+
+Optional but pleasant:
+
+- **GitLens** — adds blame, history, and rich Git information in the
+  gutter and hover tooltips.
+- **Even Better TOML** / **YAML** — for configuration files (Quarto,
+  Julia projects).
+- **vscode-icons** or **Material Icon Theme** — file-tree icons that
+  make `.do`, `.dta`, `.tex`, `.R`, `.py` visually distinct.
+
+::: {.callout-note}
+None of these extensions are required for Claude Code. They make *you*
+more productive in the editor when Claude isn't doing the work.
+:::
+
+## Keyboard shortcuts that matter
+
+If you remember three: `Ctrl+`` (terminal), `Cmd+P` (jump to file),
+`Cmd+Shift+P` (run any command).
+
+| Shortcut (Mac) | What it does |
+|---|---|
+| `Ctrl+`` | Toggle the integrated terminal |
+| `Ctrl+Shift+`` | Open a *new* terminal (you can have several) |
+| `Cmd+P` | Jump to a file by typing part of its name |
+| `Cmd+Shift+P` | Command palette — run any VS Code command |
+| `Cmd+B` | Toggle the file-tree sidebar |
+| `Cmd+\` | Split the editor into two panes side by side |
+| `Cmd+S` | Save the current file |
+| `Cmd+Z` / `Cmd+Shift+Z` | Undo / redo, file by file |
+
+(On Windows/Linux, swap `Cmd` for `Ctrl` and the shortcuts above
+work the same way.)
+
+## When to drop back to the bare terminal
+
+VS Code is the easier path; it is not the only path. Reasons to use the
+bare Terminal app instead:
+
+- You want a **full-screen Claude Code session** with no editor
+  distractions — reviewing a long replication audit, say.
+- You're **SSHed into a server** (a research computing cluster, for
+  example) and don't have VS Code there.
+- VS Code isn't installed on the machine you're sitting at.
+- You're already in a Terminal session for other reasons (running a
+  long Stata batch job, watching a build).
+
+The two are interchangeable. Anything you do in one works in the other.
+Pick whichever feels less like work that day.
+
+## Where to go next
+
+- [Your first project](first-project.qmd) — what to actually do in your
+  first hour, now that the editor isn't in the way.
+- [Plan mode, todos, slash commands](plan-mode-and-todo.qmd) — the
+  Claude-Code-specific features that make the agentic loop feel
+  collaborative.
+- [LaTeX paper editing](../examples/latex-paper.qmd) — a fully worked
+  example. The diff-view experience really shines on `.tex` edits.

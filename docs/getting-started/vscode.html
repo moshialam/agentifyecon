@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Julia — structural models and Pluto notebooks – LLMs for Economists</title>
+<title>Using Claude Code inside VS Code – LLMs for Economists</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -29,8 +63,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../examples/refereeing.html" rel="next">
-<link href="../examples/matlab.html" rel="prev">
+<link href="../getting-started/first-project.html" rel="next">
+<link href="../getting-started/install.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -241,7 +275,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../examples/latex-paper.html">Worked examples</a></li><li class="breadcrumb-item"><a href="../examples/julia-structural.html">Julia — structural models and Pluto notebooks</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../getting-started/terminal-and-bash.html">Getting started</a></li><li class="breadcrumb-item"><a href="../getting-started/vscode.html">Using Claude Code inside VS Code</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -256,7 +290,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Worked examples</span></a>
+ <span class="menu-text">Getting started</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -264,56 +298,32 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../examples/latex-paper.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Worked example — editing a LaTeX paper</span></a>
+  <a href="../getting-started/terminal-and-bash.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The terminal and bash, for GUI users</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../examples/replication-package.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Worked example — auditing a replication package</span></a>
+  <a href="../getting-started/install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Install Claude Code</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../examples/stata-cleaning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Stata — cleaning data and writing reproducible .do files</span></a>
+  <a href="../getting-started/vscode.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Using Claude Code inside VS Code</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../examples/r-analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">R — analysis, regression tables, ggplot</span></a>
+  <a href="../getting-started/first-project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Your first project</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../examples/python-analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Python — pandas, statsmodels, and notebooks</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/matlab.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Matlab — numerical work and structural estimation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/julia-structural.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Julia — structural models and Pluto notebooks</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/refereeing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Refereeing — using Claude Code to support (not replace) your judgment</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/teaching-prep.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Teaching prep — slides, problem sets, syllabi</span></a>
+  <a href="../getting-started/plan-mode-and-todo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plan mode, todos, and slash commands</span></a>
   </div>
 </li>
       </ul>
@@ -328,18 +338,27 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#outline" id="toc-outline" class="nav-link active" data-scroll-target="#outline">Outline</a></li>
-  <li><a href="#juliapluto-specific-notes-will-be-expanded" id="toc-juliapluto-specific-notes-will-be-expanded" class="nav-link" data-scroll-target="#juliapluto-specific-notes-will-be-expanded">Julia/Pluto-specific notes (will be expanded)</a></li>
-  <li><a href="#why-this-is-a-strong-fit-for-agentic-coding" id="toc-why-this-is-a-strong-fit-for-agentic-coding" class="nav-link" data-scroll-target="#why-this-is-a-strong-fit-for-agentic-coding">Why this is a strong fit for agentic coding</a></li>
+  <li><a href="#why-this-is-the-easier-starting-point" id="toc-why-this-is-the-easier-starting-point" class="nav-link active" data-scroll-target="#why-this-is-the-easier-starting-point">Why this is the easier starting point</a></li>
+  <li><a href="#step-1-install-vs-code" id="toc-step-1-install-vs-code" class="nav-link" data-scroll-target="#step-1-install-vs-code">Step 1 — Install VS Code</a></li>
+  <li><a href="#step-2-install-the-claude-code-extension" id="toc-step-2-install-the-claude-code-extension" class="nav-link" data-scroll-target="#step-2-install-the-claude-code-extension">Step 2 — Install the Claude Code extension</a></li>
+  <li><a href="#step-3-open-your-project-folder" id="toc-step-3-open-your-project-folder" class="nav-link" data-scroll-target="#step-3-open-your-project-folder">Step 3 — Open your project folder</a></li>
+  <li><a href="#step-4-open-the-integrated-terminal" id="toc-step-4-open-the-integrated-terminal" class="nav-link" data-scroll-target="#step-4-open-the-integrated-terminal">Step 4 — Open the integrated terminal</a></li>
+  <li><a href="#step-5-start-claude-code" id="toc-step-5-start-claude-code" class="nav-link" data-scroll-target="#step-5-start-claude-code">Step 5 — Start Claude Code</a></li>
+  <li><a href="#a-first-session-in-vs-code-end-to-end" id="toc-a-first-session-in-vs-code-end-to-end" class="nav-link" data-scroll-target="#a-first-session-in-vs-code-end-to-end">A first session in VS Code, end to end</a></li>
+  <li><a href="#language-extensions-worth-installing" id="toc-language-extensions-worth-installing" class="nav-link" data-scroll-target="#language-extensions-worth-installing">Language extensions worth installing</a></li>
+  <li><a href="#keyboard-shortcuts-that-matter" id="toc-keyboard-shortcuts-that-matter" class="nav-link" data-scroll-target="#keyboard-shortcuts-that-matter">Keyboard shortcuts that matter</a></li>
+  <li><a href="#when-to-drop-back-to-the-bare-terminal" id="toc-when-to-drop-back-to-the-bare-terminal" class="nav-link" data-scroll-target="#when-to-drop-back-to-the-bare-terminal">When to drop back to the bare terminal</a></li>
+  <li><a href="#where-to-go-next" id="toc-where-to-go-next" class="nav-link" data-scroll-target="#where-to-go-next">Where to go next</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../examples/latex-paper.html">Worked examples</a></li><li class="breadcrumb-item"><a href="../examples/julia-structural.html">Julia — structural models and Pluto notebooks</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../getting-started/terminal-and-bash.html">Getting started</a></li><li class="breadcrumb-item"><a href="../getting-started/vscode.html">Using Claude Code inside VS Code</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Julia — structural models and Pluto notebooks</h1>
+<h1 class="title">Using Claude Code inside VS Code</h1>
+<p class="subtitle lead">The friendlier entry point for colleagues who’d rather not live in a black terminal window.</p>
 </div>
 
 
@@ -356,6 +375,166 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>If you’ve spent your career in graphical environments — RStudio, Stata’s window, Matlab’s IDE — running Claude Code in a bare terminal can feel like working with one hand tied behind your back. <strong>Visual Studio Code (“VS Code”) is the gentlest landing pad.</strong> It is free, it is graphical, it has a built-in terminal, it shows you proposed code edits in a normal side-by-side diff view, and it knows about Git. For most colleagues I recommend starting here — and dropping back to the bare terminal only if and when it stops getting in the way.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You’ll still want to skim the <a href="../getting-started/terminal-and-bash.html">terminal primer</a> so you can read what Claude Code is doing in the terminal pane at the bottom of VS Code. But you don’t need to be comfortable with the terminal; you just need to be able to read it.</p>
+</div>
+</div>
+<section id="why-this-is-the-easier-starting-point" class="level2">
+<h2 class="anchored" data-anchor-id="why-this-is-the-easier-starting-point">Why this is the easier starting point</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>In a bare terminal</th>
+<th>In VS Code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Code edits show up as a wall of text diffs</td>
+<td>Edits appear in a familiar side-by-side diff pane</td>
+</tr>
+<tr class="even">
+<td>File paths in Claude’s output are just strings</td>
+<td>File paths are clickable; Cmd-click jumps you to line and column</td>
+</tr>
+<tr class="odd">
+<td>You alt-tab between Stata/RStudio and the terminal</td>
+<td>The integrated terminal sits at the bottom of the same window</td>
+</tr>
+<tr class="even">
+<td>Recovering from a bad edit means <code>git checkout</code></td>
+<td>Cmd-Z works in the file you’re looking at, just like always</td>
+</tr>
+<tr class="odd">
+<td>Git status is a separate command</td>
+<td>The Source Control pane shows changes file-by-file in real time</td>
+</tr>
+</tbody>
+</table>
+<p>None of these are revolutionary. Together they remove enough small friction that “I’ll try Claude Code today” stops feeling like a project of its own.</p>
+</section>
+<section id="step-1-install-vs-code" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-install-vs-code">Step 1 — Install VS Code</h2>
+<p>Download from <a href="https://code.visualstudio.com">code.visualstudio.com</a>. The installer is signed and behaves like any other Mac app — drag to Applications, open, accept the security prompt the first time.</p>
+<p>If your colleague already has VS Code, this step is a no-op.</p>
+</section>
+<section id="step-2-install-the-claude-code-extension" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-install-the-claude-code-extension">Step 2 — Install the Claude Code extension</h2>
+<p>VS Code has an extension marketplace. The official <strong>Claude Code</strong> extension by Anthropic gives you in-editor integration with the CLI you installed earlier. It is optional — you can use Claude Code in VS Code’s integrated terminal without it — but it is a small install that pays for itself the first time you accept a diff inside the editor instead of squinting at one in the terminal.</p>
+<p>To install:</p>
+<ol type="1">
+<li>Click the Extensions icon in the left sidebar (or press <code>Cmd+Shift+X</code>).</li>
+<li>Search for <code>Claude Code</code>.</li>
+<li>Install the one published by <strong>Anthropic</strong>.</li>
+</ol>
+<p>What the extension adds (paraphrased — see the extension’s own page for the canonical list):</p>
+<ul>
+<li><strong>Native diff view.</strong> When Claude proposes an edit, the change opens in VS Code’s diff editor instead of being printed to the terminal. You approve or reject with a button.</li>
+<li><strong>Open-file and selection awareness.</strong> Claude can see which file you have focused and what you have selected, so prompts like “rewrite the highlighted paragraph” Just Work.</li>
+<li><strong>Tighter back-and-forth</strong> when you’re switching between editing a file by hand and asking Claude to take over.</li>
+</ul>
+<p>If you skip the extension, everything still works — just through the integrated terminal. The next steps are the same either way.</p>
+</section>
+<section id="step-3-open-your-project-folder" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-open-your-project-folder">Step 3 — Open your project folder</h2>
+<p><code>File → Open Folder…</code> and pick the project you want Claude to work on (a paper draft, a teaching repo, a replication package — whatever you chose for your <a href="../getting-started/first-project.html">first project</a>).</p>
+<p>The left sidebar now shows the file tree of that folder. This is the mental anchor: <strong>the folder you opened is the folder Claude Code will have access to</strong>, nothing more.</p>
+</section>
+<section id="step-4-open-the-integrated-terminal" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-open-the-integrated-terminal">Step 4 — Open the integrated terminal</h2>
+<p>Press `Ctrl+`` (the backtick key, top-left on most keyboards). A terminal pane appears at the bottom of the VS Code window.</p>
+<p>This is the same terminal from the <a href="../getting-started/terminal-and-bash.html">terminal primer</a> — it just lives inside VS Code now. Two things to notice:</p>
+<ul>
+<li>It already starts in the folder you opened. No <code>cd</code> needed.</li>
+<li>You can drag its top edge up and down to give it more or less space.</li>
+</ul>
+</section>
+<section id="step-5-start-claude-code" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-start-claude-code">Step 5 — Start Claude Code</h2>
+<p>In the integrated terminal, type:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>…and hit Return. The first time, you’ll be prompted to log in (a browser tab will open) and to choose a few preferences. Accept the defaults.</p>
+<p>You’re now at Claude Code’s prompt, <strong>inside the VS Code window of your project</strong>. Type a question or instruction the same way you would in a bare terminal. The difference is what happens next: when Claude proposes to edit a file, the diff appears in the editor pane above, not in the terminal below. Click <em>Accept</em>, <em>Reject</em>, or open the file to edit yourself.</p>
+</section>
+<section id="a-first-session-in-vs-code-end-to-end" class="level2">
+<h2 class="anchored" data-anchor-id="a-first-session-in-vs-code-end-to-end">A first session in VS Code, end to end</h2>
+<p>Try this with any project of yours:</p>
+<ol type="1">
+<li><code>File → Open Folder…</code> and pick a small project.</li>
+<li><code>Ctrl+`` to open the terminal; type</code>claude`; Return.</li>
+<li>At the prompt: <em>“Read the project. In one paragraph, what does it do?”</em></li>
+<li>Watch the editor: as Claude reads files, you’ll see it open them in the editor pane (with the extension) or just see the <code>Read</code> tool calls in the terminal (without).</li>
+<li>Now: <em>“Add a one-line comment at the top of every <code>.do</code> file naming the script. Show me each diff before applying.”</em></li>
+<li>Each proposed edit opens in a diff view. Click through, approve or reject, watch the file tree’s Git indicators (M for modified) light up in the sidebar.</li>
+<li>Open the Source Control pane (<code>Ctrl+Shift+G</code>) — every change Claude has accepted is right there, with line-by-line diffs, ready to commit if you want.</li>
+</ol>
+<p>The first time you run this loop, the difference from “chat in a browser” is obvious. The friction has gone somewhere; you’re now spending it on deciding what to ask, not on shuttling text back and forth.</p>
+</section>
+<section id="language-extensions-worth-installing" class="level2">
+<h2 class="anchored" data-anchor-id="language-extensions-worth-installing">Language extensions worth installing</h2>
+<p>VS Code is a general editor. The extensions below add the language support most economists need. All are free and well-maintained.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>You write…</th>
+<th>Install</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>R</strong></td>
+<td>“R” by REditorSupport, plus “R Debugger”</td>
+</tr>
+<tr class="even">
+<td><strong>Python</strong></td>
+<td>“Python” by Microsoft (covers pylance, debugger, formatter)</td>
+</tr>
+<tr class="odd">
+<td><strong>Julia</strong></td>
+<td>“Julia” by julialang</td>
+</tr>
+<tr class="even">
+<td><strong>Stata</strong></td>
+<td>“Stata Enhanced” by Kyle Barron — syntax highlighting + run-in-Stata</td>
+</tr>
+<tr class="odd">
+<td><strong>Matlab</strong></td>
+<td>“MATLAB” by MathWorks</td>
+</tr>
+<tr class="even">
+<td><strong>LaTeX</strong></td>
+<td>“LaTeX Workshop” by James Yu — compile + preview + jump-to-source</td>
+</tr>
+<tr class="odd">
+<td><strong>Quarto</strong></td>
+<td>“Quarto” by quarto.dev — render + preview .qmd files</td>
+</tr>
+</tbody>
+</table>
+<p>Optional but pleasant:</p>
+<ul>
+<li><strong>GitLens</strong> — adds blame, history, and rich Git information in the gutter and hover tooltips.</li>
+<li><strong>Even Better TOML</strong> / <strong>YAML</strong> — for configuration files (Quarto, Julia projects).</li>
+<li><strong>vscode-icons</strong> or <strong>Material Icon Theme</strong> — file-tree icons that make <code>.do</code>, <code>.dta</code>, <code>.tex</code>, <code>.R</code>, <code>.py</code> visually distinct.</li>
+</ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -366,33 +545,59 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Coming soon.</strong> A worked example of using Claude Code on a Julia project for structural econometrics: model setup, MLE/GMM estimation, identification diagnostics, and Pluto notebooks for interactive teaching.</p>
+<p>None of these extensions are required for Claude Code. They make <em>you</em> more productive in the editor when Claude isn’t doing the work.</p>
 </div>
 </div>
-<section id="outline" class="level2">
-<h2 class="anchored" data-anchor-id="outline">Outline</h2>
-<ol type="1">
-<li><strong>Setup.</strong> Point Claude at a Julia project (<code>Project.toml</code> + <code>src/</code>). Ask for a summary of the model: primitives, parameters, what’s being estimated, what data inputs are required.</li>
-<li><strong>Estimation routines.</strong> Build/refactor MLE or GMM estimation with <code>Optim.jl</code> or <code>JuMP.jl</code>. Have Claude add gradient checks and multi-start robustness.</li>
-<li><strong>Identification diagnostics.</strong> “Visualize the objective function as a function of each parameter near the estimated optimum. Flag any parameters that look weakly identified.”</li>
-<li><strong>Counterfactuals.</strong> Set up a clean counterfactual harness: a single function that takes parameters and produces the counterfactual moments you care about.</li>
-<li><strong>Interactive Pluto notebook.</strong> Wrap the model in a Pluto.jl notebook with interactive sliders for teaching or for showing colleagues.</li>
-</ol>
 </section>
-<section id="juliapluto-specific-notes-will-be-expanded" class="level2">
-<h2 class="anchored" data-anchor-id="juliapluto-specific-notes-will-be-expanded">Julia/Pluto-specific notes (will be expanded)</h2>
+<section id="keyboard-shortcuts-that-matter" class="level2">
+<h2 class="anchored" data-anchor-id="keyboard-shortcuts-that-matter">Keyboard shortcuts that matter</h2>
+<p>If you remember three: <code>Ctrl+`` (terminal),</code>Cmd+P<code>(jump to file),</code>Cmd+Shift+P` (run any command).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Shortcut (Mac)</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Ctrl+`` | Toggle the integrated terminal | |</code>Ctrl+Shift+`<code>| Open a *new* terminal (you can have several) | |</code>Cmd+P<code>| Jump to a file by typing part of its name | |</code>Cmd+Shift+P<code>| Command palette — run any VS Code command | |</code>Cmd+B<code>| Toggle the file-tree sidebar | |</code>Cmd+`</td>
+<td>Split the editor into two panes side by side</td>
+</tr>
+<tr class="even">
+<td><code>Cmd+S</code></td>
+<td>Save the current file</td>
+</tr>
+<tr class="odd">
+<td><code>Cmd+Z</code> / <code>Cmd+Shift+Z</code></td>
+<td>Undo / redo, file by file</td>
+</tr>
+</tbody>
+</table>
+<p>(On Windows/Linux, swap <code>Cmd</code> for <code>Ctrl</code> and the shortcuts above work the same way.)</p>
+</section>
+<section id="when-to-drop-back-to-the-bare-terminal" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-drop-back-to-the-bare-terminal">When to drop back to the bare terminal</h2>
+<p>VS Code is the easier path; it is not the only path. Reasons to use the bare Terminal app instead:</p>
 <ul>
-<li>You already have a Claude Code skill for exactly this: <strong><a href="https://github.com/"><code>plutonb</code></a> in your <code>myccskills</code> repo</strong>. It templates a Pluto notebook with model primitives, sliders, estimation, identification, and LaTeX formulas. Use it: <code>/plutonb</code> in any project.</li>
-<li>Julia is well-represented in Claude’s training data; structural econometrics in Julia less so. Be explicit about your conventions (variable names, what’s a parameter vs.&nbsp;a state, etc.) in <code>CLAUDE.md</code>.</li>
-<li>For replication packages, prefer <code>Manifest.toml</code> checked in — Claude can set this up if you ask.</li>
+<li>You want a <strong>full-screen Claude Code session</strong> with no editor distractions — reviewing a long replication audit, say.</li>
+<li>You’re <strong>SSHed into a server</strong> (a research computing cluster, for example) and don’t have VS Code there.</li>
+<li>VS Code isn’t installed on the machine you’re sitting at.</li>
+<li>You’re already in a Terminal session for other reasons (running a long Stata batch job, watching a build).</li>
 </ul>
+<p>The two are interchangeable. Anything you do in one works in the other. Pick whichever feels less like work that day.</p>
 </section>
-<section id="why-this-is-a-strong-fit-for-agentic-coding" class="level2">
-<h2 class="anchored" data-anchor-id="why-this-is-a-strong-fit-for-agentic-coding">Why this is a strong fit for agentic coding</h2>
-<p>Structural work involves a lot of small, mechanical steps where bugs silently change your results: index off-by-ones, forgotten Jacobian entries, mis-stacked moment vectors. Claude is good at the bookkeeping; you focus on the model.</p>
-<blockquote class="blockquote">
-<p>Tell me which step you’d most like elaborated.</p>
-</blockquote>
+<section id="where-to-go-next" class="level2">
+<h2 class="anchored" data-anchor-id="where-to-go-next">Where to go next</h2>
+<ul>
+<li><a href="../getting-started/first-project.html">Your first project</a> — what to actually do in your first hour, now that the editor isn’t in the way.</li>
+<li><a href="../getting-started/plan-mode-and-todo.html">Plan mode, todos, slash commands</a> — the Claude-Code-specific features that make the agentic loop feel collaborative.</li>
+<li><a href="../examples/latex-paper.html">LaTeX paper editing</a> — a fully worked example. The diff-view experience really shines on <code>.tex</code> edits.</li>
+</ul>
 
 
 </section>
@@ -822,13 +1027,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../examples/matlab.html" class="pagination-link" aria-label="Matlab — numerical work and structural estimation">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Matlab — numerical work and structural estimation</span>
+      <a href="../getting-started/install.html" class="pagination-link" aria-label="Install Claude Code">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Install Claude Code</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../examples/refereeing.html" class="pagination-link" aria-label="Refereeing — using Claude Code to support (not replace) your judgment">
-        <span class="nav-page-text">Refereeing — using Claude Code to support (not replace) your judgment</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../getting-started/first-project.html" class="pagination-link" aria-label="Your first project">
+        <span class="nav-page-text">Your first project</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

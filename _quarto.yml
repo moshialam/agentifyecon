@@ -27,6 +27,8 @@ website:
             text: "Terminal & bash for GUI users"
           - href: getting-started/install.qmd
             text: "Install Claude Code"
+          - href: getting-started/vscode.qmd
+            text: "Using CC inside VS Code"
           - href: getting-started/first-project.qmd
             text: "Your first project"
           - href: getting-started/plan-mode-and-todo.qmd
@@ -89,6 +91,7 @@ website:
           contents:
             - getting-started/terminal-and-bash.qmd
             - getting-started/install.qmd
+            - getting-started/vscode.qmd
             - getting-started/first-project.qmd
             - getting-started/plan-mode-and-todo.qmd
     - title: "Examples"
