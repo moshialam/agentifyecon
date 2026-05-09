@@ -223,21 +223,180 @@ change is **not** going through the diff-review path you're used to.
 Verify the result with `git diff` afterwards, or commit before letting
 Claude run it so `git checkout .` is your undo button.
 
-### Cousins worth recognizing
+## Searching with `grep`
 
-You don't need to learn these, but you'll see them and should know
-roughly what they do:
+`grep` is the search tool. Give it a pattern and one or more files; it
+prints the matching lines. Read-only — it never changes anything — so
+it's safe to type freely.
 
-- **`grep PATTERN file`** — print the lines in `file` that contain
-  `PATTERN`. Read-only; safe.
-- **`awk '...'`** — like `sed` but for column-oriented text (the
-  "what is the average of column 3" tool). Powerful, baroque, rarely
-  needed when you have R or Python around.
+The basic pattern:
+
+```bash
+grep "wage_resid" analysis.do
+```
+
+In English: "show me every line in `analysis.do` that contains
+`wage_resid`."
+
+The flags you'll actually use:
+
+| Flag | What it does |
+|---|---|
+| `-r` | Recursive — search inside every file in a folder and its subfolders |
+| `-n` | Show line numbers next to each match |
+| `-i` | Case-insensitive |
+| `-l` | List only the *filenames* that match (not the matching lines) |
+| `-v` | Invert — show lines that **don't** match |
+| `--include="*.do"` | Only look in files matching this pattern |
+
+In practice, `grep -rn` is the workhorse — recursive search with line
+numbers. Once you have it in your fingers, it replaces a lot of "where
+did I define this variable" cmd-F'ing across files.
+
+### Examples relevant to econ work
+
+Find every place a variable is used across a project:
+
+```bash
+grep -rn "wage_resid" .
+```
+
+Find which `.do` files reference a particular dataset:
+
+```bash
+grep -rln "clean_data_v2.dta" --include="*.do" .
+```
+
+Find every TODO or FIXME comment a coauthor left in the code:
+
+```bash
+grep -rn -E "TODO|FIXME|XXX" .
+```
+
+Check whether a particular paper is cited in your manuscript:
+
+```bash
+grep -rn "smith2024" paper.tex appendix.tex
+```
+
+List every `.bib` entry by author surname (rough but fast):
+
+```bash
+grep "^@" references.bib | head      # entry types
+grep "author = " references.bib | head
+```
+
+### When Claude uses `grep` and when it doesn't
+
+Claude Code has a dedicated `Grep` tool that's faster and friendlier
+than shelling out to `grep` (it uses `ripgrep` under the hood). You'll
+usually see Claude use that instead. You'll see actual `grep` in scripts
+written by humans, in old replication packages, and occasionally when
+Claude is piping output through several commands at once.
+
+Either way, the mental model is the same: **`grep` finds; it doesn't
+change anything**. If you typed it and you don't like the result, type
+something else. There's no recovery to do.
+
+## Column work with `awk`
+
+`awk` is the tool for **column-oriented text** — CSV files, log files,
+TSVs, anything where you care about "the third whitespace-separated
+field on each line." It's a tiny programming language in disguise. You
+will use 5% of it; that 5% is genuinely useful.
+
+By default, `awk` splits each line on whitespace and exposes the columns
+as `$1`, `$2`, `$3`, … with `$0` being the whole line.
+
+The basic pattern:
+
+```bash
+awk '{print $3}' file.txt          # print the 3rd column of every line
+```
+
+For CSVs (or any non-whitespace separator) use `-F`:
+
+```bash
+awk -F',' '{print $1, $4}' data.csv      # 1st and 4th comma-separated columns
+```
+
+### The four patterns that cover most use
+
+```bash
+# 1. Print specific columns
+awk '{print $1, $5}' file.txt
+
+# 2. Filter rows by a column condition
+awk '$3 > 100' data.csv               # rows where column 3 > 100
+
+# 3. Sum a column
+awk '{sum += $2} END {print sum}' data.csv
+
+# 4. Count rows matching a condition
+awk '$3 == "treatment"' data.csv | wc -l
+```
+
+The `END {...}` block runs once after all lines are read — that's how
+you accumulate totals or counts. There's also a `BEGIN {...}` block that
+runs before any input.
+
+### Examples relevant to econ work
+
+Quickly peek at one column of a 10 GB CSV without loading it into R or
+Stata:
+
+```bash
+awk -F',' '{print $7}' huge_admin_data.csv | head
+```
+
+Count distinct values in a column (rough but fast):
+
+```bash
+awk -F',' '{print $3}' data.csv | sort | uniq -c | sort -rn
+```
+
+Sanity-check a sum from a Stata table against the underlying data:
+
+```bash
+awk -F',' 'NR>1 {sum += $4} END {print "Mean wage:", sum/(NR-1)}' wages.csv
+```
+
+(The `NR>1` skips the header row; `NR` is awk's built-in row counter.)
+
+Extract just the variable names from a Stata `describe` log:
+
+```bash
+awk '/^[a-z]/ {print $1}' describe.log
+```
+
+### Honest framing
+
+`awk` is **rarely the right tool when you have R, Python, or Stata
+already loaded**. Its real niche is the in-between moment: you want a
+quick number from a file, and starting a full session in your stats
+language is overkill. For that — and for one-liners that Claude Code
+writes for you in a script — it's hard to beat.
+
+Like `grep`, plain `awk` is read-only; it prints to the terminal. It
+only modifies a file if you explicitly redirect output (`> newfile.txt`)
+or chain it through `sed -i`.
+
+## Other text tools you'll see in passing
+
+You don't need to learn these, but recognize them when they go by:
+
 - **`tr 'A' 'B'`** — character-by-character translation. Useful for
-  uppercasing, stripping punctuation, etc.
+  uppercasing, stripping punctuation, normalizing line endings.
+- **`cut -f3 -d','`** — extract a column from a delimited file. Like a
+  one-trick `awk` for the "I just want column 3" case.
+- **`sort` and `uniq`** — sort lines, then collapse duplicates. The
+  `sort | uniq -c | sort -rn` pattern (used in the awk example above)
+  is the canonical "frequency table from a column" idiom.
+- **`xargs`** — take a list of things from stdin and run a command on
+  each. Common with `find ... | xargs grep ...`.
 
-For all four (`sed`, `grep`, `awk`, `tr`), the rule is the same: read
-what they do; let Claude write them; verify the output.
+For all of these, the rule is the same: read what they do; let Claude
+write them; verify the output.
 
 ## Safety: commands to never type without thinking
 
