@@ -143,6 +143,102 @@ tool call with `stata-mp -b master.do`, that's the same thing you'd do
 by clicking "Run" in Stata's window — Claude is just doing it in a way
 that lets it read the output and decide what to do next.
 
+## A quick note on `sed` — text editing from the command line
+
+`sed` ("stream editor") is a small program that **edits text without
+opening a file in an editor**. You will see it in inherited scripts; you
+will occasionally see Claude Code reach for it when doing the same
+mechanical change across many files at once.
+
+It looks intimidating because the syntax is dense, but 95% of what
+anyone uses `sed` for is one pattern: **find and replace**.
+
+### The one pattern you'll see
+
+```bash
+sed 's/OLD/NEW/g' file.txt
+```
+
+In English: "in `file.txt`, substitute `NEW` for every occurrence of
+`OLD`, and print the result." The `s` means *substitute*; the `g` means
+*globally* (every match on each line, not just the first).
+
+By default, `sed` prints the modified text to the terminal — your file
+on disk is **not changed**. To actually save the change back, add `-i`
+("in-place"):
+
+```bash
+sed -i 's/OLD/NEW/g' file.txt          # Linux / WSL
+sed -i '' 's/OLD/NEW/g' file.txt       # macOS (note the empty '')
+```
+
+::: {.callout-warning}
+**Mac vs. Linux foot-gun.** macOS uses BSD `sed`; Linux uses GNU `sed`.
+The `-i` flag works differently on each. On macOS you must follow `-i`
+with an empty string `''` (the "backup suffix"). On Linux you don't.
+This bites everyone the first time. If you're following a script written
+on a Linux machine and `sed -i` complains "extra characters at the end
+of l command", that's the bug.
+:::
+
+### Examples relevant to econ work
+
+Rename a variable across every `.do` file in a folder:
+
+```bash
+sed -i '' 's/wage_resid/wage_residual/g' *.do      # macOS
+```
+
+Strip carriage returns from a file your coauthor sent from Windows
+(causes mysterious LaTeX errors):
+
+```bash
+sed -i '' 's/\r$//' paper.tex
+```
+
+Replace a hardcoded path in a script:
+
+```bash
+sed -i '' 's|/Users/coauthor/Dropbox|/Users/me/Dropbox|g' master.do
+```
+
+Note the `|` separator instead of `/` in the last example — `sed`
+accepts any character as the separator, and `|` is much more readable
+when the pattern itself contains slashes (like a file path).
+
+### When Claude uses `sed` and when it doesn't
+
+For editing your project files, Claude Code prefers its own `Edit` tool
+— it shows you a clean diff per change and is harder to misuse. You'll
+mostly see Claude reach for `sed` when:
+
+- The same change applies to many files at once (e.g., rename a variable
+  in 30 `.do` files).
+- The edit is in a file Claude shouldn't keep "in memory" (a multi-GB
+  log file, for example).
+- A user has explicitly asked it to use the command line.
+
+If you see Claude run `sed -i` against a file you care about, that
+change is **not** going through the diff-review path you're used to.
+Verify the result with `git diff` afterwards, or commit before letting
+Claude run it so `git checkout .` is your undo button.
+
+### Cousins worth recognizing
+
+You don't need to learn these, but you'll see them and should know
+roughly what they do:
+
+- **`grep PATTERN file`** — print the lines in `file` that contain
+  `PATTERN`. Read-only; safe.
+- **`awk '...'`** — like `sed` but for column-oriented text (the
+  "what is the average of column 3" tool). Powerful, baroque, rarely
+  needed when you have R or Python around.
+- **`tr 'A' 'B'`** — character-by-character translation. Useful for
+  uppercasing, stripping punctuation, etc.
+
+For all four (`sed`, `grep`, `awk`, `tr`), the rule is the same: read
+what they do; let Claude write them; verify the output.
+
 ## Safety: commands to never type without thinking
 
 Most terminal commands are harmless. A few are not. Treat the following
@@ -171,6 +267,12 @@ internet and immediately runs it without you reading it. Even from
 **`git push --force`** to a shared branch — overwrites your coauthors'
 work with no warning. If you're sharing a repo, never force-push without
 talking to your coauthors first.
+
+**`sed -i ...`** (or any in-place edit) without a git commit first —
+silently rewrites the file with no diff and no undo. The fix is a
+one-second habit: `git add -A && git commit -m "before sed"` before any
+`sed -i` you didn't write yourself. See the [`sed`
+section](#a-quick-note-on-sed-text-editing-from-the-command-line) above.
 :::
 
 The pattern: be suspicious whenever a command is **destructive**,

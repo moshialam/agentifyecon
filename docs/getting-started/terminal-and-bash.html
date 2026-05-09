@@ -332,6 +332,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#the-seven-commands-you-will-see-most-often" id="toc-the-seven-commands-you-will-see-most-often" class="nav-link" data-scroll-target="#the-seven-commands-you-will-see-most-often">The seven commands you will see most often</a></li>
   <li><a href="#what-bash-really-is-in-one-paragraph" id="toc-what-bash-really-is-in-one-paragraph" class="nav-link" data-scroll-target="#what-bash-really-is-in-one-paragraph">What “bash” really is, in one paragraph</a></li>
   <li><a href="#what-claude-code-actually-runs-in-your-terminal" id="toc-what-claude-code-actually-runs-in-your-terminal" class="nav-link" data-scroll-target="#what-claude-code-actually-runs-in-your-terminal">What Claude Code actually runs in your terminal</a></li>
+  <li><a href="#a-quick-note-on-sed-text-editing-from-the-command-line" id="toc-a-quick-note-on-sed-text-editing-from-the-command-line" class="nav-link" data-scroll-target="#a-quick-note-on-sed-text-editing-from-the-command-line">A quick note on <code>sed</code> — text editing from the command line</a>
+  <ul class="collapse">
+  <li><a href="#the-one-pattern-youll-see" id="toc-the-one-pattern-youll-see" class="nav-link" data-scroll-target="#the-one-pattern-youll-see">The one pattern you’ll see</a></li>
+  <li><a href="#examples-relevant-to-econ-work" id="toc-examples-relevant-to-econ-work" class="nav-link" data-scroll-target="#examples-relevant-to-econ-work">Examples relevant to econ work</a></li>
+  <li><a href="#when-claude-uses-sed-and-when-it-doesnt" id="toc-when-claude-uses-sed-and-when-it-doesnt" class="nav-link" data-scroll-target="#when-claude-uses-sed-and-when-it-doesnt">When Claude uses <code>sed</code> and when it doesn’t</a></li>
+  <li><a href="#cousins-worth-recognizing" id="toc-cousins-worth-recognizing" class="nav-link" data-scroll-target="#cousins-worth-recognizing">Cousins worth recognizing</a></li>
+  </ul></li>
   <li><a href="#safety-commands-to-never-type-without-thinking" id="toc-safety-commands-to-never-type-without-thinking" class="nav-link" data-scroll-target="#safety-commands-to-never-type-without-thinking">Safety: commands to never type without thinking</a></li>
   <li><a href="#when-to-let-claude-drive-vs.-type-yourself" id="toc-when-to-let-claude-drive-vs.-type-yourself" class="nav-link" data-scroll-target="#when-to-let-claude-drive-vs.-type-yourself">When to let Claude drive vs.&nbsp;type yourself</a></li>
   <li><a href="#a-five-minute-exercise" id="toc-a-five-minute-exercise" class="nav-link" data-scroll-target="#a-five-minute-exercise">A five-minute exercise</a></li>
@@ -505,6 +512,62 @@ Note
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> data/clean.csv                    <span class="co"># count lines in a file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You don’t need to memorize any of these. You just need to recognize that when Claude says “I’ll run the master script now” and you see a <code>Bash</code> tool call with <code>stata-mp -b master.do</code>, that’s the same thing you’d do by clicking “Run” in Stata’s window — Claude is just doing it in a way that lets it read the output and decide what to do next.</p>
 </section>
+<section id="a-quick-note-on-sed-text-editing-from-the-command-line" class="level2">
+<h2 class="anchored" data-anchor-id="a-quick-note-on-sed-text-editing-from-the-command-line">A quick note on <code>sed</code> — text editing from the command line</h2>
+<p><code>sed</code> (“stream editor”) is a small program that <strong>edits text without opening a file in an editor</strong>. You will see it in inherited scripts; you will occasionally see Claude Code reach for it when doing the same mechanical change across many files at once.</p>
+<p>It looks intimidating because the syntax is dense, but 95% of what anyone uses <code>sed</code> for is one pattern: <strong>find and replace</strong>.</p>
+<section id="the-one-pattern-youll-see" class="level3">
+<h3 class="anchored" data-anchor-id="the-one-pattern-youll-see">The one pattern you’ll see</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="st">'s/OLD/NEW/g'</span> file.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In English: “in <code>file.txt</code>, substitute <code>NEW</code> for every occurrence of <code>OLD</code>, and print the result.” The <code>s</code> means <em>substitute</em>; the <code>g</code> means <em>globally</em> (every match on each line, not just the first).</p>
+<p>By default, <code>sed</code> prints the modified text to the terminal — your file on disk is <strong>not changed</strong>. To actually save the change back, add <code>-i</code> (“in-place”):</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-i</span> <span class="st">'s/OLD/NEW/g'</span> file.txt          <span class="co"># Linux / WSL</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-i</span> <span class="st">''</span> <span class="st">'s/OLD/NEW/g'</span> file.txt       <span class="co"># macOS (note the empty '')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Mac vs.&nbsp;Linux foot-gun.</strong> macOS uses BSD <code>sed</code>; Linux uses GNU <code>sed</code>. The <code>-i</code> flag works differently on each. On macOS you must follow <code>-i</code> with an empty string <code>''</code> (the “backup suffix”). On Linux you don’t. This bites everyone the first time. If you’re following a script written on a Linux machine and <code>sed -i</code> complains “extra characters at the end of l command”, that’s the bug.</p>
+</div>
+</div>
+</section>
+<section id="examples-relevant-to-econ-work" class="level3">
+<h3 class="anchored" data-anchor-id="examples-relevant-to-econ-work">Examples relevant to econ work</h3>
+<p>Rename a variable across every <code>.do</code> file in a folder:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-i</span> <span class="st">''</span> <span class="st">'s/wage_resid/wage_residual/g'</span> <span class="pp">*</span>.do      <span class="co"># macOS</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Strip carriage returns from a file your coauthor sent from Windows (causes mysterious LaTeX errors):</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-i</span> <span class="st">''</span> <span class="st">'s/\r$//'</span> paper.tex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Replace a hardcoded path in a script:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-i</span> <span class="st">''</span> <span class="st">'s|/Users/coauthor/Dropbox|/Users/me/Dropbox|g'</span> master.do</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note the <code>|</code> separator instead of <code>/</code> in the last example — <code>sed</code> accepts any character as the separator, and <code>|</code> is much more readable when the pattern itself contains slashes (like a file path).</p>
+</section>
+<section id="when-claude-uses-sed-and-when-it-doesnt" class="level3">
+<h3 class="anchored" data-anchor-id="when-claude-uses-sed-and-when-it-doesnt">When Claude uses <code>sed</code> and when it doesn’t</h3>
+<p>For editing your project files, Claude Code prefers its own <code>Edit</code> tool — it shows you a clean diff per change and is harder to misuse. You’ll mostly see Claude reach for <code>sed</code> when:</p>
+<ul>
+<li>The same change applies to many files at once (e.g., rename a variable in 30 <code>.do</code> files).</li>
+<li>The edit is in a file Claude shouldn’t keep “in memory” (a multi-GB log file, for example).</li>
+<li>A user has explicitly asked it to use the command line.</li>
+</ul>
+<p>If you see Claude run <code>sed -i</code> against a file you care about, that change is <strong>not</strong> going through the diff-review path you’re used to. Verify the result with <code>git diff</code> afterwards, or commit before letting Claude run it so <code>git checkout .</code> is your undo button.</p>
+</section>
+<section id="cousins-worth-recognizing" class="level3">
+<h3 class="anchored" data-anchor-id="cousins-worth-recognizing">Cousins worth recognizing</h3>
+<p>You don’t need to learn these, but you’ll see them and should know roughly what they do:</p>
+<ul>
+<li><strong><code>grep PATTERN file</code></strong> — print the lines in <code>file</code> that contain <code>PATTERN</code>. Read-only; safe.</li>
+<li><strong><code>awk '...'</code></strong> — like <code>sed</code> but for column-oriented text (the “what is the average of column 3” tool). Powerful, baroque, rarely needed when you have R or Python around.</li>
+<li><strong><code>tr 'A' 'B'</code></strong> — character-by-character translation. Useful for uppercasing, stripping punctuation, etc.</li>
+</ul>
+<p>For all four (<code>sed</code>, <code>grep</code>, <code>awk</code>, <code>tr</code>), the rule is the same: read what they do; let Claude write them; verify the output.</p>
+</section>
+</section>
 <section id="safety-commands-to-never-type-without-thinking" class="level2">
 <h2 class="anchored" data-anchor-id="safety-commands-to-never-type-without-thinking">Safety: commands to never type without thinking</h2>
 <p>Most terminal commands are harmless. A few are not. Treat the following the way you’d treat a power tool — fine when you mean to use it, dangerous when you don’t:</p>
@@ -523,6 +586,7 @@ Warning
 <p><strong><code>chmod 777 &lt;file&gt;</code></strong> — makes a file readable, writable, and executable by everyone. The internet is full of “fix it with chmod 777” advice that “fixes” the problem by making your machine less safe. Don’t.</p>
 <p><strong><code>curl ... | bash</code></strong> or <strong><code>wget ... | sh</code></strong> — downloads code from the internet and immediately runs it without you reading it. Even from “trusted” sources, this is risky. Download first, read, then run.</p>
 <p><strong><code>git push --force</code></strong> to a shared branch — overwrites your coauthors’ work with no warning. If you’re sharing a repo, never force-push without talking to your coauthors first.</p>
+<p><strong><code>sed -i ...</code></strong> (or any in-place edit) without a git commit first — silently rewrites the file with no diff and no undo. The fix is a one-second habit: <code>git add -A &amp;&amp; git commit -m "before sed"</code> before any <code>sed -i</code> you didn’t write yourself. See the <a href="#a-quick-note-on-sed-text-editing-from-the-command-line"><code>sed</code> section</a> above.</p>
 </div>
 </div>
 <p>The pattern: be suspicious whenever a command is <strong>destructive</strong>, <strong>privileged</strong>, or <strong>fetched from the internet and run sight-unseen</strong>. For everything else, the worst case is usually “type it again”.</p>
@@ -541,19 +605,19 @@ Warning
 <section id="a-five-minute-exercise" class="level2">
 <h2 class="anchored" data-anchor-id="a-five-minute-exercise">A five-minute exercise</h2>
 <p>Open Terminal. Type each of these in order; press Return after each:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> terminal-test</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> terminal-test</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"I survived the terminal"</span> <span class="op">&gt;</span> note.txt</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> note.txt</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> terminal-test</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> terminal-test</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"I survived the terminal"</span> <span class="op">&gt;</span> note.txt</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> note.txt</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You just: checked where you were, moved to your Desktop, listed the contents, made a folder, moved into it, created a text file in it, read the file, went back up one level, and listed the contents again. That is the <strong>entire</strong> terminal vocabulary you need to start using Claude Code.</p>
 <p>When you’re done, you can clean up:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> terminal-test/note.txt</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rmdir</span> terminal-test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> terminal-test/note.txt</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rmdir</span> terminal-test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>(Note: <code>rmdir</code> only removes <em>empty</em> folders, so it’s safer than <code>rm -rf</code>.)</p>
 </section>
 <section id="where-to-go-next" class="level2">
