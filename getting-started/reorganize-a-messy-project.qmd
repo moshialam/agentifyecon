@@ -181,6 +181,15 @@ Now any change Claude makes is undoable with `git checkout .` or
 `git reset --hard HEAD`. This is the foundation of the
 "[robust system with fail-safes](../principles.qmd)" principle.
 
+::: {.callout-tip}
+**Never used Git?** Read [Git, for economists who've never used
+it](git.qmd) before this step. The five-minute version: Git takes
+snapshots of your project; every snapshot is permanent locally; you
+can always go back. Without Git, you have no fail-safe under what
+follows; with Git, every step on this page is one keystroke away from
+undoable.
+:::
+
 ### Step 3 — Open Claude Code and take inventory
 
 Start Claude in the copy:

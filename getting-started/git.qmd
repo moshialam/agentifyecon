@@ -1,0 +1,565 @@
+---
+title: "Git, for economists who've never used it"
+subtitle: "The version-control system that makes everything else on this site safe — explained for colleagues who've spent a career renaming files `paper_FINAL_v3.tex` instead."
+---
+
+If you've never used Git, this page is the most important one for you.
+Not because Git itself is interesting — it isn't — but because **Git is
+the safety net that makes letting Claude Code edit your project tolerable**.
+Without Git, "Claude proposed a 200-line change across six files" is
+terrifying. With Git, it's a question of "do I `git checkout .` or do I
+keep this?" — a yes/no decision that takes one keystroke to undo.
+
+This page assumes you have **never used Git in anger**. If you have a
+GitHub account but only `clone` repositories occasionally, that counts
+as never. Read on.
+
+::: {.callout-tip}
+**You do not need to learn 90% of Git.** Branches you don't merge,
+rebases, cherry-picks, submodules, hooks, the staging-area subtleties,
+the difference between `~`, `^`, and `^^` — none of that is necessary
+for econ research. The 10 commands on this page are enough for
+years of productive use.
+:::
+
+## The mental model in two paragraphs
+
+Git is a **time machine** for a project folder. You decide when to take
+a snapshot — that's a "commit." Every commit is permanent, locally,
+forever. You can always come back to any past state. You don't need to
+push to GitHub for any of this to work; "local Git" is enough to make
+the snapshots and the undo path.
+
+Each commit has a short message ("fix Table 3 standard errors"), a
+date, an author, and a unique ID (a "hash" — a 7-character random
+string like `8dad523`). Commits form a chain: each one is a delta from
+the previous one. When you want to know what changed when, or undo a
+change from yesterday, or remember what your paper looked like three
+weeks ago — `git` has the answer.
+
+That's it. Everything else is plumbing.
+
+## Why this matters for using Claude Code
+
+Three reasons Git is non-negotiable once you start using an agent on
+your projects:
+
+1. **Undoing.** When Claude makes an edit you don't like — and it will
+   sometimes — `git checkout -- file.tex` puts the file back exactly
+   as it was at the last commit. No memory required.
+2. **Reading the diff.** Before accepting any non-trivial Claude edit,
+   you want to see *exactly* what changed. `git diff` shows you.
+3. **Recovering from a bad day.** When you discover a week later that
+   a refactor broke a result, `git log` and `git checkout <past-hash>`
+   take you back to a working state.
+
+Without Git, your fail-safe is "I have a backup somewhere?" — which is
+not a fail-safe. With Git, your fail-safe is one command. That's the
+[robust system](../principles.qmd) the principles page talks about.
+
+## Step 1 — Confirm Git is installed
+
+On a Mac, Git ships pre-installed. In a terminal:
+
+```bash
+git --version
+```
+
+You should see something like `git version 2.54.0`. If not, the
+quickest fix is `brew install git` (if you have [Homebrew](https://brew.sh))
+or downloading the installer from [git-scm.com](https://git-scm.com).
+
+On Windows: install [Git for Windows](https://gitforwindows.org/) — it
+also gives you a usable bash terminal.
+
+## Step 2 — Tell Git who you are (one-time setup)
+
+Git records who made each commit. Configure your name and email once,
+globally:
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@university.edu"
+```
+
+This is metadata, not authentication. It just labels your commits.
+
+While you're here, set the default branch name to `main` (the modern
+convention) and the default editor to something you can use:
+
+```bash
+git config --global init.defaultBranch main
+git config --global core.editor "code --wait"   # if you use VS Code
+# or "nano" if you'd rather not use VS Code as your git editor
+```
+
+You only do this once per machine.
+
+## Step 3 — Initialize a Git repo in a project
+
+`cd` into one of your project folders (one you've already
+[reorganized](reorganize-a-messy-project.qmd) — or any project you'd
+like a safety net under) and:
+
+```bash
+cd ~/Desktop/wage-paper
+git init
+```
+
+That's it. There's now a hidden `.git/` folder in your project that
+holds the entire history. You won't ever look inside it.
+
+Take the first snapshot, capturing the current state of everything:
+
+```bash
+git add -A
+git commit -m "Initial commit"
+```
+
+Congratulations — you have a Git repository. There is now exactly one
+commit. Every change you make from this point on can be reviewed,
+diffed, and undone.
+
+::: {.callout-tip}
+**Run `git init` for every project, including teaching repos and
+side projects.** It costs nothing and gives you the safety net
+everywhere. There is no downside to having a local-only Git history.
+:::
+
+## Step 4 — The daily loop
+
+The cycle you'll repeat constantly:
+
+```bash
+# 1. Work on your project (edit paper.tex, run analysis.do, whatever)
+
+# 2. See what's changed since the last commit
+git status
+
+# 3. See the actual changes line-by-line
+git diff
+
+# 4. Decide what to commit. Either everything:
+git add -A
+
+# Or specific files:
+git add paper.tex code/03-analysis.do
+
+# 5. Take the snapshot
+git commit -m "Update Table 3 with revised standard errors"
+```
+
+That's the whole loop. Status → diff → add → commit. Do this several
+times a day, every day, on every project. Each commit is cheap and
+takes seconds.
+
+::: {.callout-tip}
+**Commit messages are notes to your future self.** Treat them like the
+comment line at the top of a `.do` file. "Update results" is bad;
+"Fix Table 3 SE clustering at the firm level" is good. You'll thank
+yourself when, six months later, you're trying to figure out which
+commit broke the IV first stage.
+:::
+
+## A first session, end to end
+
+Try this in any project:
+
+```bash
+cd ~/Desktop/some-project
+git init
+git add -A
+git commit -m "Initial commit"
+
+# Make a change — edit any file
+echo "% added a comment" >> paper.tex
+
+git status                    # tells you paper.tex is modified
+git diff                      # shows the new line
+git add paper.tex
+git commit -m "Add a comment to paper.tex"
+
+git log --oneline             # see your two commits
+```
+
+The whole thing takes two minutes. You now know enough Git to use it
+every day. Everything below is for the moments when something goes
+wrong — and those moments are when Git pays off most.
+
+## Reading the past
+
+Once you have a few commits, the questions start: "what did this
+file look like last week?" "When did I change this?"
+
+```bash
+git log --oneline             # short list of every commit
+git log paper.tex             # commits that touched paper.tex specifically
+git show 8dad523              # the change made in commit 8dad523
+git diff 8dad523              # diff against the state at commit 8dad523
+git diff main~3 main          # diff between three commits ago and now
+```
+
+The `~3` notation means "three commits before"; `main~3` is "three
+commits before the tip of `main`." That's the only weird syntax you'll
+need for a while.
+
+## Undoing things — the safe operations
+
+The five operations that cover almost every "oh no" moment:
+
+### Discard uncommitted changes to one file
+
+You edited `paper.tex`, hated the result, want to go back to the last
+committed version:
+
+```bash
+git checkout -- paper.tex
+```
+
+Or, the modern equivalent (Git 2.23+):
+
+```bash
+git restore paper.tex
+```
+
+Either way, `paper.tex` is back to its last-committed state. The file
+you had on disk is gone.
+
+::: {.callout-warning}
+**This operation cannot be undone.** The version on disk is overwritten.
+If the unsaved work mattered, you wanted to commit it (even on a "junk"
+branch) before discarding.
+:::
+
+### Discard ALL uncommitted changes
+
+Same idea, broader. Wipes every uncommitted edit in the working tree:
+
+```bash
+git checkout .
+```
+
+Or:
+
+```bash
+git restore .
+```
+
+This is the canonical "Claude made a mess; start over from where I was"
+button.
+
+### Unstage a file (without losing changes)
+
+You ran `git add paper.tex` but want to take it back without losing
+the edits:
+
+```bash
+git reset HEAD paper.tex
+# or:
+git restore --staged paper.tex
+```
+
+The file is no longer staged for the next commit, but your changes are
+still on disk.
+
+### See what a file looked like at a past commit
+
+```bash
+git show 8dad523:paper.tex > paper-from-may.tex
+```
+
+That writes the May version of `paper.tex` to a new file. You compare
+to the current one without disturbing anything.
+
+### Revert a single past commit
+
+You committed `8dad523` last Tuesday and now want to undo just that
+change, without losing anything that came after:
+
+```bash
+git revert 8dad523
+```
+
+Git creates a new commit that's the inverse of `8dad523`. Safe; doesn't
+rewrite history.
+
+## Undoing things — the destructive operations
+
+These rewrite history. They're sometimes the right tool, but they have
+sharp edges. Read carefully.
+
+::: {.callout-warning}
+**`git reset --hard <hash>`** — moves the project back to the state at
+`<hash>` and **discards every commit after it.** Useful when you know
+the last few commits were a mistake; dangerous when you don't.
+
+**`git push --force`** — overwrites the remote branch with your local
+state, even if it diverges. Never do this on a shared branch without
+talking to coauthors first; it deletes their work from the remote.
+
+**`git clean -fd`** — deletes every untracked file in the project.
+Useful when build artifacts are everywhere; dangerous because it can
+delete files Git has never seen and therefore cannot recover.
+:::
+
+::: {.callout-tip}
+**The safety net under the destructive operations: `git reflog`.**
+Every state Git has ever been in is recorded in the "reflog" for 30
+days, even after `reset --hard`. If you destroy work, the first thing
+to try is:
+
+```bash
+git reflog
+```
+
+That lists every state, with hashes. `git checkout <hash>` or
+`git reset --hard <hash>` brings you back. This has saved more careers
+than any other Git command.
+:::
+
+## Branches — for trying things without breaking what works
+
+Branches are alternate timelines. Useful for "let me try this big
+refactor without messing up the current paper draft."
+
+```bash
+git checkout -b experiment        # create and switch to a new branch
+# … work, commit, work, commit …
+git checkout main                 # back to the main timeline
+git merge experiment              # bring the experiment's commits into main
+```
+
+If you decide the experiment was a bad idea:
+
+```bash
+git checkout main
+git branch -D experiment          # throw it away
+```
+
+For solo research projects, you'll often skip branches entirely and
+just commit to `main`. That's fine. Use branches when:
+
+- You want to try a structural change you might roll back.
+- You're collaborating and want to share work-in-progress without
+  disturbing the main line.
+- You're preparing a replication package while still working on
+  follow-ups.
+
+::: {.callout-note}
+**Merging is straightforward when nobody else has changed the same
+lines you did.** When two people edit the same line, you get a "merge
+conflict" — Git asks you to choose between (or combine) the two
+versions. Don't panic; this is a normal part of collaboration. Claude
+Code is good at walking you through resolving conflicts. See
+"[When you're stuck](#when-youre-stuck)" below.
+:::
+
+## Going beyond your machine — GitHub
+
+Everything above works with **zero internet connection**. Git is
+purely local. To back up your work, share with coauthors, or publish
+a replication package, you push to a "remote" — usually GitHub
+([github.com](https://github.com)) but GitLab, Bitbucket, and
+self-hosted alternatives work the same way.
+
+### One-time setup per project
+
+Create an empty repository on GitHub. It will give you a URL like
+`https://github.com/yourname/wage-paper.git`. In your local project:
+
+```bash
+git remote add origin https://github.com/yourname/wage-paper.git
+git push -u origin main
+```
+
+The `-u origin main` part is shorthand for "remember that my local
+`main` corresponds to `main` on `origin`" — you only need it the first
+time.
+
+### The everyday loop, with a remote
+
+When you're working from one machine on a solo project, you don't need
+to push every time. When you do push:
+
+```bash
+git push                    # send your commits to GitHub
+git pull                    # fetch coauthors' commits and merge in
+```
+
+That's the whole remote workflow. The vast majority of "Git frustration"
+in econ comes from forgetting to `git pull` before starting work — when
+you do, your commits and your coauthor's commits diverge, and you have
+to do a merge.
+
+::: {.callout-warning}
+**Do not push your projects to a public GitHub repo without thinking
+about what's in them.** Anything in `data/raw/` may include
+restricted-access or IRB-protected data. Anything in your code may
+include hardcoded paths revealing folder structures you'd rather not
+share. Default to **private** repos and only flip to public deliberately
+when you're ready to publish a replication package. See
+[Confidential data](../pitfalls/confidential-data.qmd).
+:::
+
+## Coauthor workflow
+
+Two coauthors editing the same project, each with their own laptop and
+a shared GitHub repo:
+
+1. **Always `git pull` before you start working.** This brings their
+   commits into your local copy.
+2. **Commit and push when you stop for the day.** Tiny commits with
+   real messages are infinitely better than one big "Update" commit at
+   the end of the week.
+3. **If a `git pull` produces a merge conflict**, Git will tell you
+   exactly which files conflict. Open them; you'll see markers like:
+
+    ```
+    <<<<<<< HEAD
+    your version
+    =======
+    your coauthor's version
+    >>>>>>> main
+    ```
+
+    Pick which one survives (or combine them), delete the markers,
+    `git add`, `git commit`. Done.
+4. **Communicate before doing anything destructive on a shared
+   branch.** No `git push --force`, no `git reset --hard` of pushed
+   commits, without a Slack/email/text first.
+
+For most coauthorships, that's it. You don't need branches per
+collaborator unless the project gets complex.
+
+## What NOT to commit
+
+A `.gitignore` file at the project root tells Git to skip these. The
+[reorganize page's Step 12](reorganize-a-messy-project.qmd#step-12-add-gitignore)
+has a full template; the highlights:
+
+- **Large data files.** GitHub's free tier limits files to 100 MB and
+  repos to a soft 1 GB. For large datasets, use [Git LFS](https://git-lfs.github.com/)
+  or store the data outside the repo and document where it lives in
+  the README.
+- **Restricted-access or confidential data.** Never commit it, full
+  stop. See [Confidential data](../pitfalls/confidential-data.qmd).
+- **Secrets / credentials.** API keys, database passwords, anything
+  ending in `.pem` or `.key`. If you ever commit one by accident,
+  treat it as compromised and rotate it.
+- **Derived outputs.** `data/derived/`, `output/tables/*.tex`,
+  `paper/paper.pdf`. These are reproducible from the source — no
+  reason to track them.
+- **Build artifacts.** `.aux`, `.log`, `.synctex.gz`, `*.smcl`,
+  `__pycache__/`, `.Rhistory`, etc.
+
+## The friendly path: VS Code's Source Control pane
+
+If a colleague is going to use Git through a graphical interface, the
+best one is **already inside VS Code**. Open the Source Control pane
+(`Ctrl+Shift+G` or click the branching-tree icon in the left sidebar).
+You'll see:
+
+- A list of every changed file, grouped by "Staged" and "Changes."
+- Click any file to see the diff in the editor — same diff `git diff`
+  prints, but pretty.
+- The `+` next to a file stages it. The `-` un-stages it.
+- The text box at the top is the commit message; the checkmark icon
+  commits.
+- The `…` menu has push, pull, branch operations, etc.
+
+For colleagues who'd rather not touch the CLI for git, this is the
+recommended path. The same operations happen under the hood; you just
+click instead of typing. See the [VS Code page](vscode.qmd) for the
+broader VS Code setup.
+
+::: {.callout-note}
+**Other graphical Git clients** worth knowing about: GitHub Desktop
+(simplest; free; opinionated), GitKraken (powerful; free for academic
+use), Sourcetree (free; aging). All are fine. If you're already in
+VS Code, you don't need any of them.
+:::
+
+## What Claude Code does with Git on your behalf
+
+Claude Code knows Git. When working in a project with `git init`-d
+already, it will:
+
+- Run `git status` and `git diff` on its own to see what's changed.
+- Stage and commit files when you ask.
+- Create branches if you ask.
+- Read history with `git log` to understand the project's evolution.
+
+It will **not**:
+
+- Run `git push` without you asking explicitly.
+- Run any destructive operation (`reset --hard`, `clean -fd`,
+  `push --force`) without prompting first.
+- Commit changes silently. By default, you see what it staged before
+  the commit happens.
+
+A useful default is to **let Claude commit on your behalf for routine
+work** ("commit the bibliography fix you just made"), but
+**type `git push` yourself** the first time it goes to a shared remote.
+Pushes are visible to other people; that one's worth a conscious
+keypress.
+
+## When you're stuck
+
+The "I think I broke Git" recovery path:
+
+1. **Stop. Don't run more commands.** The single most common way to
+   make a Git problem worse is to keep running `git` commands hoping
+   one of them fixes it.
+2. **Run `git status`** and read what it says. Git's error messages,
+   for all their reputation, are usually accurate and tell you the
+   next command to run.
+3. **`git reflog` is your "undo undo."** Every state Git has been in is
+   recorded for 30 days. If you destroyed something, it's almost
+   certainly in there. Find the hash you want; `git checkout <hash>`
+   to inspect, `git reset --hard <hash>` to fully restore.
+4. **Ask Claude.** Open Claude Code in the project, paste the output
+   of `git status` and `git reflog`, and say what you were trying to
+   do when things went wrong. Claude is genuinely good at Git
+   diagnosis — it's seen every variation of "I made a mess" before.
+
+## A word on `git push --force`
+
+You will eventually hear someone tell you to `git push --force` to
+"fix" a problem. It will solve their immediate symptom and may delete
+your coauthors' commits from the remote. **Never run it on a shared
+branch without explicit talked-through agreement.** If you must rewrite
+shared history, use `git push --force-with-lease` — it refuses to
+overwrite work you didn't know about.
+
+## What you skipped — and don't need to come back to (yet)
+
+If you're worried about gaps in your Git knowledge, here's what you
+deliberately don't need:
+
+- **Rebase** (`git rebase`) — rewrites history. Useful when you become
+  fluent; harmful as a beginner. The [Pro Git book](https://git-scm.com/book)
+  has it when you're ready.
+- **Cherry-pick** (`git cherry-pick`) — copying a single commit from
+  one branch to another. You'll learn it the day you actually need it.
+- **Stash** (`git stash`) — temporarily setting aside uncommitted
+  changes. Convenient but skippable; you can always create a quick
+  "WIP" commit instead.
+- **Submodules** — nested repos. Almost never the right tool for econ
+  research. If a coauthor proposes them, push back.
+- **Hooks** — scripts that run on commits. You don't need them.
+
+These are real tools. They're just not on your critical path.
+
+## Where to go next
+
+- [Reorganize a messy project](reorganize-a-messy-project.qmd) — Step 2
+  of that walkthrough is `git init` in the working copy. Now you know
+  what that means.
+- [Verifying output](../workflow/verifying.qmd) — many of the
+  verification habits ("commit before any big change") become trivial
+  once Git is in your fingers.
+- [Principles](../principles.qmd) — Git is the second principle ("a
+  robust system with fail-safes") in concrete form.
+- [Replication package audit](../examples/replication-package.qmd) —
+  the worked example of building a Git-tracked, public-ready
+  replication package end to end.

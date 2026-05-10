@@ -87,7 +87,9 @@ The fail-safes I rely on are not exotic:
 - **Git, even just locally.** I commit before any non-trivial change. If
   Claude makes an edit I don't like, `git checkout .` undoes everything
   in the working directory. You don't need to push to GitHub for this to
-  save you.
+  save you. (If you've never used Git, the
+  [Git for the never-used-it page](getting-started/git.qmd) is the
+  shortest path from zero to using it as a daily safety net.)
 - **Plan mode.** For any change touching multiple files, I hit
   `Shift+Tab` until the prompt says "plan mode". Claude reads, thinks,
   and writes a plan for my approval. I read the plan; if it misunderstands,

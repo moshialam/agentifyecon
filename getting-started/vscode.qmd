@@ -199,6 +199,10 @@ Pick whichever feels less like work that day.
 
 ## Where to go next
 
+- [Git, for the never-used-it](git.qmd) — VS Code's Source Control pane
+  is the friendly graphical front-end to Git, but it helps to know
+  what's going on under the hood. Half an hour to learn; it's the
+  fail-safe under everything.
 - [Your first project](first-project.qmd) — what to actually do in your
   first hour, now that the editor isn't in the way.
 - [Plan mode, todos, slash commands](plan-mode-and-todo.qmd) — the

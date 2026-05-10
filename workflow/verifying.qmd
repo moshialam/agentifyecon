@@ -47,7 +47,9 @@ Every time, even when you're tired.
 ## Outline — habits that make verification cheap
 
 - Use git. Even if you don't push to GitHub, commit locally before any
-  big change so `git diff` is meaningful.
+  big change so `git diff` is meaningful. (Never used Git? See
+  [Git, for economists who've never used it](../getting-started/git.qmd)
+  — half an hour to learn, decades of payoff.)
 - Use plan mode for multi-file changes. Reading a plan first and then
   reviewing the diffs that match it is much easier than parsing surprise
   edits.

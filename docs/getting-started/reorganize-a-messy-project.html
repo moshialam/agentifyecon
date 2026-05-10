@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../getting-started/first-project.html" rel="next">
-<link href="../getting-started/vscode.html" rel="prev">
+<link href="../getting-started/git.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -167,6 +167,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../getting-started/vscode.html">
  <span class="dropdown-text">Using CC inside VS Code</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../getting-started/git.html">
+ <span class="dropdown-text">Git, for the never-used-it</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/reorganize-a-messy-project.html">
@@ -316,6 +320,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../getting-started/vscode.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Using Claude Code inside VS Code</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../getting-started/git.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Git, for economists who’ve never used it</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -521,6 +531,19 @@ Warning
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Baseline before reorganization"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now any change Claude makes is undoable with <code>git checkout .</code> or <code>git reset --hard HEAD</code>. This is the foundation of the “<a href="../principles.html">robust system with fail-safes</a>” principle.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Never used Git?</strong> Read <a href="../getting-started/git.html">Git, for economists who’ve never used it</a> before this step. The five-minute version: Git takes snapshots of your project; every snapshot is permanent locally; you can always go back. Without Git, you have no fail-safe under what follows; with Git, every step on this page is one keystroke away from undoable.</p>
+</div>
+</div>
 </section>
 <section id="step-3-open-claude-code-and-take-inventory" class="level3">
 <h3 class="anchored" data-anchor-id="step-3-open-claude-code-and-take-inventory">Step 3 — Open Claude Code and take inventory</h3>
@@ -1292,8 +1315,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../getting-started/vscode.html" class="pagination-link" aria-label="Using Claude Code inside VS Code">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Using Claude Code inside VS Code</span>
+      <a href="../getting-started/git.html" class="pagination-link" aria-label="Git, for economists who've never used it">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Git, for economists who’ve never used it</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

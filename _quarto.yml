@@ -29,6 +29,8 @@ website:
             text: "Install Claude Code"
           - href: getting-started/vscode.qmd
             text: "Using CC inside VS Code"
+          - href: getting-started/git.qmd
+            text: "Git, for the never-used-it"
           - href: getting-started/reorganize-a-messy-project.qmd
             text: "Reorganize a messy project first"
           - href: getting-started/first-project.qmd
@@ -94,6 +96,7 @@ website:
             - getting-started/terminal-and-bash.qmd
             - getting-started/install.qmd
             - getting-started/vscode.qmd
+            - getting-started/git.qmd
             - getting-started/reorganize-a-messy-project.qmd
             - getting-started/first-project.qmd
             - getting-started/plan-mode-and-todo.qmd

@@ -133,6 +133,10 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Using CC inside VS Code</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="./getting-started/git.html">
+ <span class="dropdown-text">Git, for the never-used-it</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="./getting-started/reorganize-a-messy-project.html">
  <span class="dropdown-text">Reorganize a messy project first</span></a>
   </li>  
@@ -339,7 +343,7 @@ Note
 <p>This was the principle that took me longest to internalize because it requires admitting up front that the model will sometimes do the wrong thing — and designing your environment so a wrong action is recoverable rather than catastrophic.</p>
 <p>The fail-safes I rely on are not exotic:</p>
 <ul>
-<li><strong>Git, even just locally.</strong> I commit before any non-trivial change. If Claude makes an edit I don’t like, <code>git checkout .</code> undoes everything in the working directory. You don’t need to push to GitHub for this to save you.</li>
+<li><strong>Git, even just locally.</strong> I commit before any non-trivial change. If Claude makes an edit I don’t like, <code>git checkout .</code> undoes everything in the working directory. You don’t need to push to GitHub for this to save you. (If you’ve never used Git, the <a href="./getting-started/git.html">Git for the never-used-it page</a> is the shortest path from zero to using it as a daily safety net.)</li>
 <li><strong>Plan mode.</strong> For any change touching multiple files, I hit <code>Shift+Tab</code> until the prompt says “plan mode”. Claude reads, thinks, and writes a plan for my approval. I read the plan; if it misunderstands, I correct before any file is touched. See <a href="./getting-started/plan-mode-and-todo.html">Plan mode, todos, slash commands</a>.</li>
 <li><strong>Don’t blanket-allow destructive operations.</strong> Claude Code prompts before things like deleting files, force-pushing to git, or running <code>rm -rf</code>. Don’t override those prompts. The two-second pause is the difference between a recoverable mistake and a Saturday spent reconstructing your project from memory.</li>
 <li><strong>A working “master script” in every project.</strong> A single <code>master.do</code>, <code>master.R</code>, or <code>make all</code> that rebuilds your results from scratch. After any meaningful change, ask Claude to re-run it and confirm outputs match. This is your reproducibility check <em>and</em> your fail-safe.</li>
