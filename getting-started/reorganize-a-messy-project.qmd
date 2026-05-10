@@ -1,0 +1,630 @@
+---
+title: "Reorganizing a messy project before letting Claude Code work on it"
+subtitle: "Most real research projects are not in shape for an agent to work on yet. This page walks through the one-time cleanup that makes everything afterwards much easier."
+---
+
+If you're like most economists, your active research folders look something
+like this:
+
+```
+~/Dropbox/wage-paper/
+├── paper.tex
+├── paper_v2.tex
+├── paper_FINAL.tex
+├── paper_FINAL_resubmit.tex
+├── clean.do
+├── clean_OLD.do
+├── analysis_v3_rebuttal.do
+├── estimate.jl
+├── estimate_test.jl
+├── make_figures.R
+├── make_figures_v2.R
+├── data.dta
+├── data_clean.dta
+├── data_v3_no_outliers.dta
+├── results.csv
+├── results_old.csv
+├── tables/
+├── tables_old/
+├── tables_referee2/
+├── notes.txt
+└── (50 more files)
+```
+
+There is no README. The "live" version of `paper.tex` is in your head, not
+on disk. The Stata cleaning scripts call into Julia for estimation and R
+for figures, but nothing documents the order. Three of the `.do` files
+run; one runs but produces the wrong table; the other two break. The
+Julia files in `estimate_test.jl` are an old structural model; the live
+one is in `estimate.jl`. Two of the `.dta` files are inputs to something;
+the rest are dead. Half the scripts have hardcoded paths to your
+coauthor's Dropbox folder.
+
+::: {.callout-note}
+**The example project on this page is intentionally multi-language**
+(Stata for cleaning, Julia for estimation, R for figures, LaTeX for the
+paper) because that's how a lot of empirical and structural work
+actually looks. Every prompt and snippet on this page works the same
+way whether your project is one language or four — just adjust the
+file extensions and the runner commands. If you're a one-language
+shop, the multi-language bits will read as harmless extras.
+:::
+
+This is fine for a human who wrote it. It is bad for Claude Code, which
+will read everything, get confused about which version is canonical, and
+either ask you a lot of questions or — worse — confidently edit the
+wrong file.
+
+**This page walks you through a one-time reorganization** that gets the
+project into shape for agentic work. It is itself a perfect first project
+for Claude Code, because the agent can do most of the work and the worst
+case is recoverable.
+
+::: {.callout-warning}
+**The single most important rule on this page: never reorganize the live
+project.** Always work on a copy. The first step below explains how.
+:::
+
+## What "ready for Claude Code" actually means
+
+You are aiming for a project where:
+
+- A stranger (or a future-you, or an RA, or Claude Code) can open the
+  folder and figure out what's going on within five minutes.
+- There is a single **master script** that runs every step from raw data
+  to final tables and the compiled paper.
+- **Live code** is clearly distinguished from old/exploratory code. The
+  archive is preserved, not deleted.
+- Every dependency between files is explicit (no hidden assumptions about
+  what was last run by hand in Stata's window).
+- A `CLAUDE.md` file at the root tells Claude what's specific to your
+  project: language version, conventions, what's off-limits, where the
+  data is, what the master script is.
+- A `README.md` tells a human reader the same things.
+- `.gitignore` keeps derived files and OS junk out of git.
+- Git is initialized so any change is recoverable.
+
+A reasonable target structure (adjust to taste):
+
+```
+project-name/
+├── README.md
+├── CLAUDE.md
+├── .gitignore
+├── make-all.sh           (top-level orchestrator; calls each language in order)
+├── data/
+│   ├── raw/              (read-only; never modified by code)
+│   └── derived/          (built from raw/ by code/)
+├── code/
+│   ├── 01-clean.do          (Stata: prep raw data)
+│   ├── 02-estimate.jl       (Julia: structural estimation)
+│   ├── 03-counterfactuals.jl (Julia: simulate)
+│   └── 04-figures.R         (R: ggplot tables and figures)
+├── output/
+│   ├── tables/
+│   └── figures/
+├── paper/
+│   ├── paper.tex
+│   ├── references.bib
+│   └── (figures, tables, etc.)
+├── docs/                 (data dictionaries, notes, source docs)
+└── archive/              (everything you didn't delete but isn't live)
+```
+
+The single `code/` folder mixes Stata, Julia, and R because that's how
+the work flows — the numeric prefixes (`01-`, `02-`, …) make the order
+obvious regardless of language. Some people prefer `code/stata/`,
+`code/julia/`, `code/r/` subfolders instead; either works as long as
+the orchestrator at the top knows the order.
+
+This is a default, not a religion. AEA, TIER, BITSS, and the Reardon
+protocol all propose variations — pick one and stick to it.
+
+## The 13-step walkthrough
+
+Each step has the prompt you'd give Claude Code (in the integrated
+terminal of [VS Code](vscode.qmd) or in a bare terminal — your choice).
+Read every diff before approving.
+
+### Step 1 — Copy the project to a working directory
+
+Do this in the terminal yourself, not through Claude. It is one command
+and it is the safety net for everything that follows.
+
+```bash
+cp -R ~/Dropbox/wage-paper ~/Desktop/wage-paper-cleanup
+```
+
+Or, on a Mac, use Finder: select the folder, `Cmd-D` to duplicate,
+move the duplicate somewhere outside Dropbox.
+
+::: {.callout-warning}
+**Move the copy outside any cloud-synced folder** (Dropbox, OneDrive,
+iCloud Drive). Reorganization will rename and move many files; you don't
+want every intermediate state syncing across your devices and your
+coauthors' machines. Once you're done and verified, you can move the
+finished version back.
+
+If your project contains **IRB-protected, restricted-access, or
+otherwise confidential data**, stop and read [Confidential
+data](../pitfalls/confidential-data.qmd) before doing anything else.
+At minimum, make sure the data subfolder is not pulled into the working
+copy unless you've confirmed it's safe to send to a cloud LLM provider
+in subsequent steps.
+:::
+
+Verify the copy:
+
+```bash
+du -sh ~/Dropbox/wage-paper ~/Desktop/wage-paper-cleanup
+```
+
+Sizes should match within a few KB. Now `cd` into the copy and from
+this point on, work only there.
+
+```bash
+cd ~/Desktop/wage-paper-cleanup
+```
+
+### Step 2 — Initialize git in the copy
+
+Even if you never push to GitHub, local git is the recoverable history
+that makes the rest of this walkthrough safe. From inside the copy:
+
+```bash
+git init -b main
+git add -A
+git commit -m "Baseline before reorganization"
+```
+
+Now any change Claude makes is undoable with `git checkout .` or
+`git reset --hard HEAD`. This is the foundation of the
+"[robust system with fail-safes](../principles.qmd)" principle.
+
+### Step 3 — Open Claude Code and take inventory
+
+Start Claude in the copy:
+
+```bash
+claude
+```
+
+First prompt — purely read-only. You're asking for a map, not an action:
+
+> *"Read the entire project. Don't modify anything. Produce a Markdown
+> inventory with: (a) every top-level file and directory, (b) for each
+> code file, a one-line description of what it appears to do, (c) for
+> each data file, its size and a guess at whether it looks like raw
+> input or derived output, (d) for each .tex file, whether it appears
+> to be a paper draft, an old version, an appendix, slides, or
+> something else. End with a section called 'Open questions' — things
+> you'd need me to confirm before reorganizing."*
+
+You will get back a 2-4 page document. Read it carefully. This is where
+you discover that `analysis_v3_rebuttal.do` is actually the live one and
+`analysis.do` is from two years ago — exactly the kind of thing a clean
+reorganization needs to get right.
+
+### Step 4 — Identify the live code path
+
+Now narrow the inventory to what currently matters:
+
+> *"Based on the inventory, identify the **live code path** — the
+> minimal set of scripts and data files needed to reproduce the current
+> version of `paper.tex` (or whichever .tex file I confirm is live).
+> Trace dependencies: which scripts read which data files, which
+> scripts produce which intermediate files, which scripts produce the
+> tables and figures cited in the paper. Output as a Markdown list.
+> Don't move or delete anything yet."*
+
+If Claude is unsure which `.tex` is the live paper, it will ask. Tell it.
+
+What you get is a dependency map. Everything *not* on it is a candidate
+for archiving in step 6.
+
+::: {.callout-warning}
+**This is the step where Claude can hallucinate dependencies.** Spot-check
+a few of its claims. Open a script Claude says produces Table 3; confirm
+it does. Open a `.dta` Claude says is unused; grep for its name across
+the project to make sure nothing references it. The cost of a
+hallucinated "this file is dead" is real — you might archive a file that
+something obscure actually needs.
+:::
+
+### Step 5 — Confirm and adjust the live path manually
+
+This step is for you, not Claude. Read the dependency map. Add anything
+Claude missed. Remove anything you know is actually dead. The output of
+this step is your confirmed list of "what stays in the live path."
+
+A useful question to ask yourself for ambiguous files: **"if this file
+went missing tomorrow, would I notice?"** If no, archive. If yes, live.
+
+### Step 6 — Move exploration to `archive/`, don't delete
+
+Now the first real edit. Tell Claude:
+
+> *"Create an `archive/` directory. Move every file and folder NOT on
+> the confirmed live-path list into `archive/`, preserving relative
+> structure inside `archive/` so I can find things later. Use `git mv`
+> so the moves are tracked. Don't delete anything. Show me the plan
+> before executing."*
+
+Use [plan mode](plan-mode-and-todo.qmd) for this — `Shift+Tab` until you
+see "plan mode" before you send the prompt. You want to read the full
+move list before any file is touched.
+
+When the moves are done, commit:
+
+```bash
+git add -A
+git commit -m "Archive non-live files"
+```
+
+::: {.callout-tip}
+**Why archive instead of delete?** You will be wrong about what's dead
+roughly 10% of the time. A coauthor will ask "what happened to the
+robustness check that used `wage_no_outliers.dta`?" and the answer
+"in `archive/data/wage_no_outliers.dta`" is much better than "I deleted
+it last Tuesday."
+:::
+
+### Step 7 — Standardize the folder structure
+
+Propose first, move second:
+
+> *"I want to reorganize the live files into this structure:
+> [paste the target structure from earlier on this page, edited for
+> your project]. Propose how to map every current live file into the
+> target structure. Don't move anything yet. Flag any files where you're
+> not sure where they belong, and any files in the target structure
+> that don't exist yet (e.g., I have no `master.do` — that's fine,
+> we'll create it later)."*
+
+Read the proposed mapping. Adjust anything that's wrong. Then:
+
+> *"Execute the mapping. Use `git mv`. Do not modify file contents —
+> only move and rename. After every move, update path references in the
+> remaining live files so the project still resolves. Cover each
+> language's idioms:
+> Stata (`include`, `do`, `use ... , clear`, `save`, `import delimited`),
+> R (`source()`, `here::here()`, `readr::read_*()`, `setwd()`,
+> `ggsave()`),
+> Julia (`include()`, `using`, `CSV.read`, `joinpath()`, `Pkg.activate`),
+> Python (`import`, `from ... import`, `pathlib.Path`, `pd.read_*`,
+> `open()`),
+> LaTeX (`\input{}`, `\includegraphics{}`, `\addbibresource{}`),
+> Matlab (`addpath`, `cd`, `load`, `readtable`).
+> Show me each path-fix diff before applying."*
+
+Plan mode again. Approve diffs one at a time. Commit when done:
+
+```bash
+git commit -am "Reorganize live files into standard structure"
+```
+
+### Step 8 — Find and fix hardcoded paths
+
+> *"Search the entire project (excluding `archive/`) for hardcoded
+> absolute paths — anything starting with `/Users/`, `/home/`,
+> `C:\\`, `~/Dropbox`, or that references a specific user's folder.
+> List every occurrence with file and line number. Don't change
+> anything yet."*
+
+You'll get a list. For each hardcoded path, decide:
+
+- **Convert to relative.** Best default. `/Users/me/Dropbox/wage-paper/data/raw.dta`
+  becomes `data/raw/raw.dta`.
+- **Move to a config block.** If the path points outside the project
+  (a shared dataset on a research drive, say), put it in a small
+  `config.do` (or `config.R`, etc.) at the project root and `include`
+  it from each script. One place to change paths when machines change.
+- **Document but leave alone.** If the path is to a restricted-access
+  data folder that genuinely lives elsewhere, document the requirement
+  in the README and leave the path. Hardcoding is a feature here.
+
+Then ask Claude to apply the conversion you decided:
+
+> *"Convert paths in [list of files] from absolute to relative,
+> assuming the project root is the working directory. Show diffs."*
+
+Commit when done.
+
+### Step 9 — Draft `CLAUDE.md`
+
+`CLAUDE.md` is read by Claude at the start of every session in this
+project. See [Memory, CLAUDE.md, skills](../workflow/memory-and-claude-md.qmd)
+for the full picture; for now:
+
+> *"Write a `CLAUDE.md` at the project root with:
+> (1) one-paragraph description of what the project is and its current
+> status,
+> (2) the **full stack** — for every language used in `code/`, the
+> version (Stata 18, R 4.4, Julia 1.11, Python 3.12, …) and the key
+> packages, plus the LaTeX distribution and any Stata/R packages that
+> aren't on the default path,
+> (3) folder conventions in this project (`data/raw/` is read-only;
+> `output/` is built; etc.),
+> (4) the orchestrator (`make-all.sh` or `Makefile`) and how to run it,
+> including the order in which the languages are invoked and any
+> language-specific gotchas (e.g., 'the Stata binary on this machine is
+> `stata-mp`'),
+> (5) what to never do (don't modify `data/raw/`, don't commit
+> `data/derived/`, don't change `paper/paper.tex` without asking, etc.),
+> (6) anything else a new collaborator would need.
+> Read what's already in the project to fill in real values; ask me
+> where you're unsure."*
+
+Read what Claude produces. Edit it freely — this is *your* document.
+Commit.
+
+### Step 10 — Draft `README.md`
+
+`README.md` is the human-facing version of `CLAUDE.md`, plus more
+context. Same principle: have Claude draft, you edit.
+
+> *"Write a `README.md` at the project root following the AEA data and
+> code availability standards: (1) project description and citation,
+> (2) data availability and provenance — for each dataset in `data/raw/`,
+> where it came from, whether it's public or restricted, how to obtain
+> it if restricted, (3) computational requirements — software, packages,
+> expected runtime, (4) instructions to reproduce — exactly what
+> command(s) someone runs from a clean clone, (5) a mapping from each
+> table and figure in `paper/paper.tex` to the script and output file
+> that produces it, (6) license. Use what's already in CLAUDE.md and
+> the code; ask me where you're unsure."*
+
+::: {.callout-warning}
+**Read this draft critically.** Claude can write a plausible-looking
+README that overstates how complete the project is. The data-availability
+section in particular: if your raw data came from a confidential source,
+say so explicitly and don't let Claude paper over it.
+:::
+
+Edit, commit.
+
+### Step 11 — Build a master script (the orchestrator)
+
+If your project mixes languages — Stata cleaning, then Julia estimation,
+then R figures, then a LaTeX compile — no single language's script can
+sit at the top. You want a **language-agnostic orchestrator** at the
+project root that calls each runner in order. A small shell script is
+the simplest answer; a `Makefile` is the upgrade path.
+
+The prompt:
+
+> *"Write a `make-all.sh` shell script at the project root that runs
+> the full pipeline in order: invoke each language's runner for the
+> scripts in `code/` (Stata for `.do`, Julia for `.jl`, R for `.R`,
+> Python for `.py` if any), then compile `paper/paper.tex`. Use
+> `set -euo pipefail` so the script halts on the first error. `cd` to
+> the project root at the top so it works from anywhere. Print a
+> one-line progress message before each step and a one-line success
+> message at the end. Use relative paths."*
+
+You'll get something like:
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")"   # always run from project root
+
+echo "[1/4] Cleaning data (Stata)..."
+stata-mp -b do code/01-clean.do
+
+echo "[2/4] Estimating model (Julia)..."
+julia --project code/02-estimate.jl
+
+echo "[3/4] Producing figures and tables (R)..."
+Rscript code/04-figures.R
+
+echo "[4/4] Compiling paper..."
+( cd paper && latexmk -pdf paper.tex )
+
+echo "Done. Outputs in output/, paper in paper/paper.pdf."
+```
+
+Make it executable once: `chmod +x make-all.sh`. From then on, one
+command rebuilds the whole project: `./make-all.sh`.
+
+::: {.callout-note}
+**Single-language project?** If everything is Stata, a `master.do` at
+the root that `do`s each script is fine. If everything is R,
+`master.R` calling `source()` on each script works. The orchestrator
+matters most when you cross language boundaries; below that, use what
+your language gives you.
+:::
+
+::: {.callout-tip}
+**A `Makefile` is the upgrade.** Once your pipeline is stable and slow,
+a Makefile pays for itself: it re-runs only what's downstream of the
+file you changed. For most econ projects you don't need it on day
+one — but if a single rebuild starts taking 20+ minutes, that's the
+signal to convert your `make-all.sh` into a Makefile with proper
+`target: prerequisite` rules.
+:::
+
+::: {.callout-warning}
+**Stata's batch flag varies by platform and version.** On Mac/Linux the
+typical invocation is `stata-mp -b do script.do`; on Windows it's
+`StataMP.exe /e do script.do`. If your group uses Stata-SE or
+Stata-IC, the binary names differ (`stata-se`, `stata`). Tell Claude
+which binary you have in `CLAUDE.md` so it gets it right the first time.
+:::
+
+### Step 12 — Add `.gitignore`
+
+> *"Write a `.gitignore` for this project. Exclude:
+> (a) **LaTeX build artifacts**: `*.aux`, `*.log`, `*.out`, `*.toc`,
+> `*.blg`, `*.bbl`, `*.synctex.gz`, `*.fls`, `*.fdb_latexmk`;
+> (b) **Stata**: `*.smcl` log files (large; usually you only want the
+> `.log` ASCII version); also Stata's per-user temp files;
+> (c) **R**: `.Rhistory`, `.Rproj.user/`, `.Rdata`, `.RData`;
+> (d) **Julia**: `*.cov`. Decide whether to commit `Manifest.toml`:
+> commit it if you want bit-exact reproducibility (recommended for
+> replication packages); leave it ignored if you want package-version
+> flexibility while you're still developing;
+> (e) **Python**: `__pycache__/`, `*.pyc`, `.ipynb_checkpoints/`,
+> `.venv/`;
+> (f) **Matlab**: `*.asv` (autosaves), `*.mexmaci64`, `*.mexmaca64`,
+> `*.mexa64`, `*.mexw64` (compiled MEX files);
+> (g) **OS junk**: `.DS_Store` (macOS), `Thumbs.db` (Windows);
+> (h) **Derived data**: `data/derived/**`;
+> (i) **Editor cruft**: `.vscode/` (unless you want to commit shared
+> settings), `.idea/`.
+> Show me the file before creating it."*
+
+After it's in place, clean up anything that's already tracked but should
+be ignored:
+
+```bash
+git rm -r --cached data/derived
+git commit -m "Stop tracking derived data"
+```
+
+::: {.callout-tip}
+**One subtle Julia decision.** `Project.toml` should always be committed
+— it lists which packages your code uses. `Manifest.toml` is the
+exact-version lockfile. For an active research project, ignoring
+`Manifest.toml` is fine (and keeps merge conflicts down with coauthors).
+For a replication package, commit it — readers should get the exact
+package versions you used.
+:::
+
+### Step 13 — Run end-to-end and verify
+
+The whole point of the orchestrator and the clean structure is that you
+can do this:
+
+```bash
+# In the terminal, from the project root:
+./make-all.sh        # or `make all` if you went the Makefile route
+```
+
+Or have Claude do it:
+
+> *"Run `./make-all.sh` from a fresh state. If any step errors, stop
+> and tell me what happened — don't try to auto-fix. After it succeeds,
+> list every file produced under `output/` and `paper/`, confirm the
+> paper PDF compiled without unresolved references or missing-citation
+> warnings, and report the total wall-clock runtime."*
+
+If the master script doesn't reproduce something that's in your paper,
+that's a real finding — either the live code path is wrong (re-do
+step 4) or there's an undocumented manual step somewhere (document it
+in the README).
+
+When everything runs end-to-end, commit:
+
+```bash
+git commit -am "Reorganization complete; master script reproduces all results"
+```
+
+### Step 14 — Compare against the original
+
+You worked in a copy. Before throwing away the original, do one final
+diff:
+
+> *"List every table and figure file in the original project at
+> `~/Dropbox/wage-paper/` (read-only — don't modify anything there).
+> For each, find the corresponding file in this reorganized project
+> and compare. Flag any tables or figures that exist in the original
+> but not here (might be missing live code), or that exist here but
+> have different content (might be a numerical regression)."*
+
+Investigate any flags. When the diff is clean, the reorganized version
+is your new live project. Move it back to its permanent home (out of
+`~/Desktop/`), update any external references, and you are done.
+
+## Things to be careful about
+
+::: {.callout-warning}
+**Don't reorganize on top of the original.** Always work in a copy.
+This is so important it's worth repeating in a callout.
+:::
+
+::: {.callout-warning}
+**Don't delete anything.** Archive everything that's not live. The cost
+of an over-aggressive archive is "I had to fish a file out of
+`archive/`"; the cost of an over-aggressive delete is rebuilding work
+from memory.
+:::
+
+::: {.callout-warning}
+**Watch for files that look unused but aren't.** A `.dta` file with no
+matching `use` command in any `.do` file might still be loaded by name
+inside an `include`d script, or referenced from a Matlab routine, or
+read by a coauthor's pre-existing pipeline. Spot-check before archiving.
+:::
+
+::: {.callout-warning}
+**If you have coauthors, talk to them before reorganizing a shared
+project.** They have a mental model of where things are. A unilateral
+reorganization makes you the only person who can find anything for the
+next month. Better: do the reorganization on a branch, send them the
+new structure, get buy-in, then merge.
+:::
+
+::: {.callout-warning}
+**Be thoughtful about file timestamps.** `git mv` preserves history but
+the filesystem `mtime` resets. If you depend on file timestamps for
+anything (a build system, a "newest version wins" check), document it
+or you'll be confused later.
+:::
+
+::: {.callout-warning}
+**Confidential data deserves its own decision.** If `data/raw/` contains
+restricted-access data, ask yourself: was Claude reading those files
+during the inventory step? Are you OK with that? If not, you should
+have moved/symlinked the data folder *before* starting Claude. See
+[Confidential data](../pitfalls/confidential-data.qmd) for the decision
+tree.
+:::
+
+## When *not* to reorganize
+
+- **Right before a deadline.** Don't reorganize the night before a
+  submission. The risk of breaking something silently outweighs the
+  benefit.
+- **For a project you're about to abandon.** If this paper is dead and
+  you're not coming back, the reorganization is wasted effort. Just
+  archive the whole folder.
+- **Without a copy.** Yes, third time. Don't.
+- **For someone else's published replication package without their
+  permission.** That has its own workflow — see the
+  [replication-package audit example](../examples/replication-package.qmd).
+
+## A realistic time budget
+
+For a typical mid-sized econ project (one paper, 20-40 code/data/text
+files in a few hundred MB), expect:
+
+- **Steps 1-2 (copy + git init):** 5 minutes
+- **Steps 3-5 (inventory + live-path identification):** 30-60 minutes,
+  most of it you reading what Claude produced and confirming
+- **Steps 6-7 (archive + reorganize):** 30 minutes
+- **Step 8 (paths):** 15-30 minutes
+- **Steps 9-12 (CLAUDE.md, README, master script, .gitignore):** 60-90
+  minutes, again mostly your editing and judgment time
+- **Steps 13-14 (verification):** 30-60 minutes if it works on the first
+  try; longer if you discover broken dependencies along the way
+
+So: **half a day to a full day of focused work**. The first time you do
+this it will take longer because the steps are unfamiliar. The second
+time it goes much faster. By the third project, you'll have a personal
+checklist and it will feel routine.
+
+## Where to go next
+
+- [Your first project](first-project.qmd) — what to do once the project
+  is reorganized and ready.
+- [Memory, CLAUDE.md, skills](../workflow/memory-and-claude-md.qmd) —
+  more detail on the `CLAUDE.md` you wrote in step 9, and how to turn
+  this whole reorganization into a reusable skill (`/reorganize-project`)
+  for the next project.
+- [Replication package audit](../examples/replication-package.qmd) —
+  the closely-related workflow for taking a *clean* project and
+  preparing it for journal submission, or for auditing someone else's
+  package as a referee.
+- [Verifying output](../workflow/verifying.qmd) — the habits that make
+  every step on this page safe.

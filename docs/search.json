@@ -473,259 +473,102 @@
     ]
   },
   {
-    "objectID": "getting-started/first-project.html",
-    "href": "getting-started/first-project.html",
-    "title": "Your first project",
+    "objectID": "getting-started/install.html",
+    "href": "getting-started/install.html",
+    "title": "Install Claude Code",
     "section": "",
-    "text": "Note\n\n\n\nComing soon. Practical guidance for the first hour you spend with Claude Code on a real project of yours.",
+    "text": "This page walks you through getting Claude Code on your machine and running it for the first time. It assumes you have never used the terminal in anger before. If you’re a terminal regular, skim past the basics.",
     "crumbs": [
       "Getting started",
-      "Your first project"
+      "Install Claude Code"
     ]
   },
   {
-    "objectID": "getting-started/first-project.html#outline",
-    "href": "getting-started/first-project.html#outline",
-    "title": "Your first project",
-    "section": "Outline",
-    "text": "Outline\n\nPick the right project to start with. A paper draft, a teaching repo, or a side project. Not your sensitive replication package.\nSpend ten minutes letting it read the project. Ask it to summarize what’s there. You’ll learn what it sees, which is roughly what a smart RA would see.\nPick one annoying task you’ve been putting off. “Reformat all my tables to use booktabs.” “Standardize variable names across my .do files.” “Write a README for this repo.” Watch it do that.\nRead every diff. This is the habit that matters most.\nQuit, come back tomorrow. Notice that it remembers what you were doing. That memory is CLAUDE.md, covered in Memory, CLAUDE.md, skills.\n\n\nTell me which step you’d most like worked through.",
+    "objectID": "getting-started/install.html#what-you-need",
+    "href": "getting-started/install.html#what-you-need",
+    "title": "Install Claude Code",
+    "section": "What you need",
+    "text": "What you need\n\nA Mac, a Windows machine with WSL, or a Linux box. (Most economists are on a Mac; the rest of this page assumes that. The differences for Windows/Linux are tiny and noted where they matter.)\nAn Anthropic account at claude.ai. A free account works to start; you’ll be prompted to set up billing the first time you use Claude Code.\nAbout 20 minutes.",
     "crumbs": [
       "Getting started",
-      "Your first project"
+      "Install Claude Code"
     ]
   },
   {
-    "objectID": "getting-started/plan-mode-and-todo.html",
-    "href": "getting-started/plan-mode-and-todo.html",
-    "title": "Plan mode, todos, and slash commands",
-    "section": "",
-    "text": "Note\n\n\n\nComing soon. A short tour of the three features that most change how the tool feels day-to-day.",
+    "objectID": "getting-started/install.html#step-1-open-a-terminal",
+    "href": "getting-started/install.html#step-1-open-a-terminal",
+    "title": "Install Claude Code",
+    "section": "Step 1 — Open a terminal",
+    "text": "Step 1 — Open a terminal\nOn a Mac:\n\nPress Cmd + Space to open Spotlight.\nType Terminal and hit Return.\nA small window with a blinking prompt appears. That’s your terminal.\n\n\n\n\n\n\n\nTip\n\n\n\nThe terminal is just another app. It can’t do anything you didn’t ask it to. The only commands you’ll need are the ones on this page; you don’t need to learn the rest.",
     "crumbs": [
       "Getting started",
-      "Plan mode, todos, and slash commands"
+      "Install Claude Code"
     ]
   },
   {
-    "objectID": "getting-started/plan-mode-and-todo.html#outline",
-    "href": "getting-started/plan-mode-and-todo.html#outline",
-    "title": "Plan mode, todos, and slash commands",
-    "section": "Outline",
-    "text": "Outline\n\n1. Plan mode\nWhat: Claude reads the relevant files, thinks about the change, and writes a plan for your approval before touching anything.\nWhy it matters: catches misunderstandings before they become bad edits. Especially valuable for multi-file changes.\nHow: hit Shift+Tab until the prompt says “plan mode”, or type /plan style invocations.\n\n\n2. Todos\nWhat: for any non-trivial task, Claude maintains a visible list of steps it’s working through and updates it as it goes.\nWhy it matters: you can see where it is, interrupt cleanly, and notice if it’s wandered off.\n\n\n3. Slash commands and skills\nWhat: shortcuts for repeatable workflows. You can write your own.\nExamples already on your machine: /review, /security-review, /init. Your myccskills repo (the plutonb, evolution, remind skills) is exactly this idea — package up “the way I want this done” once, reuse it forever.\nSee Memory, CLAUDE.md, skills for how to write your own.\n\nTell me which of the three you’d most like a worked walkthrough for.",
+    "objectID": "getting-started/install.html#step-2-install-node.js-if-you-dont-have-it",
+    "href": "getting-started/install.html#step-2-install-node.js-if-you-dont-have-it",
+    "title": "Install Claude Code",
+    "section": "Step 2 — Install Node.js (if you don’t have it)",
+    "text": "Step 2 — Install Node.js (if you don’t have it)\nClaude Code is distributed as a Node.js package. Check whether you already have Node:\nnode --version\nIf that prints something like v20.11.0, you’re set — skip to Step 3.\nIf it says “command not found”, install Node from nodejs.org. Pick the LTS download, run the installer, accept the defaults. When it’s done, close and reopen the terminal, then re-run node --version to confirm.\n\n\n\n\n\n\nNote\n\n\n\nMac users with Homebrew can install with brew install node instead. Windows users install Node inside WSL, not on Windows directly.",
     "crumbs": [
       "Getting started",
-      "Plan mode, todos, and slash commands"
+      "Install Claude Code"
     ]
   },
   {
-    "objectID": "pitfalls/judgment.html",
-    "href": "pitfalls/judgment.html",
-    "title": "What you must still do yourself",
-    "section": "",
-    "text": "Note\n\n\n\nComing soon. A short reminder that agentic coding accelerates the mechanical parts of research and leaves the substantive parts exactly where they were — with you.",
+    "objectID": "getting-started/install.html#step-3-install-claude-code",
+    "href": "getting-started/install.html#step-3-install-claude-code",
+    "title": "Install Claude Code",
+    "section": "Step 3 — Install Claude Code",
+    "text": "Step 3 — Install Claude Code\nIn the terminal, run:\nnpm install -g @anthropic-ai/claude-code\nThis downloads Claude Code and makes the claude command available system-wide. It takes a minute or two. When it’s done, verify:\nclaude --version\n\n\n\n\n\n\nWarning\n\n\n\nIf you see a permission error mentioning EACCES or permission denied, don’t prefix the command with sudo. Instead, follow the npm fix-permissions instructions. This is a one-time fix and protects you from a class of problems later.",
     "crumbs": [
-      "Pitfalls",
-      "What you must still do yourself"
+      "Getting started",
+      "Install Claude Code"
     ]
   },
   {
-    "objectID": "pitfalls/judgment.html#the-list",
-    "href": "pitfalls/judgment.html#the-list",
-    "title": "What you must still do yourself",
-    "section": "The list",
-    "text": "The list\n\nSpecification\nWhat’s the right model? What controls? What functional form? What sample restriction? Claude can implement any of these; it cannot tell you which is correct for your question.\n\n\nIdentification\nWhy does this design recover a causal effect? What threats remain? What robustness checks address them? The model can list textbook threats; it cannot judge whether your setting has them.\n\n\nInterpretation\nWhat does the coefficient mean? Is it economically large? Is it consistent with prior estimates? What’s the policy or theoretical takeaway? Claude can produce confident-sounding interpretations that are wrong about your context.\n\n\nContribution\nWhat’s new here? Why should anyone care? Where does this sit in the literature? Claude has read a lot but has no taste — it cannot tell you whether your contribution is interesting.\n\n\nAuthorship\nAnything you submit goes out under your name. Claude is not a co-author; it’s a tool. Don’t list it; don’t pretend it didn’t help; do disclose LLM use as your journal requires.\n\n\nThe hard problem\nThe model is good enough that you’ll be tempted to outsource judgment disguised as code: “write the empirical strategy section”, “decide which controls to include”, “write the limitations section”. Notice when you’re about to do this. The cost of bad judgment doesn’t go down because the typing got faster.\n\nTell me which of these to expand.",
+    "objectID": "getting-started/install.html#step-4-point-claude-code-at-one-of-your-projects",
+    "href": "getting-started/install.html#step-4-point-claude-code-at-one-of-your-projects",
+    "title": "Install Claude Code",
+    "section": "Step 4 — Point Claude Code at one of your projects",
+    "text": "Step 4 — Point Claude Code at one of your projects\nPick a project folder you’d like Claude Code to work in. Do not start with your most sensitive project. Pick a paper draft, a teaching repo, or a side project. In the terminal, change into that folder:\ncd ~/Desktop/some-paper-draft\nThen run:\nclaude\nThe first time you run it, you’ll be prompted to log in (a browser tab will open) and to choose a few preferences. Accept the defaults.\nYou’re now at the Claude Code prompt. It looks like a chat input but everything you type is being read by an agent that can see — and edit — the files in this folder.",
     "crumbs": [
-      "Pitfalls",
-      "What you must still do yourself"
+      "Getting started",
+      "Install Claude Code"
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "LLMs for Economists",
-    "section": "",
-    "text": "This is a colleagues-only field guide to a particular way of using LLMs: giving an AI agent direct access to your project files so it can write code, edit your LaTeX, audit a replication package, and run things on your behalf — under your supervision.\nIt is not about chatting with ChatGPT in a browser. That is useful too, but it isn’t what’s changed in the last year."
-  },
-  {
-    "objectID": "index.html#who-this-is-for",
-    "href": "index.html#who-this-is-for",
-    "title": "LLMs for Economists",
-    "section": "Who this is for",
-    "text": "Who this is for\nYou are an economist who:\n\nSpends real hours writing Stata/R/Python/Matlab/Julia code, formatting LaTeX papers, building tables, or wrangling a replication package.\nHas heard “AI agents” get hyped and would like a non-marketing explanation of what’s actually useful and what is not.\nWants the shortest possible path from “I’ve heard of Claude Code” to “Claude Code is editing my paper while I review the diff.”\n\nYou don’t need to know git, the terminal, or any web technology beyond the basics. We’ll cover the parts that matter."
-  },
-  {
-    "objectID": "index.html#where-to-start",
-    "href": "index.html#where-to-start",
-    "title": "LLMs for Economists",
-    "section": "Where to start",
-    "text": "Where to start\n\n\n1. The big picture\nWhat “agentic coding” means and why it’s different from chatting with an LLM. Five-minute read.\nStart here →\n\n\n2. Install and first session\nGet Claude Code on your machine and pointed at one of your projects. Twenty minutes.\nInstall Claude Code →\n\n\n3. Worked examples\nConcrete examples for the things you actually do: editing a paper, auditing a replication package, cleaning data in your language of choice.\nSee examples →\n\n\n4. Workflow and pitfalls\nHow to ask well, when to verify, what to keep out of the model’s hands. Read these before letting Claude touch anything serious.\nDay-to-day workflow →"
-  },
-  {
-    "objectID": "index.html#what-this-guide-is-not",
-    "href": "index.html#what-this-guide-is-not",
-    "title": "LLMs for Economists",
-    "section": "What this guide is not",
-    "text": "What this guide is not\n\nNot a sales pitch. Claude Code is one tool in a busy landscape. The comparison page explains where it fits next to Cursor, ChatGPT, and Copilot, and when each is the right call.\nNot for confidential or restricted-access data. If you work with IRB-protected, FERPA-covered, Census, IRS, or other restricted data, read the confidential data page before doing anything else.\nNot a substitute for your judgment as an economist. Claude can write the code; it cannot identify your effect, defend your specification, or decide whether your design is credible. See what you must still do."
-  },
-  {
-    "objectID": "index.html#suggested-reading-order",
-    "href": "index.html#suggested-reading-order",
-    "title": "LLMs for Economists",
-    "section": "Suggested reading order",
-    "text": "Suggested reading order\nIf you have 30 minutes, read:\n\nPrinciples — the three things that determine how useful Claude Code will be for you.\nWhat is agentic coding?\nInstall Claude Code, then use it inside VS Code — strongly recommended if you’re coming from RStudio, Stata, or Matlab. (If you’ve never used the terminal, the five-minute terminal primer is helpful background even if you go the VS Code route.)\nLaTeX paper editing or Replication package audit.\n\nIf you have a free afternoon, add:\n\nPlan mode, todos, slash commands\nThe example page for your language: Stata, R, Python, Matlab, or Julia.\nHow to ask and Verifying output."
-  },
-  {
-    "objectID": "index.html#a-note-on-whats-fleshed-out-right-now",
-    "href": "index.html#a-note-on-whats-fleshed-out-right-now",
-    "title": "LLMs for Economists",
-    "section": "A note on what’s “fleshed out” right now",
-    "text": "A note on what’s “fleshed out” right now\nThis site is a living draft. The two long-form examples (LaTeX paper editing and replication-package audit) and the install guide are the most complete. Other pages are short outlines that I’ll fill in as colleagues use them and tell me what’s missing. If you find a section that would help you and isn’t there yet, tell me — that’s the fastest way to make this useful."
-  },
-  {
-    "objectID": "principles.html",
-    "href": "principles.html",
-    "title": "Principles",
-    "section": "",
-    "text": "So I thought I will put my thoughts in here after our department meeting with the help of Claude Code. Most of this is based on my experience of using chatbot AI and agentic AI. So most of my thoughts are based on my usage of LLM products from Anthropic (Claude, Claude Code), OpenAI (Chat GPT, Codex) and a little of Github (Github copilot). I use Claude most of the times. The efficiency gains that can be had depends heavily on how our workflow is aligned with how large language models (LLMs) work.\nThe difference between chatbot AI tools like Claude (and Chat GPT) and agentic AI like Claude code (and Codex) is that in the former you are in a chat session and in the latter the AI does stuff on your behalf and uses your computer to implement stuff using Bash scripts, after you give it directory level permissions to run things. The major efficiency gains come from using agentic AI over chatbot AI. In the latter there is a wide variety of how much you let your LLM do your work. I used to think that this depends on how risk averse you are. But in my experience, I think it more depends on how detailed your prompting is such that the LLM understands the context, how robust your system such that it has fail-safes, and how do you design your workflow so that the agent can verify its own work and can hence iterate on its mistakes minimizing your intervention.\nThe rest of this page expands on those three things, because they are what I would have wanted someone to tell me a year ago.",
+    "objectID": "getting-started/install.html#step-5-try-it-on-something-small",
+    "href": "getting-started/install.html#step-5-try-it-on-something-small",
+    "title": "Install Claude Code",
+    "section": "Step 5 — Try it on something small",
+    "text": "Step 5 — Try it on something small\nThree good first prompts, in increasing order of “letting it do things”:\n\n\n\n\n\n\nPrompt 1 — read-only\n\n“What is in this folder? Give me a one-paragraph summary of what this project does.”\n\nClaude will list files, peek at a few, and summarize. You’ll see it call out tools like Read and Bash. Nothing is modified.\n\n\n\n\n\n\n\n\n\nPrompt 2 — small edit, with review\n\n“Add a comment at the top of every .do file naming the script and what it does. Show me each diff before applying.”\n\nClaude proposes a change per file; you approve or reject each one.\n\n\n\n\n\n\n\n\n\nPrompt 3 — real work\n\n“Read paper.tex and tell me which references in the bibliography are never cited. Then remove the unused ones.”\n\nThis reads files, runs analysis, and edits. You approve the deletion.",
     "crumbs": [
-      "Principles"
+      "Getting started",
+      "Install Claude Code"
     ]
   },
   {
-    "objectID": "principles.html#detailed-prompting-and-context",
-    "href": "principles.html#detailed-prompting-and-context",
-    "title": "Principles",
-    "section": "1. Detailed prompting and context",
-    "text": "1. Detailed prompting and context\nThe single biggest predictor of whether Claude Code does something useful on the first try is whether I gave it enough context to understand what I actually want. “Detailed prompting” is not a euphemism for writing long prompts. It means giving the model the information a smart RA would need to do the job — no more, no less.\nIn practice, this is three things:\n\nName the files. “Read paper.tex and tell me…” beats “look at my paper” every time. The model can find files; it cannot read your mind about which one you mean.\nState the constraint, not just the goal. “Reformat all my tables using booktabs” is the goal. “Reformat all my tables using booktabs; do not change any numbers, captions, or column headers” is the constraint that prevents Claude from “tidying up” content you didn’t ask it to tidy.\nProvide stable context once, not every session. A CLAUDE.md file at the root of your project — saying which Stata version you use, which scripts produce which outputs, what’s off-limits — is read at the start of every session. Writing it once saves you re-explaining. See Memory, CLAUDE.md, skills.\n\nThe mental model that helped me: a chatbot prompt is a Google query, but an agentic prompt is a memo to a new RA on day one. Different audience, different register.\nWhat this looks like in our examples:\n\nThe first paragraph of every prompt in the LaTeX paper walkthrough is an orientation pass — having Claude read the project before doing anything.\nThe replication-package audit starts by asking Claude to describe the dependency map before changing anything. The audit is the context for the action.",
+    "objectID": "getting-started/install.html#step-6-quit-and-come-back",
+    "href": "getting-started/install.html#step-6-quit-and-come-back",
+    "title": "Install Claude Code",
+    "section": "Step 6 — Quit and come back",
+    "text": "Step 6 — Quit and come back\nTo leave a Claude Code session, type /exit or press Ctrl-C twice.\nTo come back later, just cd into the same folder and run claude again. Claude Code keeps a memory of your project (in a file called CLAUDE.md, covered later) so the next session doesn’t start from zero.",
     "crumbs": [
-      "Principles"
+      "Getting started",
+      "Install Claude Code"
     ]
   },
   {
-    "objectID": "principles.html#a-robust-system-with-fail-safes",
-    "href": "principles.html#a-robust-system-with-fail-safes",
-    "title": "Principles",
-    "section": "2. A robust system with fail-safes",
-    "text": "2. A robust system with fail-safes\nThis was the principle that took me longest to internalize because it requires admitting up front that the model will sometimes do the wrong thing — and designing your environment so a wrong action is recoverable rather than catastrophic.\nThe fail-safes I rely on are not exotic:\n\nGit, even just locally. I commit before any non-trivial change. If Claude makes an edit I don’t like, git checkout . undoes everything in the working directory. You don’t need to push to GitHub for this to save you.\nPlan mode. For any change touching multiple files, I hit Shift+Tab until the prompt says “plan mode”. Claude reads, thinks, and writes a plan for my approval. I read the plan; if it misunderstands, I correct before any file is touched. See Plan mode, todos, slash commands.\nDon’t blanket-allow destructive operations. Claude Code prompts before things like deleting files, force-pushing to git, or running rm -rf. Don’t override those prompts. The two-second pause is the difference between a recoverable mistake and a Saturday spent reconstructing your project from memory.\nA working “master script” in every project. A single master.do, master.R, or make all that rebuilds your results from scratch. After any meaningful change, ask Claude to re-run it and confirm outputs match. This is your reproducibility check and your fail-safe.\nRead-only patterns for restricted data. When I work on projects with IRB-protected or restricted-access data, Claude only ever sees the code, never the data. The data lives in a folder Claude is not pointed at. See Confidential data.\n\nA useful test: before starting a task, ask yourself “if Claude does the worst plausible thing here, what is my recovery?” If the answer is “git checkout”, you’re fine. If the answer is “rebuild from backups” or “email my coauthor”, slow down and add a fail-safe first.",
+    "objectID": "getting-started/install.html#where-to-go-next",
+    "href": "getting-started/install.html#where-to-go-next",
+    "title": "Install Claude Code",
+    "section": "Where to go next",
+    "text": "Where to go next\n\nUse Claude Code inside VS Code — strongly recommended for colleagues coming from RStudio, Stata, or Matlab. The diff view, clickable file paths, and built-in Git make the agentic loop feel ordinary instead of intimidating.\nYour first project — what to actually do in your first hour of using Claude Code on real work.\nPlan mode, todos, slash commands — the three features that make Claude Code feel like a research assistant rather than a chatbot.\nLaTeX paper editing — a fully worked example.\n\n\n\n\n\n\n\nWarning\n\n\n\nBefore you point Claude Code at a project with confidential or restricted-access data, read Confidential data. Some data should never go to a cloud LLM, full stop.",
     "crumbs": [
-      "Principles"
-    ]
-  },
-  {
-    "objectID": "principles.html#a-workflow-the-agent-can-verify-on-its-own",
-    "href": "principles.html#a-workflow-the-agent-can-verify-on-its-own",
-    "title": "Principles",
-    "section": "3. A workflow the agent can verify on its own",
-    "text": "3. A workflow the agent can verify on its own\nThis is the principle with the highest payoff and the one most colleagues miss. The point is not to write better prompts. It is to structure the task so the agent can check its own work — and then iterate without needing you in the loop for every step.\nA few examples of what this looks like in econ work:\n\nReplication. “Re-run master.do and tell me whether each table in output/tables/ matches the version checked into git.” The agent runs the script, diffs the outputs, and either reports “all match” or “Table 3 changed — here’s the diff”. One human-readable status; no per-step babysitting.\nCleaning. Add assertions to your cleaning scripts: assert wage &gt; 0 if inrange(year, 2000, 2020). When Claude edits the cleaning code and an assertion fails, the script halts and the agent sees exactly what broke. It can iterate to fix the bug without you.\nLaTeX. After every edit to a .tex file, Claude can compile and read the log. Unresolved references, overfull boxes, missing citations — all surface immediately, and the agent can either fix them or escalate to you.\nNumerical work. A test that checks the sign and rough magnitude of the main coefficient (not its exact value) is enough for Claude to notice when a refactor silently breaks the analysis.\nCode review. For non-trivial edits I ask Claude to run /review on its own diff before showing it to me. It catches its own clumsy edits about half the time.\n\nWhen this principle is in place, my supervision shifts from “every keystroke” to “every milestone”. I check in when the agent reports something done, not while it works.",
-    "crumbs": [
-      "Principles"
-    ]
-  },
-  {
-    "objectID": "principles.html#putting-it-together",
-    "href": "principles.html#putting-it-together",
-    "title": "Principles",
-    "section": "Putting it together",
-    "text": "Putting it together\nThese three principles compound. Detailed prompting alone is wasted if the agent can’t recover from a wrong turn. Fail-safes alone keep you safe but not productive. Self-verification alone is impossible without context to verify against.\nThe way I’d phrase it now, after a year of this:\n\nThe efficiency you get from agentic AI is roughly (quality of context) × (recoverability of the system) × (degree to which the agent can check its own work). If any one of those is near zero, your effective productivity gain is near zero too — even if the model is brilliant.\n\nMost of my own learning has been about raising the third factor. The model is plenty capable; the bottleneck has been giving it the scaffolding to use that capability without me hovering over it.",
-    "crumbs": [
-      "Principles"
-    ]
-  },
-  {
-    "objectID": "principles.html#where-to-go-from-here",
-    "href": "principles.html#where-to-go-from-here",
-    "title": "Principles",
-    "section": "Where to go from here",
-    "text": "Where to go from here\n\nSee these principles applied end-to-end in the replication-package audit and the LaTeX paper walkthrough.\nFor the operational habits — what to type, what to leave alone, when to hit plan mode — see How to ask and Verifying output.\nFor what these principles don’t protect you from — research judgment, identification, interpretation — see What you must still do.",
-    "crumbs": [
-      "Principles"
-    ]
-  },
-  {
-    "objectID": "pitfalls/hallucinations.html",
-    "href": "pitfalls/hallucinations.html",
-    "title": "Hallucinations",
-    "section": "",
-    "text": "Warning\n\n\n\nComing soon. A field guide to the specific kinds of hallucinations that hurt empirical economists, and the verification habits that catch each one.",
-    "crumbs": [
-      "Pitfalls",
-      "Hallucinations"
-    ]
-  },
-  {
-    "objectID": "pitfalls/hallucinations.html#outline-what-gets-hallucinated",
-    "href": "pitfalls/hallucinations.html#outline-what-gets-hallucinated",
-    "title": "Hallucinations",
-    "section": "Outline — what gets hallucinated",
-    "text": "Outline — what gets hallucinated\n\n1. Citations and references\n\nBibliography entries that don’t exist.\nCited claims that the paper doesn’t actually make.\nSlightly wrong years, page numbers, or author orders.\n\nCatch: before any new \\cite{...} lands in your paper, open the source paper and confirm.\n\n\n2. Regression results\n\nCoefficients reported without the regression having actually been run.\n“I ran your model and got…” when no Bash tool call was made.\n\nCatch: re-run the regression yourself, or insist Claude show you the log/output from a real run.\n\n\n3. Function and option names\n\nA Stata command that doesn’t exist, or has a different syntax than Claude reports.\nAn R function from the wrong package, or with arguments that don’t exist.\nA LaTeX package that doesn’t behave the way Claude described.\n\nCatch: for unfamiliar commands, check the documentation. For Stata: help &lt;command&gt;. For R: ?fn or the package’s website.\n\n\n4. File contents\n\nA claim about what’s in a file that Claude didn’t actually read.\n\nCatch: Claude shows you tool calls. If it claims to have looked at paper.tex but you don’t see a Read tool call for it, push back: “Did you actually read it? Show me.”\n\n\n5. Replication-package completeness\n\n“I ran the master script and everything worked” when it didn’t.\n“All your tables are reproduced” without checking.\n\nCatch: diff the produced output against what’s in your paper.",
-    "crumbs": [
-      "Pitfalls",
-      "Hallucinations"
-    ]
-  },
-  {
-    "objectID": "pitfalls/hallucinations.html#the-general-rule",
-    "href": "pitfalls/hallucinations.html#the-general-rule",
-    "title": "Hallucinations",
-    "section": "The general rule",
-    "text": "The general rule\nClaude is a confident colleague who occasionally lies with no self-awareness. Treat its outputs the way you’d treat a draft from a new RA on day one: gratefully, and with full verification.\n\nTell me which of these to expand into a full case study.",
-    "crumbs": [
-      "Pitfalls",
-      "Hallucinations"
-    ]
-  },
-  {
-    "objectID": "pitfalls/confidential-data.html",
-    "href": "pitfalls/confidential-data.html",
-    "title": "Confidential and restricted-access data",
-    "section": "",
-    "text": "Warning\n\n\n\nRead this page before pointing Claude Code at any project containing IRB-protected, restricted-access, or otherwise confidential data. When in doubt, default to “no” and ask your IRB.",
-    "crumbs": [
-      "Pitfalls",
-      "Confidential and restricted-access data"
-    ]
-  },
-  {
-    "objectID": "pitfalls/confidential-data.html#outline-what-to-never-send",
-    "href": "pitfalls/confidential-data.html#outline-what-to-never-send",
-    "title": "Confidential and restricted-access data",
-    "section": "Outline — what to never send",
-    "text": "Outline — what to never send\n\nIRB-protected human-subjects data (interviews, identifiable surveys, health data) unless your IRB protocol explicitly permits cloud LLM processing — most don’t.\nFERPA-covered student records.\nRestricted-access administrative data (Census, IRS, state longitudinal data systems, etc.) — almost universally prohibited from any cloud transmission. RDC/FSRDC environments forbid it outright.\nConfidential firm or proprietary data under NDA.\nRefereed manuscripts without checking journal policy.",
-    "crumbs": [
-      "Pitfalls",
-      "Confidential and restricted-access data"
-    ]
-  },
-  {
-    "objectID": "pitfalls/confidential-data.html#outline-what-is-generally-safe",
-    "href": "pitfalls/confidential-data.html#outline-what-is-generally-safe",
-    "title": "Confidential and restricted-access data",
-    "section": "Outline — what is generally safe",
-    "text": "Outline — what is generally safe\n\nPublic datasets (IPUMS, Compustat extracts you’d freely share, BLS microdata releases, etc.).\nYour own simulated data.\nCode that doesn’t reveal the underlying observations.\nPaper drafts on your own work (with co-author awareness).",
-    "crumbs": [
-      "Pitfalls",
-      "Confidential and restricted-access data"
-    ]
-  },
-  {
-    "objectID": "pitfalls/confidential-data.html#outline-pragmatic-workarounds",
-    "href": "pitfalls/confidential-data.html#outline-pragmatic-workarounds",
-    "title": "Confidential and restricted-access data",
-    "section": "Outline — pragmatic workarounds",
-    "text": "Outline — pragmatic workarounds\nWhen you have a restricted dataset and want help with the code:\n\nSynthesize a fake version. Have Claude generate fake data with the same schema and let it work on that.\nPoint it at code only, never data. Most “clean this .do file” work doesn’t need the actual data; it needs the script.\nRun sensitive jobs on the secure environment with no cloud LLM involved, then bring back outputs you’re allowed to share.\nUse Claude Code only for non-restricted side projects until you’ve talked to your IRB about an explicit policy.",
-    "crumbs": [
-      "Pitfalls",
-      "Confidential and restricted-access data"
-    ]
-  },
-  {
-    "objectID": "pitfalls/confidential-data.html#outline-institutional-questions-to-resolve",
-    "href": "pitfalls/confidential-data.html#outline-institutional-questions-to-resolve",
-    "title": "Confidential and restricted-access data",
-    "section": "Outline — institutional questions to resolve",
-    "text": "Outline — institutional questions to resolve\n\nDoes your university have a policy on LLM use with research data?\nDoes your IRB have boilerplate language for cloud LLM processing?\nDo data agreements (DUAs) you’ve signed permit transmission to third-party services?\n\n\nTell me which of these you’d most like turned into a real decision-flowchart.",
-    "crumbs": [
-      "Pitfalls",
-      "Confidential and restricted-access data"
+      "Getting started",
+      "Install Claude Code"
     ]
   },
   {
@@ -861,102 +704,336 @@
     ]
   },
   {
-    "objectID": "getting-started/install.html",
-    "href": "getting-started/install.html",
-    "title": "Install Claude Code",
+    "objectID": "pitfalls/confidential-data.html",
+    "href": "pitfalls/confidential-data.html",
+    "title": "Confidential and restricted-access data",
     "section": "",
-    "text": "This page walks you through getting Claude Code on your machine and running it for the first time. It assumes you have never used the terminal in anger before. If you’re a terminal regular, skim past the basics.",
+    "text": "Warning\n\n\n\nRead this page before pointing Claude Code at any project containing IRB-protected, restricted-access, or otherwise confidential data. When in doubt, default to “no” and ask your IRB.",
     "crumbs": [
-      "Getting started",
-      "Install Claude Code"
+      "Pitfalls",
+      "Confidential and restricted-access data"
     ]
   },
   {
-    "objectID": "getting-started/install.html#what-you-need",
-    "href": "getting-started/install.html#what-you-need",
-    "title": "Install Claude Code",
-    "section": "What you need",
-    "text": "What you need\n\nA Mac, a Windows machine with WSL, or a Linux box. (Most economists are on a Mac; the rest of this page assumes that. The differences for Windows/Linux are tiny and noted where they matter.)\nAn Anthropic account at claude.ai. A free account works to start; you’ll be prompted to set up billing the first time you use Claude Code.\nAbout 20 minutes.",
+    "objectID": "pitfalls/confidential-data.html#outline-what-to-never-send",
+    "href": "pitfalls/confidential-data.html#outline-what-to-never-send",
+    "title": "Confidential and restricted-access data",
+    "section": "Outline — what to never send",
+    "text": "Outline — what to never send\n\nIRB-protected human-subjects data (interviews, identifiable surveys, health data) unless your IRB protocol explicitly permits cloud LLM processing — most don’t.\nFERPA-covered student records.\nRestricted-access administrative data (Census, IRS, state longitudinal data systems, etc.) — almost universally prohibited from any cloud transmission. RDC/FSRDC environments forbid it outright.\nConfidential firm or proprietary data under NDA.\nRefereed manuscripts without checking journal policy.",
     "crumbs": [
-      "Getting started",
-      "Install Claude Code"
+      "Pitfalls",
+      "Confidential and restricted-access data"
     ]
   },
   {
-    "objectID": "getting-started/install.html#step-1-open-a-terminal",
-    "href": "getting-started/install.html#step-1-open-a-terminal",
-    "title": "Install Claude Code",
-    "section": "Step 1 — Open a terminal",
-    "text": "Step 1 — Open a terminal\nOn a Mac:\n\nPress Cmd + Space to open Spotlight.\nType Terminal and hit Return.\nA small window with a blinking prompt appears. That’s your terminal.\n\n\n\n\n\n\n\nTip\n\n\n\nThe terminal is just another app. It can’t do anything you didn’t ask it to. The only commands you’ll need are the ones on this page; you don’t need to learn the rest.",
+    "objectID": "pitfalls/confidential-data.html#outline-what-is-generally-safe",
+    "href": "pitfalls/confidential-data.html#outline-what-is-generally-safe",
+    "title": "Confidential and restricted-access data",
+    "section": "Outline — what is generally safe",
+    "text": "Outline — what is generally safe\n\nPublic datasets (IPUMS, Compustat extracts you’d freely share, BLS microdata releases, etc.).\nYour own simulated data.\nCode that doesn’t reveal the underlying observations.\nPaper drafts on your own work (with co-author awareness).",
     "crumbs": [
-      "Getting started",
-      "Install Claude Code"
+      "Pitfalls",
+      "Confidential and restricted-access data"
     ]
   },
   {
-    "objectID": "getting-started/install.html#step-2-install-node.js-if-you-dont-have-it",
-    "href": "getting-started/install.html#step-2-install-node.js-if-you-dont-have-it",
-    "title": "Install Claude Code",
-    "section": "Step 2 — Install Node.js (if you don’t have it)",
-    "text": "Step 2 — Install Node.js (if you don’t have it)\nClaude Code is distributed as a Node.js package. Check whether you already have Node:\nnode --version\nIf that prints something like v20.11.0, you’re set — skip to Step 3.\nIf it says “command not found”, install Node from nodejs.org. Pick the LTS download, run the installer, accept the defaults. When it’s done, close and reopen the terminal, then re-run node --version to confirm.\n\n\n\n\n\n\nNote\n\n\n\nMac users with Homebrew can install with brew install node instead. Windows users install Node inside WSL, not on Windows directly.",
+    "objectID": "pitfalls/confidential-data.html#outline-pragmatic-workarounds",
+    "href": "pitfalls/confidential-data.html#outline-pragmatic-workarounds",
+    "title": "Confidential and restricted-access data",
+    "section": "Outline — pragmatic workarounds",
+    "text": "Outline — pragmatic workarounds\nWhen you have a restricted dataset and want help with the code:\n\nSynthesize a fake version. Have Claude generate fake data with the same schema and let it work on that.\nPoint it at code only, never data. Most “clean this .do file” work doesn’t need the actual data; it needs the script.\nRun sensitive jobs on the secure environment with no cloud LLM involved, then bring back outputs you’re allowed to share.\nUse Claude Code only for non-restricted side projects until you’ve talked to your IRB about an explicit policy.",
     "crumbs": [
-      "Getting started",
-      "Install Claude Code"
+      "Pitfalls",
+      "Confidential and restricted-access data"
     ]
   },
   {
-    "objectID": "getting-started/install.html#step-3-install-claude-code",
-    "href": "getting-started/install.html#step-3-install-claude-code",
-    "title": "Install Claude Code",
-    "section": "Step 3 — Install Claude Code",
-    "text": "Step 3 — Install Claude Code\nIn the terminal, run:\nnpm install -g @anthropic-ai/claude-code\nThis downloads Claude Code and makes the claude command available system-wide. It takes a minute or two. When it’s done, verify:\nclaude --version\n\n\n\n\n\n\nWarning\n\n\n\nIf you see a permission error mentioning EACCES or permission denied, don’t prefix the command with sudo. Instead, follow the npm fix-permissions instructions. This is a one-time fix and protects you from a class of problems later.",
+    "objectID": "pitfalls/confidential-data.html#outline-institutional-questions-to-resolve",
+    "href": "pitfalls/confidential-data.html#outline-institutional-questions-to-resolve",
+    "title": "Confidential and restricted-access data",
+    "section": "Outline — institutional questions to resolve",
+    "text": "Outline — institutional questions to resolve\n\nDoes your university have a policy on LLM use with research data?\nDoes your IRB have boilerplate language for cloud LLM processing?\nDo data agreements (DUAs) you’ve signed permit transmission to third-party services?\n\n\nTell me which of these you’d most like turned into a real decision-flowchart.",
     "crumbs": [
-      "Getting started",
-      "Install Claude Code"
+      "Pitfalls",
+      "Confidential and restricted-access data"
     ]
   },
   {
-    "objectID": "getting-started/install.html#step-4-point-claude-code-at-one-of-your-projects",
-    "href": "getting-started/install.html#step-4-point-claude-code-at-one-of-your-projects",
-    "title": "Install Claude Code",
-    "section": "Step 4 — Point Claude Code at one of your projects",
-    "text": "Step 4 — Point Claude Code at one of your projects\nPick a project folder you’d like Claude Code to work in. Do not start with your most sensitive project. Pick a paper draft, a teaching repo, or a side project. In the terminal, change into that folder:\ncd ~/Desktop/some-paper-draft\nThen run:\nclaude\nThe first time you run it, you’ll be prompted to log in (a browser tab will open) and to choose a few preferences. Accept the defaults.\nYou’re now at the Claude Code prompt. It looks like a chat input but everything you type is being read by an agent that can see — and edit — the files in this folder.",
+    "objectID": "pitfalls/hallucinations.html",
+    "href": "pitfalls/hallucinations.html",
+    "title": "Hallucinations",
+    "section": "",
+    "text": "Warning\n\n\n\nComing soon. A field guide to the specific kinds of hallucinations that hurt empirical economists, and the verification habits that catch each one.",
     "crumbs": [
-      "Getting started",
-      "Install Claude Code"
+      "Pitfalls",
+      "Hallucinations"
     ]
   },
   {
-    "objectID": "getting-started/install.html#step-5-try-it-on-something-small",
-    "href": "getting-started/install.html#step-5-try-it-on-something-small",
-    "title": "Install Claude Code",
-    "section": "Step 5 — Try it on something small",
-    "text": "Step 5 — Try it on something small\nThree good first prompts, in increasing order of “letting it do things”:\n\n\n\n\n\n\nPrompt 1 — read-only\n\n“What is in this folder? Give me a one-paragraph summary of what this project does.”\n\nClaude will list files, peek at a few, and summarize. You’ll see it call out tools like Read and Bash. Nothing is modified.\n\n\n\n\n\n\n\n\n\nPrompt 2 — small edit, with review\n\n“Add a comment at the top of every .do file naming the script and what it does. Show me each diff before applying.”\n\nClaude proposes a change per file; you approve or reject each one.\n\n\n\n\n\n\n\n\n\nPrompt 3 — real work\n\n“Read paper.tex and tell me which references in the bibliography are never cited. Then remove the unused ones.”\n\nThis reads files, runs analysis, and edits. You approve the deletion.",
+    "objectID": "pitfalls/hallucinations.html#outline-what-gets-hallucinated",
+    "href": "pitfalls/hallucinations.html#outline-what-gets-hallucinated",
+    "title": "Hallucinations",
+    "section": "Outline — what gets hallucinated",
+    "text": "Outline — what gets hallucinated\n\n1. Citations and references\n\nBibliography entries that don’t exist.\nCited claims that the paper doesn’t actually make.\nSlightly wrong years, page numbers, or author orders.\n\nCatch: before any new \\cite{...} lands in your paper, open the source paper and confirm.\n\n\n2. Regression results\n\nCoefficients reported without the regression having actually been run.\n“I ran your model and got…” when no Bash tool call was made.\n\nCatch: re-run the regression yourself, or insist Claude show you the log/output from a real run.\n\n\n3. Function and option names\n\nA Stata command that doesn’t exist, or has a different syntax than Claude reports.\nAn R function from the wrong package, or with arguments that don’t exist.\nA LaTeX package that doesn’t behave the way Claude described.\n\nCatch: for unfamiliar commands, check the documentation. For Stata: help &lt;command&gt;. For R: ?fn or the package’s website.\n\n\n4. File contents\n\nA claim about what’s in a file that Claude didn’t actually read.\n\nCatch: Claude shows you tool calls. If it claims to have looked at paper.tex but you don’t see a Read tool call for it, push back: “Did you actually read it? Show me.”\n\n\n5. Replication-package completeness\n\n“I ran the master script and everything worked” when it didn’t.\n“All your tables are reproduced” without checking.\n\nCatch: diff the produced output against what’s in your paper.",
     "crumbs": [
-      "Getting started",
-      "Install Claude Code"
+      "Pitfalls",
+      "Hallucinations"
     ]
   },
   {
-    "objectID": "getting-started/install.html#step-6-quit-and-come-back",
-    "href": "getting-started/install.html#step-6-quit-and-come-back",
-    "title": "Install Claude Code",
-    "section": "Step 6 — Quit and come back",
-    "text": "Step 6 — Quit and come back\nTo leave a Claude Code session, type /exit or press Ctrl-C twice.\nTo come back later, just cd into the same folder and run claude again. Claude Code keeps a memory of your project (in a file called CLAUDE.md, covered later) so the next session doesn’t start from zero.",
+    "objectID": "pitfalls/hallucinations.html#the-general-rule",
+    "href": "pitfalls/hallucinations.html#the-general-rule",
+    "title": "Hallucinations",
+    "section": "The general rule",
+    "text": "The general rule\nClaude is a confident colleague who occasionally lies with no self-awareness. Treat its outputs the way you’d treat a draft from a new RA on day one: gratefully, and with full verification.\n\nTell me which of these to expand into a full case study.",
     "crumbs": [
-      "Getting started",
-      "Install Claude Code"
+      "Pitfalls",
+      "Hallucinations"
     ]
   },
   {
-    "objectID": "getting-started/install.html#where-to-go-next",
-    "href": "getting-started/install.html#where-to-go-next",
-    "title": "Install Claude Code",
+    "objectID": "principles.html",
+    "href": "principles.html",
+    "title": "Principles",
+    "section": "",
+    "text": "So I thought I will put my thoughts in here after our department meeting with the help of Claude Code. Most of this is based on my experience of using chatbot AI and agentic AI. So most of my thoughts are based on my usage of LLM products from Anthropic (Claude, Claude Code), OpenAI (Chat GPT, Codex) and a little of Github (Github copilot). I use Claude most of the times. The efficiency gains that can be had depends heavily on how our workflow is aligned with how large language models (LLMs) work.\nThe difference between chatbot AI tools like Claude (and Chat GPT) and agentic AI like Claude code (and Codex) is that in the former you are in a chat session and in the latter the AI does stuff on your behalf and uses your computer to implement stuff using Bash scripts, after you give it directory level permissions to run things. The major efficiency gains come from using agentic AI over chatbot AI. In the latter there is a wide variety of how much you let your LLM do your work. I used to think that this depends on how risk averse you are. But in my experience, I think it more depends on how detailed your prompting is such that the LLM understands the context, how robust your system such that it has fail-safes, and how do you design your workflow so that the agent can verify its own work and can hence iterate on its mistakes minimizing your intervention.\nThe rest of this page expands on those three things, because they are what I would have wanted someone to tell me a year ago.",
+    "crumbs": [
+      "Principles"
+    ]
+  },
+  {
+    "objectID": "principles.html#detailed-prompting-and-context",
+    "href": "principles.html#detailed-prompting-and-context",
+    "title": "Principles",
+    "section": "1. Detailed prompting and context",
+    "text": "1. Detailed prompting and context\nThe single biggest predictor of whether Claude Code does something useful on the first try is whether I gave it enough context to understand what I actually want. “Detailed prompting” is not a euphemism for writing long prompts. It means giving the model the information a smart RA would need to do the job — no more, no less.\nIn practice, this is three things:\n\nName the files. “Read paper.tex and tell me…” beats “look at my paper” every time. The model can find files; it cannot read your mind about which one you mean.\nState the constraint, not just the goal. “Reformat all my tables using booktabs” is the goal. “Reformat all my tables using booktabs; do not change any numbers, captions, or column headers” is the constraint that prevents Claude from “tidying up” content you didn’t ask it to tidy.\nProvide stable context once, not every session. A CLAUDE.md file at the root of your project — saying which Stata version you use, which scripts produce which outputs, what’s off-limits — is read at the start of every session. Writing it once saves you re-explaining. See Memory, CLAUDE.md, skills.\n\nThe mental model that helped me: a chatbot prompt is a Google query, but an agentic prompt is a memo to a new RA on day one. Different audience, different register.\nWhat this looks like in our examples:\n\nThe first paragraph of every prompt in the LaTeX paper walkthrough is an orientation pass — having Claude read the project before doing anything.\nThe replication-package audit starts by asking Claude to describe the dependency map before changing anything. The audit is the context for the action.",
+    "crumbs": [
+      "Principles"
+    ]
+  },
+  {
+    "objectID": "principles.html#a-robust-system-with-fail-safes",
+    "href": "principles.html#a-robust-system-with-fail-safes",
+    "title": "Principles",
+    "section": "2. A robust system with fail-safes",
+    "text": "2. A robust system with fail-safes\nThis was the principle that took me longest to internalize because it requires admitting up front that the model will sometimes do the wrong thing — and designing your environment so a wrong action is recoverable rather than catastrophic.\nThe fail-safes I rely on are not exotic:\n\nGit, even just locally. I commit before any non-trivial change. If Claude makes an edit I don’t like, git checkout . undoes everything in the working directory. You don’t need to push to GitHub for this to save you.\nPlan mode. For any change touching multiple files, I hit Shift+Tab until the prompt says “plan mode”. Claude reads, thinks, and writes a plan for my approval. I read the plan; if it misunderstands, I correct before any file is touched. See Plan mode, todos, slash commands.\nDon’t blanket-allow destructive operations. Claude Code prompts before things like deleting files, force-pushing to git, or running rm -rf. Don’t override those prompts. The two-second pause is the difference between a recoverable mistake and a Saturday spent reconstructing your project from memory.\nA working “master script” in every project. A single master.do, master.R, or make all that rebuilds your results from scratch. After any meaningful change, ask Claude to re-run it and confirm outputs match. This is your reproducibility check and your fail-safe.\nRead-only patterns for restricted data. When I work on projects with IRB-protected or restricted-access data, Claude only ever sees the code, never the data. The data lives in a folder Claude is not pointed at. See Confidential data.\n\nA useful test: before starting a task, ask yourself “if Claude does the worst plausible thing here, what is my recovery?” If the answer is “git checkout”, you’re fine. If the answer is “rebuild from backups” or “email my coauthor”, slow down and add a fail-safe first.",
+    "crumbs": [
+      "Principles"
+    ]
+  },
+  {
+    "objectID": "principles.html#a-workflow-the-agent-can-verify-on-its-own",
+    "href": "principles.html#a-workflow-the-agent-can-verify-on-its-own",
+    "title": "Principles",
+    "section": "3. A workflow the agent can verify on its own",
+    "text": "3. A workflow the agent can verify on its own\nThis is the principle with the highest payoff and the one most colleagues miss. The point is not to write better prompts. It is to structure the task so the agent can check its own work — and then iterate without needing you in the loop for every step.\nA few examples of what this looks like in econ work:\n\nReplication. “Re-run master.do and tell me whether each table in output/tables/ matches the version checked into git.” The agent runs the script, diffs the outputs, and either reports “all match” or “Table 3 changed — here’s the diff”. One human-readable status; no per-step babysitting.\nCleaning. Add assertions to your cleaning scripts: assert wage &gt; 0 if inrange(year, 2000, 2020). When Claude edits the cleaning code and an assertion fails, the script halts and the agent sees exactly what broke. It can iterate to fix the bug without you.\nLaTeX. After every edit to a .tex file, Claude can compile and read the log. Unresolved references, overfull boxes, missing citations — all surface immediately, and the agent can either fix them or escalate to you.\nNumerical work. A test that checks the sign and rough magnitude of the main coefficient (not its exact value) is enough for Claude to notice when a refactor silently breaks the analysis.\nCode review. For non-trivial edits I ask Claude to run /review on its own diff before showing it to me. It catches its own clumsy edits about half the time.\n\nWhen this principle is in place, my supervision shifts from “every keystroke” to “every milestone”. I check in when the agent reports something done, not while it works.",
+    "crumbs": [
+      "Principles"
+    ]
+  },
+  {
+    "objectID": "principles.html#putting-it-together",
+    "href": "principles.html#putting-it-together",
+    "title": "Principles",
+    "section": "Putting it together",
+    "text": "Putting it together\nThese three principles compound. Detailed prompting alone is wasted if the agent can’t recover from a wrong turn. Fail-safes alone keep you safe but not productive. Self-verification alone is impossible without context to verify against.\nThe way I’d phrase it now, after a year of this:\n\nThe efficiency you get from agentic AI is roughly (quality of context) × (recoverability of the system) × (degree to which the agent can check its own work). If any one of those is near zero, your effective productivity gain is near zero too — even if the model is brilliant.\n\nMost of my own learning has been about raising the third factor. The model is plenty capable; the bottleneck has been giving it the scaffolding to use that capability without me hovering over it.",
+    "crumbs": [
+      "Principles"
+    ]
+  },
+  {
+    "objectID": "principles.html#where-to-go-from-here",
+    "href": "principles.html#where-to-go-from-here",
+    "title": "Principles",
+    "section": "Where to go from here",
+    "text": "Where to go from here\n\nThe most concrete application of all three principles at once is reorganizing a messy project — context (a fresh inventory), recoverability (a copy plus git), and self-verification (a master script the agent can re-run) are all built into the walkthrough.\nSee these principles applied end-to-end in the replication-package audit and the LaTeX paper walkthrough.\nFor the operational habits — what to type, what to leave alone, when to hit plan mode — see How to ask and Verifying output.\nFor what these principles don’t protect you from — research judgment, identification, interpretation — see What you must still do.",
+    "crumbs": [
+      "Principles"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "LLMs for Economists",
+    "section": "",
+    "text": "This is a colleagues-only field guide to a particular way of using LLMs: giving an AI agent direct access to your project files so it can write code, edit your LaTeX, audit a replication package, and run things on your behalf — under your supervision.\nIt is not about chatting with ChatGPT in a browser. That is useful too, but it isn’t what’s changed in the last year."
+  },
+  {
+    "objectID": "index.html#who-this-is-for",
+    "href": "index.html#who-this-is-for",
+    "title": "LLMs for Economists",
+    "section": "Who this is for",
+    "text": "Who this is for\nYou are an economist who:\n\nSpends real hours writing Stata/R/Python/Matlab/Julia code, formatting LaTeX papers, building tables, or wrangling a replication package.\nHas heard “AI agents” get hyped and would like a non-marketing explanation of what’s actually useful and what is not.\nWants the shortest possible path from “I’ve heard of Claude Code” to “Claude Code is editing my paper while I review the diff.”\n\nYou don’t need to know git, the terminal, or any web technology beyond the basics. We’ll cover the parts that matter."
+  },
+  {
+    "objectID": "index.html#where-to-start",
+    "href": "index.html#where-to-start",
+    "title": "LLMs for Economists",
+    "section": "Where to start",
+    "text": "Where to start\n\n\n1. The big picture\nWhat “agentic coding” means and why it’s different from chatting with an LLM. Five-minute read.\nStart here →\n\n\n2. Install and first session\nGet Claude Code on your machine and pointed at one of your projects. Twenty minutes.\nInstall Claude Code →\n\n\n3. Worked examples\nConcrete examples for the things you actually do: editing a paper, auditing a replication package, cleaning data in your language of choice.\nSee examples →\n\n\n4. Workflow and pitfalls\nHow to ask well, when to verify, what to keep out of the model’s hands. Read these before letting Claude touch anything serious.\nDay-to-day workflow →"
+  },
+  {
+    "objectID": "index.html#what-this-guide-is-not",
+    "href": "index.html#what-this-guide-is-not",
+    "title": "LLMs for Economists",
+    "section": "What this guide is not",
+    "text": "What this guide is not\n\nNot a sales pitch. Claude Code is one tool in a busy landscape. The comparison page explains where it fits next to Cursor, ChatGPT, and Copilot, and when each is the right call.\nNot for confidential or restricted-access data. If you work with IRB-protected, FERPA-covered, Census, IRS, or other restricted data, read the confidential data page before doing anything else.\nNot a substitute for your judgment as an economist. Claude can write the code; it cannot identify your effect, defend your specification, or decide whether your design is credible. See what you must still do."
+  },
+  {
+    "objectID": "index.html#suggested-reading-order",
+    "href": "index.html#suggested-reading-order",
+    "title": "LLMs for Economists",
+    "section": "Suggested reading order",
+    "text": "Suggested reading order\nIf you have 30 minutes, read:\n\nPrinciples — the three things that determine how useful Claude Code will be for you.\nWhat is agentic coding?\nInstall Claude Code, then use it inside VS Code — strongly recommended if you’re coming from RStudio, Stata, or Matlab. (If you’ve never used the terminal, the five-minute terminal primer is helpful background even if you go the VS Code route.)\nLaTeX paper editing or Replication package audit.\n\nIf you have a free afternoon, add:\n\nPlan mode, todos, slash commands\nThe example page for your language: Stata, R, Python, Matlab, or Julia.\nHow to ask and Verifying output."
+  },
+  {
+    "objectID": "index.html#a-note-on-whats-fleshed-out-right-now",
+    "href": "index.html#a-note-on-whats-fleshed-out-right-now",
+    "title": "LLMs for Economists",
+    "section": "A note on what’s “fleshed out” right now",
+    "text": "A note on what’s “fleshed out” right now\nThis site is a living draft. The two long-form examples (LaTeX paper editing and replication-package audit) and the install guide are the most complete. Other pages are short outlines that I’ll fill in as colleagues use them and tell me what’s missing. If you find a section that would help you and isn’t there yet, tell me — that’s the fastest way to make this useful."
+  },
+  {
+    "objectID": "pitfalls/judgment.html",
+    "href": "pitfalls/judgment.html",
+    "title": "What you must still do yourself",
+    "section": "",
+    "text": "Note\n\n\n\nComing soon. A short reminder that agentic coding accelerates the mechanical parts of research and leaves the substantive parts exactly where they were — with you.",
+    "crumbs": [
+      "Pitfalls",
+      "What you must still do yourself"
+    ]
+  },
+  {
+    "objectID": "pitfalls/judgment.html#the-list",
+    "href": "pitfalls/judgment.html#the-list",
+    "title": "What you must still do yourself",
+    "section": "The list",
+    "text": "The list\n\nSpecification\nWhat’s the right model? What controls? What functional form? What sample restriction? Claude can implement any of these; it cannot tell you which is correct for your question.\n\n\nIdentification\nWhy does this design recover a causal effect? What threats remain? What robustness checks address them? The model can list textbook threats; it cannot judge whether your setting has them.\n\n\nInterpretation\nWhat does the coefficient mean? Is it economically large? Is it consistent with prior estimates? What’s the policy or theoretical takeaway? Claude can produce confident-sounding interpretations that are wrong about your context.\n\n\nContribution\nWhat’s new here? Why should anyone care? Where does this sit in the literature? Claude has read a lot but has no taste — it cannot tell you whether your contribution is interesting.\n\n\nAuthorship\nAnything you submit goes out under your name. Claude is not a co-author; it’s a tool. Don’t list it; don’t pretend it didn’t help; do disclose LLM use as your journal requires.\n\n\nThe hard problem\nThe model is good enough that you’ll be tempted to outsource judgment disguised as code: “write the empirical strategy section”, “decide which controls to include”, “write the limitations section”. Notice when you’re about to do this. The cost of bad judgment doesn’t go down because the typing got faster.\n\nTell me which of these to expand.",
+    "crumbs": [
+      "Pitfalls",
+      "What you must still do yourself"
+    ]
+  },
+  {
+    "objectID": "getting-started/plan-mode-and-todo.html",
+    "href": "getting-started/plan-mode-and-todo.html",
+    "title": "Plan mode, todos, and slash commands",
+    "section": "",
+    "text": "Note\n\n\n\nComing soon. A short tour of the three features that most change how the tool feels day-to-day.",
+    "crumbs": [
+      "Getting started",
+      "Plan mode, todos, and slash commands"
+    ]
+  },
+  {
+    "objectID": "getting-started/plan-mode-and-todo.html#outline",
+    "href": "getting-started/plan-mode-and-todo.html#outline",
+    "title": "Plan mode, todos, and slash commands",
+    "section": "Outline",
+    "text": "Outline\n\n1. Plan mode\nWhat: Claude reads the relevant files, thinks about the change, and writes a plan for your approval before touching anything.\nWhy it matters: catches misunderstandings before they become bad edits. Especially valuable for multi-file changes.\nHow: hit Shift+Tab until the prompt says “plan mode”, or type /plan style invocations.\n\n\n2. Todos\nWhat: for any non-trivial task, Claude maintains a visible list of steps it’s working through and updates it as it goes.\nWhy it matters: you can see where it is, interrupt cleanly, and notice if it’s wandered off.\n\n\n3. Slash commands and skills\nWhat: shortcuts for repeatable workflows. You can write your own.\nExamples already on your machine: /review, /security-review, /init. Your myccskills repo (the plutonb, evolution, remind skills) is exactly this idea — package up “the way I want this done” once, reuse it forever.\nSee Memory, CLAUDE.md, skills for how to write your own.\n\nTell me which of the three you’d most like a worked walkthrough for.",
+    "crumbs": [
+      "Getting started",
+      "Plan mode, todos, and slash commands"
+    ]
+  },
+  {
+    "objectID": "getting-started/first-project.html",
+    "href": "getting-started/first-project.html",
+    "title": "Your first project",
+    "section": "",
+    "text": "Note\n\n\n\nComing soon. Practical guidance for the first hour you spend with Claude Code on a real project of yours.",
+    "crumbs": [
+      "Getting started",
+      "Your first project"
+    ]
+  },
+  {
+    "objectID": "getting-started/first-project.html#outline",
+    "href": "getting-started/first-project.html#outline",
+    "title": "Your first project",
+    "section": "Outline",
+    "text": "Outline\n\nPick the right project to start with. A paper draft, a teaching repo, or a side project. Not your sensitive replication package.\nSpend ten minutes letting it read the project. Ask it to summarize what’s there. You’ll learn what it sees, which is roughly what a smart RA would see.\nPick one annoying task you’ve been putting off. “Reformat all my tables to use booktabs.” “Standardize variable names across my .do files.” “Write a README for this repo.” Watch it do that.\nRead every diff. This is the habit that matters most.\nQuit, come back tomorrow. Notice that it remembers what you were doing. That memory is CLAUDE.md, covered in Memory, CLAUDE.md, skills.\n\n\nTell me which step you’d most like worked through.",
+    "crumbs": [
+      "Getting started",
+      "Your first project"
+    ]
+  },
+  {
+    "objectID": "getting-started/reorganize-a-messy-project.html",
+    "href": "getting-started/reorganize-a-messy-project.html",
+    "title": "Reorganizing a messy project before letting Claude Code work on it",
+    "section": "",
+    "text": "If you’re like most economists, your active research folders look something like this:\nThere is no README. The “live” version of paper.tex is in your head, not on disk. The Stata cleaning scripts call into Julia for estimation and R for figures, but nothing documents the order. Three of the .do files run; one runs but produces the wrong table; the other two break. The Julia files in estimate_test.jl are an old structural model; the live one is in estimate.jl. Two of the .dta files are inputs to something; the rest are dead. Half the scripts have hardcoded paths to your coauthor’s Dropbox folder.\nThis is fine for a human who wrote it. It is bad for Claude Code, which will read everything, get confused about which version is canonical, and either ask you a lot of questions or — worse — confidently edit the wrong file.\nThis page walks you through a one-time reorganization that gets the project into shape for agentic work. It is itself a perfect first project for Claude Code, because the agent can do most of the work and the worst case is recoverable.",
+    "crumbs": [
+      "Getting started",
+      "Reorganizing a messy project before letting Claude Code work on it"
+    ]
+  },
+  {
+    "objectID": "getting-started/reorganize-a-messy-project.html#what-ready-for-claude-code-actually-means",
+    "href": "getting-started/reorganize-a-messy-project.html#what-ready-for-claude-code-actually-means",
+    "title": "Reorganizing a messy project before letting Claude Code work on it",
+    "section": "What “ready for Claude Code” actually means",
+    "text": "What “ready for Claude Code” actually means\nYou are aiming for a project where:\n\nA stranger (or a future-you, or an RA, or Claude Code) can open the folder and figure out what’s going on within five minutes.\nThere is a single master script that runs every step from raw data to final tables and the compiled paper.\nLive code is clearly distinguished from old/exploratory code. The archive is preserved, not deleted.\nEvery dependency between files is explicit (no hidden assumptions about what was last run by hand in Stata’s window).\nA CLAUDE.md file at the root tells Claude what’s specific to your project: language version, conventions, what’s off-limits, where the data is, what the master script is.\nA README.md tells a human reader the same things.\n.gitignore keeps derived files and OS junk out of git.\nGit is initialized so any change is recoverable.\n\nA reasonable target structure (adjust to taste):\nproject-name/\n├── README.md\n├── CLAUDE.md\n├── .gitignore\n├── make-all.sh           (top-level orchestrator; calls each language in order)\n├── data/\n│   ├── raw/              (read-only; never modified by code)\n│   └── derived/          (built from raw/ by code/)\n├── code/\n│   ├── 01-clean.do          (Stata: prep raw data)\n│   ├── 02-estimate.jl       (Julia: structural estimation)\n│   ├── 03-counterfactuals.jl (Julia: simulate)\n│   └── 04-figures.R         (R: ggplot tables and figures)\n├── output/\n│   ├── tables/\n│   └── figures/\n├── paper/\n│   ├── paper.tex\n│   ├── references.bib\n│   └── (figures, tables, etc.)\n├── docs/                 (data dictionaries, notes, source docs)\n└── archive/              (everything you didn't delete but isn't live)\nThe single code/ folder mixes Stata, Julia, and R because that’s how the work flows — the numeric prefixes (01-, 02-, …) make the order obvious regardless of language. Some people prefer code/stata/, code/julia/, code/r/ subfolders instead; either works as long as the orchestrator at the top knows the order.\nThis is a default, not a religion. AEA, TIER, BITSS, and the Reardon protocol all propose variations — pick one and stick to it.",
+    "crumbs": [
+      "Getting started",
+      "Reorganizing a messy project before letting Claude Code work on it"
+    ]
+  },
+  {
+    "objectID": "getting-started/reorganize-a-messy-project.html#the-13-step-walkthrough",
+    "href": "getting-started/reorganize-a-messy-project.html#the-13-step-walkthrough",
+    "title": "Reorganizing a messy project before letting Claude Code work on it",
+    "section": "The 13-step walkthrough",
+    "text": "The 13-step walkthrough\nEach step has the prompt you’d give Claude Code (in the integrated terminal of VS Code or in a bare terminal — your choice). Read every diff before approving.\n\nStep 1 — Copy the project to a working directory\nDo this in the terminal yourself, not through Claude. It is one command and it is the safety net for everything that follows.\ncp -R ~/Dropbox/wage-paper ~/Desktop/wage-paper-cleanup\nOr, on a Mac, use Finder: select the folder, Cmd-D to duplicate, move the duplicate somewhere outside Dropbox.\n\n\n\n\n\n\nWarning\n\n\n\nMove the copy outside any cloud-synced folder (Dropbox, OneDrive, iCloud Drive). Reorganization will rename and move many files; you don’t want every intermediate state syncing across your devices and your coauthors’ machines. Once you’re done and verified, you can move the finished version back.\nIf your project contains IRB-protected, restricted-access, or otherwise confidential data, stop and read Confidential data before doing anything else. At minimum, make sure the data subfolder is not pulled into the working copy unless you’ve confirmed it’s safe to send to a cloud LLM provider in subsequent steps.\n\n\nVerify the copy:\ndu -sh ~/Dropbox/wage-paper ~/Desktop/wage-paper-cleanup\nSizes should match within a few KB. Now cd into the copy and from this point on, work only there.\ncd ~/Desktop/wage-paper-cleanup\n\n\nStep 2 — Initialize git in the copy\nEven if you never push to GitHub, local git is the recoverable history that makes the rest of this walkthrough safe. From inside the copy:\ngit init -b main\ngit add -A\ngit commit -m \"Baseline before reorganization\"\nNow any change Claude makes is undoable with git checkout . or git reset --hard HEAD. This is the foundation of the “robust system with fail-safes” principle.\n\n\nStep 3 — Open Claude Code and take inventory\nStart Claude in the copy:\nclaude\nFirst prompt — purely read-only. You’re asking for a map, not an action:\n\n“Read the entire project. Don’t modify anything. Produce a Markdown inventory with: (a) every top-level file and directory, (b) for each code file, a one-line description of what it appears to do, (c) for each data file, its size and a guess at whether it looks like raw input or derived output, (d) for each .tex file, whether it appears to be a paper draft, an old version, an appendix, slides, or something else. End with a section called ‘Open questions’ — things you’d need me to confirm before reorganizing.”\n\nYou will get back a 2-4 page document. Read it carefully. This is where you discover that analysis_v3_rebuttal.do is actually the live one and analysis.do is from two years ago — exactly the kind of thing a clean reorganization needs to get right.\n\n\nStep 4 — Identify the live code path\nNow narrow the inventory to what currently matters:\n\n“Based on the inventory, identify the live code path — the minimal set of scripts and data files needed to reproduce the current version of paper.tex (or whichever .tex file I confirm is live). Trace dependencies: which scripts read which data files, which scripts produce which intermediate files, which scripts produce the tables and figures cited in the paper. Output as a Markdown list. Don’t move or delete anything yet.”\n\nIf Claude is unsure which .tex is the live paper, it will ask. Tell it.\nWhat you get is a dependency map. Everything not on it is a candidate for archiving in step 6.\n\n\n\n\n\n\nWarning\n\n\n\nThis is the step where Claude can hallucinate dependencies. Spot-check a few of its claims. Open a script Claude says produces Table 3; confirm it does. Open a .dta Claude says is unused; grep for its name across the project to make sure nothing references it. The cost of a hallucinated “this file is dead” is real — you might archive a file that something obscure actually needs.\n\n\n\n\nStep 5 — Confirm and adjust the live path manually\nThis step is for you, not Claude. Read the dependency map. Add anything Claude missed. Remove anything you know is actually dead. The output of this step is your confirmed list of “what stays in the live path.”\nA useful question to ask yourself for ambiguous files: “if this file went missing tomorrow, would I notice?” If no, archive. If yes, live.\n\n\nStep 6 — Move exploration to archive/, don’t delete\nNow the first real edit. Tell Claude:\n\n“Create an archive/ directory. Move every file and folder NOT on the confirmed live-path list into archive/, preserving relative structure inside archive/ so I can find things later. Use git mv so the moves are tracked. Don’t delete anything. Show me the plan before executing.”\n\nUse plan mode for this — Shift+Tab until you see “plan mode” before you send the prompt. You want to read the full move list before any file is touched.\nWhen the moves are done, commit:\ngit add -A\ngit commit -m \"Archive non-live files\"\n\n\n\n\n\n\nTip\n\n\n\nWhy archive instead of delete? You will be wrong about what’s dead roughly 10% of the time. A coauthor will ask “what happened to the robustness check that used wage_no_outliers.dta?” and the answer “in archive/data/wage_no_outliers.dta” is much better than “I deleted it last Tuesday.”\n\n\n\n\nStep 7 — Standardize the folder structure\nPropose first, move second:\n\n“I want to reorganize the live files into this structure: [paste the target structure from earlier on this page, edited for your project]. Propose how to map every current live file into the target structure. Don’t move anything yet. Flag any files where you’re not sure where they belong, and any files in the target structure that don’t exist yet (e.g., I have no master.do — that’s fine, we’ll create it later).”\n\nRead the proposed mapping. Adjust anything that’s wrong. Then:\n\n“Execute the mapping. Use git mv. Do not modify file contents — only move and rename. After every move, update path references in the remaining live files so the project still resolves. Cover each language’s idioms: Stata (include, do, use ... , clear, save, import delimited), R (source(), here::here(), readr::read_*(), setwd(), ggsave()), Julia (include(), using, CSV.read, joinpath(), Pkg.activate), Python (import, from ... import, pathlib.Path, pd.read_*, open()), LaTeX (\\input{}, \\includegraphics{}, \\addbibresource{}), Matlab (addpath, cd, load, readtable). Show me each path-fix diff before applying.”\n\nPlan mode again. Approve diffs one at a time. Commit when done:\ngit commit -am \"Reorganize live files into standard structure\"\n\n\nStep 8 — Find and fix hardcoded paths\n\n“Search the entire project (excluding archive/) for hardcoded absolute paths — anything starting with /Users/, /home/, C:\\\\, ~/Dropbox, or that references a specific user’s folder. List every occurrence with file and line number. Don’t change anything yet.”\n\nYou’ll get a list. For each hardcoded path, decide:\n\nConvert to relative. Best default. /Users/me/Dropbox/wage-paper/data/raw.dta becomes data/raw/raw.dta.\nMove to a config block. If the path points outside the project (a shared dataset on a research drive, say), put it in a small config.do (or config.R, etc.) at the project root and include it from each script. One place to change paths when machines change.\nDocument but leave alone. If the path is to a restricted-access data folder that genuinely lives elsewhere, document the requirement in the README and leave the path. Hardcoding is a feature here.\n\nThen ask Claude to apply the conversion you decided:\n\n“Convert paths in [list of files] from absolute to relative, assuming the project root is the working directory. Show diffs.”\n\nCommit when done.\n\n\nStep 9 — Draft CLAUDE.md\nCLAUDE.md is read by Claude at the start of every session in this project. See Memory, CLAUDE.md, skills for the full picture; for now:\n\n“Write a CLAUDE.md at the project root with: (1) one-paragraph description of what the project is and its current status, (2) the full stack — for every language used in code/, the version (Stata 18, R 4.4, Julia 1.11, Python 3.12, …) and the key packages, plus the LaTeX distribution and any Stata/R packages that aren’t on the default path, (3) folder conventions in this project (data/raw/ is read-only; output/ is built; etc.), (4) the orchestrator (make-all.sh or Makefile) and how to run it, including the order in which the languages are invoked and any language-specific gotchas (e.g., ‘the Stata binary on this machine is stata-mp’), (5) what to never do (don’t modify data/raw/, don’t commit data/derived/, don’t change paper/paper.tex without asking, etc.), (6) anything else a new collaborator would need. Read what’s already in the project to fill in real values; ask me where you’re unsure.”\n\nRead what Claude produces. Edit it freely — this is your document. Commit.\n\n\nStep 10 — Draft README.md\nREADME.md is the human-facing version of CLAUDE.md, plus more context. Same principle: have Claude draft, you edit.\n\n“Write a README.md at the project root following the AEA data and code availability standards: (1) project description and citation, (2) data availability and provenance — for each dataset in data/raw/, where it came from, whether it’s public or restricted, how to obtain it if restricted, (3) computational requirements — software, packages, expected runtime, (4) instructions to reproduce — exactly what command(s) someone runs from a clean clone, (5) a mapping from each table and figure in paper/paper.tex to the script and output file that produces it, (6) license. Use what’s already in CLAUDE.md and the code; ask me where you’re unsure.”\n\n\n\n\n\n\n\nWarning\n\n\n\nRead this draft critically. Claude can write a plausible-looking README that overstates how complete the project is. The data-availability section in particular: if your raw data came from a confidential source, say so explicitly and don’t let Claude paper over it.\n\n\nEdit, commit.\n\n\nStep 11 — Build a master script (the orchestrator)\nIf your project mixes languages — Stata cleaning, then Julia estimation, then R figures, then a LaTeX compile — no single language’s script can sit at the top. You want a language-agnostic orchestrator at the project root that calls each runner in order. A small shell script is the simplest answer; a Makefile is the upgrade path.\nThe prompt:\n\n“Write a make-all.sh shell script at the project root that runs the full pipeline in order: invoke each language’s runner for the scripts in code/ (Stata for .do, Julia for .jl, R for .R, Python for .py if any), then compile paper/paper.tex. Use set -euo pipefail so the script halts on the first error. cd to the project root at the top so it works from anywhere. Print a one-line progress message before each step and a one-line success message at the end. Use relative paths.”\n\nYou’ll get something like:\n#!/usr/bin/env bash\nset -euo pipefail\ncd \"$(dirname \"$0\")\"   # always run from project root\n\necho \"[1/4] Cleaning data (Stata)...\"\nstata-mp -b do code/01-clean.do\n\necho \"[2/4] Estimating model (Julia)...\"\njulia --project code/02-estimate.jl\n\necho \"[3/4] Producing figures and tables (R)...\"\nRscript code/04-figures.R\n\necho \"[4/4] Compiling paper...\"\n( cd paper && latexmk -pdf paper.tex )\n\necho \"Done. Outputs in output/, paper in paper/paper.pdf.\"\nMake it executable once: chmod +x make-all.sh. From then on, one command rebuilds the whole project: ./make-all.sh.\n\n\n\n\n\n\nNote\n\n\n\nSingle-language project? If everything is Stata, a master.do at the root that dos each script is fine. If everything is R, master.R calling source() on each script works. The orchestrator matters most when you cross language boundaries; below that, use what your language gives you.\n\n\n\n\n\n\n\n\nTip\n\n\n\nA Makefile is the upgrade. Once your pipeline is stable and slow, a Makefile pays for itself: it re-runs only what’s downstream of the file you changed. For most econ projects you don’t need it on day one — but if a single rebuild starts taking 20+ minutes, that’s the signal to convert your make-all.sh into a Makefile with proper target: prerequisite rules.\n\n\n\n\n\n\n\n\nWarning\n\n\n\nStata’s batch flag varies by platform and version. On Mac/Linux the typical invocation is stata-mp -b do script.do; on Windows it’s StataMP.exe /e do script.do. If your group uses Stata-SE or Stata-IC, the binary names differ (stata-se, stata). Tell Claude which binary you have in CLAUDE.md so it gets it right the first time.\n\n\n\n\nStep 12 — Add .gitignore\n\n“Write a .gitignore for this project. Exclude: (a) LaTeX build artifacts: *.aux, *.log, *.out, *.toc, *.blg, *.bbl, *.synctex.gz, *.fls, *.fdb_latexmk; (b) Stata: *.smcl log files (large; usually you only want the .log ASCII version); also Stata’s per-user temp files; (c) R: .Rhistory, .Rproj.user/, .Rdata, .RData; (d) Julia: *.cov. Decide whether to commit Manifest.toml: commit it if you want bit-exact reproducibility (recommended for replication packages); leave it ignored if you want package-version flexibility while you’re still developing; (e) Python: __pycache__/, *.pyc, .ipynb_checkpoints/, .venv/; (f) Matlab: *.asv (autosaves), *.mexmaci64, *.mexmaca64, *.mexa64, *.mexw64 (compiled MEX files); (g) OS junk: .DS_Store (macOS), Thumbs.db (Windows); (h) Derived data: data/derived/**; (i) Editor cruft: .vscode/ (unless you want to commit shared settings), .idea/. Show me the file before creating it.”\n\nAfter it’s in place, clean up anything that’s already tracked but should be ignored:\ngit rm -r --cached data/derived\ngit commit -m \"Stop tracking derived data\"\n\n\n\n\n\n\nTip\n\n\n\nOne subtle Julia decision. Project.toml should always be committed — it lists which packages your code uses. Manifest.toml is the exact-version lockfile. For an active research project, ignoring Manifest.toml is fine (and keeps merge conflicts down with coauthors). For a replication package, commit it — readers should get the exact package versions you used.\n\n\n\n\nStep 13 — Run end-to-end and verify\nThe whole point of the orchestrator and the clean structure is that you can do this:\n# In the terminal, from the project root:\n./make-all.sh        # or `make all` if you went the Makefile route\nOr have Claude do it:\n\n“Run ./make-all.sh from a fresh state. If any step errors, stop and tell me what happened — don’t try to auto-fix. After it succeeds, list every file produced under output/ and paper/, confirm the paper PDF compiled without unresolved references or missing-citation warnings, and report the total wall-clock runtime.”\n\nIf the master script doesn’t reproduce something that’s in your paper, that’s a real finding — either the live code path is wrong (re-do step 4) or there’s an undocumented manual step somewhere (document it in the README).\nWhen everything runs end-to-end, commit:\ngit commit -am \"Reorganization complete; master script reproduces all results\"\n\n\nStep 14 — Compare against the original\nYou worked in a copy. Before throwing away the original, do one final diff:\n\n“List every table and figure file in the original project at ~/Dropbox/wage-paper/ (read-only — don’t modify anything there). For each, find the corresponding file in this reorganized project and compare. Flag any tables or figures that exist in the original but not here (might be missing live code), or that exist here but have different content (might be a numerical regression).”\n\nInvestigate any flags. When the diff is clean, the reorganized version is your new live project. Move it back to its permanent home (out of ~/Desktop/), update any external references, and you are done.",
+    "crumbs": [
+      "Getting started",
+      "Reorganizing a messy project before letting Claude Code work on it"
+    ]
+  },
+  {
+    "objectID": "getting-started/reorganize-a-messy-project.html#things-to-be-careful-about",
+    "href": "getting-started/reorganize-a-messy-project.html#things-to-be-careful-about",
+    "title": "Reorganizing a messy project before letting Claude Code work on it",
+    "section": "Things to be careful about",
+    "text": "Things to be careful about\n\n\n\n\n\n\nWarning\n\n\n\nDon’t reorganize on top of the original. Always work in a copy. This is so important it’s worth repeating in a callout.\n\n\n\n\n\n\n\n\nWarning\n\n\n\nDon’t delete anything. Archive everything that’s not live. The cost of an over-aggressive archive is “I had to fish a file out of archive/”; the cost of an over-aggressive delete is rebuilding work from memory.\n\n\n\n\n\n\n\n\nWarning\n\n\n\nWatch for files that look unused but aren’t. A .dta file with no matching use command in any .do file might still be loaded by name inside an included script, or referenced from a Matlab routine, or read by a coauthor’s pre-existing pipeline. Spot-check before archiving.\n\n\n\n\n\n\n\n\nWarning\n\n\n\nIf you have coauthors, talk to them before reorganizing a shared project. They have a mental model of where things are. A unilateral reorganization makes you the only person who can find anything for the next month. Better: do the reorganization on a branch, send them the new structure, get buy-in, then merge.\n\n\n\n\n\n\n\n\nWarning\n\n\n\nBe thoughtful about file timestamps. git mv preserves history but the filesystem mtime resets. If you depend on file timestamps for anything (a build system, a “newest version wins” check), document it or you’ll be confused later.\n\n\n\n\n\n\n\n\nWarning\n\n\n\nConfidential data deserves its own decision. If data/raw/ contains restricted-access data, ask yourself: was Claude reading those files during the inventory step? Are you OK with that? If not, you should have moved/symlinked the data folder before starting Claude. See Confidential data for the decision tree.",
+    "crumbs": [
+      "Getting started",
+      "Reorganizing a messy project before letting Claude Code work on it"
+    ]
+  },
+  {
+    "objectID": "getting-started/reorganize-a-messy-project.html#when-not-to-reorganize",
+    "href": "getting-started/reorganize-a-messy-project.html#when-not-to-reorganize",
+    "title": "Reorganizing a messy project before letting Claude Code work on it",
+    "section": "When not to reorganize",
+    "text": "When not to reorganize\n\nRight before a deadline. Don’t reorganize the night before a submission. The risk of breaking something silently outweighs the benefit.\nFor a project you’re about to abandon. If this paper is dead and you’re not coming back, the reorganization is wasted effort. Just archive the whole folder.\nWithout a copy. Yes, third time. Don’t.\nFor someone else’s published replication package without their permission. That has its own workflow — see the replication-package audit example.",
+    "crumbs": [
+      "Getting started",
+      "Reorganizing a messy project before letting Claude Code work on it"
+    ]
+  },
+  {
+    "objectID": "getting-started/reorganize-a-messy-project.html#a-realistic-time-budget",
+    "href": "getting-started/reorganize-a-messy-project.html#a-realistic-time-budget",
+    "title": "Reorganizing a messy project before letting Claude Code work on it",
+    "section": "A realistic time budget",
+    "text": "A realistic time budget\nFor a typical mid-sized econ project (one paper, 20-40 code/data/text files in a few hundred MB), expect:\n\nSteps 1-2 (copy + git init): 5 minutes\nSteps 3-5 (inventory + live-path identification): 30-60 minutes, most of it you reading what Claude produced and confirming\nSteps 6-7 (archive + reorganize): 30 minutes\nStep 8 (paths): 15-30 minutes\nSteps 9-12 (CLAUDE.md, README, master script, .gitignore): 60-90 minutes, again mostly your editing and judgment time\nSteps 13-14 (verification): 30-60 minutes if it works on the first try; longer if you discover broken dependencies along the way\n\nSo: half a day to a full day of focused work. The first time you do this it will take longer because the steps are unfamiliar. The second time it goes much faster. By the third project, you’ll have a personal checklist and it will feel routine.",
+    "crumbs": [
+      "Getting started",
+      "Reorganizing a messy project before letting Claude Code work on it"
+    ]
+  },
+  {
+    "objectID": "getting-started/reorganize-a-messy-project.html#where-to-go-next",
+    "href": "getting-started/reorganize-a-messy-project.html#where-to-go-next",
+    "title": "Reorganizing a messy project before letting Claude Code work on it",
     "section": "Where to go next",
-    "text": "Where to go next\n\nUse Claude Code inside VS Code — strongly recommended for colleagues coming from RStudio, Stata, or Matlab. The diff view, clickable file paths, and built-in Git make the agentic loop feel ordinary instead of intimidating.\nYour first project — what to actually do in your first hour of using Claude Code on real work.\nPlan mode, todos, slash commands — the three features that make Claude Code feel like a research assistant rather than a chatbot.\nLaTeX paper editing — a fully worked example.\n\n\n\n\n\n\n\nWarning\n\n\n\nBefore you point Claude Code at a project with confidential or restricted-access data, read Confidential data. Some data should never go to a cloud LLM, full stop.",
+    "text": "Where to go next\n\nYour first project — what to do once the project is reorganized and ready.\nMemory, CLAUDE.md, skills — more detail on the CLAUDE.md you wrote in step 9, and how to turn this whole reorganization into a reusable skill (/reorganize-project) for the next project.\nReplication package audit — the closely-related workflow for taking a clean project and preparing it for journal submission, or for auditing someone else’s package as a referee.\nVerifying output — the habits that make every step on this page safe.",
     "crumbs": [
       "Getting started",
-      "Install Claude Code"
+      "Reorganizing a messy project before letting Claude Code work on it"
     ]
   },
   {

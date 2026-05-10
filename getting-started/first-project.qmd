@@ -7,6 +7,15 @@ title: "Your first project"
 Claude Code on a real project of yours.
 :::
 
+::: {.callout-tip}
+**If your "first project" is a messy active research folder** — multiple
+paper drafts, exploratory `.do` files, no README, hardcoded paths — do
+the [one-time reorganization walkthrough](reorganize-a-messy-project.qmd)
+*first*. Pointing Claude at a chaotic project on day one is the most
+common reason colleagues bounce off the tool. Half a day of cleanup is
+the difference between Claude being useful and Claude being confusing.
+:::
+
 ## Outline
 
 - **Pick the right project to start with.** A paper draft, a teaching
