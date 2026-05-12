@@ -36,6 +36,12 @@ h1 { font-weight: 600; margin-top: 1.2rem; }
 h2 { font-weight: 600; margin-top: 2.2rem; }
 h3 { font-weight: 600; margin-top: 1.6rem; }
 
+/* Offset anchor-jumps so the sticky navbar doesn't hide the heading
+   and the first lines below it. ~80px covers navbar + breadcrumb. */
+h1, h2, h3, h4, h5, h6 {
+  scroll-margin-top: 90px;
+}
+
 .btn-primary {
   background-color: #B8653A;
   border-color: #B8653A;

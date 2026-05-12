@@ -138,6 +138,55 @@ cp -R ~/Dropbox/wage-paper ~/Desktop/wage-paper-cleanup
 Or, on a Mac, use Finder: select the folder, `Cmd-D` to duplicate,
 move the duplicate somewhere outside Dropbox.
 
+::: {.callout-tip}
+**Already git-fluent and the original project is already in git? Use a
+worktree instead of `cp -R`.**
+
+```bash
+cd ~/projects/wage-paper            # the original, already in git
+git worktree add ../wage-paper-cleanup -b reorganize-2026
+cd ../wage-paper-cleanup            # work here for the rest of this page
+```
+
+This replaces both Step 1 (copy) *and* Step 2 (`git init` + first
+commit). The worktree is a fresh working directory on its own branch,
+with the current `main` commit as the implicit baseline. You can skip
+ahead to Step 3.
+
+A worktree gives you everything `cp -R` does, plus several real wins
+specific to a multi-step reorganization:
+
+- **The reorganization is a reviewable change set.** At the end,
+  `git diff main..reorganize-2026` shows the entire transformation as
+  one diff you (and a coauthor, and Claude) can read.
+- **Each step is its own commit on the branch.** `git log
+  reorganize-2026` is your audit trail. If a verification run fails
+  three days from now, `git bisect` finds the exact commit that broke
+  the result.
+- **History stays connected to the original.** Mid-reorganization, if
+  a referee asks something about the published structure, `cd
+  ~/projects/wage-paper` and the original is right there, untouched
+  and on `main`. With `cp -R` you'd have two disconnected copies and
+  no easy way to compare.
+- **Coauthor review before you commit to it.** Push the branch; your
+  coauthor reviews `reorganize-2026` as a pull request and either
+  approves the new structure or flags issues *before* you merge into
+  `main`. A `cp -R` copy is invisible to them until you finish.
+- **One-command cleanup if you abandon halfway:** `git worktree remove
+  ../wage-paper-cleanup && git branch -D reorganize-2026`. Compared to
+  `rm -rf` of a `cp -R` copy, this is the same outcome but with a
+  paper trail in `git reflog` if you change your mind tomorrow.
+- **The `.gitignore` you'll write in Step 12 stays applied across
+  reorganization steps automatically.** No risk of accidentally
+  committing build artifacts or derived data because the rules are
+  inherited from the branch.
+
+If you or your colleagues are git novices — or if the original project
+isn't yet in git — the `cp -R` path below is the recommended default.
+The full explanation of worktrees, with more use cases and pitfalls,
+is in the [Worktrees section of the Git page](git.qmd#worktrees-when-one-working-directory-isnt-enough).
+:::
+
 ::: {.callout-warning}
 **Move the copy outside any cloud-synced folder** (Dropbox, OneDrive,
 iCloud Drive). Reorganization will rename and move many files; you don't

@@ -1,5 +1,6 @@
 /.quarto/
 /_site/
+/.claude/
 /.DS_Store
 .DS_Store
 *.log

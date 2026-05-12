@@ -354,6 +354,110 @@ Code is good at walking you through resolving conflicts. See
 "[When you're stuck](#when-youre-stuck)" below.
 :::
 
+## Worktrees — when one working directory isn't enough
+
+A **worktree** is a second (or third) working directory that shares the
+same `.git` repository. Each worktree sits on its own branch. You can
+edit, commit, run scripts in any worktree independently — but the
+underlying history is shared, so commits in one show up in the other
+the moment you pull or fetch.
+
+This is *not* day-one Git. It is, however, the feature you'll wish you
+had once you have a long-running project, coauthors, and Claude Code
+all in the same workflow.
+
+### The basic mechanics
+
+From inside your existing project:
+
+```bash
+git worktree add ../paper-revision revision-2026
+```
+
+That creates a new directory at `../paper-revision`, checked out on
+branch `revision-2026` (created if it doesn't exist). Your **original
+working directory is unchanged** — you can keep working in it. Open the
+new one in another VS Code window and you have two parallel checkouts
+of the same project.
+
+When you're done with the second worktree:
+
+```bash
+git worktree remove ../paper-revision
+git branch -D revision-2026     # if you don't want to keep the branch
+```
+
+### When you'd actually want this
+
+1. **Working on two branches without context-switching.** You're
+   mid-revision on `revision-2026` when a referee email arrives asking
+   a quick question about a result on `main`. Without worktrees you'd
+   `git stash` (which loses your editor state and any half-typed
+   prompts to Claude), `git checkout main`, answer, switch back, `git
+   stash pop`. With worktrees: open the `main` worktree in another
+   window, answer there, never disturb the revision work.
+
+2. **Long-running jobs you can't interrupt.** A Stata batch job is
+   running in your project's main checkout. Switching branches
+   mid-job is risky — the script might pick up the wrong files
+   partway through. A worktree on a different branch lets you do
+   exploratory work in parallel without touching the running job.
+
+3. **Side-by-side comparison.** Open the old version in one window,
+   the new version in another. Especially useful for paper revisions:
+   when you're writing a response-to-referees, you can keep the
+   submitted text and the revised text both on screen at once. Same
+   trick for code: the published replication's `analysis.do` in one
+   window, your in-progress revision in another.
+
+4. **Reorganizing a project without copying.** The
+   [reorganize-a-messy-project walkthrough](reorganize-a-messy-project.qmd)
+   recommends `cp -R` for git novices, but a worktree is a strict
+   improvement when you're git-fluent and the original is already in
+   git. The reorganization shows up as a series of commits on a
+   branch; `git diff main..reorganize-2026` reviews the whole change
+   at the end.
+
+5. **Letting Claude work in isolation.** Claude Code's Agent tool can
+   spawn a sub-agent in its own worktree (the `isolation: "worktree"`
+   option), so a disruptive task — a big refactor, a structural
+   rewrite, an experimental rewrite of your tables — runs in a
+   parallel checkout while you keep working in your main one. The
+   agent reports back what it changed; you decide whether to merge.
+   Without worktrees, the same task would either lock you out of your
+   project for the duration or leave you wondering whether the agent's
+   half-finished state is corrupting what you're looking at.
+
+6. **Multi-version verification.** You want to confirm a result
+   reproduces in both Stata 17 and Stata 18, or in both R 4.3 and R
+   4.4. A worktree per version with the relevant environment files
+   committed lets you keep both setups warm at the same time.
+
+### Listing and pruning
+
+```bash
+git worktree list                  # show every worktree this repo has
+git worktree prune                 # clean up stale references
+```
+
+`git worktree list` is the answer to "wait, did I create that other
+worktree six months ago and forget about it?"
+
+### Things to be careful about
+
+- **Each worktree must be on a different branch.** You can't have two
+  worktrees on `main` at the same time.
+- **Don't `rm -rf` a worktree folder.** Use `git worktree remove`
+  instead — otherwise Git keeps stale references and you'll need to
+  clean up with `git worktree prune` later.
+- **Don't put worktrees inside Dropbox / iCloud / OneDrive.** Same
+  sync-conflict reasons as putting your main project there.
+- **Each worktree has its own untracked files.** Things in
+  `.gitignore` (build artifacts, derived data) are not shared between
+  worktrees — each one builds its own.
+- **Submodules and global git config are shared.** Hooks, configured
+  identity, etc., are repo-wide.
+
 ## Going beyond your machine — GitHub
 
 Everything above works with **zero internet connection**. Git is

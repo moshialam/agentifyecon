@@ -376,6 +376,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#undoing-things-the-destructive-operations" id="toc-undoing-things-the-destructive-operations" class="nav-link" data-scroll-target="#undoing-things-the-destructive-operations">Undoing things — the destructive operations</a></li>
   <li><a href="#branches-for-trying-things-without-breaking-what-works" id="toc-branches-for-trying-things-without-breaking-what-works" class="nav-link" data-scroll-target="#branches-for-trying-things-without-breaking-what-works">Branches — for trying things without breaking what works</a></li>
+  <li><a href="#worktrees-when-one-working-directory-isnt-enough" id="toc-worktrees-when-one-working-directory-isnt-enough" class="nav-link" data-scroll-target="#worktrees-when-one-working-directory-isnt-enough">Worktrees — when one working directory isn’t enough</a>
+  <ul class="collapse">
+  <li><a href="#the-basic-mechanics" id="toc-the-basic-mechanics" class="nav-link" data-scroll-target="#the-basic-mechanics">The basic mechanics</a></li>
+  <li><a href="#when-youd-actually-want-this" id="toc-when-youd-actually-want-this" class="nav-link" data-scroll-target="#when-youd-actually-want-this">When you’d actually want this</a></li>
+  <li><a href="#listing-and-pruning" id="toc-listing-and-pruning" class="nav-link" data-scroll-target="#listing-and-pruning">Listing and pruning</a></li>
+  <li><a href="#things-to-be-careful-about" id="toc-things-to-be-careful-about" class="nav-link" data-scroll-target="#things-to-be-careful-about">Things to be careful about</a></li>
+  </ul></li>
   <li><a href="#going-beyond-your-machine-github" id="toc-going-beyond-your-machine-github" class="nav-link" data-scroll-target="#going-beyond-your-machine-github">Going beyond your machine — GitHub</a>
   <ul class="collapse">
   <li><a href="#one-time-setup-per-project" id="toc-one-time-setup-per-project" class="nav-link" data-scroll-target="#one-time-setup-per-project">One-time setup per project</a></li>
@@ -668,21 +675,62 @@ Note
 </div>
 </div>
 </section>
+<section id="worktrees-when-one-working-directory-isnt-enough" class="level2">
+<h2 class="anchored" data-anchor-id="worktrees-when-one-working-directory-isnt-enough">Worktrees — when one working directory isn’t enough</h2>
+<p>A <strong>worktree</strong> is a second (or third) working directory that shares the same <code>.git</code> repository. Each worktree sits on its own branch. You can edit, commit, run scripts in any worktree independently — but the underlying history is shared, so commits in one show up in the other the moment you pull or fetch.</p>
+<p>This is <em>not</em> day-one Git. It is, however, the feature you’ll wish you had once you have a long-running project, coauthors, and Claude Code all in the same workflow.</p>
+<section id="the-basic-mechanics" class="level3">
+<h3 class="anchored" data-anchor-id="the-basic-mechanics">The basic mechanics</h3>
+<p>From inside your existing project:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> worktree add ../paper-revision revision-2026</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>That creates a new directory at <code>../paper-revision</code>, checked out on branch <code>revision-2026</code> (created if it doesn’t exist). Your <strong>original working directory is unchanged</strong> — you can keep working in it. Open the new one in another VS Code window and you have two parallel checkouts of the same project.</p>
+<p>When you’re done with the second worktree:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> worktree remove ../paper-revision</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-D</span> revision-2026     <span class="co"># if you don't want to keep the branch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="when-youd-actually-want-this" class="level3">
+<h3 class="anchored" data-anchor-id="when-youd-actually-want-this">When you’d actually want this</h3>
+<ol type="1">
+<li><p><strong>Working on two branches without context-switching.</strong> You’re mid-revision on <code>revision-2026</code> when a referee email arrives asking a quick question about a result on <code>main</code>. Without worktrees you’d <code>git stash</code> (which loses your editor state and any half-typed prompts to Claude), <code>git checkout main</code>, answer, switch back, <code>git    stash pop</code>. With worktrees: open the <code>main</code> worktree in another window, answer there, never disturb the revision work.</p></li>
+<li><p><strong>Long-running jobs you can’t interrupt.</strong> A Stata batch job is running in your project’s main checkout. Switching branches mid-job is risky — the script might pick up the wrong files partway through. A worktree on a different branch lets you do exploratory work in parallel without touching the running job.</p></li>
+<li><p><strong>Side-by-side comparison.</strong> Open the old version in one window, the new version in another. Especially useful for paper revisions: when you’re writing a response-to-referees, you can keep the submitted text and the revised text both on screen at once. Same trick for code: the published replication’s <code>analysis.do</code> in one window, your in-progress revision in another.</p></li>
+<li><p><strong>Reorganizing a project without copying.</strong> The <a href="../getting-started/reorganize-a-messy-project.html">reorganize-a-messy-project walkthrough</a> recommends <code>cp -R</code> for git novices, but a worktree is a strict improvement when you’re git-fluent and the original is already in git. The reorganization shows up as a series of commits on a branch; <code>git diff main..reorganize-2026</code> reviews the whole change at the end.</p></li>
+<li><p><strong>Letting Claude work in isolation.</strong> Claude Code’s Agent tool can spawn a sub-agent in its own worktree (the <code>isolation: "worktree"</code> option), so a disruptive task — a big refactor, a structural rewrite, an experimental rewrite of your tables — runs in a parallel checkout while you keep working in your main one. The agent reports back what it changed; you decide whether to merge. Without worktrees, the same task would either lock you out of your project for the duration or leave you wondering whether the agent’s half-finished state is corrupting what you’re looking at.</p></li>
+<li><p><strong>Multi-version verification.</strong> You want to confirm a result reproduces in both Stata 17 and Stata 18, or in both R 4.3 and R 4.4. A worktree per version with the relevant environment files committed lets you keep both setups warm at the same time.</p></li>
+</ol>
+</section>
+<section id="listing-and-pruning" class="level3">
+<h3 class="anchored" data-anchor-id="listing-and-pruning">Listing and pruning</h3>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> worktree list                  <span class="co"># show every worktree this repo has</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> worktree prune                 <span class="co"># clean up stale references</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>git worktree list</code> is the answer to “wait, did I create that other worktree six months ago and forget about it?”</p>
+</section>
+<section id="things-to-be-careful-about" class="level3">
+<h3 class="anchored" data-anchor-id="things-to-be-careful-about">Things to be careful about</h3>
+<ul>
+<li><strong>Each worktree must be on a different branch.</strong> You can’t have two worktrees on <code>main</code> at the same time.</li>
+<li><strong>Don’t <code>rm -rf</code> a worktree folder.</strong> Use <code>git worktree remove</code> instead — otherwise Git keeps stale references and you’ll need to clean up with <code>git worktree prune</code> later.</li>
+<li><strong>Don’t put worktrees inside Dropbox / iCloud / OneDrive.</strong> Same sync-conflict reasons as putting your main project there.</li>
+<li><strong>Each worktree has its own untracked files.</strong> Things in <code>.gitignore</code> (build artifacts, derived data) are not shared between worktrees — each one builds its own.</li>
+<li><strong>Submodules and global git config are shared.</strong> Hooks, configured identity, etc., are repo-wide.</li>
+</ul>
+</section>
+</section>
 <section id="going-beyond-your-machine-github" class="level2">
 <h2 class="anchored" data-anchor-id="going-beyond-your-machine-github">Going beyond your machine — GitHub</h2>
 <p>Everything above works with <strong>zero internet connection</strong>. Git is purely local. To back up your work, share with coauthors, or publish a replication package, you push to a “remote” — usually GitHub (<a href="https://github.com">github.com</a>) but GitLab, Bitbucket, and self-hosted alternatives work the same way.</p>
 <section id="one-time-setup-per-project" class="level3">
 <h3 class="anchored" data-anchor-id="one-time-setup-per-project">One-time setup per project</h3>
 <p>Create an empty repository on GitHub. It will give you a URL like <code>https://github.com/yourname/wage-paper.git</code>. In your local project:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/yourname/wage-paper.git</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/yourname/wage-paper.git</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The <code>-u origin main</code> part is shorthand for “remember that my local <code>main</code> corresponds to <code>main</code> on <code>origin</code>” — you only need it the first time.</p>
 </section>
 <section id="the-everyday-loop-with-a-remote" class="level3">
 <h3 class="anchored" data-anchor-id="the-everyday-loop-with-a-remote">The everyday loop, with a remote</h3>
 <p>When you’re working from one machine on a solo project, you don’t need to push every time. When you do push:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push                    <span class="co"># send your commits to GitHub</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull                    <span class="co"># fetch coauthors' commits and merge in</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push                    <span class="co"># send your commits to GitHub</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull                    <span class="co"># fetch coauthors' commits and merge in</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>That’s the whole remote workflow. The vast majority of “Git frustration” in econ comes from forgetting to <code>git pull</code> before starting work — when you do, your commits and your coauthor’s commits diverge, and you have to do a merge.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">

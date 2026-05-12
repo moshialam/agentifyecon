@@ -505,6 +505,33 @@ Warning
 <p>Do this in the terminal yourself, not through Claude. It is one command and it is the safety net for everything that follows.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-R</span> ~/Dropbox/wage-paper ~/Desktop/wage-paper-cleanup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Or, on a Mac, use Finder: select the folder, <code>Cmd-D</code> to duplicate, move the duplicate somewhere outside Dropbox.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Already git-fluent and the original project is already in git? Use a worktree instead of <code>cp -R</code>.</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/projects/wage-paper            <span class="co"># the original, already in git</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> worktree add ../wage-paper-cleanup <span class="at">-b</span> reorganize-2026</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ../wage-paper-cleanup            <span class="co"># work here for the rest of this page</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This replaces both Step 1 (copy) <em>and</em> Step 2 (<code>git init</code> + first commit). The worktree is a fresh working directory on its own branch, with the current <code>main</code> commit as the implicit baseline. You can skip ahead to Step 3.</p>
+<p>A worktree gives you everything <code>cp -R</code> does, plus several real wins specific to a multi-step reorganization:</p>
+<ul>
+<li><strong>The reorganization is a reviewable change set.</strong> At the end, <code>git diff main..reorganize-2026</code> shows the entire transformation as one diff you (and a coauthor, and Claude) can read.</li>
+<li><strong>Each step is its own commit on the branch.</strong> <code>git log   reorganize-2026</code> is your audit trail. If a verification run fails three days from now, <code>git bisect</code> finds the exact commit that broke the result.</li>
+<li><strong>History stays connected to the original.</strong> Mid-reorganization, if a referee asks something about the published structure, <code>cd   ~/projects/wage-paper</code> and the original is right there, untouched and on <code>main</code>. With <code>cp -R</code> you’d have two disconnected copies and no easy way to compare.</li>
+<li><strong>Coauthor review before you commit to it.</strong> Push the branch; your coauthor reviews <code>reorganize-2026</code> as a pull request and either approves the new structure or flags issues <em>before</em> you merge into <code>main</code>. A <code>cp -R</code> copy is invisible to them until you finish.</li>
+<li><strong>One-command cleanup if you abandon halfway:</strong> <code>git worktree remove   ../wage-paper-cleanup &amp;&amp; git branch -D reorganize-2026</code>. Compared to <code>rm -rf</code> of a <code>cp -R</code> copy, this is the same outcome but with a paper trail in <code>git reflog</code> if you change your mind tomorrow.</li>
+<li><strong>The <code>.gitignore</code> you’ll write in Step 12 stays applied across reorganization steps automatically.</strong> No risk of accidentally committing build artifacts or derived data because the rules are inherited from the branch.</li>
+</ul>
+<p>If you or your colleagues are git novices — or if the original project isn’t yet in git — the <code>cp -R</code> path below is the recommended default. The full explanation of worktrees, with more use cases and pitfalls, is in the <a href="../getting-started/git.html#worktrees-when-one-working-directory-isnt-enough">Worktrees section of the Git page</a>.</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -520,16 +547,16 @@ Warning
 </div>
 </div>
 <p>Verify the copy:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">du</span> <span class="at">-sh</span> ~/Dropbox/wage-paper ~/Desktop/wage-paper-cleanup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">du</span> <span class="at">-sh</span> ~/Dropbox/wage-paper ~/Desktop/wage-paper-cleanup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Sizes should match within a few KB. Now <code>cd</code> into the copy and from this point on, work only there.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop/wage-paper-cleanup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop/wage-paper-cleanup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="step-2-initialize-git-in-the-copy" class="level3">
 <h3 class="anchored" data-anchor-id="step-2-initialize-git-in-the-copy">Step 2 — Initialize git in the copy</h3>
 <p>Even if you never push to GitHub, local git is the recoverable history that makes the rest of this walkthrough safe. From inside the copy:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init <span class="at">-b</span> main</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Baseline before reorganization"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init <span class="at">-b</span> main</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Baseline before reorganization"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now any change Claude makes is undoable with <code>git checkout .</code> or <code>git reset --hard HEAD</code>. This is the foundation of the “<a href="../principles.html">robust system with fail-safes</a>” principle.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -548,7 +575,7 @@ Tip
 <section id="step-3-open-claude-code-and-take-inventory" class="level3">
 <h3 class="anchored" data-anchor-id="step-3-open-claude-code-and-take-inventory">Step 3 — Open Claude Code and take inventory</h3>
 <p>Start Claude in the copy:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>First prompt — purely read-only. You’re asking for a map, not an action:</p>
 <blockquote class="blockquote">
 <p><em>“Read the entire project. Don’t modify anything. Produce a Markdown inventory with: (a) every top-level file and directory, (b) for each code file, a one-line description of what it appears to do, (c) for each data file, its size and a guess at whether it looks like raw input or derived output, (d) for each .tex file, whether it appears to be a paper draft, an old version, an appendix, slides, or something else. End with a section called ‘Open questions’ — things you’d need me to confirm before reorganizing.”</em></p>
@@ -590,8 +617,8 @@ Warning
 </blockquote>
 <p>Use <a href="../getting-started/plan-mode-and-todo.html">plan mode</a> for this — <code>Shift+Tab</code> until you see “plan mode” before you send the prompt. You want to read the full move list before any file is touched.</p>
 <p>When the moves are done, commit:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Archive non-live files"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Archive non-live files"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -617,7 +644,7 @@ Tip
 <p><em>“Execute the mapping. Use <code>git mv</code>. Do not modify file contents — only move and rename. After every move, update path references in the remaining live files so the project still resolves. Cover each language’s idioms: Stata (<code>include</code>, <code>do</code>, <code>use ... , clear</code>, <code>save</code>, <code>import delimited</code>), R (<code>source()</code>, <code>here::here()</code>, <code>readr::read_*()</code>, <code>setwd()</code>, <code>ggsave()</code>), Julia (<code>include()</code>, <code>using</code>, <code>CSV.read</code>, <code>joinpath()</code>, <code>Pkg.activate</code>), Python (<code>import</code>, <code>from ... import</code>, <code>pathlib.Path</code>, <code>pd.read_*</code>, <code>open()</code>), LaTeX (<code>\input{}</code>, <code>\includegraphics{}</code>, <code>\addbibresource{}</code>), Matlab (<code>addpath</code>, <code>cd</code>, <code>load</code>, <code>readtable</code>). Show me each path-fix diff before applying.”</em></p>
 </blockquote>
 <p>Plan mode again. Approve diffs one at a time. Commit when done:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-am</span> <span class="st">"Reorganize live files into standard structure"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-am</span> <span class="st">"Reorganize live files into standard structure"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="step-8-find-and-fix-hardcoded-paths" class="level3">
 <h3 class="anchored" data-anchor-id="step-8-find-and-fix-hardcoded-paths">Step 8 — Find and fix hardcoded paths</h3>
@@ -673,23 +700,23 @@ Warning
 <p><em>“Write a <code>make-all.sh</code> shell script at the project root that runs the full pipeline in order: invoke each language’s runner for the scripts in <code>code/</code> (Stata for <code>.do</code>, Julia for <code>.jl</code>, R for <code>.R</code>, Python for <code>.py</code> if any), then compile <code>paper/paper.tex</code>. Use <code>set -euo pipefail</code> so the script halts on the first error. <code>cd</code> to the project root at the top so it works from anywhere. Print a one-line progress message before each step and a one-line success message at the end. Use relative paths.”</em></p>
 </blockquote>
 <p>You’ll get something like:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-euo</span> pipefail</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="st">"</span><span class="va">$(</span><span class="fu">dirname</span> <span class="st">"</span><span class="va">$0</span><span class="st">"</span><span class="va">)</span><span class="st">"</span>   <span class="co"># always run from project root</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"[1/4] Cleaning data (Stata)..."</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="ex">stata-mp</span> <span class="at">-b</span> do code/01-clean.do</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"[2/4] Estimating model (Julia)..."</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">--project</span> code/02-estimate.jl</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"[3/4] Producing figures and tables (R)..."</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> code/04-figures.R</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"[4/4] Compiling paper..."</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span> <span class="bu">cd</span> paper <span class="kw">&amp;&amp;</span> <span class="ex">latexmk</span> <span class="at">-pdf</span> paper.tex <span class="kw">)</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Done. Outputs in output/, paper in paper/paper.pdf."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-euo</span> pipefail</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="st">"</span><span class="va">$(</span><span class="fu">dirname</span> <span class="st">"</span><span class="va">$0</span><span class="st">"</span><span class="va">)</span><span class="st">"</span>   <span class="co"># always run from project root</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"[1/4] Cleaning data (Stata)..."</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ex">stata-mp</span> <span class="at">-b</span> do code/01-clean.do</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"[2/4] Estimating model (Julia)..."</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">--project</span> code/02-estimate.jl</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"[3/4] Producing figures and tables (R)..."</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> code/04-figures.R</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"[4/4] Compiling paper..."</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span> <span class="bu">cd</span> paper <span class="kw">&amp;&amp;</span> <span class="ex">latexmk</span> <span class="at">-pdf</span> paper.tex <span class="kw">)</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Done. Outputs in output/, paper in paper/paper.pdf."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Make it executable once: <code>chmod +x make-all.sh</code>. From then on, one command rebuilds the whole project: <code>./make-all.sh</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -737,8 +764,8 @@ Warning
 <p><em>“Write a <code>.gitignore</code> for this project. Exclude: (a) <strong>LaTeX build artifacts</strong>: <code>*.aux</code>, <code>*.log</code>, <code>*.out</code>, <code>*.toc</code>, <code>*.blg</code>, <code>*.bbl</code>, <code>*.synctex.gz</code>, <code>*.fls</code>, <code>*.fdb_latexmk</code>; (b) <strong>Stata</strong>: <code>*.smcl</code> log files (large; usually you only want the <code>.log</code> ASCII version); also Stata’s per-user temp files; (c) <strong>R</strong>: <code>.Rhistory</code>, <code>.Rproj.user/</code>, <code>.Rdata</code>, <code>.RData</code>; (d) <strong>Julia</strong>: <code>*.cov</code>. Decide whether to commit <code>Manifest.toml</code>: commit it if you want bit-exact reproducibility (recommended for replication packages); leave it ignored if you want package-version flexibility while you’re still developing; (e) <strong>Python</strong>: <code>__pycache__/</code>, <code>*.pyc</code>, <code>.ipynb_checkpoints/</code>, <code>.venv/</code>; (f) <strong>Matlab</strong>: <code>*.asv</code> (autosaves), <code>*.mexmaci64</code>, <code>*.mexmaca64</code>, <code>*.mexa64</code>, <code>*.mexw64</code> (compiled MEX files); (g) <strong>OS junk</strong>: <code>.DS_Store</code> (macOS), <code>Thumbs.db</code> (Windows); (h) <strong>Derived data</strong>: <code>data/derived/**</code>; (i) <strong>Editor cruft</strong>: <code>.vscode/</code> (unless you want to commit shared settings), <code>.idea/</code>. Show me the file before creating it.”</em></p>
 </blockquote>
 <p>After it’s in place, clean up anything that’s already tracked but should be ignored:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rm <span class="at">-r</span> <span class="at">--cached</span> data/derived</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Stop tracking derived data"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rm <span class="at">-r</span> <span class="at">--cached</span> data/derived</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Stop tracking derived data"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -756,15 +783,15 @@ Tip
 <section id="step-13-run-end-to-end-and-verify" class="level3">
 <h3 class="anchored" data-anchor-id="step-13-run-end-to-end-and-verify">Step 13 — Run end-to-end and verify</h3>
 <p>The whole point of the orchestrator and the clean structure is that you can do this:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In the terminal, from the project root:</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./make-all.sh</span>        <span class="co"># or `make all` if you went the Makefile route</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In the terminal, from the project root:</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./make-all.sh</span>        <span class="co"># or `make all` if you went the Makefile route</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Or have Claude do it:</p>
 <blockquote class="blockquote">
 <p><em>“Run <code>./make-all.sh</code> from a fresh state. If any step errors, stop and tell me what happened — don’t try to auto-fix. After it succeeds, list every file produced under <code>output/</code> and <code>paper/</code>, confirm the paper PDF compiled without unresolved references or missing-citation warnings, and report the total wall-clock runtime.”</em></p>
 </blockquote>
 <p>If the master script doesn’t reproduce something that’s in your paper, that’s a real finding — either the live code path is wrong (re-do step 4) or there’s an undocumented manual step somewhere (document it in the README).</p>
 <p>When everything runs end-to-end, commit:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-am</span> <span class="st">"Reorganization complete; master script reproduces all results"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-am</span> <span class="st">"Reorganization complete; master script reproduces all results"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="step-14-compare-against-the-original" class="level3">
 <h3 class="anchored" data-anchor-id="step-14-compare-against-the-original">Step 14 — Compare against the original</h3>
