@@ -38,9 +38,9 @@ whether your contribution is interesting.
 
 ### Authorship
 
-Anything you submit goes out under your name. Claude is not a co-author;
-it's a tool. Don't list it; don't pretend it didn't help; do disclose
-LLM use as your journal requires.
+Anything you submit goes out under your name. Claude is a tool — don't
+list it as a co-author, don't pretend it didn't help, and disclose LLM
+use as your journal requires.
 
 ### The hard problem
 

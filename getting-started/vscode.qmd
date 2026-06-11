@@ -182,8 +182,8 @@ work the same way.)
 
 ## When to drop back to the bare terminal
 
-VS Code is the easier path; it is not the only path. Reasons to use the
-bare Terminal app instead:
+VS Code is the easier path, but the bare Terminal app is still worth using
+sometimes:
 
 - You want a **full-screen Claude Code session** with no editor
   distractions — reviewing a long replication audit, say.

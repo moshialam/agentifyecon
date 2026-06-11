@@ -42,9 +42,9 @@ all three principles to work at once.
 
 The single biggest predictor of whether Claude Code does something useful
 on the first try is whether I gave it enough context to understand what I
-actually want. "Detailed prompting" is not a euphemism for writing long
-prompts. It means giving the model the information a smart RA would need
-to do the job — no more, no less.
+actually want. "Detailed prompting" means giving the model the information
+a smart RA would need to do the job — the relevant files, the constraints,
+the goal. Length has nothing to do with it.
 
 In practice, this is three things:
 
@@ -116,9 +116,8 @@ my coauthor", slow down and add a fail-safe first.
 ## 3. A workflow the agent can verify on its own
 
 This is the principle with the highest payoff and the one most colleagues
-miss. The point is not to write better prompts. It is to **structure the
-task so the agent can check its own work** — and then iterate without
-needing you in the loop for every step.
+miss: **structure the task so the agent can check its own work**, and it
+can iterate on its mistakes without needing you in the loop for every step.
 
 A few examples of what this looks like in econ work:
 

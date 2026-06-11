@@ -10,8 +10,9 @@ A field guide to one specific way of using LLMs:
 code, edit your LaTeX, audit a replication package, and run things on your
 behalf — under your supervision.
 
-This is not about chatting with ChatGPT in a browser. That is useful too,
-but it isn't what changed in the last year.
+Chat tools — ChatGPT or Claude in a browser — are handy for quick
+questions. Agentic coding is the bigger change of the last year, and it's
+what this guide covers.
 :::
 
 ## Suggested reading order

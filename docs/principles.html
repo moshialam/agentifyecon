@@ -300,7 +300,7 @@ Note
 </div>
 <section id="detailed-prompting-and-context" class="level2">
 <h2 class="anchored" data-anchor-id="detailed-prompting-and-context">1. Detailed prompting and context</h2>
-<p>The single biggest predictor of whether Claude Code does something useful on the first try is whether I gave it enough context to understand what I actually want. “Detailed prompting” is not a euphemism for writing long prompts. It means giving the model the information a smart RA would need to do the job — no more, no less.</p>
+<p>The single biggest predictor of whether Claude Code does something useful on the first try is whether I gave it enough context to understand what I actually want. “Detailed prompting” means giving the model the information a smart RA would need to do the job — the relevant files, the constraints, the goal. Length has nothing to do with it.</p>
 <p>In practice, this is three things:</p>
 <ul>
 <li><strong>Name the files.</strong> “Read <code>paper.tex</code> and tell me…” beats “look at my paper” every time. The model can find files; it cannot read your mind about which one you mean.</li>
@@ -329,7 +329,7 @@ Note
 </section>
 <section id="a-workflow-the-agent-can-verify-on-its-own" class="level2">
 <h2 class="anchored" data-anchor-id="a-workflow-the-agent-can-verify-on-its-own">3. A workflow the agent can verify on its own</h2>
-<p>This is the principle with the highest payoff and the one most colleagues miss. The point is not to write better prompts. It is to <strong>structure the task so the agent can check its own work</strong> — and then iterate without needing you in the loop for every step.</p>
+<p>This is the principle with the highest payoff and the one most colleagues miss: <strong>structure the task so the agent can check its own work</strong>, and it can iterate on its mistakes without needing you in the loop for every step.</p>
 <p>A few examples of what this looks like in econ work:</p>
 <ul>
 <li><strong>Replication.</strong> “Re-run <code>master.do</code> and tell me whether each table in <code>output/tables/</code> matches the version checked into git.” The agent runs the script, diffs the outputs, and either reports “all match” or “Table 3 changed — here’s the diff”. One human-readable status; no per-step babysitting.</li>
