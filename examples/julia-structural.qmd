@@ -27,10 +27,11 @@ diagnostics, and Pluto notebooks for interactive teaching.
 
 ## Julia/Pluto-specific notes (will be expanded)
 
-- You already have a Claude Code skill for exactly this:
-  **[`plutonb`](https://github.com/) in your `myccskills` repo**. It
+- There's a Claude Code skill for exactly this — **`plutonb`** — that
   templates a Pluto notebook with model primitives, sliders, estimation,
-  identification, and LaTeX formulas. Use it: `/plutonb` in any project.
+  identification, and LaTeX formulas. You can install it and run `/plutonb`
+  in any project; see [Building your own
+  skills](../workflow/building-skills.qmd).
 - Julia is well-represented in Claude's training data; structural
   econometrics in Julia less so. Be explicit about your conventions
   (variable names, what's a parameter vs. a state, etc.) in `CLAUDE.md`.

@@ -115,7 +115,86 @@ trip if you let it move things; you want your working project untouched
 until you're sure the package builds.
 :::
 
-### Step 3 — write the README the way the AEA wants it
+### Step 3 — pin the computational environment
+
+A package that runs on your machine but nowhere else hasn't been
+reproduced. Lock each language's dependencies so a stranger gets the same
+versions you used.
+
+**R — `renv`.** From the project root, snapshot exactly what the code uses:
+
+> "Set up `renv` for the R code: run `renv::init()`, make sure every
+> `library()`/`require()` call resolves, then `renv::snapshot()` so
+> `renv.lock` records exact package versions. Commit `renv.lock` and
+> `renv/activate.R`."
+
+**Julia — `Project.toml` + `Manifest.toml`.** The `Project.toml` lists
+direct dependencies; the `Manifest.toml` is the exact-version lockfile.
+
+> "Make sure the Julia code runs under its own environment: a `Project.toml`
+> with every package the code `using`s, and a committed `Manifest.toml` from
+> `Pkg.instantiate()` so versions are pinned. Scripts should load it with
+> `--project`."
+
+**Stata** has no lockfile, so record the version and list any non-base
+commands:
+
+> "Add `version 18` at the top of each `.do` file, and write a
+> `code/00-install-deps.do` that `ssc install`s every external command the
+> package uses (esttab, reghdfe, etc.). Note the Stata flavor and version
+> in the README."
+
+Commit all the lockfiles — they're the difference between "should
+reproduce" and "does reproduce".
+
+### Step 4 — write one script that runs everything
+
+Tie it together with a single entry point that goes from a fresh clone to
+the finished tables and compiled paper, in order.
+
+> "Write a `run_all.sh` at the package root that, with `set -euo pipefail`
+> and `cd` to its own directory, does this in order:
+> (1) restore environments — `renv::restore()` for R and `Pkg.instantiate()`
+> for Julia;
+> (2) create the output directories (`data/derived`, `output/tables`,
+> `output/figures`);
+> (3) clean the raw data (Stata);
+> (4) run the estimation (Julia);
+> (5) build the LaTeX tables and figures (R), then compile `paper/paper.tex`.
+> Print a one-line progress message before each stage; use relative paths."
+
+You'll get something like:
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")"
+
+echo "[1/5] Restoring environments..."
+Rscript -e 'renv::restore(prompt = FALSE)'
+julia --project -e 'using Pkg; Pkg.instantiate()'
+
+echo "[2/5] Creating output directories..."
+mkdir -p data/derived output/tables output/figures
+
+echo "[3/5] Cleaning raw data (Stata)..."
+stata-mp -b do code/01-clean.do
+
+echo "[4/5] Estimating model (Julia)..."
+julia --project code/02-estimate.jl
+
+echo "[5/5] Building tables and compiling paper (R + LaTeX)..."
+Rscript code/03-tables.R
+( cd paper && latexmk -pdf paper.tex )
+
+echo "Done. Tables in output/tables, paper at paper/paper.pdf."
+```
+
+Make it executable (`chmod +x run_all.sh`) and the whole package reproduces
+with one command: `./run_all.sh`. That command is also exactly what the
+README's "instructions to run" section should say.
+
+### Step 5 — write the README the way the AEA wants it
 
 > "Write a `README.md` for this replication package following the AEA
 > data and code availability standards: data sources and access,
@@ -127,15 +206,16 @@ This README is the single most important document in your package. Read it
 critically — Claude can write a plausible-looking one that overstates
 how complete the package is.
 
-### Step 4 — confirm reproducibility on a fresh state
+### Step 6 — confirm reproducibility on a fresh state
 
-> "Pretend you've never seen this project before. Following only the
-> README, run every step from scratch. Stop and tell me if anything is
-> ambiguous, missing, or fails."
+> "Pretend you've never seen this project before. Following only the README,
+> run `./run_all.sh` from scratch. Stop and tell me if any stage is
+> ambiguous, missing a dependency, or fails."
 
-This is the test you can't easily run yourself — your machine has all
-your packages installed and your data sitting around. Claude can simulate
-the cold-start experience.
+This is the test you can't easily run yourself — your machine has all your
+packages installed and your data sitting around. Claude can simulate the
+cold-start experience, and `run_all.sh` plus the committed lockfiles are
+what make that cold start actually work.
 
 ## Why this is the highest-value use case
 
@@ -165,8 +245,8 @@ steps.
 
 ::: {.callout-tip}
 **Build a `/audit-replication` slash command.** If you do this twice, write
-a skill — see [Memory, CLAUDE.md, skills](../workflow/memory-and-claude-md.qmd).
-Your `myccskills` repo is the right place for it.
+a skill so the third time is one command — see [Building your own
+skills](../workflow/building-skills.qmd).
 :::
 
 ## Next

@@ -34,12 +34,11 @@ it's wandered off.
 What: shortcuts for repeatable workflows. You can write your own.
 
 Examples already on your machine: `/review`, `/security-review`, `/init`.
-Your `myccskills` repo (the `plutonb`, `evolution`, `remind` skills) is
-exactly this idea — package up "the way I want this done" once, reuse it
+The idea is to package up "the way you want this done" once and reuse it
 forever.
 
-See [Memory, CLAUDE.md, skills](../workflow/memory-and-claude-md.qmd) for
-how to write your own.
+See [Building your own skills](../workflow/building-skills.qmd) for three
+worked examples and how to write your own.
 
 *This page is still an outline. If a fuller version would help your work,
 email me and I'll prioritize it.*
