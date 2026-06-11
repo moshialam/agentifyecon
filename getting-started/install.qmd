@@ -134,8 +134,9 @@ This reads files, runs analysis, and edits. You approve the deletion.
 To leave a Claude Code session, type `/exit` or press `Ctrl-C` twice.
 
 To come back later, just `cd` into the same folder and run `claude` again.
-Claude Code keeps a memory of your project (in a file called `CLAUDE.md`,
-covered later) so the next session doesn't start from zero.
+If you add a `CLAUDE.md` file to the project (covered
+[later](../workflow/memory-and-claude-md.qmd)), Claude reads it at the
+start of every session, so it doesn't start from zero.
 
 ## Where to go next
 

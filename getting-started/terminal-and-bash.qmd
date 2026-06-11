@@ -1,6 +1,6 @@
 ---
 title: "The terminal and bash, for GUI users"
-subtitle: "If your career has been in Stata, Matlab, or RStudio, this is the missing ten minutes of context that makes Claude Code feel ordinary instead of intimidating."
+subtitle: "Enough to read what Claude Code is doing, for colleagues coming from Stata, Matlab, or RStudio."
 ---
 
 Most economists I know have spent a career in **graphical** software: the
@@ -379,13 +379,13 @@ Extract just the variable names from a Stata `describe` log:
 awk '/^[a-z]/ {print $1}' describe.log
 ```
 
-### Honest framing
+### When to actually use it
 
 `awk` is **rarely the right tool when you have R, Python, or Stata
-already loaded**. Its real niche is the in-between moment: you want a
-quick number from a file, and starting a full session in your stats
-language is overkill. For that — and for one-liners that Claude Code
-writes for you in a script — it's hard to beat.
+already loaded**. Its niche is the in-between moment: you want a quick
+number from a file, and starting a full session in your stats language is
+overkill. For that — and for one-liners Claude Code writes into a script
+— it's hard to beat.
 
 Like `grep`, plain `awk` is read-only; it prints to the terminal. It
 only modifies a file if you explicitly redirect output (`> newfile.txt`)
@@ -500,7 +500,6 @@ rmdir terminal-test
 - [Install Claude Code](install.qmd) — now that the terminal isn't
   intimidating, install Claude Code and try it on a real project.
 - [Plan mode, todos, slash commands](plan-mode-and-todo.qmd) — the
-  Claude-Code-specific features that make the terminal feel collaborative
-  rather than lonely.
+  Claude-Code-specific features worth knowing early.
 - [Verifying output](../workflow/verifying.qmd) — once Claude is running
-  bash commands on your behalf, this is the page that matters most.
+  bash commands on your behalf, the habit to build first.

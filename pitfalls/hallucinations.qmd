@@ -9,7 +9,7 @@ that hurt empirical economists, and the verification habits that catch
 each one.
 :::
 
-## Outline — what gets hallucinated
+## What gets hallucinated
 
 ### 1. Citations and references
 
@@ -56,8 +56,9 @@ you actually read it? Show me."
 
 ## The general rule
 
-Claude is a confident colleague who occasionally lies with no
-self-awareness. Treat its outputs the way you'd treat a draft from a
-new RA on day one: gratefully, and with full verification.
+Claude states wrong answers as confidently as right ones. Treat its
+output the way you'd treat a draft from a new RA on day one: usefully,
+and with full verification.
 
-> Tell me which of these to expand into a full case study.
+*This page is still an outline. If a fuller version would help your work,
+email me and I'll prioritize it.*

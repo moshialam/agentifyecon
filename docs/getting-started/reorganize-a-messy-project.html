@@ -137,14 +137,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../big-picture/why-claude-code.html">
  <span class="dropdown-text">Why Claude Code</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../big-picture/landscape.html">
- <span class="dropdown-text">How it compares</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../big-picture/what-changes.html">
- <span class="dropdown-text">What changes for your workflow</span></a>
-  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -170,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/git.html">
- <span class="dropdown-text">Git, for the never-used-it</span></a>
+ <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/reorganize-a-messy-project.html">
@@ -208,24 +200,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">R: analysis &amp; tables</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../examples/python-analysis.html">
- <span class="dropdown-text">Python: pandas &amp; statsmodels</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/matlab.html">
- <span class="dropdown-text">Matlab: numerical work</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../examples/julia-structural.html">
  <span class="dropdown-text">Julia: structural models</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/refereeing.html">
- <span class="dropdown-text">Refereeing</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/teaching-prep.html">
- <span class="dropdown-text">Teaching prep</span></a>
   </li>  
     </ul>
   </li>
@@ -325,7 +301,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../getting-started/git.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Git, for economists who’ve never used it</span></a>
+ <span class="menu-text">Git</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -359,7 +335,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#what-ready-for-claude-code-actually-means" id="toc-what-ready-for-claude-code-actually-means" class="nav-link active" data-scroll-target="#what-ready-for-claude-code-actually-means">What “ready for Claude Code” actually means</a></li>
-  <li><a href="#the-13-step-walkthrough" id="toc-the-13-step-walkthrough" class="nav-link" data-scroll-target="#the-13-step-walkthrough">The 13-step walkthrough</a>
+  <li><a href="#the-walkthrough" id="toc-the-walkthrough" class="nav-link" data-scroll-target="#the-walkthrough">The walkthrough</a>
   <ul class="collapse">
   <li><a href="#step-1-copy-the-project-to-a-working-directory" id="toc-step-1-copy-the-project-to-a-working-directory" class="nav-link" data-scroll-target="#step-1-copy-the-project-to-a-working-directory">Step 1 — Copy the project to a working directory</a></li>
   <li><a href="#step-2-initialize-git-in-the-copy" id="toc-step-2-initialize-git-in-the-copy" class="nav-link" data-scroll-target="#step-2-initialize-git-in-the-copy">Step 2 — Initialize git in the copy</a></li>
@@ -378,7 +354,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#things-to-be-careful-about" id="toc-things-to-be-careful-about" class="nav-link" data-scroll-target="#things-to-be-careful-about">Things to be careful about</a></li>
   <li><a href="#when-not-to-reorganize" id="toc-when-not-to-reorganize" class="nav-link" data-scroll-target="#when-not-to-reorganize">When <em>not</em> to reorganize</a></li>
-  <li><a href="#a-realistic-time-budget" id="toc-a-realistic-time-budget" class="nav-link" data-scroll-target="#a-realistic-time-budget">A realistic time budget</a></li>
   <li><a href="#where-to-go-next" id="toc-where-to-go-next" class="nav-link" data-scroll-target="#where-to-go-next">Where to go next</a></li>
   </ul>
 </nav>
@@ -389,7 +364,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../getting-started/terminal-and-bash.html">Getting started</a></li><li class="breadcrumb-item"><a href="../getting-started/reorganize-a-messy-project.html">Reorganizing a messy project before letting Claude Code work on it</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Reorganizing a messy project before letting Claude Code work on it</h1>
-<p class="subtitle lead">Most real research projects are not in shape for an agent to work on yet. This page walks through the one-time cleanup that makes everything afterwards much easier.</p>
+<p class="subtitle lead">A one-time cleanup that gets a real research folder into shape for an agent.</p>
 </div>
 
 
@@ -497,8 +472,8 @@ Warning
 <p>The single <code>code/</code> folder mixes Stata, Julia, and R because that’s how the work flows — the numeric prefixes (<code>01-</code>, <code>02-</code>, …) make the order obvious regardless of language. Some people prefer <code>code/stata/</code>, <code>code/julia/</code>, <code>code/r/</code> subfolders instead; either works as long as the orchestrator at the top knows the order.</p>
 <p>This is a default, not a religion. AEA, TIER, BITSS, and the Reardon protocol all propose variations — pick one and stick to it.</p>
 </section>
-<section id="the-13-step-walkthrough" class="level2">
-<h2 class="anchored" data-anchor-id="the-13-step-walkthrough">The 13-step walkthrough</h2>
+<section id="the-walkthrough" class="level2">
+<h2 class="anchored" data-anchor-id="the-walkthrough">The walkthrough</h2>
 <p>Each step has the prompt you’d give Claude Code (in the integrated terminal of <a href="../getting-started/vscode.html">VS Code</a> or in a bare terminal — your choice). Read every diff before approving.</p>
 <section id="step-1-copy-the-project-to-a-working-directory" class="level3">
 <h3 class="anchored" data-anchor-id="step-1-copy-the-project-to-a-working-directory">Step 1 — Copy the project to a working directory</h3>
@@ -568,7 +543,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Never used Git?</strong> Read <a href="../getting-started/git.html">Git, for economists who’ve never used it</a> before this step. The five-minute version: Git takes snapshots of your project; every snapshot is permanent locally; you can always go back. Without Git, you have no fail-safe under what follows; with Git, every step on this page is one keystroke away from undoable.</p>
+<p><strong>Never used Git?</strong> Read the <a href="../getting-started/git.html">Git page</a> before this step. The five-minute version: Git takes snapshots of your project; every snapshot is permanent locally; you can always go back. Without Git, you have no fail-safe under what follows; with Git, every step on this page is one keystroke away from undoable.</p>
 </div>
 </div>
 </section>
@@ -804,106 +779,24 @@ Tip
 </section>
 <section id="things-to-be-careful-about" class="level2">
 <h2 class="anchored" data-anchor-id="things-to-be-careful-about">Things to be careful about</h2>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Don’t reorganize on top of the original.</strong> Always work in a copy. This is so important it’s worth repeating in a callout.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Don’t delete anything.</strong> Archive everything that’s not live. The cost of an over-aggressive archive is “I had to fish a file out of <code>archive/</code>”; the cost of an over-aggressive delete is rebuilding work from memory.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Watch for files that look unused but aren’t.</strong> A <code>.dta</code> file with no matching <code>use</code> command in any <code>.do</code> file might still be loaded by name inside an <code>include</code>d script, or referenced from a Matlab routine, or read by a coauthor’s pre-existing pipeline. Spot-check before archiving.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>If you have coauthors, talk to them before reorganizing a shared project.</strong> They have a mental model of where things are. A unilateral reorganization makes you the only person who can find anything for the next month. Better: do the reorganization on a branch, send them the new structure, get buy-in, then merge.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Be thoughtful about file timestamps.</strong> <code>git mv</code> preserves history but the filesystem <code>mtime</code> resets. If you depend on file timestamps for anything (a build system, a “newest version wins” check), document it or you’ll be confused later.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Confidential data deserves its own decision.</strong> If <code>data/raw/</code> contains restricted-access data, ask yourself: was Claude reading those files during the inventory step? Are you OK with that? If not, you should have moved/symlinked the data folder <em>before</em> starting Claude. See <a href="../pitfalls/confidential-data.html">Confidential data</a> for the decision tree.</p>
-</div>
-</div>
+<ul>
+<li><strong>Work in a copy, never on top of the original.</strong> The whole approach rests on this.</li>
+<li><strong>Archive, don’t delete.</strong> The cost of an over-aggressive archive is fishing a file out of <code>archive/</code>; the cost of an over-aggressive delete is rebuilding work from memory.</li>
+<li><strong>Some files look unused but aren’t.</strong> A <code>.dta</code> with no matching <code>use</code> might be loaded inside an <code>include</code>d script, called from a Matlab routine, or read by a coauthor’s pipeline. Spot-check before archiving.</li>
+<li><strong>Talk to coauthors before reorganizing a shared project.</strong> A unilateral reorganization makes you the only person who can find anything for a month. Do it on a branch, share the new structure, then merge.</li>
+<li><strong><code>git mv</code> preserves history but resets filesystem <code>mtime</code>.</strong> If anything you use depends on file timestamps, note it.</li>
+<li><strong>Confidential data is its own decision.</strong> If <code>data/raw/</code> is restricted-access, was Claude reading it during the inventory step? If that’s not OK, move or symlink the data out <em>before</em> starting Claude. See <a href="../pitfalls/confidential-data.html">Confidential data</a>.</li>
+</ul>
 </section>
 <section id="when-not-to-reorganize" class="level2">
 <h2 class="anchored" data-anchor-id="when-not-to-reorganize">When <em>not</em> to reorganize</h2>
 <ul>
-<li><strong>Right before a deadline.</strong> Don’t reorganize the night before a submission. The risk of breaking something silently outweighs the benefit.</li>
-<li><strong>For a project you’re about to abandon.</strong> If this paper is dead and you’re not coming back, the reorganization is wasted effort. Just archive the whole folder.</li>
-<li><strong>Without a copy.</strong> Yes, third time. Don’t.</li>
-<li><strong>For someone else’s published replication package without their permission.</strong> That has its own workflow — see the <a href="../examples/replication-package.html">replication-package audit example</a>.</li>
+<li><strong>Right before a deadline</strong> — the risk of silently breaking something outweighs the benefit.</li>
+<li><strong>For a project you’re about to abandon</strong> — just archive the whole folder.</li>
+<li><strong>Without a copy</strong> — see above.</li>
+<li><strong>On someone else’s published replication package</strong> — that’s a different workflow; see the <a href="../examples/replication-package.html">replication-package audit</a>.</li>
 </ul>
-</section>
-<section id="a-realistic-time-budget" class="level2">
-<h2 class="anchored" data-anchor-id="a-realistic-time-budget">A realistic time budget</h2>
-<p>For a typical mid-sized econ project (one paper, 20-40 code/data/text files in a few hundred MB), expect:</p>
-<ul>
-<li><strong>Steps 1-2 (copy + git init):</strong> 5 minutes</li>
-<li><strong>Steps 3-5 (inventory + live-path identification):</strong> 30-60 minutes, most of it you reading what Claude produced and confirming</li>
-<li><strong>Steps 6-7 (archive + reorganize):</strong> 30 minutes</li>
-<li><strong>Step 8 (paths):</strong> 15-30 minutes</li>
-<li><strong>Steps 9-12 (CLAUDE.md, README, master script, .gitignore):</strong> 60-90 minutes, again mostly your editing and judgment time</li>
-<li><strong>Steps 13-14 (verification):</strong> 30-60 minutes if it works on the first try; longer if you discover broken dependencies along the way</li>
-</ul>
-<p>So: <strong>half a day to a full day of focused work</strong>. The first time you do this it will take longer because the steps are unfamiliar. The second time it goes much faster. By the third project, you’ll have a personal checklist and it will feel routine.</p>
+<p>A typical mid-sized project (one paper, 20–40 files, a few hundred MB) takes half a day to a full day the first time, most of it your own reading and judgment rather than waiting on Claude. It goes faster once the steps are familiar.</p>
 </section>
 <section id="where-to-go-next" class="level2">
 <h2 class="anchored" data-anchor-id="where-to-go-next">Where to go next</h2>
@@ -1342,8 +1235,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../getting-started/git.html" class="pagination-link" aria-label="Git, for economists who've never used it">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Git, for economists who’ve never used it</span>
+      <a href="../getting-started/git.html" class="pagination-link" aria-label="Git">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Git</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

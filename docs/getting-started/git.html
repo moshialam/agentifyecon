@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Git, for economists who’ve never used it – LLMs for Economists</title>
+<title>Git – LLMs for Economists</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -137,14 +137,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../big-picture/why-claude-code.html">
  <span class="dropdown-text">Why Claude Code</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../big-picture/landscape.html">
- <span class="dropdown-text">How it compares</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../big-picture/what-changes.html">
- <span class="dropdown-text">What changes for your workflow</span></a>
-  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -170,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/git.html">
- <span class="dropdown-text">Git, for the never-used-it</span></a>
+ <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/reorganize-a-messy-project.html">
@@ -208,24 +200,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">R: analysis &amp; tables</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../examples/python-analysis.html">
- <span class="dropdown-text">Python: pandas &amp; statsmodels</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/matlab.html">
- <span class="dropdown-text">Matlab: numerical work</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../examples/julia-structural.html">
  <span class="dropdown-text">Julia: structural models</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/refereeing.html">
- <span class="dropdown-text">Refereeing</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/teaching-prep.html">
- <span class="dropdown-text">Teaching prep</span></a>
   </li>  
     </ul>
   </li>
@@ -283,7 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../getting-started/terminal-and-bash.html">Getting started</a></li><li class="breadcrumb-item"><a href="../getting-started/git.html">Git, for economists who’ve never used it</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../getting-started/terminal-and-bash.html">Getting started</a></li><li class="breadcrumb-item"><a href="../getting-started/git.html">Git</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -325,7 +301,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../getting-started/git.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Git, for economists who’ve never used it</span></a>
+ <span class="menu-text">Git</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -393,8 +369,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#the-friendly-path-vs-codes-source-control-pane" id="toc-the-friendly-path-vs-codes-source-control-pane" class="nav-link" data-scroll-target="#the-friendly-path-vs-codes-source-control-pane">The friendly path: VS Code’s Source Control pane</a></li>
   <li><a href="#what-claude-code-does-with-git-on-your-behalf" id="toc-what-claude-code-does-with-git-on-your-behalf" class="nav-link" data-scroll-target="#what-claude-code-does-with-git-on-your-behalf">What Claude Code does with Git on your behalf</a></li>
   <li><a href="#when-youre-stuck" id="toc-when-youre-stuck" class="nav-link" data-scroll-target="#when-youre-stuck">When you’re stuck</a></li>
-  <li><a href="#a-word-on-git-push---force" id="toc-a-word-on-git-push---force" class="nav-link" data-scroll-target="#a-word-on-git-push---force">A word on <code>git push --force</code></a></li>
-  <li><a href="#what-you-skipped-and-dont-need-to-come-back-to-yet" id="toc-what-you-skipped-and-dont-need-to-come-back-to-yet" class="nav-link" data-scroll-target="#what-you-skipped-and-dont-need-to-come-back-to-yet">What you skipped — and don’t need to come back to (yet)</a></li>
+  <li><a href="#what-you-can-safely-skip" id="toc-what-you-can-safely-skip" class="nav-link" data-scroll-target="#what-you-can-safely-skip">What you can safely skip</a></li>
   <li><a href="#where-to-go-next" id="toc-where-to-go-next" class="nav-link" data-scroll-target="#where-to-go-next">Where to go next</a></li>
   </ul>
 </nav>
@@ -402,10 +377,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../getting-started/terminal-and-bash.html">Getting started</a></li><li class="breadcrumb-item"><a href="../getting-started/git.html">Git, for economists who’ve never used it</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../getting-started/terminal-and-bash.html">Getting started</a></li><li class="breadcrumb-item"><a href="../getting-started/git.html">Git</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Git, for economists who’ve never used it</h1>
-<p class="subtitle lead">The version-control system that makes everything else on this site safe — explained for colleagues who’ve spent a career renaming files <code>paper_FINAL_v3.tex</code> instead.</p>
+<h1 class="title">Git</h1>
+<p class="subtitle lead">The version control that makes letting Claude edit your project safe.</p>
 </div>
 
 
@@ -422,8 +397,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>If you’ve never used Git, this page is the most important one for you. Not because Git itself is interesting — it isn’t — but because <strong>Git is the safety net that makes letting Claude Code edit your project tolerable</strong>. Without Git, “Claude proposed a 200-line change across six files” is terrifying. With Git, it’s a question of “do I <code>git checkout .</code> or do I keep this?” — a yes/no decision that takes one keystroke to undo.</p>
-<p>This page assumes you have <strong>never used Git in anger</strong>. If you have a GitHub account but only <code>clone</code> repositories occasionally, that counts as never. Read on.</p>
+<p><strong>Git is the safety net that makes letting Claude Code edit your project tolerable.</strong> Without it, “Claude proposed a 200-line change across six files” is unnerving. With it, that’s just a yes/no decision: <code>git checkout .</code> to undo, or keep the change. One keystroke either way.</p>
+<p>This page assumes you have never really used Git. If you have a GitHub account but only <code>clone</code> the odd repository, that counts as never.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -434,24 +409,23 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>You do not need to learn 90% of Git.</strong> Branches you don’t merge, rebases, cherry-picks, submodules, hooks, the staging-area subtleties, the difference between <code>~</code>, <code>^</code>, and <code>^^</code> — none of that is necessary for econ research. The 10 commands on this page are enough for years of productive use.</p>
+<p><strong>You do not need to learn most of Git.</strong> Rebases, cherry-picks, submodules, hooks, the staging-area subtleties — none of it is necessary for econ research. The handful of commands on this page are enough for years of productive use.</p>
 </div>
 </div>
 <section id="the-mental-model-in-two-paragraphs" class="level2">
 <h2 class="anchored" data-anchor-id="the-mental-model-in-two-paragraphs">The mental model in two paragraphs</h2>
 <p>Git is a <strong>time machine</strong> for a project folder. You decide when to take a snapshot — that’s a “commit.” Every commit is permanent, locally, forever. You can always come back to any past state. You don’t need to push to GitHub for any of this to work; “local Git” is enough to make the snapshots and the undo path.</p>
-<p>Each commit has a short message (“fix Table 3 standard errors”), a date, an author, and a unique ID (a “hash” — a 7-character random string like <code>8dad523</code>). Commits form a chain: each one is a delta from the previous one. When you want to know what changed when, or undo a change from yesterday, or remember what your paper looked like three weeks ago — <code>git</code> has the answer.</p>
-<p>That’s it. Everything else is plumbing.</p>
+<p>Each commit has a short message (“fix Table 3 standard errors”), a date, an author, and a unique ID (a “hash” — a 7-character string like <code>8dad523</code>). Commits form a chain. When you want to know what changed when, undo a change from yesterday, or see what your paper looked like three weeks ago, <code>git</code> has the answer.</p>
 </section>
 <section id="why-this-matters-for-using-claude-code" class="level2">
 <h2 class="anchored" data-anchor-id="why-this-matters-for-using-claude-code">Why this matters for using Claude Code</h2>
-<p>Three reasons Git is non-negotiable once you start using an agent on your projects:</p>
-<ol type="1">
-<li><strong>Undoing.</strong> When Claude makes an edit you don’t like — and it will sometimes — <code>git checkout -- file.tex</code> puts the file back exactly as it was at the last commit. No memory required.</li>
-<li><strong>Reading the diff.</strong> Before accepting any non-trivial Claude edit, you want to see <em>exactly</em> what changed. <code>git diff</code> shows you.</li>
-<li><strong>Recovering from a bad day.</strong> When you discover a week later that a refactor broke a result, <code>git log</code> and <code>git checkout &lt;past-hash&gt;</code> take you back to a working state.</li>
-</ol>
-<p>Without Git, your fail-safe is “I have a backup somewhere?” — which is not a fail-safe. With Git, your fail-safe is one command. That’s the <a href="../principles.html">robust system</a> the principles page talks about.</p>
+<p>Once an agent is editing your projects, Git earns its keep three ways:</p>
+<ul>
+<li><strong>Undoing.</strong> When Claude makes an edit you don’t like, <code>git checkout --   file.tex</code> puts the file back as it was at the last commit.</li>
+<li><strong>Reading the diff.</strong> Before accepting any non-trivial edit, you want to see exactly what changed. <code>git diff</code> shows you.</li>
+<li><strong>Recovering later.</strong> When you discover a week on that a refactor broke a result, <code>git log</code> and <code>git checkout &lt;past-hash&gt;</code> take you back.</li>
+</ul>
+<p>Without Git, your fail-safe is “I have a backup somewhere?” — which isn’t one. This is the <a href="../principles.html">robust system</a> the principles page describes, in concrete form.</p>
 </section>
 <section id="step-1-confirm-git-is-installed" class="level2">
 <h2 class="anchored" data-anchor-id="step-1-confirm-git-is-installed">Step 1 — Confirm Git is installed</h2>
@@ -641,7 +615,7 @@ Tip
 <div class="callout-body-container callout-body">
 <p><strong>The safety net under the destructive operations: <code>git reflog</code>.</strong> Every state Git has ever been in is recorded in the “reflog” for 30 days, even after <code>reset --hard</code>. If you destroy work, the first thing to try is:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reflog</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>That lists every state, with hashes. <code>git checkout &lt;hash&gt;</code> or <code>git reset --hard &lt;hash&gt;</code> brings you back. This has saved more careers than any other Git command.</p>
+<p>That lists every state, with hashes. <code>git checkout &lt;hash&gt;</code> or <code>git reset --hard &lt;hash&gt;</code> brings you back. It’s the first thing to reach for when you think you’ve lost work.</p>
 </div>
 </div>
 </section>
@@ -827,21 +801,9 @@ Note
 <li><strong>Ask Claude.</strong> Open Claude Code in the project, paste the output of <code>git status</code> and <code>git reflog</code>, and say what you were trying to do when things went wrong. Claude is genuinely good at Git diagnosis — it’s seen every variation of “I made a mess” before.</li>
 </ol>
 </section>
-<section id="a-word-on-git-push---force" class="level2">
-<h2 class="anchored" data-anchor-id="a-word-on-git-push---force">A word on <code>git push --force</code></h2>
-<p>You will eventually hear someone tell you to <code>git push --force</code> to “fix” a problem. It will solve their immediate symptom and may delete your coauthors’ commits from the remote. <strong>Never run it on a shared branch without explicit talked-through agreement.</strong> If you must rewrite shared history, use <code>git push --force-with-lease</code> — it refuses to overwrite work you didn’t know about.</p>
-</section>
-<section id="what-you-skipped-and-dont-need-to-come-back-to-yet" class="level2">
-<h2 class="anchored" data-anchor-id="what-you-skipped-and-dont-need-to-come-back-to-yet">What you skipped — and don’t need to come back to (yet)</h2>
-<p>If you’re worried about gaps in your Git knowledge, here’s what you deliberately don’t need:</p>
-<ul>
-<li><strong>Rebase</strong> (<code>git rebase</code>) — rewrites history. Useful when you become fluent; harmful as a beginner. The <a href="https://git-scm.com/book">Pro Git book</a> has it when you’re ready.</li>
-<li><strong>Cherry-pick</strong> (<code>git cherry-pick</code>) — copying a single commit from one branch to another. You’ll learn it the day you actually need it.</li>
-<li><strong>Stash</strong> (<code>git stash</code>) — temporarily setting aside uncommitted changes. Convenient but skippable; you can always create a quick “WIP” commit instead.</li>
-<li><strong>Submodules</strong> — nested repos. Almost never the right tool for econ research. If a coauthor proposes them, push back.</li>
-<li><strong>Hooks</strong> — scripts that run on commits. You don’t need them.</li>
-</ul>
-<p>These are real tools. They’re just not on your critical path.</p>
+<section id="what-you-can-safely-skip" class="level2">
+<h2 class="anchored" data-anchor-id="what-you-can-safely-skip">What you can safely skip</h2>
+<p>Rebase, cherry-pick, stash, submodules, and hooks are all real tools, but none are on your critical path for econ research — pick them up the day you actually need one. The <a href="https://git-scm.com/book">Pro Git book</a> covers them when you’re ready. The one to keep at arm’s length is <code>git push --force</code> on a shared branch: it can delete coauthors’ commits, so never run it without a talked-through agreement (and prefer <code>git push --force-with-lease</code>, which refuses to overwrite work you didn’t know about).</p>
 </section>
 <section id="where-to-go-next" class="level2">
 <h2 class="anchored" data-anchor-id="where-to-go-next">Where to go next</h2>

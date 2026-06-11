@@ -8,7 +8,7 @@ subtitle: "Prompting habits that work for code, drawn from the examples on this 
 every worked example on this site.
 :::
 
-## Outline — the habits
+## The habits
 
 1. **Orientation pass first.** Before asking for changes, ask Claude to
    read the project and summarize. Cheap; saves rework.
@@ -26,7 +26,7 @@ every worked example on this site.
    things in one session — each one is harder to review and harder to
    roll back.
 
-## Outline — anti-patterns
+## Anti-patterns
 
 - "Make this better." Without specifics, Claude will reformat,
   reorganize, and rephrase, often making it worse.
@@ -36,4 +36,5 @@ every worked example on this site.
 - "Write a complete X from scratch." For real research code, prefer
   iterative: skeleton → fill in one piece → verify → next piece.
 
-> Tell me which habit you'd most like worked through.
+*This page is still an outline. If a fuller version would help your work,
+email me and I'll prioritize it.*

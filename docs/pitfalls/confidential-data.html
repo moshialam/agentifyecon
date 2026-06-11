@@ -103,14 +103,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../big-picture/why-claude-code.html">
  <span class="dropdown-text">Why Claude Code</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../big-picture/landscape.html">
- <span class="dropdown-text">How it compares</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../big-picture/what-changes.html">
- <span class="dropdown-text">What changes for your workflow</span></a>
-  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -136,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/git.html">
- <span class="dropdown-text">Git, for the never-used-it</span></a>
+ <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/reorganize-a-messy-project.html">
@@ -174,24 +166,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">R: analysis &amp; tables</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../examples/python-analysis.html">
- <span class="dropdown-text">Python: pandas &amp; statsmodels</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/matlab.html">
- <span class="dropdown-text">Matlab: numerical work</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../examples/julia-structural.html">
  <span class="dropdown-text">Julia: structural models</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/refereeing.html">
- <span class="dropdown-text">Refereeing</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/teaching-prep.html">
- <span class="dropdown-text">Teaching prep</span></a>
   </li>  
     </ul>
   </li>
@@ -300,10 +276,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#outline-what-to-never-send" id="toc-outline-what-to-never-send" class="nav-link active" data-scroll-target="#outline-what-to-never-send">Outline — what to never send</a></li>
-  <li><a href="#outline-what-is-generally-safe" id="toc-outline-what-is-generally-safe" class="nav-link" data-scroll-target="#outline-what-is-generally-safe">Outline — what is generally safe</a></li>
-  <li><a href="#outline-pragmatic-workarounds" id="toc-outline-pragmatic-workarounds" class="nav-link" data-scroll-target="#outline-pragmatic-workarounds">Outline — pragmatic workarounds</a></li>
-  <li><a href="#outline-institutional-questions-to-resolve" id="toc-outline-institutional-questions-to-resolve" class="nav-link" data-scroll-target="#outline-institutional-questions-to-resolve">Outline — institutional questions to resolve</a></li>
+  <li><a href="#what-to-never-send" id="toc-what-to-never-send" class="nav-link active" data-scroll-target="#what-to-never-send">What to never send</a></li>
+  <li><a href="#what-is-generally-safe" id="toc-what-is-generally-safe" class="nav-link" data-scroll-target="#what-is-generally-safe">What is generally safe</a></li>
+  <li><a href="#pragmatic-workarounds" id="toc-pragmatic-workarounds" class="nav-link" data-scroll-target="#pragmatic-workarounds">Pragmatic workarounds</a></li>
+  <li><a href="#institutional-questions-to-resolve" id="toc-institutional-questions-to-resolve" class="nav-link" data-scroll-target="#institutional-questions-to-resolve">Institutional questions to resolve</a></li>
   </ul>
 </nav>
     </div>
@@ -356,8 +332,8 @@ Note
 <p><strong>Coming soon.</strong> A practical decision tree for what data is and isn’t safe to send to a cloud LLM, plus pragmatic workarounds for the cases where it’s not.</p>
 </div>
 </div>
-<section id="outline-what-to-never-send" class="level2">
-<h2 class="anchored" data-anchor-id="outline-what-to-never-send">Outline — what to never send</h2>
+<section id="what-to-never-send" class="level2">
+<h2 class="anchored" data-anchor-id="what-to-never-send">What to never send</h2>
 <ul>
 <li><strong>IRB-protected human-subjects data</strong> (interviews, identifiable surveys, health data) unless your IRB protocol explicitly permits cloud LLM processing — most don’t.</li>
 <li><strong>FERPA-covered student records.</strong></li>
@@ -366,8 +342,8 @@ Note
 <li><strong>Refereed manuscripts</strong> without checking journal policy.</li>
 </ul>
 </section>
-<section id="outline-what-is-generally-safe" class="level2">
-<h2 class="anchored" data-anchor-id="outline-what-is-generally-safe">Outline — what is generally safe</h2>
+<section id="what-is-generally-safe" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-generally-safe">What is generally safe</h2>
 <ul>
 <li>Public datasets (IPUMS, Compustat extracts you’d freely share, BLS microdata releases, etc.).</li>
 <li>Your own simulated data.</li>
@@ -375,8 +351,8 @@ Note
 <li>Paper drafts on your own work (with co-author awareness).</li>
 </ul>
 </section>
-<section id="outline-pragmatic-workarounds" class="level2">
-<h2 class="anchored" data-anchor-id="outline-pragmatic-workarounds">Outline — pragmatic workarounds</h2>
+<section id="pragmatic-workarounds" class="level2">
+<h2 class="anchored" data-anchor-id="pragmatic-workarounds">Pragmatic workarounds</h2>
 <p>When you have a restricted dataset and want help with the <em>code</em>:</p>
 <ol type="1">
 <li><strong>Synthesize a fake version.</strong> Have Claude generate fake data with the same schema and let it work on that.</li>
@@ -385,16 +361,14 @@ Note
 <li><strong>Use Claude Code only for non-restricted side projects</strong> until you’ve talked to your IRB about an explicit policy.</li>
 </ol>
 </section>
-<section id="outline-institutional-questions-to-resolve" class="level2">
-<h2 class="anchored" data-anchor-id="outline-institutional-questions-to-resolve">Outline — institutional questions to resolve</h2>
+<section id="institutional-questions-to-resolve" class="level2">
+<h2 class="anchored" data-anchor-id="institutional-questions-to-resolve">Institutional questions to resolve</h2>
 <ul>
 <li>Does your university have a policy on LLM use with research data?</li>
 <li>Does your IRB have boilerplate language for cloud LLM processing?</li>
 <li>Do data agreements (DUAs) you’ve signed permit transmission to third-party services?</li>
 </ul>
-<blockquote class="blockquote">
-<p>Tell me which of these you’d most like turned into a real decision-flowchart.</p>
-</blockquote>
+<p><em>This page is still an outline. If a fuller version would help your work, email me and I’ll prioritize it.</em></p>
 
 
 </section>

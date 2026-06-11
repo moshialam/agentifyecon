@@ -29,8 +29,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../examples/refereeing.html" rel="next">
-<link href="../examples/matlab.html" rel="prev">
+<link href="../examples/r-analysis.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -103,14 +102,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../big-picture/why-claude-code.html">
  <span class="dropdown-text">Why Claude Code</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../big-picture/landscape.html">
- <span class="dropdown-text">How it compares</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../big-picture/what-changes.html">
- <span class="dropdown-text">What changes for your workflow</span></a>
-  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -136,7 +127,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/git.html">
- <span class="dropdown-text">Git, for the never-used-it</span></a>
+ <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/reorganize-a-messy-project.html">
@@ -174,24 +165,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">R: analysis &amp; tables</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../examples/python-analysis.html">
- <span class="dropdown-text">Python: pandas &amp; statsmodels</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/matlab.html">
- <span class="dropdown-text">Matlab: numerical work</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../examples/julia-structural.html">
  <span class="dropdown-text">Julia: structural models</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/refereeing.html">
- <span class="dropdown-text">Refereeing</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/teaching-prep.html">
- <span class="dropdown-text">Teaching prep</span></a>
   </li>  
     </ul>
   </li>
@@ -296,32 +271,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../examples/python-analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Python — pandas, statsmodels, and notebooks</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/matlab.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Matlab — numerical work and structural estimation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../examples/julia-structural.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Julia — structural models and Pluto notebooks</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/refereeing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Refereeing — using Claude Code to support (not replace) your judgment</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/teaching-prep.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Teaching prep — slides, problem sets, syllabi</span></a>
   </div>
 </li>
       </ul>
@@ -336,7 +287,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#outline" id="toc-outline" class="nav-link active" data-scroll-target="#outline">Outline</a></li>
+  <li><a href="#what-this-will-cover" id="toc-what-this-will-cover" class="nav-link active" data-scroll-target="#what-this-will-cover">What this will cover</a></li>
   <li><a href="#juliapluto-specific-notes-will-be-expanded" id="toc-juliapluto-specific-notes-will-be-expanded" class="nav-link" data-scroll-target="#juliapluto-specific-notes-will-be-expanded">Julia/Pluto-specific notes (will be expanded)</a></li>
   <li><a href="#why-this-is-a-strong-fit-for-agentic-coding" id="toc-why-this-is-a-strong-fit-for-agentic-coding" class="nav-link" data-scroll-target="#why-this-is-a-strong-fit-for-agentic-coding">Why this is a strong fit for agentic coding</a></li>
   </ul>
@@ -377,8 +328,8 @@ Note
 <p><strong>Coming soon.</strong> A worked example of using Claude Code on a Julia project for structural econometrics: model setup, MLE/GMM estimation, identification diagnostics, and Pluto notebooks for interactive teaching.</p>
 </div>
 </div>
-<section id="outline" class="level2">
-<h2 class="anchored" data-anchor-id="outline">Outline</h2>
+<section id="what-this-will-cover" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-will-cover">What this will cover</h2>
 <ol type="1">
 <li><strong>Setup.</strong> Point Claude at a Julia project (<code>Project.toml</code> + <code>src/</code>). Ask for a summary of the model: primitives, parameters, what’s being estimated, what data inputs are required.</li>
 <li><strong>Estimation routines.</strong> Build/refactor MLE or GMM estimation with <code>Optim.jl</code> or <code>JuMP.jl</code>. Have Claude add gradient checks and multi-start robustness.</li>
@@ -398,9 +349,7 @@ Note
 <section id="why-this-is-a-strong-fit-for-agentic-coding" class="level2">
 <h2 class="anchored" data-anchor-id="why-this-is-a-strong-fit-for-agentic-coding">Why this is a strong fit for agentic coding</h2>
 <p>Structural work involves a lot of small, mechanical steps where bugs silently change your results: index off-by-ones, forgotten Jacobian entries, mis-stacked moment vectors. Claude is good at the bookkeeping; you focus on the model.</p>
-<blockquote class="blockquote">
-<p>Tell me which step you’d most like elaborated.</p>
-</blockquote>
+<p><em>This page is still an outline. If a full worked example here would help, email me and I’ll prioritize it.</em></p>
 
 
 </section>
@@ -830,14 +779,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../examples/matlab.html" class="pagination-link" aria-label="Matlab — numerical work and structural estimation">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Matlab — numerical work and structural estimation</span>
+      <a href="../examples/r-analysis.html" class="pagination-link" aria-label="R — analysis, regression tables, ggplot">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">R — analysis, regression tables, ggplot</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../examples/refereeing.html" class="pagination-link" aria-label="Refereeing — using Claude Code to support (not replace) your judgment">
-        <span class="nav-page-text">Refereeing — using Claude Code to support (not replace) your judgment</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

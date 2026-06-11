@@ -8,7 +8,7 @@ subtitle: "The three features that turn the chatbot into a research assistant."
 the tool feels day-to-day.
 :::
 
-## Outline
+## What this will cover
 
 ### 1. Plan mode
 
@@ -41,4 +41,5 @@ forever.
 See [Memory, CLAUDE.md, skills](../workflow/memory-and-claude-md.qmd) for
 how to write your own.
 
-> Tell me which of the three you'd most like a worked walkthrough for.
+*This page is still an outline. If a fuller version would help your work,
+email me and I'll prioritize it.*

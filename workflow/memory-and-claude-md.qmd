@@ -9,7 +9,7 @@ re-explaining things to Claude every session: project-level `CLAUDE.md`,
 auto-memory, and reusable skills.
 :::
 
-## Outline
+## What this will cover
 
 ### `CLAUDE.md` (per-project instructions)
 
@@ -55,4 +55,5 @@ For a department-facing site like this one, candidate new skills are:
 - `/clean-bib` — the bibliography cleanup from the
   [LaTeX paper example](../examples/latex-paper.qmd).
 
-> Tell me which of these to write up first as a real worked example.
+*This page is still an outline. If a fuller version would help your work,
+email me and I'll prioritize it.*

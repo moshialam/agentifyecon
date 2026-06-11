@@ -102,14 +102,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../big-picture/why-claude-code.html">
  <span class="dropdown-text">Why Claude Code</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../big-picture/landscape.html">
- <span class="dropdown-text">How it compares</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../big-picture/what-changes.html">
- <span class="dropdown-text">What changes for your workflow</span></a>
-  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -135,7 +127,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/git.html">
- <span class="dropdown-text">Git, for the never-used-it</span></a>
+ <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/reorganize-a-messy-project.html">
@@ -173,24 +165,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">R: analysis &amp; tables</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../examples/python-analysis.html">
- <span class="dropdown-text">Python: pandas &amp; statsmodels</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/matlab.html">
- <span class="dropdown-text">Matlab: numerical work</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../examples/julia-structural.html">
  <span class="dropdown-text">Julia: structural models</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/refereeing.html">
- <span class="dropdown-text">Refereeing</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/teaching-prep.html">
- <span class="dropdown-text">Teaching prep</span></a>
   </li>  
     </ul>
   </li>
@@ -299,8 +275,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#outline-the-habits" id="toc-outline-the-habits" class="nav-link active" data-scroll-target="#outline-the-habits">Outline — the habits</a></li>
-  <li><a href="#outline-anti-patterns" id="toc-outline-anti-patterns" class="nav-link" data-scroll-target="#outline-anti-patterns">Outline — anti-patterns</a></li>
+  <li><a href="#the-habits" id="toc-the-habits" class="nav-link active" data-scroll-target="#the-habits">The habits</a></li>
+  <li><a href="#anti-patterns" id="toc-anti-patterns" class="nav-link" data-scroll-target="#anti-patterns">Anti-patterns</a></li>
   </ul>
 </nav>
     </div>
@@ -340,8 +316,8 @@ Note
 <p><strong>Coming soon.</strong> A short guide to the prompting habits that show up across every worked example on this site.</p>
 </div>
 </div>
-<section id="outline-the-habits" class="level2">
-<h2 class="anchored" data-anchor-id="outline-the-habits">Outline — the habits</h2>
+<section id="the-habits" class="level2">
+<h2 class="anchored" data-anchor-id="the-habits">The habits</h2>
 <ol type="1">
 <li><strong>Orientation pass first.</strong> Before asking for changes, ask Claude to read the project and summarize. Cheap; saves rework.</li>
 <li><strong>Separate audit from action.</strong> “Tell me what you’d change. Don’t change it yet.” — almost always the right first prompt for non-trivial tasks.</li>
@@ -351,16 +327,14 @@ Note
 <li><strong>One commit per logical change.</strong> Don’t let Claude do five unrelated things in one session — each one is harder to review and harder to roll back.</li>
 </ol>
 </section>
-<section id="outline-anti-patterns" class="level2">
-<h2 class="anchored" data-anchor-id="outline-anti-patterns">Outline — anti-patterns</h2>
+<section id="anti-patterns" class="level2">
+<h2 class="anchored" data-anchor-id="anti-patterns">Anti-patterns</h2>
 <ul>
 <li>“Make this better.” Without specifics, Claude will reformat, reorganize, and rephrase, often making it worse.</li>
 <li>“Just trust me, run it.” For destructive operations (delete files, drop database tables, force-push), make Claude pause for explicit approval. It will by default; don’t override.</li>
 <li>“Write a complete X from scratch.” For real research code, prefer iterative: skeleton → fill in one piece → verify → next piece.</li>
 </ul>
-<blockquote class="blockquote">
-<p>Tell me which habit you’d most like worked through.</p>
-</blockquote>
+<p><em>This page is still an outline. If a fuller version would help your work, email me and I’ll prioritize it.</em></p>
 
 
 </section>

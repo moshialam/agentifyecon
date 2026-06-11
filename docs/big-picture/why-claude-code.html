@@ -29,7 +29,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../big-picture/landscape.html" rel="next">
 <link href="../big-picture/what-is-agentic.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -103,14 +102,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../big-picture/why-claude-code.html">
  <span class="dropdown-text">Why Claude Code</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../big-picture/landscape.html">
- <span class="dropdown-text">How it compares</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../big-picture/what-changes.html">
- <span class="dropdown-text">What changes for your workflow</span></a>
-  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -136,7 +127,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/git.html">
- <span class="dropdown-text">Git, for the never-used-it</span></a>
+ <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/reorganize-a-messy-project.html">
@@ -174,24 +165,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">R: analysis &amp; tables</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../examples/python-analysis.html">
- <span class="dropdown-text">Python: pandas &amp; statsmodels</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/matlab.html">
- <span class="dropdown-text">Matlab: numerical work</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../examples/julia-structural.html">
  <span class="dropdown-text">Julia: structural models</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/refereeing.html">
- <span class="dropdown-text">Refereeing</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/teaching-prep.html">
- <span class="dropdown-text">Teaching prep</span></a>
   </li>  
     </ul>
   </li>
@@ -282,18 +257,6 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Why Claude Code</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../big-picture/landscape.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">How Claude Code compares</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../big-picture/what-changes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What changes for your research workflow</span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -306,7 +269,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#outline" id="toc-outline" class="nav-link active" data-scroll-target="#outline">Outline</a></li>
+  <li><a href="#how-claude-code-compares" id="toc-how-claude-code-compares" class="nav-link active" data-scroll-target="#how-claude-code-compares">How Claude Code compares</a></li>
   </ul>
 </nav>
     </div>
@@ -332,31 +295,59 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Coming soon.</strong> This page will explain why this guide focuses on Claude Code specifically: terminal-native (no IDE lock-in), strong on long-context tasks like reading a whole replication package, comfortable with non-web languages (Stata/Matlab/Julia), and easy to point at any folder on your machine.</p>
-<p>For the head-to-head with Cursor, ChatGPT, and Copilot, see <a href="../big-picture/landscape.html">How it compares</a>.</p>
-</div>
-</div>
-<section id="outline" class="level2">
-<h2 class="anchored" data-anchor-id="outline">Outline</h2>
+<p>This site focuses on one tool, Claude Code, for a few reasons that matter specifically for research work:</p>
 <ul>
-<li>“It works wherever your project lives” — runs in your terminal, no separate editor required, no need to move your project into a special directory.</li>
-<li>“It reads a lot at once” — long context window matters when you ask it to audit a 30-file replication package or revise a 50-page paper.</li>
-<li>“It does not pretend to know what it does not” — relatively conservative about admitting when it needs to look at a file before answering.</li>
-<li>“It treats you as the principal” — plan mode, todos, and explicit permission prompts before risky actions.</li>
+<li><strong>It works wherever your project lives.</strong> It runs in your terminal, with no separate editor required and no need to move your project into a special directory.</li>
+<li><strong>It reads a lot at once.</strong> A long context window matters when you ask it to audit a 30-file replication package or revise a 50-page paper.</li>
+<li><strong>It doesn’t pretend to know what it doesn’t.</strong> It’s relatively conservative about reading a file before answering rather than guessing.</li>
+<li><strong>It treats you as the principal.</strong> Plan mode, todos, and explicit permission prompts before risky actions keep you in control.</li>
 </ul>
-<blockquote class="blockquote">
-<p>If you’d like this page filled in sooner, tell me which of those points you most want elaborated.</p>
-</blockquote>
+<p>None of this makes Claude Code the right tool for every job. The rest of this page places it next to the alternatives.</p>
+<section id="how-claude-code-compares" class="level2">
+<h2 class="anchored" data-anchor-id="how-claude-code-compares">How Claude Code compares</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>What it is</th>
+<th>When it’s the right call</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Claude Code</strong></td>
+<td>Agent in your terminal that can read/edit files and run code in any folder</td>
+<td>Editing papers, auditing replication packages, multi-file refactors, working in Stata/Matlab/Julia</td>
+</tr>
+<tr class="even">
+<td><strong>Cursor</strong></td>
+<td>A code editor (VS Code fork) with an LLM built in</td>
+<td>If you live in an IDE and want inline completions + chat in the same window</td>
+</tr>
+<tr class="odd">
+<td><strong>ChatGPT / Claude.ai (web)</strong></td>
+<td>Chat in a browser; can do “code interpreter”-style work in a sandbox</td>
+<td>One-off questions; quick scripts where uploading a file is faster than installing anything</td>
+</tr>
+<tr class="even">
+<td><strong>GitHub Copilot</strong></td>
+<td>Autocomplete-as-you-type, plus a chat panel</td>
+<td>Fast inline suggestions in VS Code or JetBrains; less useful for multi-file work</td>
+</tr>
+</tbody>
+</table>
+<p>A pragmatic split:</p>
+<ul>
+<li>One quick code question, project not open: use Claude.ai or ChatGPT in a browser.</li>
+<li>Inline autocomplete while you type: Copilot or Cursor.</li>
+<li>The AI working on a real project of yours — reading several files, making coordinated edits, running things, reporting back: Claude Code (or Cursor’s agent mode, which is similar in spirit).</li>
+</ul>
+<p>Two honest caveats: Claude Code is the right default for the econ-research workflows on this site, not a universal winner; and you don’t have to pick one. Most colleagues end up using two — an agentic tool (Claude Code or Cursor) and a chat tool (Claude.ai or ChatGPT) for quick questions away from the keyboard.</p>
 
 
 </section>
@@ -791,9 +782,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../big-picture/landscape.html" class="pagination-link" aria-label="How Claude Code compares">
-        <span class="nav-page-text">How Claude Code compares</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

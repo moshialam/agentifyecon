@@ -103,14 +103,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../big-picture/why-claude-code.html">
  <span class="dropdown-text">Why Claude Code</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../big-picture/landscape.html">
- <span class="dropdown-text">How it compares</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../big-picture/what-changes.html">
- <span class="dropdown-text">What changes for your workflow</span></a>
-  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -136,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/git.html">
- <span class="dropdown-text">Git, for the never-used-it</span></a>
+ <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/reorganize-a-messy-project.html">
@@ -174,24 +166,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">R: analysis &amp; tables</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../examples/python-analysis.html">
- <span class="dropdown-text">Python: pandas &amp; statsmodels</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/matlab.html">
- <span class="dropdown-text">Matlab: numerical work</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../examples/julia-structural.html">
  <span class="dropdown-text">Julia: structural models</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/refereeing.html">
- <span class="dropdown-text">Refereeing</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/teaching-prep.html">
- <span class="dropdown-text">Teaching prep</span></a>
   </li>  
     </ul>
   </li>
@@ -296,32 +272,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../examples/python-analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Python — pandas, statsmodels, and notebooks</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/matlab.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Matlab — numerical work and structural estimation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../examples/julia-structural.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Julia — structural models and Pluto notebooks</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/refereeing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Refereeing — using Claude Code to support (not replace) your judgment</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/teaching-prep.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Teaching prep — slides, problem sets, syllabi</span></a>
   </div>
 </li>
       </ul>
@@ -336,7 +288,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#outline" id="toc-outline" class="nav-link active" data-scroll-target="#outline">Outline</a></li>
+  <li><a href="#what-this-will-cover" id="toc-what-this-will-cover" class="nav-link active" data-scroll-target="#what-this-will-cover">What this will cover</a></li>
   <li><a href="#stata-specific-notes-will-be-expanded" id="toc-stata-specific-notes-will-be-expanded" class="nav-link" data-scroll-target="#stata-specific-notes-will-be-expanded">Stata-specific notes (will be expanded)</a></li>
   </ul>
 </nav>
@@ -376,8 +328,8 @@ Note
 <p><strong>Coming soon.</strong> A worked example of using Claude Code on a real Stata project: cleaning a messy dataset, writing a master <code>do</code> file, producing regression tables, and refactoring across multiple <code>.do</code> files.</p>
 </div>
 </div>
-<section id="outline" class="level2">
-<h2 class="anchored" data-anchor-id="outline">Outline</h2>
+<section id="what-this-will-cover" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-will-cover">What this will cover</h2>
 <ol type="1">
 <li><strong>Setup.</strong> Point Claude at a project with a few <code>.dta</code> files and an existing <code>.do</code> file or two. Have it summarize the data and the code.</li>
 <li><strong>Cleaning.</strong> “Look at <code>raw/wages.dta</code>. Document the variables, flag suspicious values (negatives where they shouldn’t be, implausible ranges, missing-value codes like <code>-99</code>), and propose a cleaning script. Don’t write it yet — show me the proposal.”</li>
@@ -393,9 +345,7 @@ Note
 <li>Claude is <strong>good at</strong> mechanical things in Stata (variable renaming, <code>egen</code> group operations, table generation, regex’ing the log file).</li>
 <li>Claude is <strong>less reliable on</strong> old Stata idioms (<code>#delimit</code>, version pragmas, pre-Stata-15 syntax). Tell it your Stata version explicitly in your project’s <code>CLAUDE.md</code>.</li>
 </ul>
-<blockquote class="blockquote">
-<p>Tell me which step you’d most like elaborated.</p>
-</blockquote>
+<p><em>This page is still an outline. If a full worked example here would help, email me and I’ll prioritize it.</em></p>
 
 
 </section>

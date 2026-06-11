@@ -8,7 +8,7 @@ tidyverse-based cleaning, `fixest`/`modelsummary` regression tables,
 `ggplot2` figures, and a reproducible `renv` setup.
 :::
 
-## Outline
+## What this will cover
 
 1. **Setup.** Point Claude at a project with `.R` and/or `.Rmd` files. Ask
    it to summarize the structure and which packages are in use.
@@ -30,4 +30,5 @@ tidyverse-based cleaning, `fixest`/`modelsummary` regression tables,
   even when you'd rather stay in base R. Say so explicitly in your prompt
   or in `CLAUDE.md`.
 
-> Tell me which step you'd most like elaborated.
+*This page is still an outline. If a full worked example here would help,
+email me and I'll prioritize it.*

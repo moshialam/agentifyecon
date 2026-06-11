@@ -12,7 +12,7 @@ access to your project** — it can read files, edit them, run code, see the
 output, and decide what to do next. You stay in the loop for *direction* and
 *review*, not for clerical handoffs.
 
-That is the whole shift. Everything else on this site is a consequence of it.
+That is the whole shift.
 
 ## A concrete contrast
 
@@ -57,13 +57,12 @@ trust that it's editing the right files in the right way.
 
 You keep — and *must* exercise — **direction and review**. You decide what
 to ask for. You read the diff before accepting it. You run the regression
-yourself before believing the number. The page on
-[verifying output](../workflow/verifying.qmd) is the most important one on
-this site.
+yourself before believing the number. See
+[verifying output](../workflow/verifying.qmd).
 
 ## Why this matters for an economist specifically
 
-Three reasons it lands harder in our field than most:
+It lands harder in our field than most:
 
 1. **Our work is heavy on small, tedious code.** Renaming variables across
    a dozen `.do` files, regenerating tables in a different format, fixing
@@ -75,6 +74,30 @@ Three reasons it lands harder in our field than most:
 3. **You probably have several projects in different languages.** The same
    tool works on Stata, R, Python, Matlab, Julia, LaTeX, and shell scripts
    — you don't need to learn a different assistant for each.
+
+## What changes for your research workflow
+
+What changes:
+
+- Tedious code (variable renaming, table reformatting, replication-package
+  cleanup, `.bib` fixes) takes minutes instead of hours.
+- You stop avoiding small-but-annoying improvements ("I'll fix that figure
+  formatting later") because the friction drops to near zero.
+- A second pair of eyes is always available: "what's wrong with this
+  regression specification?" gets a useful answer in seconds.
+- Onboarding to an unfamiliar codebase — your old paper from five years
+  ago, a coauthor's repo, a published replication package — gets much
+  faster.
+
+What does not change:
+
+- Your responsibility for the **specification, identification, and
+  interpretation**. The model can suggest; you decide.
+- The need to **read the diff** before accepting code into your project.
+- The need to **run the regression yourself** before believing the number
+  in your table.
+- Your **research taste** — what's interesting, what's worth doing. The
+  model has none of it, and will happily help you do bad work efficiently.
 
 ## Next
 

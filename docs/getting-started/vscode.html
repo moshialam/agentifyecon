@@ -137,14 +137,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../big-picture/why-claude-code.html">
  <span class="dropdown-text">Why Claude Code</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../big-picture/landscape.html">
- <span class="dropdown-text">How it compares</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../big-picture/what-changes.html">
- <span class="dropdown-text">What changes for your workflow</span></a>
-  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -170,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/git.html">
- <span class="dropdown-text">Git, for the never-used-it</span></a>
+ <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/reorganize-a-messy-project.html">
@@ -208,24 +200,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">R: analysis &amp; tables</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../examples/python-analysis.html">
- <span class="dropdown-text">Python: pandas &amp; statsmodels</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/matlab.html">
- <span class="dropdown-text">Matlab: numerical work</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../examples/julia-structural.html">
  <span class="dropdown-text">Julia: structural models</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/refereeing.html">
- <span class="dropdown-text">Refereeing</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/teaching-prep.html">
- <span class="dropdown-text">Teaching prep</span></a>
   </li>  
     </ul>
   </li>
@@ -325,7 +301,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../getting-started/git.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Git, for economists who’ve never used it</span></a>
+ <span class="menu-text">Git</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -378,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../getting-started/terminal-and-bash.html">Getting started</a></li><li class="breadcrumb-item"><a href="../getting-started/vscode.html">Using Claude Code inside VS Code</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Using Claude Code inside VS Code</h1>
-<p class="subtitle lead">The friendlier entry point for colleagues who’d rather not live in a black terminal window.</p>
+<p class="subtitle lead">The friendlier entry point for colleagues who’d rather not work in a bare terminal.</p>
 </div>
 
 
@@ -395,7 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>If you’ve spent your career in graphical environments — RStudio, Stata’s window, Matlab’s IDE — running Claude Code in a bare terminal can feel like working with one hand tied behind your back. <strong>Visual Studio Code (“VS Code”) is the gentlest landing pad.</strong> It is free, it is graphical, it has a built-in terminal, it shows you proposed code edits in a normal side-by-side diff view, and it knows about Git. For most colleagues I recommend starting here — and dropping back to the bare terminal only if and when it stops getting in the way.</p>
+<p>If you’ve spent your career in graphical environments — RStudio, Stata’s window, Matlab’s IDE — running Claude Code in a bare terminal can feel awkward. <strong>Visual Studio Code (“VS Code”) is the gentlest landing pad.</strong> It is free and graphical, has a built-in terminal, shows proposed code edits in a normal side-by-side diff view, and knows about Git. For most colleagues I’d start here, and drop back to the bare terminal only if it starts getting in the way.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -450,7 +426,7 @@ Tip
 <section id="step-1-install-vs-code" class="level2">
 <h2 class="anchored" data-anchor-id="step-1-install-vs-code">Step 1 — Install VS Code</h2>
 <p>Download from <a href="https://code.visualstudio.com">code.visualstudio.com</a>. The installer is signed and behaves like any other Mac app — drag to Applications, open, accept the security prompt the first time.</p>
-<p>If your colleague already has VS Code, this step is a no-op.</p>
+<p>If you already have VS Code, skip this step.</p>
 </section>
 <section id="step-2-install-the-claude-code-extension" class="level2">
 <h2 class="anchored" data-anchor-id="step-2-install-the-claude-code-extension">Step 2 — Install the Claude Code extension</h2>
@@ -464,7 +440,7 @@ Tip
 <p>What the extension adds (paraphrased — see the extension’s own page for the canonical list):</p>
 <ul>
 <li><strong>Native diff view.</strong> When Claude proposes an edit, the change opens in VS Code’s diff editor instead of being printed to the terminal. You approve or reject with a button.</li>
-<li><strong>Open-file and selection awareness.</strong> Claude can see which file you have focused and what you have selected, so prompts like “rewrite the highlighted paragraph” Just Work.</li>
+<li><strong>Open-file and selection awareness.</strong> Claude can see which file you have focused and what you have selected, so “rewrite the highlighted paragraph” works without you naming the file.</li>
 <li><strong>Tighter back-and-forth</strong> when you’re switching between editing a file by hand and asking Claude to take over.</li>
 </ul>
 <p>If you skip the extension, everything still works — just through the integrated terminal. The next steps are the same either way.</p>
@@ -502,7 +478,7 @@ Tip
 <li>Each proposed edit opens in a diff view. Click through, approve or reject, watch the file tree’s Git indicators (M for modified) light up in the sidebar.</li>
 <li>Open the Source Control pane (<code>Ctrl+Shift+G</code>) — every change Claude has accepted is right there, with line-by-line diffs, ready to commit if you want.</li>
 </ol>
-<p>The first time you run this loop, the difference from “chat in a browser” is obvious. The friction has gone somewhere; you’re now spending it on deciding what to ask, not on shuttling text back and forth.</p>
+<p>The first time you run this loop, the difference from “chat in a browser” is obvious: your attention goes to deciding what to ask, not to shuttling text back and forth.</p>
 </section>
 <section id="language-extensions-worth-installing" class="level2">
 <h2 class="anchored" data-anchor-id="language-extensions-worth-installing">Language extensions worth installing</h2>
@@ -609,15 +585,15 @@ Note
 <li>VS Code isn’t installed on the machine you’re sitting at.</li>
 <li>You’re already in a Terminal session for other reasons (running a long Stata batch job, watching a build).</li>
 </ul>
-<p>The two are interchangeable. Anything you do in one works in the other. Pick whichever feels less like work that day.</p>
+<p>The two are interchangeable. Anything you do in one works in the other.</p>
 </section>
 <section id="where-to-go-next" class="level2">
 <h2 class="anchored" data-anchor-id="where-to-go-next">Where to go next</h2>
 <ul>
-<li><a href="../getting-started/git.html">Git, for the never-used-it</a> — VS Code’s Source Control pane is the friendly graphical front-end to Git, but it helps to know what’s going on under the hood. Half an hour to learn; it’s the fail-safe under everything.</li>
+<li><a href="../getting-started/git.html">Git</a> — VS Code’s Source Control pane is a friendly front-end to Git, but it helps to know what’s going on underneath.</li>
 <li><a href="../getting-started/first-project.html">Your first project</a> — what to actually do in your first hour, now that the editor isn’t in the way.</li>
-<li><a href="../getting-started/plan-mode-and-todo.html">Plan mode, todos, slash commands</a> — the Claude-Code-specific features that make the agentic loop feel collaborative.</li>
-<li><a href="../examples/latex-paper.html">LaTeX paper editing</a> — a fully worked example. The diff-view experience really shines on <code>.tex</code> edits.</li>
+<li><a href="../getting-started/plan-mode-and-todo.html">Plan mode, todos, slash commands</a> — the Claude-Code-specific features worth knowing early.</li>
+<li><a href="../examples/latex-paper.html">LaTeX paper editing</a> — a fully worked example; the diff view really shines on <code>.tex</code> edits.</li>
 </ul>
 
 
@@ -1053,8 +1029,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../getting-started/git.html" class="pagination-link" aria-label="Git, for economists who've never used it">
-        <span class="nav-page-text">Git, for economists who’ve never used it</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../getting-started/git.html" class="pagination-link" aria-label="Git">
+        <span class="nav-page-text">Git</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

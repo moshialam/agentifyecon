@@ -1,32 +1,18 @@
 ---
 title: "LLMs for Economists"
-subtitle: "A short, example-driven introduction to agentic coding with Claude Code — for economics professors who'd rather spend their time doing economics."
+subtitle: "Example-based guidance for agentic coding with Claude Code."
 toc: false
 ---
 
 ::: {.lead-large}
-This is a colleagues-only field guide to a particular way of using LLMs:
+A field guide for colleagues to one specific way of using LLMs:
 **giving an AI agent direct access to your project files** so it can write
 code, edit your LaTeX, audit a replication package, and run things on your
 behalf — under your supervision.
 
-It is *not* about chatting with ChatGPT in a browser. That is useful too,
-but it isn't what's changed in the last year.
+This is not about chatting with ChatGPT in a browser. That is useful too,
+but it isn't what changed in the last year.
 :::
-
-## Who this is for
-
-You are an economist who:
-
-- Spends real hours writing Stata/R/Python/Matlab/Julia code, formatting
-  LaTeX papers, building tables, or wrangling a replication package.
-- Has heard "AI agents" get hyped and would like a non-marketing
-  explanation of what's actually useful and what is not.
-- Wants the **shortest possible path** from "I've heard of Claude Code"
-  to "Claude Code is editing my paper while I review the diff."
-
-You don't need to know git, the terminal, or any web technology beyond
-the basics. We'll cover the parts that matter.
 
 ## Where to start
 
@@ -64,20 +50,6 @@ Read these before letting Claude touch anything serious.
 :::
 :::
 
-## What this guide is *not*
-
-- **Not a sales pitch.** Claude Code is one tool in a busy landscape. The
-  [comparison page](big-picture/landscape.qmd) explains where it fits next
-  to Cursor, ChatGPT, and Copilot, and when each is the right call.
-- **Not for confidential or restricted-access data.** If you work with
-  IRB-protected, FERPA-covered, Census, IRS, or other restricted data,
-  read the [confidential data page](pitfalls/confidential-data.qmd) before
-  doing anything else.
-- **Not a substitute for your judgment as an economist.** Claude can write
-  the code; it cannot identify your effect, defend your specification, or
-  decide whether your design is credible. See
-  [what you must still do](pitfalls/judgment.qmd).
-
 ## Suggested reading order
 
 If you have **30 minutes**, read:
@@ -97,14 +69,14 @@ If you have **30 minutes**, read:
 If you have **a free afternoon**, add:
 
 5. [Plan mode, todos, slash commands](getting-started/plan-mode-and-todo.qmd)
-6. The example page for your language: Stata, R, Python, Matlab, or Julia.
+6. The example page for your language: Stata, R, or Julia.
 7. [How to ask](workflow/how-to-ask.qmd) and
    [Verifying output](workflow/verifying.qmd).
 
-## A note on what's "fleshed out" right now
+## Work in progress
 
-This site is a living draft. The two long-form examples (LaTeX paper editing
-and replication-package audit) and the install guide are the most complete.
-Other pages are short outlines that I'll fill in as colleagues use them and
-tell me what's missing. If you find a section that would help you and
-isn't there yet, **tell me** — that's the fastest way to make this useful.
+The two long-form examples (LaTeX paper editing and replication-package
+audit), the install guide, and the Git and terminal primers are the most
+complete pages. Others are short outlines for now. If a section would help
+you and isn't there yet, email me — that's the fastest way to set the
+priority.

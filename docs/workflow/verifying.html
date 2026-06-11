@@ -102,14 +102,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../big-picture/why-claude-code.html">
  <span class="dropdown-text">Why Claude Code</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../big-picture/landscape.html">
- <span class="dropdown-text">How it compares</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../big-picture/what-changes.html">
- <span class="dropdown-text">What changes for your workflow</span></a>
-  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -135,7 +127,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/git.html">
- <span class="dropdown-text">Git, for the never-used-it</span></a>
+ <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/reorganize-a-messy-project.html">
@@ -173,24 +165,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">R: analysis &amp; tables</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../examples/python-analysis.html">
- <span class="dropdown-text">Python: pandas &amp; statsmodels</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/matlab.html">
- <span class="dropdown-text">Matlab: numerical work</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../examples/julia-structural.html">
  <span class="dropdown-text">Julia: structural models</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/refereeing.html">
- <span class="dropdown-text">Refereeing</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/teaching-prep.html">
- <span class="dropdown-text">Teaching prep</span></a>
   </li>  
     </ul>
   </li>
@@ -300,14 +276,14 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#the-rule" id="toc-the-rule" class="nav-link active" data-scroll-target="#the-rule">The rule</a></li>
-  <li><a href="#outline-what-verify-means-in-concrete-cases" id="toc-outline-what-verify-means-in-concrete-cases" class="nav-link" data-scroll-target="#outline-what-verify-means-in-concrete-cases">Outline — what “verify” means in concrete cases</a>
+  <li><a href="#what-verify-means-concretely" id="toc-what-verify-means-concretely" class="nav-link" data-scroll-target="#what-verify-means-concretely">What “verify” means, concretely</a>
   <ul class="collapse">
   <li><a href="#code-edits" id="toc-code-edits" class="nav-link" data-scroll-target="#code-edits">Code edits</a></li>
   <li><a href="#numerical-output" id="toc-numerical-output" class="nav-link" data-scroll-target="#numerical-output">Numerical output</a></li>
   <li><a href="#citations-and-references" id="toc-citations-and-references" class="nav-link" data-scroll-target="#citations-and-references">Citations and references</a></li>
   <li><a href="#files-that-disappear" id="toc-files-that-disappear" class="nav-link" data-scroll-target="#files-that-disappear">Files that disappear</a></li>
   </ul></li>
-  <li><a href="#outline-habits-that-make-verification-cheap" id="toc-outline-habits-that-make-verification-cheap" class="nav-link" data-scroll-target="#outline-habits-that-make-verification-cheap">Outline — habits that make verification cheap</a></li>
+  <li><a href="#habits-that-make-verification-cheap" id="toc-habits-that-make-verification-cheap" class="nav-link" data-scroll-target="#habits-that-make-verification-cheap">Habits that make verification cheap</a></li>
   </ul>
 </nav>
     </div>
@@ -317,7 +293,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workflow/how-to-ask.html">Day-to-day workflow</a></li><li class="breadcrumb-item"><a href="../workflow/verifying.html">Verifying output</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Verifying output</h1>
-<p class="subtitle lead">The most important habit on this site.</p>
+<p class="subtitle lead">When to trust Claude’s output, and when to check it.</p>
 </div>
 
 
@@ -334,26 +310,13 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>This is the page that matters most.</strong> Every other shortcut is fine if you do this one thing. Skip this and you will eventually publish something wrong with your name on it.</p>
-</div>
-</div>
+<p>If you take one habit from this site, take this one: the speed of agentic coding only helps if you keep checking the work. Skip verification and you will eventually publish something wrong with your name on it.</p>
 <section id="the-rule" class="level2">
 <h2 class="anchored" data-anchor-id="the-rule">The rule</h2>
-<p>Read the diff. Run the code. Open the file. Compare to your expectation.</p>
-<p>Every time, even when you’re tired.</p>
+<p>Read the diff. Run the code. Open the file. Compare to your expectation — every time, even when you’re tired.</p>
 </section>
-<section id="outline-what-verify-means-in-concrete-cases" class="level2">
-<h2 class="anchored" data-anchor-id="outline-what-verify-means-in-concrete-cases">Outline — what “verify” means in concrete cases</h2>
+<section id="what-verify-means-concretely" class="level2">
+<h2 class="anchored" data-anchor-id="what-verify-means-concretely">What “verify” means, concretely</h2>
 <section id="code-edits" class="level3">
 <h3 class="anchored" data-anchor-id="code-edits">Code edits</h3>
 <ul>
@@ -381,16 +344,26 @@ Warning
 </ul>
 </section>
 </section>
-<section id="outline-habits-that-make-verification-cheap" class="level2">
-<h2 class="anchored" data-anchor-id="outline-habits-that-make-verification-cheap">Outline — habits that make verification cheap</h2>
+<section id="habits-that-make-verification-cheap" class="level2">
+<h2 class="anchored" data-anchor-id="habits-that-make-verification-cheap">Habits that make verification cheap</h2>
 <ul>
-<li>Use git. Even if you don’t push to GitHub, commit locally before any big change so <code>git diff</code> is meaningful. (Never used Git? See <a href="../getting-started/git.html">Git, for economists who’ve never used it</a> — half an hour to learn, decades of payoff.)</li>
-<li>Use plan mode for multi-file changes. Reading a plan first and then reviewing the diffs that match it is much easier than parsing surprise edits.</li>
-<li>Run the build/test after every change. If your project has a <code>make</code> or a master <code>do</code> file, ask Claude to run it after each meaningful edit.</li>
+<li>Use git. Even if you don’t push to GitHub, commit locally before any big change so <code>git diff</code> is meaningful. (Never used Git? See <a href="../getting-started/git.html">Git</a>.)</li>
+<li>Use plan mode for multi-file changes. Reading a plan first and then checking the diffs against it is easier than parsing surprise edits.</li>
+<li>Run the build or test after every change. If your project has a <code>make</code> or a master script, ask Claude to run it after each meaningful edit.</li>
 </ul>
-<blockquote class="blockquote">
-<p>Tell me which of these you’d most like fully worked through.</p>
-</blockquote>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This page is a work in progress. If a worked example here would help, email me.</p>
+</div>
+</div>
 
 
 </section>

@@ -1,6 +1,6 @@
 ---
 title: "Principles"
-subtitle: "Where the efficiency gains actually come from — written from one user's experience."
+subtitle: "Where the efficiency gains come from, from one user's experience."
 ---
 
 So I thought I will put my thoughts in here after our department meeting
@@ -87,8 +87,7 @@ The fail-safes I rely on are not exotic:
 - **Git, even just locally.** I commit before any non-trivial change. If
   Claude makes an edit I don't like, `git checkout .` undoes everything
   in the working directory. You don't need to push to GitHub for this to
-  save you. (If you've never used Git, the
-  [Git for the never-used-it page](getting-started/git.qmd) is the
+  save you. (New to Git? The [Git page](getting-started/git.qmd) is the
   shortest path from zero to using it as a daily safety net.)
 - **Plan mode.** For any change touching multiple files, I hit
   `Shift+Tab` until the prompt says "plan mode". Claude reads, thinks,
@@ -149,21 +148,18 @@ something done, not while it works.
 
 ## Putting it together
 
-These three principles compound. Detailed prompting alone is wasted if
-the agent can't recover from a wrong turn. Fail-safes alone keep you
-safe but not productive. Self-verification alone is impossible without
-context to verify against.
+These three principles compound. Detailed prompting is wasted if the
+agent can't recover from a wrong turn. Fail-safes keep you safe but not
+productive. Self-verification is impossible without context to verify
+against. Roughly:
 
-The way I'd phrase it now, after a year of this:
+> efficiency ≈ (quality of context) × (recoverability of the system) ×
+> (degree to which the agent can check its own work)
 
-> The efficiency you get from agentic AI is roughly **(quality of context)
-> × (recoverability of the system) × (degree to which the agent can check
-> its own work)**. If any one of those is near zero, your effective
-> productivity gain is near zero too — even if the model is brilliant.
-
-Most of my own learning has been about raising the third factor. The
-model is plenty capable; the bottleneck has been giving it the
-scaffolding to use that capability without me hovering over it.
+If any factor is near zero, the product is too — the model being capable
+doesn't help. Most of my own learning has been about raising the third
+factor: the model is capable enough; the bottleneck was giving it the
+scaffolding to work without me hovering over it.
 
 ## Where to go from here
 

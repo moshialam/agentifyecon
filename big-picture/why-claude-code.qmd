@@ -2,28 +2,42 @@
 title: "Why Claude Code"
 ---
 
-::: {.callout-note}
-**Coming soon.** This page will explain why this guide focuses on Claude
-Code specifically: terminal-native (no IDE lock-in), strong on long-context
-tasks like reading a whole replication package, comfortable with non-web
-languages (Stata/Matlab/Julia), and easy to point at any folder on your
-machine.
+This site focuses on one tool, Claude Code, for a few reasons that matter
+specifically for research work:
 
-For the head-to-head with Cursor, ChatGPT, and Copilot, see
-[How it compares](landscape.qmd).
-:::
-
-## Outline
-
-- "It works wherever your project lives" — runs in your terminal, no
-  separate editor required, no need to move your project into a special
-  directory.
-- "It reads a lot at once" — long context window matters when you ask it
+- **It works wherever your project lives.** It runs in your terminal, with
+  no separate editor required and no need to move your project into a
+  special directory.
+- **It reads a lot at once.** A long context window matters when you ask it
   to audit a 30-file replication package or revise a 50-page paper.
-- "It does not pretend to know what it does not" — relatively conservative
-  about admitting when it needs to look at a file before answering.
-- "It treats you as the principal" — plan mode, todos, and explicit
-  permission prompts before risky actions.
+- **It doesn't pretend to know what it doesn't.** It's relatively
+  conservative about reading a file before answering rather than guessing.
+- **It treats you as the principal.** Plan mode, todos, and explicit
+  permission prompts before risky actions keep you in control.
 
-> If you'd like this page filled in sooner, tell me which of those points
-> you most want elaborated.
+None of this makes Claude Code the right tool for every job. The rest of
+this page places it next to the alternatives.
+
+## How Claude Code compares
+
+| Tool | What it is | When it's the right call |
+|---|---|---|
+| **Claude Code** | Agent in your terminal that can read/edit files and run code in any folder | Editing papers, auditing replication packages, multi-file refactors, working in Stata/Matlab/Julia |
+| **Cursor** | A code editor (VS Code fork) with an LLM built in | If you live in an IDE and want inline completions + chat in the same window |
+| **ChatGPT / Claude.ai (web)** | Chat in a browser; can do "code interpreter"-style work in a sandbox | One-off questions; quick scripts where uploading a file is faster than installing anything |
+| **GitHub Copilot** | Autocomplete-as-you-type, plus a chat panel | Fast inline suggestions in VS Code or JetBrains; less useful for multi-file work |
+
+A pragmatic split:
+
+- One quick code question, project not open: use Claude.ai or ChatGPT in a
+  browser.
+- Inline autocomplete while you type: Copilot or Cursor.
+- The AI working on a real project of yours — reading several files, making
+  coordinated edits, running things, reporting back: Claude Code (or
+  Cursor's agent mode, which is similar in spirit).
+
+Two honest caveats: Claude Code is the right default for the econ-research
+workflows on this site, not a universal winner; and you don't have to pick
+one. Most colleagues end up using two — an agentic tool (Claude Code or
+Cursor) and a chat tool (Claude.ai or ChatGPT) for quick questions away
+from the keyboard.

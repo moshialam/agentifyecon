@@ -102,14 +102,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../big-picture/why-claude-code.html">
  <span class="dropdown-text">Why Claude Code</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../big-picture/landscape.html">
- <span class="dropdown-text">How it compares</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../big-picture/what-changes.html">
- <span class="dropdown-text">What changes for your workflow</span></a>
-  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -135,7 +127,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/git.html">
- <span class="dropdown-text">Git, for the never-used-it</span></a>
+ <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/reorganize-a-messy-project.html">
@@ -173,24 +165,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">R: analysis &amp; tables</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../examples/python-analysis.html">
- <span class="dropdown-text">Python: pandas &amp; statsmodels</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/matlab.html">
- <span class="dropdown-text">Matlab: numerical work</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../examples/julia-structural.html">
  <span class="dropdown-text">Julia: structural models</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/refereeing.html">
- <span class="dropdown-text">Refereeing</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/teaching-prep.html">
- <span class="dropdown-text">Teaching prep</span></a>
   </li>  
     </ul>
   </li>
@@ -281,18 +257,6 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Why Claude Code</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../big-picture/landscape.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">How Claude Code compares</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../big-picture/what-changes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What changes for your research workflow</span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -309,6 +273,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#a-concrete-contrast" id="toc-a-concrete-contrast" class="nav-link" data-scroll-target="#a-concrete-contrast">A concrete contrast</a></li>
   <li><a href="#what-you-give-up-and-what-you-keep" id="toc-what-you-give-up-and-what-you-keep" class="nav-link" data-scroll-target="#what-you-give-up-and-what-you-keep">What you give up, and what you keep</a></li>
   <li><a href="#why-this-matters-for-an-economist-specifically" id="toc-why-this-matters-for-an-economist-specifically" class="nav-link" data-scroll-target="#why-this-matters-for-an-economist-specifically">Why this matters for an economist specifically</a></li>
+  <li><a href="#what-changes-for-your-research-workflow" id="toc-what-changes-for-your-research-workflow" class="nav-link" data-scroll-target="#what-changes-for-your-research-workflow">What changes for your research workflow</a></li>
   <li><a href="#next" id="toc-next" class="nav-link" data-scroll-target="#next">Next</a></li>
   </ul>
 </nav>
@@ -338,7 +303,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="the-shift-in-one-paragraph" class="level2">
 <h2 class="anchored" data-anchor-id="the-shift-in-one-paragraph">The shift in one paragraph</h2>
 <p>Until recently, using an LLM meant <strong>typing into a chat box</strong> and copy-pasting the answer back into your editor. That works, but it puts you in the loop for every small action: copy this, paste here, run it, paste the error back, ask again. “Agentic coding” tools cut that loop. You give the model <strong>direct access to your project</strong> — it can read files, edit them, run code, see the output, and decide what to do next. You stay in the loop for <em>direction</em> and <em>review</em>, not for clerical handoffs.</p>
-<p>That is the whole shift. Everything else on this site is a consequence of it.</p>
+<p>That is the whole shift.</p>
 </section>
 <section id="a-concrete-contrast" class="level2">
 <h2 class="anchored" data-anchor-id="a-concrete-contrast">A concrete contrast</h2>
@@ -379,16 +344,33 @@ ul.task-list li input[type="checkbox"] {
 <section id="what-you-give-up-and-what-you-keep" class="level2">
 <h2 class="anchored" data-anchor-id="what-you-give-up-and-what-you-keep">What you give up, and what you keep</h2>
 <p>You give up the <strong>moment-by-moment control</strong> of every keystroke. You can’t inspect the model’s reasoning step by step in real time, and you have to trust that it’s editing the right files in the right way.</p>
-<p>You keep — and <em>must</em> exercise — <strong>direction and review</strong>. You decide what to ask for. You read the diff before accepting it. You run the regression yourself before believing the number. The page on <a href="../workflow/verifying.html">verifying output</a> is the most important one on this site.</p>
+<p>You keep — and <em>must</em> exercise — <strong>direction and review</strong>. You decide what to ask for. You read the diff before accepting it. You run the regression yourself before believing the number. See <a href="../workflow/verifying.html">verifying output</a>.</p>
 </section>
 <section id="why-this-matters-for-an-economist-specifically" class="level2">
 <h2 class="anchored" data-anchor-id="why-this-matters-for-an-economist-specifically">Why this matters for an economist specifically</h2>
-<p>Three reasons it lands harder in our field than most:</p>
+<p>It lands harder in our field than most:</p>
 <ol type="1">
 <li><strong>Our work is heavy on small, tedious code.</strong> Renaming variables across a dozen <code>.do</code> files, regenerating tables in a different format, fixing a bibtex file with 200 entries — these are exactly the kinds of jobs where the agentic loop pays off.</li>
 <li><strong>Reproducibility matters.</strong> The model can read your whole replication package and tell you what’s missing or what won’t run on a fresh machine. A human RA would take a day; the model takes minutes.</li>
 <li><strong>You probably have several projects in different languages.</strong> The same tool works on Stata, R, Python, Matlab, Julia, LaTeX, and shell scripts — you don’t need to learn a different assistant for each.</li>
 </ol>
+</section>
+<section id="what-changes-for-your-research-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="what-changes-for-your-research-workflow">What changes for your research workflow</h2>
+<p>What changes:</p>
+<ul>
+<li>Tedious code (variable renaming, table reformatting, replication-package cleanup, <code>.bib</code> fixes) takes minutes instead of hours.</li>
+<li>You stop avoiding small-but-annoying improvements (“I’ll fix that figure formatting later”) because the friction drops to near zero.</li>
+<li>A second pair of eyes is always available: “what’s wrong with this regression specification?” gets a useful answer in seconds.</li>
+<li>Onboarding to an unfamiliar codebase — your old paper from five years ago, a coauthor’s repo, a published replication package — gets much faster.</li>
+</ul>
+<p>What does not change:</p>
+<ul>
+<li>Your responsibility for the <strong>specification, identification, and interpretation</strong>. The model can suggest; you decide.</li>
+<li>The need to <strong>read the diff</strong> before accepting code into your project.</li>
+<li>The need to <strong>run the regression yourself</strong> before believing the number in your table.</li>
+<li>Your <strong>research taste</strong> — what’s interesting, what’s worth doing. The model has none of it, and will happily help you do bad work efficiently.</li>
+</ul>
 </section>
 <section id="next" class="level2">
 <h2 class="anchored" data-anchor-id="next">Next</h2>

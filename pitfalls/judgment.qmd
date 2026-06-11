@@ -50,4 +50,5 @@ controls to include", "write the limitations section". Notice when you're
 about to do this. The cost of bad judgment doesn't go down because the
 typing got faster.
 
-> Tell me which of these to expand.
+*This page is still an outline. If a fuller version would help your work,
+email me and I'll prioritize it.*

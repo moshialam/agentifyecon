@@ -136,14 +136,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../big-picture/why-claude-code.html">
  <span class="dropdown-text">Why Claude Code</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../big-picture/landscape.html">
- <span class="dropdown-text">How it compares</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../big-picture/what-changes.html">
- <span class="dropdown-text">What changes for your workflow</span></a>
-  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -169,7 +161,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/git.html">
- <span class="dropdown-text">Git, for the never-used-it</span></a>
+ <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../getting-started/reorganize-a-messy-project.html">
@@ -207,24 +199,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">R: analysis &amp; tables</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../examples/python-analysis.html">
- <span class="dropdown-text">Python: pandas &amp; statsmodels</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/matlab.html">
- <span class="dropdown-text">Matlab: numerical work</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../examples/julia-structural.html">
  <span class="dropdown-text">Julia: structural models</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/refereeing.html">
- <span class="dropdown-text">Refereeing</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../examples/teaching-prep.html">
- <span class="dropdown-text">Teaching prep</span></a>
   </li>  
     </ul>
   </li>
@@ -324,7 +300,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../getting-started/git.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Git, for economists who’ve never used it</span></a>
+ <span class="menu-text">Git</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -377,7 +353,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#the-four-patterns-that-cover-most-use" id="toc-the-four-patterns-that-cover-most-use" class="nav-link" data-scroll-target="#the-four-patterns-that-cover-most-use">The four patterns that cover most use</a></li>
   <li><a href="#examples-relevant-to-econ-work-2" id="toc-examples-relevant-to-econ-work-2" class="nav-link" data-scroll-target="#examples-relevant-to-econ-work-2">Examples relevant to econ work</a></li>
-  <li><a href="#honest-framing" id="toc-honest-framing" class="nav-link" data-scroll-target="#honest-framing">Honest framing</a></li>
+  <li><a href="#when-to-actually-use-it" id="toc-when-to-actually-use-it" class="nav-link" data-scroll-target="#when-to-actually-use-it">When to actually use it</a></li>
   </ul></li>
   <li><a href="#other-text-tools-youll-see-in-passing" id="toc-other-text-tools-youll-see-in-passing" class="nav-link" data-scroll-target="#other-text-tools-youll-see-in-passing">Other text tools you’ll see in passing</a></li>
   <li><a href="#safety-commands-to-never-type-without-thinking" id="toc-safety-commands-to-never-type-without-thinking" class="nav-link" data-scroll-target="#safety-commands-to-never-type-without-thinking">Safety: commands to never type without thinking</a></li>
@@ -393,7 +369,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../getting-started/terminal-and-bash.html">Getting started</a></li><li class="breadcrumb-item"><a href="../getting-started/terminal-and-bash.html">The terminal and bash, for GUI users</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">The terminal and bash, for GUI users</h1>
-<p class="subtitle lead">If your career has been in Stata, Matlab, or RStudio, this is the missing ten minutes of context that makes Claude Code feel ordinary instead of intimidating.</p>
+<p class="subtitle lead">Enough to read what Claude Code is doing, for colleagues coming from Stata, Matlab, or RStudio.</p>
 </div>
 
 
@@ -713,9 +689,9 @@ Warning
 <p>Extract just the variable names from a Stata <code>describe</code> log:</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'/^[a-z]/ {print $1}'</span> describe.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="honest-framing" class="level3">
-<h3 class="anchored" data-anchor-id="honest-framing">Honest framing</h3>
-<p><code>awk</code> is <strong>rarely the right tool when you have R, Python, or Stata already loaded</strong>. Its real niche is the in-between moment: you want a quick number from a file, and starting a full session in your stats language is overkill. For that — and for one-liners that Claude Code writes for you in a script — it’s hard to beat.</p>
+<section id="when-to-actually-use-it" class="level3">
+<h3 class="anchored" data-anchor-id="when-to-actually-use-it">When to actually use it</h3>
+<p><code>awk</code> is <strong>rarely the right tool when you have R, Python, or Stata already loaded</strong>. Its niche is the in-between moment: you want a quick number from a file, and starting a full session in your stats language is overkill. For that — and for one-liners Claude Code writes into a script — it’s hard to beat.</p>
 <p>Like <code>grep</code>, plain <code>awk</code> is read-only; it prints to the terminal. It only modifies a file if you explicitly redirect output (<code>&gt; newfile.txt</code>) or chain it through <code>sed -i</code>.</p>
 </section>
 </section>
@@ -786,8 +762,8 @@ Warning
 <h2 class="anchored" data-anchor-id="where-to-go-next">Where to go next</h2>
 <ul>
 <li><a href="../getting-started/install.html">Install Claude Code</a> — now that the terminal isn’t intimidating, install Claude Code and try it on a real project.</li>
-<li><a href="../getting-started/plan-mode-and-todo.html">Plan mode, todos, slash commands</a> — the Claude-Code-specific features that make the terminal feel collaborative rather than lonely.</li>
-<li><a href="../workflow/verifying.html">Verifying output</a> — once Claude is running bash commands on your behalf, this is the page that matters most.</li>
+<li><a href="../getting-started/plan-mode-and-todo.html">Plan mode, todos, slash commands</a> — the Claude-Code-specific features worth knowing early.</li>
+<li><a href="../workflow/verifying.html">Verifying output</a> — once Claude is running bash commands on your behalf, the habit to build first.</li>
 </ul>
 
 

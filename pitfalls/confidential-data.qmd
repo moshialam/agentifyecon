@@ -15,7 +15,7 @@ safe to send to a cloud LLM, plus pragmatic workarounds for the cases
 where it's not.
 :::
 
-## Outline — what to never send
+## What to never send
 
 - **IRB-protected human-subjects data** (interviews, identifiable surveys,
   health data) unless your IRB protocol explicitly permits cloud LLM
@@ -27,7 +27,7 @@ where it's not.
 - **Confidential firm or proprietary data** under NDA.
 - **Refereed manuscripts** without checking journal policy.
 
-## Outline — what is generally safe
+## What is generally safe
 
 - Public datasets (IPUMS, Compustat extracts you'd freely share, BLS
   microdata releases, etc.).
@@ -35,7 +35,7 @@ where it's not.
 - Code that doesn't reveal the underlying observations.
 - Paper drafts on your own work (with co-author awareness).
 
-## Outline — pragmatic workarounds
+## Pragmatic workarounds
 
 When you have a restricted dataset and want help with the *code*:
 
@@ -48,12 +48,12 @@ When you have a restricted dataset and want help with the *code*:
 4. **Use Claude Code only for non-restricted side projects** until you've
    talked to your IRB about an explicit policy.
 
-## Outline — institutional questions to resolve
+## Institutional questions to resolve
 
 - Does your university have a policy on LLM use with research data?
 - Does your IRB have boilerplate language for cloud LLM processing?
 - Do data agreements (DUAs) you've signed permit transmission to
   third-party services?
 
-> Tell me which of these you'd most like turned into a real
-> decision-flowchart.
+*This page is still an outline. If a fuller version would help your work,
+email me and I'll prioritize it.*

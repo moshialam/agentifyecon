@@ -16,7 +16,7 @@ common reason colleagues bounce off the tool. Half a day of cleanup is
 the difference between Claude being useful and Claude being confusing.
 :::
 
-## Outline
+## What this will cover
 
 - **Pick the right project to start with.** A paper draft, a teaching
   repo, or a side project. Not your sensitive replication package.
@@ -31,4 +31,5 @@ the difference between Claude being useful and Claude being confusing.
   doing. That memory is `CLAUDE.md`, covered in
   [Memory, CLAUDE.md, skills](../workflow/memory-and-claude-md.qmd).
 
-> Tell me which step you'd most like worked through.
+*This page is still an outline. If a fuller version would help your work,
+email me and I'll prioritize it.*

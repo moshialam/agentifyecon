@@ -1,6 +1,6 @@
 ---
 title: "Worked example — editing a LaTeX paper"
-subtitle: "Bibliography cleanup, table reformatting, and a careful section rewrite, with Claude Code in the driver's seat."
+subtitle: "Bibliography cleanup, table reformatting, and a careful section rewrite."
 ---
 
 This walks through using Claude Code on a paper draft. The tasks are

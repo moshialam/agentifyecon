@@ -1,16 +1,15 @@
 ---
 title: "Using Claude Code inside VS Code"
-subtitle: "The friendlier entry point for colleagues who'd rather not live in a black terminal window."
+subtitle: "The friendlier entry point for colleagues who'd rather not work in a bare terminal."
 ---
 
 If you've spent your career in graphical environments — RStudio, Stata's
 window, Matlab's IDE — running Claude Code in a bare terminal can feel
-like working with one hand tied behind your back. **Visual Studio Code
-("VS Code") is the gentlest landing pad.** It is free, it is graphical,
-it has a built-in terminal, it shows you proposed code edits in a normal
-side-by-side diff view, and it knows about Git. For most colleagues I
-recommend starting here — and dropping back to the bare terminal only if
-and when it stops getting in the way.
+awkward. **Visual Studio Code ("VS Code") is the gentlest landing pad.**
+It is free and graphical, has a built-in terminal, shows proposed code
+edits in a normal side-by-side diff view, and knows about Git. For most
+colleagues I'd start here, and drop back to the bare terminal only if it
+starts getting in the way.
 
 ::: {.callout-tip}
 You'll still want to skim the [terminal primer](terminal-and-bash.qmd) so
@@ -38,7 +37,7 @@ Download from [code.visualstudio.com](https://code.visualstudio.com).
 The installer is signed and behaves like any other Mac app — drag to
 Applications, open, accept the security prompt the first time.
 
-If your colleague already has VS Code, this step is a no-op.
+If you already have VS Code, skip this step.
 
 ## Step 2 — Install the Claude Code extension
 
@@ -63,8 +62,8 @@ the canonical list):
   in VS Code's diff editor instead of being printed to the terminal. You
   approve or reject with a button.
 - **Open-file and selection awareness.** Claude can see which file you
-  have focused and what you have selected, so prompts like "rewrite the
-  highlighted paragraph" Just Work.
+  have focused and what you have selected, so "rewrite the highlighted
+  paragraph" works without you naming the file.
 - **Tighter back-and-forth** when you're switching between editing a
   file by hand and asking Claude to take over.
 
@@ -130,8 +129,8 @@ Try this with any project of yours:
    commit if you want.
 
 The first time you run this loop, the difference from "chat in a browser"
-is obvious. The friction has gone somewhere; you're now spending it on
-deciding what to ask, not on shuttling text back and forth.
+is obvious: your attention goes to deciding what to ask, not to shuttling
+text back and forth.
 
 ## Language extensions worth installing
 
@@ -195,18 +194,14 @@ bare Terminal app instead:
   long Stata batch job, watching a build).
 
 The two are interchangeable. Anything you do in one works in the other.
-Pick whichever feels less like work that day.
 
 ## Where to go next
 
-- [Git, for the never-used-it](git.qmd) — VS Code's Source Control pane
-  is the friendly graphical front-end to Git, but it helps to know
-  what's going on under the hood. Half an hour to learn; it's the
-  fail-safe under everything.
+- [Git](git.qmd) — VS Code's Source Control pane is a friendly front-end
+  to Git, but it helps to know what's going on underneath.
 - [Your first project](first-project.qmd) — what to actually do in your
   first hour, now that the editor isn't in the way.
 - [Plan mode, todos, slash commands](plan-mode-and-todo.qmd) — the
-  Claude-Code-specific features that make the agentic loop feel
-  collaborative.
+  Claude-Code-specific features worth knowing early.
 - [LaTeX paper editing](../examples/latex-paper.qmd) — a fully worked
-  example. The diff-view experience really shines on `.tex` edits.
+  example; the diff view really shines on `.tex` edits.

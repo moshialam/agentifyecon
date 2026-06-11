@@ -8,7 +8,7 @@ project: cleaning a messy dataset, writing a master `do` file, producing
 regression tables, and refactoring across multiple `.do` files.
 :::
 
-## Outline
+## What this will cover
 
 1. **Setup.** Point Claude at a project with a few `.dta` files and an
    existing `.do` file or two. Have it summarize the data and the code.
@@ -34,4 +34,5 @@ regression tables, and refactoring across multiple `.do` files.
   pragmas, pre-Stata-15 syntax). Tell it your Stata version explicitly in
   your project's `CLAUDE.md`.
 
-> Tell me which step you'd most like elaborated.
+*This page is still an outline. If a full worked example here would help,
+email me and I'll prioritize it.*

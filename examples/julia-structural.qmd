@@ -8,7 +8,7 @@ for structural econometrics: model setup, MLE/GMM estimation, identification
 diagnostics, and Pluto notebooks for interactive teaching.
 :::
 
-## Outline
+## What this will cover
 
 1. **Setup.** Point Claude at a Julia project (`Project.toml` + `src/`).
    Ask for a summary of the model: primitives, parameters, what's being
@@ -44,4 +44,5 @@ silently change your results: index off-by-ones, forgotten Jacobian
 entries, mis-stacked moment vectors. Claude is good at the bookkeeping;
 you focus on the model.
 
-> Tell me which step you'd most like elaborated.
+*This page is still an outline. If a full worked example here would help,
+email me and I'll prioritize it.*

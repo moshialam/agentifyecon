@@ -15,10 +15,6 @@ website:
             text: "What is agentic coding?"
           - href: big-picture/why-claude-code.qmd
             text: "Why Claude Code"
-          - href: big-picture/landscape.qmd
-            text: "How it compares"
-          - href: big-picture/what-changes.qmd
-            text: "What changes for your workflow"
       - text: "Principles"
         href: principles.qmd
       - text: "Getting started"
@@ -30,7 +26,7 @@ website:
           - href: getting-started/vscode.qmd
             text: "Using CC inside VS Code"
           - href: getting-started/git.qmd
-            text: "Git, for the never-used-it"
+            text: "Git"
           - href: getting-started/reorganize-a-messy-project.qmd
             text: "Reorganize a messy project first"
           - href: getting-started/first-project.qmd
@@ -47,16 +43,8 @@ website:
             text: "Stata: cleaning data"
           - href: examples/r-analysis.qmd
             text: "R: analysis & tables"
-          - href: examples/python-analysis.qmd
-            text: "Python: pandas & statsmodels"
-          - href: examples/matlab.qmd
-            text: "Matlab: numerical work"
           - href: examples/julia-structural.qmd
             text: "Julia: structural models"
-          - href: examples/refereeing.qmd
-            text: "Refereeing"
-          - href: examples/teaching-prep.qmd
-            text: "Teaching prep"
       - text: "Workflow"
         menu:
           - href: workflow/how-to-ask.qmd
@@ -84,8 +72,6 @@ website:
           contents:
             - big-picture/what-is-agentic.qmd
             - big-picture/why-claude-code.qmd
-            - big-picture/landscape.qmd
-            - big-picture/what-changes.qmd
     - title: "Principles"
       contents:
         - principles.qmd
@@ -108,11 +94,7 @@ website:
             - examples/replication-package.qmd
             - examples/stata-cleaning.qmd
             - examples/r-analysis.qmd
-            - examples/python-analysis.qmd
-            - examples/matlab.qmd
             - examples/julia-structural.qmd
-            - examples/refereeing.qmd
-            - examples/teaching-prep.qmd
     - title: "Workflow"
       contents:
         - section: "Day-to-day workflow"
