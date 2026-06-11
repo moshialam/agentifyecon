@@ -9,14 +9,14 @@ website:
   navbar:
     pinned: true
     right:
+      - text: "Principles"
+        href: principles.qmd
       - text: "Big picture"
         menu:
           - href: big-picture/what-is-agentic.qmd
             text: "What is agentic coding?"
           - href: big-picture/why-claude-code.qmd
             text: "Why Claude Code"
-      - text: "Principles"
-        href: principles.qmd
       - text: "Getting started"
         menu:
           - href: getting-started/terminal-and-bash.qmd

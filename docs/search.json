@@ -612,18 +612,11 @@
     "text": "A field guide for colleagues to one specific way of using LLMs: giving an AI agent direct access to your project files so it can write code, edit your LaTeX, audit a replication package, and run things on your behalf — under your supervision.\nThis is not about chatting with ChatGPT in a browser. That is useful too, but it isn’t what changed in the last year."
   },
   {
-    "objectID": "index.html#where-to-start",
-    "href": "index.html#where-to-start",
-    "title": "LLMs for Economists",
-    "section": "Where to start",
-    "text": "Where to start\n\n\n1. The big picture\nWhat “agentic coding” means and why it’s different from chatting with an LLM. Five-minute read.\nStart here →\n\n\n2. Install and first session\nGet Claude Code on your machine and pointed at one of your projects. Twenty minutes.\nInstall Claude Code →\n\n\n3. Worked examples\nConcrete examples for the things you actually do: editing a paper, auditing a replication package, cleaning data in your language of choice.\nSee examples →\n\n\n4. Workflow and pitfalls\nHow to ask well, when to verify, what to keep out of the model’s hands. Read these before letting Claude touch anything serious.\nDay-to-day workflow →"
-  },
-  {
     "objectID": "index.html#suggested-reading-order",
     "href": "index.html#suggested-reading-order",
     "title": "LLMs for Economists",
     "section": "Suggested reading order",
-    "text": "Suggested reading order\nIf you have 30 minutes, read:\n\nPrinciples — the three things that determine how useful Claude Code will be for you.\nWhat is agentic coding?\nInstall Claude Code, then use it inside VS Code — strongly recommended if you’re coming from RStudio, Stata, or Matlab. (If you’ve never used the terminal, the five-minute terminal primer is helpful background even if you go the VS Code route.)\nLaTeX paper editing or Replication package audit.\n\nIf you have a free afternoon, add:\n\nPlan mode, todos, slash commands\nThe example page for your language: Stata, R, or Julia.\nHow to ask and Verifying output."
+    "text": "Suggested reading order\nIf you have 30 minutes:\n\nPrinciples — the three things that determine how useful Claude Code will be for you.\nWhat is agentic coding? — what it means and why it’s different from chatting with an LLM (five minutes).\nInstall Claude Code, then use it inside VS Code — recommended if you’re coming from RStudio, Stata, or Matlab. (Never used the terminal? The terminal primer is helpful background even on the VS Code route.)\nA worked example: editing a LaTeX paper or auditing a replication package.\n\nIf you have a free afternoon, add:\n\nPlan mode, todos, slash commands.\nThe example page for your language: Stata, R, or Julia.\nHow to ask and verifying output — how to ask well and when to check the result.\nThe pitfalls, before letting Claude touch anything serious: confidential data, hallucinations, and what you must still do yourself."
   },
   {
     "objectID": "index.html#work-in-progress",

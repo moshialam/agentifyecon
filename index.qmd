@@ -14,64 +14,33 @@ This is not about chatting with ChatGPT in a browser. That is useful too,
 but it isn't what changed in the last year.
 :::
 
-## Where to start
-
-::: {.tile-grid}
-::: {.tile}
-#### 1. The big picture {.unnumbered}
-What "agentic coding" means and why it's different from chatting with an
-LLM. Five-minute read.
-
-[Start here →](big-picture/what-is-agentic.qmd)
-:::
-
-::: {.tile}
-#### 2. Install and first session {.unnumbered}
-Get Claude Code on your machine and pointed at one of your projects.
-Twenty minutes.
-
-[Install Claude Code →](getting-started/install.qmd)
-:::
-
-::: {.tile}
-#### 3. Worked examples {.unnumbered}
-Concrete examples for the things you actually do: editing a paper, auditing
-a replication package, cleaning data in your language of choice.
-
-[See examples →](examples/latex-paper.qmd)
-:::
-
-::: {.tile}
-#### 4. Workflow and pitfalls {.unnumbered}
-How to ask well, when to verify, what to keep out of the model's hands.
-Read these before letting Claude touch anything serious.
-
-[Day-to-day workflow →](workflow/how-to-ask.qmd)
-:::
-:::
-
 ## Suggested reading order
 
-If you have **30 minutes**, read:
+If you have **30 minutes**:
 
 1. [Principles](principles.qmd) — the three things that determine how
    useful Claude Code will be for you.
-2. [What is agentic coding?](big-picture/what-is-agentic.qmd)
+2. [What is agentic coding?](big-picture/what-is-agentic.qmd) — what it
+   means and why it's different from chatting with an LLM (five minutes).
 3. [Install Claude Code](getting-started/install.qmd), then
-   [use it inside VS Code](getting-started/vscode.qmd) — strongly
-   recommended if you're coming from RStudio, Stata, or Matlab. (If
-   you've never used the terminal, the [five-minute terminal
-   primer](getting-started/terminal-and-bash.qmd) is helpful background
-   even if you go the VS Code route.)
-4. [LaTeX paper editing](examples/latex-paper.qmd) *or*
-   [Replication package audit](examples/replication-package.qmd).
+   [use it inside VS Code](getting-started/vscode.qmd) — recommended if
+   you're coming from RStudio, Stata, or Matlab. (Never used the terminal?
+   The [terminal primer](getting-started/terminal-and-bash.qmd) is helpful
+   background even on the VS Code route.)
+4. A worked example: [editing a LaTeX paper](examples/latex-paper.qmd) or
+   [auditing a replication package](examples/replication-package.qmd).
 
 If you have **a free afternoon**, add:
 
-5. [Plan mode, todos, slash commands](getting-started/plan-mode-and-todo.qmd)
+5. [Plan mode, todos, slash commands](getting-started/plan-mode-and-todo.qmd).
 6. The example page for your language: Stata, R, or Julia.
 7. [How to ask](workflow/how-to-ask.qmd) and
-   [Verifying output](workflow/verifying.qmd).
+   [verifying output](workflow/verifying.qmd) — how to ask well and when
+   to check the result.
+8. The pitfalls, before letting Claude touch anything serious:
+   [confidential data](pitfalls/confidential-data.qmd),
+   [hallucinations](pitfalls/hallucinations.qmd), and
+   [what you must still do yourself](pitfalls/judgment.qmd).
 
 ## Work in progress
 
