@@ -21,12 +21,12 @@ website:
         menu:
           - href: getting-started/terminal-and-bash.qmd
             text: "Terminal & bash for GUI users"
+          - href: getting-started/git.qmd
+            text: "Git"
           - href: getting-started/install.qmd
             text: "Install Claude Code"
           - href: getting-started/vscode.qmd
             text: "Using CC inside VS Code"
-          - href: getting-started/git.qmd
-            text: "Git"
           - href: getting-started/reorganize-a-messy-project.qmd
             text: "Reorganize a messy project first"
           - href: getting-started/plan-mode-and-todo.qmd
@@ -62,7 +62,7 @@ website:
           - href: pitfalls/judgment.qmd
             text: "What you must still do"
       - icon: github
-        href: https://github.com/
+        href: https://github.com/moshialam/agentifyecon
         aria-label: GitHub repository
   sidebar:
     - title: "Big picture"
@@ -80,9 +80,9 @@ website:
         - section: "Getting started"
           contents:
             - getting-started/terminal-and-bash.qmd
+            - getting-started/git.qmd
             - getting-started/install.qmd
             - getting-started/vscode.qmd
-            - getting-started/git.qmd
             - getting-started/reorganize-a-messy-project.qmd
             - getting-started/plan-mode-and-todo.qmd
     - title: "Examples"
