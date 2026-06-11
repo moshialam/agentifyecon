@@ -548,8 +548,8 @@ has a full template; the highlights:
 
 ## The friendly path: VS Code's Source Control pane
 
-If a colleague is going to use Git through a graphical interface, the
-best one is **already inside VS Code**. Open the Source Control pane
+If you'd rather use Git through a graphical interface, the best one is
+**already inside VS Code**. Open the Source Control pane
 (`Ctrl+Shift+G` or click the branching-tree icon in the left sidebar).
 You'll see:
 
@@ -561,10 +561,9 @@ You'll see:
   commits.
 - The `…` menu has push, pull, branch operations, etc.
 
-For colleagues who'd rather not touch the CLI for git, this is the
-recommended path. The same operations happen under the hood; you just
-click instead of typing. See the [VS Code page](vscode.qmd) for the
-broader VS Code setup.
+If you'd rather not touch the CLI for Git, this is the recommended path.
+The same operations happen under the hood; you just click instead of
+typing. See the [VS Code page](vscode.qmd) for the broader VS Code setup.
 
 ::: {.callout-note}
 **Other graphical Git clients** worth knowing about: GitHub Desktop

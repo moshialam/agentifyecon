@@ -140,12 +140,10 @@ start of every session, so it doesn't start from zero.
 
 ## Where to go next
 
-- **[Use Claude Code inside VS Code](vscode.qmd)** — strongly recommended
-  for colleagues coming from RStudio, Stata, or Matlab. The diff view,
-  clickable file paths, and built-in Git make the agentic loop feel
-  ordinary instead of intimidating.
-- [Your first project](first-project.qmd) — what to actually do in your
-  first hour of using Claude Code on real work.
+- **[Use Claude Code inside VS Code](vscode.qmd)** — recommended if you're
+  coming from RStudio, Stata, or Matlab. The diff view, clickable file
+  paths, and built-in Git make the agentic loop feel ordinary instead of
+  intimidating.
 - [Plan mode, todos, slash commands](plan-mode-and-todo.qmd) — the three
   features that make Claude Code feel like a research assistant rather
   than a chatbot.

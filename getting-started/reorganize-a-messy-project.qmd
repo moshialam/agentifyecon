@@ -181,8 +181,8 @@ specific to a multi-step reorganization:
   committing build artifacts or derived data because the rules are
   inherited from the branch.
 
-If you or your colleagues are git novices — or if the original project
-isn't yet in git — the `cp -R` path below is the recommended default.
+If you're new to Git — or the original project isn't yet in git — the
+`cp -R` path below is the recommended default.
 The full explanation of worktrees, with more use cases and pitfalls,
 is in the [Worktrees section of the Git page](git.qmd#worktrees-when-one-working-directory-isnt-enough).
 :::
@@ -632,8 +632,6 @@ the steps are familiar.
 
 ## Where to go next
 
-- [Your first project](first-project.qmd) — what to do once the project
-  is reorganized and ready.
 - [Memory, CLAUDE.md, skills](../workflow/memory-and-claude-md.qmd) —
   more detail on the `CLAUDE.md` you wrote in step 9, and how to turn
   this whole reorganization into a reusable skill (`/reorganize-project`)

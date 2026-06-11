@@ -5,7 +5,7 @@ toc: false
 ---
 
 ::: {.lead-large}
-A field guide for colleagues to one specific way of using LLMs:
+A field guide to one specific way of using LLMs:
 **giving an AI agent direct access to your project files** so it can write
 code, edit your LaTeX, audit a replication package, and run things on your
 behalf — under your supervision.

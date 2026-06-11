@@ -29,8 +29,6 @@ website:
             text: "Git"
           - href: getting-started/reorganize-a-messy-project.qmd
             text: "Reorganize a messy project first"
-          - href: getting-started/first-project.qmd
-            text: "Your first project"
           - href: getting-started/plan-mode-and-todo.qmd
             text: "Plan mode, todos, slash commands"
       - text: "Examples"
@@ -51,6 +49,8 @@ website:
             text: "How to ask"
           - href: workflow/memory-and-claude-md.qmd
             text: "Memory, CLAUDE.md, skills"
+          - href: workflow/building-skills.qmd
+            text: "Building your own skills"
           - href: workflow/verifying.qmd
             text: "Verifying output"
       - text: "Pitfalls"
@@ -84,7 +84,6 @@ website:
             - getting-started/vscode.qmd
             - getting-started/git.qmd
             - getting-started/reorganize-a-messy-project.qmd
-            - getting-started/first-project.qmd
             - getting-started/plan-mode-and-todo.qmd
     - title: "Examples"
       contents:
@@ -101,6 +100,7 @@ website:
           contents:
             - workflow/how-to-ask.qmd
             - workflow/memory-and-claude-md.qmd
+            - workflow/building-skills.qmd
             - workflow/verifying.qmd
     - title: "Pitfalls"
       contents:

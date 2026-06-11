@@ -63,7 +63,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../getting-started/first-project.html" rel="next">
+<link href="../getting-started/plan-mode-and-todo.html" rel="next">
 <link href="../getting-started/git.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -169,10 +169,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Reorganize a messy project first</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../getting-started/first-project.html">
- <span class="dropdown-text">Your first project</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../getting-started/plan-mode-and-todo.html">
  <span class="dropdown-text">Plan mode, todos, slash commands</span></a>
   </li>  
@@ -217,6 +213,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../workflow/memory-and-claude-md.html">
  <span class="dropdown-text">Memory, CLAUDE.md, skills</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../workflow/building-skills.html">
+ <span class="dropdown-text">Building your own skills</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../workflow/verifying.html">
@@ -308,12 +308,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../getting-started/reorganize-a-messy-project.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Reorganizing a messy project before letting Claude Code work on it</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../getting-started/first-project.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Your first project</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -504,7 +498,7 @@ Tip
 <li><strong>One-command cleanup if you abandon halfway:</strong> <code>git worktree remove   ../wage-paper-cleanup &amp;&amp; git branch -D reorganize-2026</code>. Compared to <code>rm -rf</code> of a <code>cp -R</code> copy, this is the same outcome but with a paper trail in <code>git reflog</code> if you change your mind tomorrow.</li>
 <li><strong>The <code>.gitignore</code> you’ll write in Step 12 stays applied across reorganization steps automatically.</strong> No risk of accidentally committing build artifacts or derived data because the rules are inherited from the branch.</li>
 </ul>
-<p>If you or your colleagues are git novices — or if the original project isn’t yet in git — the <code>cp -R</code> path below is the recommended default. The full explanation of worktrees, with more use cases and pitfalls, is in the <a href="../getting-started/git.html#worktrees-when-one-working-directory-isnt-enough">Worktrees section of the Git page</a>.</p>
+<p>If you’re new to Git — or the original project isn’t yet in git — the <code>cp -R</code> path below is the recommended default. The full explanation of worktrees, with more use cases and pitfalls, is in the <a href="../getting-started/git.html#worktrees-when-one-working-directory-isnt-enough">Worktrees section of the Git page</a>.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -801,7 +795,6 @@ Tip
 <section id="where-to-go-next" class="level2">
 <h2 class="anchored" data-anchor-id="where-to-go-next">Where to go next</h2>
 <ul>
-<li><a href="../getting-started/first-project.html">Your first project</a> — what to do once the project is reorganized and ready.</li>
 <li><a href="../workflow/memory-and-claude-md.html">Memory, CLAUDE.md, skills</a> — more detail on the <code>CLAUDE.md</code> you wrote in step 9, and how to turn this whole reorganization into a reusable skill (<code>/reorganize-project</code>) for the next project.</li>
 <li><a href="../examples/replication-package.html">Replication package audit</a> — the closely-related workflow for taking a <em>clean</em> project and preparing it for journal submission, or for auditing someone else’s package as a referee.</li>
 <li><a href="../workflow/verifying.html">Verifying output</a> — the habits that make every step on this page safe.</li>
@@ -1240,8 +1233,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../getting-started/first-project.html" class="pagination-link" aria-label="Your first project">
-        <span class="nav-page-text">Your first project</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../getting-started/plan-mode-and-todo.html" class="pagination-link" aria-label="Plan mode, todos, and slash commands">
+        <span class="nav-page-text">Plan mode, todos, and slash commands</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

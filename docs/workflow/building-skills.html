@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Your first project – LLMs for Economists</title>
+<title>Building your own skills – LLMs for Economists</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -29,8 +63,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../getting-started/plan-mode-and-todo.html" rel="next">
-<link href="../getting-started/reorganize-a-messy-project.html" rel="prev">
+<link href="../workflow/verifying.html" rel="next">
+<link href="../workflow/memory-and-claude-md.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -135,10 +169,6 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Reorganize a messy project first</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../getting-started/first-project.html">
- <span class="dropdown-text">Your first project</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../getting-started/plan-mode-and-todo.html">
  <span class="dropdown-text">Plan mode, todos, slash commands</span></a>
   </li>  
@@ -185,6 +215,10 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Memory, CLAUDE.md, skills</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../workflow/building-skills.html">
+ <span class="dropdown-text">Building your own skills</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../workflow/verifying.html">
  <span class="dropdown-text">Verifying output</span></a>
   </li>  
@@ -225,7 +259,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../getting-started/terminal-and-bash.html">Getting started</a></li><li class="breadcrumb-item"><a href="../getting-started/first-project.html">Your first project</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workflow/how-to-ask.html">Day-to-day workflow</a></li><li class="breadcrumb-item"><a href="../workflow/building-skills.html">Building your own skills</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -240,7 +274,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Getting started</span></a>
+ <span class="menu-text">Day-to-day workflow</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -248,44 +282,26 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../getting-started/terminal-and-bash.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The terminal and bash, for GUI users</span></a>
+  <a href="../workflow/how-to-ask.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How to ask</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../getting-started/install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Install Claude Code</span></a>
+  <a href="../workflow/memory-and-claude-md.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Memory, CLAUDE.md, and skills</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../getting-started/vscode.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Using Claude Code inside VS Code</span></a>
+  <a href="../workflow/building-skills.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Building your own skills</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../getting-started/git.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Git</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../getting-started/reorganize-a-messy-project.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Reorganizing a messy project before letting Claude Code work on it</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../getting-started/first-project.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Your first project</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../getting-started/plan-mode-and-todo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Plan mode, todos, and slash commands</span></a>
+  <a href="../workflow/verifying.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Verifying output</span></a>
   </div>
 </li>
       </ul>
@@ -300,16 +316,25 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-this-will-cover" id="toc-what-this-will-cover" class="nav-link active" data-scroll-target="#what-this-will-cover">What this will cover</a></li>
+  <li><a href="#the-three-skills" id="toc-the-three-skills" class="nav-link active" data-scroll-target="#the-three-skills">The three skills</a>
+  <ul class="collapse">
+  <li><a href="#plutonb-a-knowledge-skill" id="toc-plutonb-a-knowledge-skill" class="nav-link" data-scroll-target="#plutonb-a-knowledge-skill"><code>/plutonb</code> — a knowledge skill</a></li>
+  <li><a href="#evolution-a-context-gathering-skill" id="toc-evolution-a-context-gathering-skill" class="nav-link" data-scroll-target="#evolution-a-context-gathering-skill"><code>/evolution</code> — a context-gathering skill</a></li>
+  <li><a href="#remind-also-context-gathering" id="toc-remind-also-context-gathering" class="nav-link" data-scroll-target="#remind-also-context-gathering"><code>/remind</code> — also context-gathering</a></li>
+  </ul></li>
+  <li><a href="#the-building-blocks-in-one-place" id="toc-the-building-blocks-in-one-place" class="nav-link" data-scroll-target="#the-building-blocks-in-one-place">The building blocks, in one place</a></li>
+  <li><a href="#installing-them" id="toc-installing-them" class="nav-link" data-scroll-target="#installing-them">Installing them</a></li>
+  <li><a href="#writing-your-own" id="toc-writing-your-own" class="nav-link" data-scroll-target="#writing-your-own">Writing your own</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../getting-started/terminal-and-bash.html">Getting started</a></li><li class="breadcrumb-item"><a href="../getting-started/first-project.html">Your first project</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workflow/how-to-ask.html">Day-to-day workflow</a></li><li class="breadcrumb-item"><a href="../workflow/building-skills.html">Building your own skills</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Your first project</h1>
+<h1 class="title">Building your own skills</h1>
+<p class="subtitle lead">Package a workflow once, invoke it by name forever — with three of my own as worked examples.</p>
 </div>
 
 
@@ -326,6 +351,109 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>Contrary to the impression you might get online, I don’t use many skills. The three below are simply the tasks I found myself doing over and over, the same way each time — so I wrote them down. That’s the whole reason to build a skill: not novelty, but repetition. If you’re not repeating something, you don’t need one.</p>
+<p>A <strong>skill</strong> is a reusable instruction set you can invoke by name. Instead of re-typing the same multi-step prompt every time (“scaffold a Pluto notebook with sliders, estimation, and identification diagnostics…”), you write it down once as a <code>SKILL.md</code> file and call it with <code>/your-skill</code>.</p>
+<p>Mechanically, a skill is just a folder with a <code>SKILL.md</code> inside it:</p>
+<pre><code>my-skill/
+└── SKILL.md</code></pre>
+<p>The file has a short YAML header (the “frontmatter”) and a body. The body is the prompt Claude runs when you invoke the skill; the header tells Claude what the skill is for and how it’s allowed to run.</p>
+<p>I keep mine in a small public repo, <a href="https://github.com/moshialam/myccskills">myccskills</a>, with three skills in it. They’re worth walking through because they show two different shapes a useful skill can take.</p>
+<section id="the-three-skills" class="level2">
+<h2 class="anchored" data-anchor-id="the-three-skills">The three skills</h2>
+<section id="plutonb-a-knowledge-skill" class="level3">
+<h3 class="anchored" data-anchor-id="plutonb-a-knowledge-skill"><code>/plutonb</code> — a knowledge skill</h3>
+<p><strong>What it does:</strong> scaffolds a <a href="https://plutojl.org/">Pluto.jl</a> notebook for a structural-econometrics simulation — model primitives as a <code>struct</code>, a data generating process with explicit seeds, MLE/GMM estimation with a true-vs-estimated comparison table, interactive <code>@bind</code> sliders, identification diagnostics, and a LaTeX appendix. You call it with a model description: <code>/plutonb a Roy model of occupational choice</code>.</p>
+<p><strong>How it’s built:</strong> it’s essentially my “how I want a structural notebook built” knowledge, written down. The body is a long, structured set of instructions — cell order, parameter-transformation conventions (<code>exp()</code> for variances, <code>tanh()</code> for correlations), how to document exclusion restrictions, a quality checklist. The frontmatter passes the model description in via <code>$ARGUMENTS</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> plutonb</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">description</span><span class="kw">:</span><span class="at"> Create a Pluto.jl notebook for structural econometrics</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">  simulations. Use when the user asks to create a Pluto notebook,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="at">  simulation notebook, or structural model notebook.</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">user-invocable</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">allowed-tools</span><span class="kw">:</span><span class="at"> Bash, Read, Write, Edit, Glob, Grep</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">argument-hint</span><span class="kw">:</span><span class="at"> </span><span class="st">"[model-name-or-description]"</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This is the most common kind of skill to write first: take a task you do repeatedly and do <em>a particular way</em>, and encode that way once.</p>
+</section>
+<section id="evolution-a-context-gathering-skill" class="level3">
+<h3 class="anchored" data-anchor-id="evolution-a-context-gathering-skill"><code>/evolution</code> — a context-gathering skill</h3>
+<p><strong>What it does:</strong> reads a project’s git history and tells the story of how it evolved — phases, milestones, pivots, and what’s being worked on now. Run it in any repo with <code>/evolution</code>, or scope it (<code>/evolution 20</code>, <code>/evolution 2025-01</code>).</p>
+<p><strong>How it’s built:</strong> this one demonstrates two features beyond a plain prompt. First, it <strong>pre-loads context by running shell commands</strong> with the <code>!</code> prefix — the output is injected into the prompt before Claude starts:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">### Full git log with file-level changes</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>!<span class="in">`git log --stat --all --date=short --format="%h %ad %s" | head -500`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Second, the frontmatter runs it in a separate, read-only sub-agent so it doesn’t clutter your main session:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span><span class="kw">:</span><span class="at"> fork</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">agent</span><span class="kw">:</span><span class="at"> Explore</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">allowed-tools</span><span class="kw">:</span><span class="at"> Bash, Read, Glob, Grep</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The body is then just instructions for turning that git history into a readable narrative.</p>
+</section>
+<section id="remind-also-context-gathering" class="level3">
+<h3 class="anchored" data-anchor-id="remind-also-context-gathering"><code>/remind</code> — also context-gathering</h3>
+<p><strong>What it does:</strong> a snapshot of where a project stands when you come back to it after time away — branch and remote status, uncommitted work, recent commits, structure, and any saved context from <code>CLAUDE.md</code> / <code>MEMORY.md</code>.</p>
+<p><strong>How it’s built:</strong> same shape as <code>/evolution</code> — <code>!</code>-prefixed commands pre-load <code>git status</code>, the branch list, recent commits, and the directory listing, then a forked <code>Explore</code> agent reads <code>CLAUDE.md</code> and <code>MEMORY.md</code> and summarizes. It’s a good template to copy when you want a “gather some state, then summarize it” skill.</p>
+</section>
+</section>
+<section id="the-building-blocks-in-one-place" class="level2">
+<h2 class="anchored" data-anchor-id="the-building-blocks-in-one-place">The building blocks, in one place</h2>
+<p>Everything above is assembled from a small set of pieces:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Piece</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>SKILL.md</code> in a named folder</td>
+<td>The skill itself; the folder name is the default skill name</td>
+</tr>
+<tr class="even">
+<td><code>name</code>, <code>description</code></td>
+<td>The <code>description</code> is what Claude matches on to decide the skill applies — write it carefully</td>
+</tr>
+<tr class="odd">
+<td><code>user-invocable: true</code></td>
+<td>Lets you call it explicitly with <code>/name</code></td>
+</tr>
+<tr class="even">
+<td><code>allowed-tools:</code></td>
+<td>Restricts which tools the skill may use</td>
+</tr>
+<tr class="odd">
+<td><code>argument-hint:</code></td>
+<td>Documents what to pass after the name</td>
+</tr>
+<tr class="even">
+<td><code>$ARGUMENTS</code> (in the body)</td>
+<td>Where your input gets substituted</td>
+</tr>
+<tr class="odd">
+<td><code>!`command`</code> (in the body)</td>
+<td>Runs a shell command and injects its output before Claude starts</td>
+</tr>
+<tr class="even">
+<td><code>context: fork</code> + <code>agent: Explore</code></td>
+<td>Runs the skill in a separate read-only sub-agent</td>
+</tr>
+</tbody>
+</table>
+<p>The two shapes worth knowing: <strong>knowledge skills</strong> (<code>/plutonb</code>) that encode “the way I do X,” and <strong>context skills</strong> (<code>/evolution</code>, <code>/remind</code>) that gather state with <code>!</code> commands and then reason over it.</p>
+</section>
+<section id="installing-them" class="level2">
+<h2 class="anchored" data-anchor-id="installing-them">Installing them</h2>
+<p>Claude Code reads personal skills from <code>~/.claude/skills/</code>. There are two ways to get mine onto your machine.</p>
+<p><strong>Option A — copy the skills you want.</strong> Simplest, and it won’t disturb any skills you already have:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/moshialam/myccskills.git</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-R</span> myccskills/plutonb ~/.claude/skills/      <span class="co"># repeat for evolution, remind</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Option B — symlink the whole repo.</strong> This is how I run them, so my edits stay under version control. Only do this if <code>~/.claude/skills</code> isn’t already holding skills of your own, since it points the entire directory at the repo:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/moshialam/myccskills.git</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-sfn</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">/myccskills"</span> ~/.claude/skills</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Either way, verify with <code>ls ~/.claude/skills</code> and then, inside Claude Code, type <code>/</code> to confirm <code>plutonb</code>, <code>evolution</code>, and <code>remind</code> show up.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -336,32 +464,19 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Coming soon.</strong> Practical guidance for the first hour you spend with Claude Code on a real project of yours.</p>
+<p>To scope a skill to a single project instead of your whole machine, put it in <code>.claude/skills/</code> inside that project’s folder rather than in <code>~/.claude/skills/</code>. Project skills are a good way to share a skill with coauthors through the project’s own git repo.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>If your “first project” is a messy active research folder</strong> — multiple paper drafts, exploratory <code>.do</code> files, no README, hardcoded paths — do the <a href="../getting-started/reorganize-a-messy-project.html">one-time reorganization walkthrough</a> <em>first</em>. Pointing Claude at a chaotic project on day one is the most common reason colleagues bounce off the tool. Half a day of cleanup is the difference between Claude being useful and Claude being confusing.</p>
-</div>
-</div>
-<section id="what-this-will-cover" class="level2">
-<h2 class="anchored" data-anchor-id="what-this-will-cover">What this will cover</h2>
+</section>
+<section id="writing-your-own" class="level2">
+<h2 class="anchored" data-anchor-id="writing-your-own">Writing your own</h2>
+<p>The fastest way to start is to copy one of these as a template and edit it:</p>
 <ul>
-<li><strong>Pick the right project to start with.</strong> A paper draft, a teaching repo, or a side project. Not your sensitive replication package.</li>
-<li><strong>Spend ten minutes letting it read the project.</strong> Ask it to summarize what’s there. You’ll learn what <em>it</em> sees, which is roughly what a smart RA would see.</li>
-<li><strong>Pick one annoying task you’ve been putting off.</strong> “Reformat all my tables to use <code>booktabs</code>.” “Standardize variable names across my .do files.” “Write a README for this repo.” Watch it do that.</li>
-<li><strong>Read every diff.</strong> This is the habit that matters most.</li>
-<li><strong>Quit, come back tomorrow.</strong> Notice that it remembers what you were doing. That memory is <code>CLAUDE.md</code>, covered in <a href="../workflow/memory-and-claude-md.html">Memory, CLAUDE.md, skills</a>.</li>
+<li>Repetitive task you do a specific way → copy <code>plutonb</code>, replace the body with your instructions, update <code>name</code>/<code>description</code>/<code>argument-hint</code>.</li>
+<li>“Gather some state, then summarize” → copy <code>remind</code>, swap the <code>!</code> commands for whatever you want pre-loaded.</li>
 </ul>
-<p><em>This page is still an outline. If a fuller version would help your work, email me and I’ll prioritize it.</em></p>
+<p>Good candidates from elsewhere on this site: a <code>/audit-replication</code> skill built from the <a href="../examples/replication-package.html">replication-package walkthrough</a>, or a <code>/reorganize-project</code> skill from the <a href="../getting-started/reorganize-a-messy-project.html">messy-project walkthrough</a>. Once you’ve done either of those by hand twice, it’s worth writing down.</p>
+<p>See also <a href="../workflow/memory-and-claude-md.html">Memory, CLAUDE.md, skills</a> for how skills sit alongside the other ways of giving Claude persistent context.</p>
 
 
 </section>
@@ -791,13 +906,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../getting-started/reorganize-a-messy-project.html" class="pagination-link" aria-label="Reorganizing a messy project before letting Claude Code work on it">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Reorganizing a messy project before letting Claude Code work on it</span>
+      <a href="../workflow/memory-and-claude-md.html" class="pagination-link" aria-label="Memory, CLAUDE.md, and skills">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Memory, CLAUDE.md, and skills</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../getting-started/plan-mode-and-todo.html" class="pagination-link" aria-label="Plan mode, todos, and slash commands">
-        <span class="nav-page-text">Plan mode, todos, and slash commands</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../workflow/verifying.html" class="pagination-link" aria-label="Verifying output">
+        <span class="nav-page-text">Verifying output</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

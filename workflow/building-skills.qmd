@@ -1,0 +1,172 @@
+---
+title: "Building your own skills"
+subtitle: "Package a workflow once, invoke it by name forever — with three of my own as worked examples."
+---
+
+Contrary to the impression you might get online, I don't use many skills.
+The three below are simply the tasks I found myself doing over and over, the
+same way each time — so I wrote them down. That's the whole reason to build a
+skill: not novelty, but repetition. If you're not repeating something, you
+don't need one.
+
+A **skill** is a reusable instruction set you can invoke by name. Instead of
+re-typing the same multi-step prompt every time ("scaffold a Pluto notebook
+with sliders, estimation, and identification diagnostics…"), you write it
+down once as a `SKILL.md` file and call it with `/your-skill`.
+
+Mechanically, a skill is just a folder with a `SKILL.md` inside it:
+
+```
+my-skill/
+└── SKILL.md
+```
+
+The file has a short YAML header (the "frontmatter") and a body. The body
+is the prompt Claude runs when you invoke the skill; the header tells Claude
+what the skill is for and how it's allowed to run.
+
+I keep mine in a small public repo, [myccskills](https://github.com/moshialam/myccskills),
+with three skills in it. They're worth walking through because they show two
+different shapes a useful skill can take.
+
+## The three skills
+
+### `/plutonb` — a knowledge skill
+
+**What it does:** scaffolds a [Pluto.jl](https://plutojl.org/) notebook for a
+structural-econometrics simulation — model primitives as a `struct`, a data
+generating process with explicit seeds, MLE/GMM estimation with a
+true-vs-estimated comparison table, interactive `@bind` sliders,
+identification diagnostics, and a LaTeX appendix. You call it with a model
+description: `/plutonb a Roy model of occupational choice`.
+
+**How it's built:** it's essentially my "how I want a structural notebook
+built" knowledge, written down. The body is a long, structured set of
+instructions — cell order, parameter-transformation conventions (`exp()` for
+variances, `tanh()` for correlations), how to document exclusion
+restrictions, a quality checklist. The frontmatter passes the model
+description in via `$ARGUMENTS`:
+
+```yaml
+---
+name: plutonb
+description: Create a Pluto.jl notebook for structural econometrics
+  simulations. Use when the user asks to create a Pluto notebook,
+  simulation notebook, or structural model notebook.
+user-invocable: true
+allowed-tools: Bash, Read, Write, Edit, Glob, Grep
+argument-hint: "[model-name-or-description]"
+---
+```
+
+This is the most common kind of skill to write first: take a task you do
+repeatedly and do *a particular way*, and encode that way once.
+
+### `/evolution` — a context-gathering skill
+
+**What it does:** reads a project's git history and tells the story of how it
+evolved — phases, milestones, pivots, and what's being worked on now. Run it
+in any repo with `/evolution`, or scope it (`/evolution 20`,
+`/evolution 2025-01`).
+
+**How it's built:** this one demonstrates two features beyond a plain prompt.
+First, it **pre-loads context by running shell commands** with the `` ! ``
+prefix — the output is injected into the prompt before Claude starts:
+
+```markdown
+### Full git log with file-level changes
+!`git log --stat --all --date=short --format="%h %ad %s" | head -500`
+```
+
+Second, the frontmatter runs it in a separate, read-only sub-agent so it
+doesn't clutter your main session:
+
+```yaml
+context: fork
+agent: Explore
+allowed-tools: Bash, Read, Glob, Grep
+```
+
+The body is then just instructions for turning that git history into a
+readable narrative.
+
+### `/remind` — also context-gathering
+
+**What it does:** a snapshot of where a project stands when you come back to
+it after time away — branch and remote status, uncommitted work, recent
+commits, structure, and any saved context from `CLAUDE.md` / `MEMORY.md`.
+
+**How it's built:** same shape as `/evolution` — `!`-prefixed commands
+pre-load `git status`, the branch list, recent commits, and the directory
+listing, then a forked `Explore` agent reads `CLAUDE.md` and `MEMORY.md` and
+summarizes. It's a good template to copy when you want a "gather some state,
+then summarize it" skill.
+
+## The building blocks, in one place
+
+Everything above is assembled from a small set of pieces:
+
+| Piece | What it does |
+|---|---|
+| `SKILL.md` in a named folder | The skill itself; the folder name is the default skill name |
+| `name`, `description` | The `description` is what Claude matches on to decide the skill applies — write it carefully |
+| `user-invocable: true` | Lets you call it explicitly with `/name` |
+| `allowed-tools:` | Restricts which tools the skill may use |
+| `argument-hint:` | Documents what to pass after the name |
+| `$ARGUMENTS` (in the body) | Where your input gets substituted |
+| `` !`command` `` (in the body) | Runs a shell command and injects its output before Claude starts |
+| `context: fork` + `agent: Explore` | Runs the skill in a separate read-only sub-agent |
+
+The two shapes worth knowing: **knowledge skills** (`/plutonb`) that encode
+"the way I do X," and **context skills** (`/evolution`, `/remind`) that
+gather state with `` ! `` commands and then reason over it.
+
+## Installing them
+
+Claude Code reads personal skills from `~/.claude/skills/`. There are two
+ways to get mine onto your machine.
+
+**Option A — copy the skills you want.** Simplest, and it won't disturb any
+skills you already have:
+
+```bash
+git clone https://github.com/moshialam/myccskills.git
+cp -R myccskills/plutonb ~/.claude/skills/      # repeat for evolution, remind
+```
+
+**Option B — symlink the whole repo.** This is how I run them, so my edits
+stay under version control. Only do this if `~/.claude/skills` isn't already
+holding skills of your own, since it points the entire directory at the repo:
+
+```bash
+git clone https://github.com/moshialam/myccskills.git
+ln -sfn "$(pwd)/myccskills" ~/.claude/skills
+```
+
+Either way, verify with `ls ~/.claude/skills` and then, inside Claude Code,
+type `/` to confirm `plutonb`, `evolution`, and `remind` show up.
+
+::: {.callout-note}
+To scope a skill to a single project instead of your whole machine, put it
+in `.claude/skills/` inside that project's folder rather than in
+`~/.claude/skills/`. Project skills are a good way to share a skill with
+coauthors through the project's own git repo.
+:::
+
+## Writing your own
+
+The fastest way to start is to copy one of these as a template and edit it:
+
+- Repetitive task you do a specific way → copy `plutonb`, replace the body
+  with your instructions, update `name`/`description`/`argument-hint`.
+- "Gather some state, then summarize" → copy `remind`, swap the `` ! ``
+  commands for whatever you want pre-loaded.
+
+Good candidates from elsewhere on this site: a `/audit-replication` skill
+built from the [replication-package walkthrough](../examples/replication-package.qmd),
+or a `/reorganize-project` skill from the
+[messy-project walkthrough](../getting-started/reorganize-a-messy-project.qmd).
+Once you've done either of those by hand twice, it's worth writing down.
+
+See also [Memory, CLAUDE.md, skills](memory-and-claude-md.qmd) for how skills
+sit alongside the other ways of giving Claude persistent context.

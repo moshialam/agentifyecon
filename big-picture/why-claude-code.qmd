@@ -38,6 +38,6 @@ A pragmatic split:
 
 Two honest caveats: Claude Code is the right default for the econ-research
 workflows on this site, not a universal winner; and you don't have to pick
-one. Most colleagues end up using two — an agentic tool (Claude Code or
+one. Most people end up using two — an agentic tool (Claude Code or
 Cursor) and a chat tool (Claude.ai or ChatGPT) for quick questions away
 from the keyboard.

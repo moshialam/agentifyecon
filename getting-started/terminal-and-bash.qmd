@@ -1,6 +1,6 @@
 ---
 title: "The terminal and bash, for GUI users"
-subtitle: "Enough to read what Claude Code is doing, for colleagues coming from Stata, Matlab, or RStudio."
+subtitle: "Enough to read what Claude Code is doing, if you're coming from Stata, Matlab, or RStudio."
 ---
 
 Most economists I know have spent a career in **graphical** software: the
@@ -25,8 +25,8 @@ work confidently.
 **If you'd rather not work in a bare terminal at all**, see
 [Using Claude Code inside VS Code](vscode.qmd). VS Code gives you a
 graphical environment with an integrated terminal, so Claude Code edits
-appear in a familiar diff view instead of a wall of text. Most colleagues
-coming from RStudio/Stata/Matlab will find that route easier. You'll
+appear in a familiar diff view instead of a wall of text. If you're coming
+from RStudio/Stata/Matlab, you'll likely find that route easier. You'll
 still benefit from skimming this page — it explains what's happening in
 the terminal pane at the bottom of VS Code.
 :::

@@ -35,25 +35,12 @@ it.
 
 ### Skills (reusable workflows)
 
-A skill is a Markdown file describing a recurring task and how to do it
-your way. Once written, you invoke it by name (`/your-skill`).
+A skill is a Markdown file describing a recurring task and how to do it a
+particular way. Once written, you invoke it by name (`/your-skill`).
 
-You already have some good ones in your `myccskills` repo:
-
-- **`plutonb`** — scaffold a Pluto.jl notebook for structural
-  econometrics simulations (your work).
-- **`evolution`** — analyze git history to show how a project developed.
-- **`remind`** — snapshot the current project state when returning to
-  work after time away.
-
-For a department-facing site like this one, candidate new skills are:
-
-- `/audit-replication` — run the [replication-package audit](../examples/replication-package.qmd)
-  end-to-end on whatever folder you're in.
-- `/refresh-syllabus` — update dates, readings, and sidebar in a Quarto
-  course site for the new semester.
-- `/clean-bib` — the bibliography cleanup from the
-  [LaTeX paper example](../examples/latex-paper.qmd).
+[**Building your own skills**](building-skills.qmd) is a full page on this —
+it walks through three of my own skills (`plutonb`, `evolution`, `remind`),
+how each is built, and how you can install them.
 
 *This page is still an outline. If a fuller version would help your work,
 email me and I'll prioritize it.*

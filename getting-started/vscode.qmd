@@ -1,15 +1,15 @@
 ---
 title: "Using Claude Code inside VS Code"
-subtitle: "The friendlier entry point for colleagues who'd rather not work in a bare terminal."
+subtitle: "The friendlier entry point if you'd rather not work in a bare terminal."
 ---
 
 If you've spent your career in graphical environments — RStudio, Stata's
 window, Matlab's IDE — running Claude Code in a bare terminal can feel
 awkward. **Visual Studio Code ("VS Code") is the gentlest landing pad.**
 It is free and graphical, has a built-in terminal, shows proposed code
-edits in a normal side-by-side diff view, and knows about Git. For most
-colleagues I'd start here, and drop back to the bare terminal only if it
-starts getting in the way.
+edits in a normal side-by-side diff view, and knows about Git. I'd start
+here, and drop back to the bare terminal only if it starts getting in the
+way.
 
 ::: {.callout-tip}
 You'll still want to skim the [terminal primer](terminal-and-bash.qmd) so
@@ -73,8 +73,8 @@ integrated terminal. The next steps are the same either way.
 ## Step 3 — Open your project folder
 
 `File → Open Folder…` and pick the project you want Claude to work on
-(a paper draft, a teaching repo, a replication package — whatever you
-chose for your [first project](first-project.qmd)).
+(a paper draft, a teaching repo, a replication package — whatever you'd
+like to start with).
 
 The left sidebar now shows the file tree of that folder. This is the
 mental anchor: **the folder you opened is the folder Claude Code will
@@ -199,8 +199,6 @@ The two are interchangeable. Anything you do in one works in the other.
 
 - [Git](git.qmd) — VS Code's Source Control pane is a friendly front-end
   to Git, but it helps to know what's going on underneath.
-- [Your first project](first-project.qmd) — what to actually do in your
-  first hour, now that the editor isn't in the way.
 - [Plan mode, todos, slash commands](plan-mode-and-todo.qmd) — the
   Claude-Code-specific features worth knowing early.
 - [LaTeX paper editing](../examples/latex-paper.qmd) — a fully worked
