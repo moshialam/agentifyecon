@@ -5,13 +5,9 @@ subtitle: "Enough to read what Claude Code is doing, if you're coming from Stata
 
 Most economists I know have spent a career in **graphical** software: the
 Stata window with its menus, Matlab's IDE, RStudio, Excel. None of those
-require you to think about the terminal. So when Claude Code starts
-typing things like `Rscript analysis.R` or `git status` in a black window,
-it can feel like a different planet.
-
-It isn't. The terminal is just the original way to talk to a computer:
-type a command, hit Return, see the output. There are no menus and no
-icons — just text in, text out. This page covers the **minimum** terminal
+require the terminal. The terminal is just the original way to talk to a
+computer: type a command, hit Return, see the output — no menus, no icons,
+just text in and text out. This page covers the **minimum** terminal
 vocabulary you need to (a) follow what Claude Code is doing on your
 behalf, and (b) type the few commands you'll actually need yourself.
 
@@ -160,8 +156,8 @@ opening a file in an editor**. You will see it in inherited scripts; you
 will occasionally see Claude Code reach for it when doing the same
 mechanical change across many files at once.
 
-It looks intimidating because the syntax is dense, but 95% of what
-anyone uses `sed` for is one pattern: **find and replace**.
+`sed`'s syntax is dense, but 95% of what anyone uses it for is one
+pattern: **find and replace**.
 
 ### The one pattern you'll see
 
@@ -497,8 +493,8 @@ rmdir terminal-test
 
 ## Where to go next
 
-- [Install Claude Code](install.qmd) — now that the terminal isn't
-  intimidating, install Claude Code and try it on a real project.
+- [Install Claude Code](install.qmd) — install it and try it on a real
+  project.
 - [Plan mode, todos, slash commands](plan-mode-and-todo.qmd) — the
   Claude-Code-specific features worth knowing early.
 - [Verifying output](../workflow/verifying.qmd) — once Claude is running

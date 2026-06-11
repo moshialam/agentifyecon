@@ -9,10 +9,6 @@ A field guide to one specific way of using LLMs:
 **giving an AI agent direct access to your project files** so it can write
 code, edit your LaTeX, audit a replication package, and run things on your
 behalf — under your supervision.
-
-Chat tools — ChatGPT or Claude in a browser — are handy for quick
-questions. Agentic coding is the bigger change of the last year, and it's
-what this guide covers.
 :::
 
 ## Suggested reading order
@@ -28,17 +24,21 @@ If you have **30 minutes**:
    you're coming from RStudio, Stata, or Matlab. (Never used the terminal?
    The [terminal primer](getting-started/terminal-and-bash.qmd) is helpful
    background even on the VS Code route.)
-4. A worked example: [editing a LaTeX paper](examples/latex-paper.qmd) or
+4. [Reorganize a messy project](getting-started/reorganize-a-messy-project.qmd).
+   To my mind this best captures what an agent can do for you whatever your
+   field — the broad work of reading, sorting, and rewiring the files in a
+   directory, which is most of what research computing actually is.
+5. A worked example: [editing a LaTeX paper](examples/latex-paper.qmd) or
    [auditing a replication package](examples/replication-package.qmd).
 
 If you have **a free afternoon**, add:
 
-5. [Plan mode, todos, slash commands](getting-started/plan-mode-and-todo.qmd).
-6. The example page for your language: Stata, R, or Julia.
-7. [How to ask](workflow/how-to-ask.qmd) and
+6. [Plan mode, todos, slash commands](getting-started/plan-mode-and-todo.qmd).
+7. The example page for your language: Stata, R, or Julia.
+8. [How to ask](workflow/how-to-ask.qmd) and
    [verifying output](workflow/verifying.qmd) — how to ask well and when
    to check the result.
-8. The pitfalls, before letting Claude touch anything serious:
+9. The pitfalls, before letting Claude touch anything serious:
    [confidential data](pitfalls/confidential-data.qmd),
    [hallucinations](pitfalls/hallucinations.qmd), and
    [what you must still do yourself](pitfalls/judgment.qmd).

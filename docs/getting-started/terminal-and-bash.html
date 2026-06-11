@@ -380,8 +380,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Most economists I know have spent a career in <strong>graphical</strong> software: the Stata window with its menus, Matlab’s IDE, RStudio, Excel. None of those require you to think about the terminal. So when Claude Code starts typing things like <code>Rscript analysis.R</code> or <code>git status</code> in a black window, it can feel like a different planet.</p>
-<p>It isn’t. The terminal is just the original way to talk to a computer: type a command, hit Return, see the output. There are no menus and no icons — just text in, text out. This page covers the <strong>minimum</strong> terminal vocabulary you need to (a) follow what Claude Code is doing on your behalf, and (b) type the few commands you’ll actually need yourself.</p>
+<p>Most economists I know have spent a career in <strong>graphical</strong> software: the Stata window with its menus, Matlab’s IDE, RStudio, Excel. None of those require the terminal. The terminal is just the original way to talk to a computer: type a command, hit Return, see the output — no menus, no icons, just text in and text out. This page covers the <strong>minimum</strong> terminal vocabulary you need to (a) follow what Claude Code is doing on your behalf, and (b) type the few commands you’ll actually need yourself.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -539,7 +538,7 @@ Note
 <section id="a-quick-note-on-sed-text-editing-from-the-command-line" class="level2">
 <h2 class="anchored" data-anchor-id="a-quick-note-on-sed-text-editing-from-the-command-line">A quick note on <code>sed</code> — text editing from the command line</h2>
 <p><code>sed</code> (“stream editor”) is a small program that <strong>edits text without opening a file in an editor</strong>. You will see it in inherited scripts; you will occasionally see Claude Code reach for it when doing the same mechanical change across many files at once.</p>
-<p>It looks intimidating because the syntax is dense, but 95% of what anyone uses <code>sed</code> for is one pattern: <strong>find and replace</strong>.</p>
+<p><code>sed</code>’s syntax is dense, but 95% of what anyone uses it for is one pattern: <strong>find and replace</strong>.</p>
 <section id="the-one-pattern-youll-see" class="level3">
 <h3 class="anchored" data-anchor-id="the-one-pattern-youll-see">The one pattern you’ll see</h3>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="st">'s/OLD/NEW/g'</span> file.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -755,7 +754,7 @@ Warning
 <section id="where-to-go-next" class="level2">
 <h2 class="anchored" data-anchor-id="where-to-go-next">Where to go next</h2>
 <ul>
-<li><a href="../getting-started/install.html">Install Claude Code</a> — now that the terminal isn’t intimidating, install Claude Code and try it on a real project.</li>
+<li><a href="../getting-started/install.html">Install Claude Code</a> — install it and try it on a real project.</li>
 <li><a href="../getting-started/plan-mode-and-todo.html">Plan mode, todos, slash commands</a> — the Claude-Code-specific features worth knowing early.</li>
 <li><a href="../workflow/verifying.html">Verifying output</a> — once Claude is running bash commands on your behalf, the habit to build first.</li>
 </ul>
