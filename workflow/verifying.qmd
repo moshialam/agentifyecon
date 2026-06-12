@@ -9,8 +9,8 @@ will eventually publish something wrong with your name on it.
 
 ## The rule
 
-Read the diff. Run the code. Open the file. Compare to your expectation —
-every time, even when you're tired.
+Read the diff (the exact lines a change touched). Run the code. Open the
+file. Compare to your expectation — every time, even when you're tired.
 
 ## What "verify" means, concretely
 

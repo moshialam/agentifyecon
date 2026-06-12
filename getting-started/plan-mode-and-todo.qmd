@@ -27,7 +27,7 @@ What: for any non-trivial task, Claude maintains a visible list of steps
 it's working through and updates it as it goes.
 
 Why it matters: you can see where it is, interrupt cleanly, and notice if
-it's wandered off.
+it's gone off track.
 
 ### 3. Slash commands and skills
 

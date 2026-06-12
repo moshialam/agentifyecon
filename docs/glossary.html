@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Worked example — editing a LaTeX paper – LLMs for Economists</title>
+<title>Glossary – LLMs for Economists</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,59 +20,24 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../examples/replication-package.html" rel="next">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c1ec2f13949b0fc3e8a909c901142637.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-c1ec2f13949b0fc3e8a909c901142637.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -103,7 +68,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -113,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">LLMs for Economists</span>
     </a>
   </div>
@@ -124,7 +89,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../principles.html"> 
+    <a class="nav-link" href="./principles.html"> 
 <span class="menu-text">Principles</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -133,11 +98,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-big-picture">    
         <li>
-    <a class="dropdown-item" href="../big-picture/what-is-agentic.html">
+    <a class="dropdown-item" href="./big-picture/what-is-agentic.html">
  <span class="dropdown-text">What is agentic coding?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../big-picture/why-claude-code.html">
+    <a class="dropdown-item" href="./big-picture/why-claude-code.html">
  <span class="dropdown-text">Why Claude Code</span></a>
   </li>  
     </ul>
@@ -148,27 +113,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-getting-started">    
         <li>
-    <a class="dropdown-item" href="../getting-started/terminal-and-bash.html">
+    <a class="dropdown-item" href="./getting-started/terminal-and-bash.html">
  <span class="dropdown-text">Terminal &amp; bash for GUI users</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../getting-started/git.html">
+    <a class="dropdown-item" href="./getting-started/git.html">
  <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../getting-started/install.html">
+    <a class="dropdown-item" href="./getting-started/install.html">
  <span class="dropdown-text">Install Claude Code</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../getting-started/vscode.html">
+    <a class="dropdown-item" href="./getting-started/vscode.html">
  <span class="dropdown-text">Using CC inside VS Code</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../getting-started/reorganize-a-messy-project.html">
+    <a class="dropdown-item" href="./getting-started/reorganize-a-messy-project.html">
  <span class="dropdown-text">Reorganize a messy project first</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../getting-started/plan-mode-and-todo.html">
+    <a class="dropdown-item" href="./getting-started/plan-mode-and-todo.html">
  <span class="dropdown-text">Plan mode, todos, slash commands</span></a>
   </li>  
     </ul>
@@ -179,23 +144,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-examples">    
         <li>
-    <a class="dropdown-item" href="../examples/latex-paper.html">
+    <a class="dropdown-item" href="./examples/latex-paper.html">
  <span class="dropdown-text">LaTeX paper editing</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../examples/replication-package.html">
+    <a class="dropdown-item" href="./examples/replication-package.html">
  <span class="dropdown-text">Replication package audit</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../examples/stata-cleaning.html">
+    <a class="dropdown-item" href="./examples/stata-cleaning.html">
  <span class="dropdown-text">Stata: cleaning data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../examples/r-analysis.html">
+    <a class="dropdown-item" href="./examples/r-analysis.html">
  <span class="dropdown-text">R: analysis &amp; tables</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../examples/julia-structural.html">
+    <a class="dropdown-item" href="./examples/julia-structural.html">
  <span class="dropdown-text">Julia: structural models</span></a>
   </li>  
     </ul>
@@ -206,19 +171,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-workflow">    
         <li>
-    <a class="dropdown-item" href="../workflow/how-to-ask.html">
+    <a class="dropdown-item" href="./workflow/how-to-ask.html">
  <span class="dropdown-text">How to ask</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../workflow/memory-and-claude-md.html">
+    <a class="dropdown-item" href="./workflow/memory-and-claude-md.html">
  <span class="dropdown-text">Memory, CLAUDE.md, skills</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../workflow/building-skills.html">
+    <a class="dropdown-item" href="./workflow/building-skills.html">
  <span class="dropdown-text">Building your own skills</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../workflow/verifying.html">
+    <a class="dropdown-item" href="./workflow/verifying.html">
  <span class="dropdown-text">Verifying output</span></a>
   </li>  
     </ul>
@@ -229,21 +194,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-pitfalls">    
         <li>
-    <a class="dropdown-item" href="../pitfalls/hallucinations.html">
+    <a class="dropdown-item" href="./pitfalls/hallucinations.html">
  <span class="dropdown-text">Hallucinations</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../pitfalls/confidential-data.html">
+    <a class="dropdown-item" href="./pitfalls/confidential-data.html">
  <span class="dropdown-text">Confidential data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../pitfalls/judgment.html">
+    <a class="dropdown-item" href="./pitfalls/judgment.html">
  <span class="dropdown-text">What you must still do</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../glossary.html"> 
+    <a class="nav-link active" href="./glossary.html" aria-current="page"> 
 <span class="menu-text">Glossary</span></a>
   </li>  
   <li class="nav-item compact">
@@ -262,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../examples/latex-paper.html">Worked examples</a></li><li class="breadcrumb-item"><a href="../examples/latex-paper.html">Worked example — editing a LaTeX paper</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./glossary.html">Glossary</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -274,47 +239,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Worked examples</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../examples/latex-paper.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Worked example — editing a LaTeX paper</span></a>
+  <a href="./glossary.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Glossary</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/replication-package.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Worked example — auditing a replication package</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/stata-cleaning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Stata — cleaning data and writing reproducible .do files</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/r-analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">R — analysis, regression tables, ggplot</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/julia-structural.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Julia — structural models and Pluto notebooks</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -325,25 +255,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#task-1-bibliography-cleanup" id="toc-task-1-bibliography-cleanup" class="nav-link" data-scroll-target="#task-1-bibliography-cleanup">Task 1 — bibliography cleanup</a></li>
-  <li><a href="#task-2-table-reformatting" id="toc-task-2-table-reformatting" class="nav-link" data-scroll-target="#task-2-table-reformatting">Task 2 — table reformatting</a></li>
-  <li><a href="#task-3-a-careful-section-rewrite" id="toc-task-3-a-careful-section-rewrite" class="nav-link" data-scroll-target="#task-3-a-careful-section-rewrite">Task 3 — a careful section rewrite</a></li>
-  <li><a href="#task-4-compile-and-check" id="toc-task-4-compile-and-check" class="nav-link" data-scroll-target="#task-4-compile-and-check">Task 4 — compile and check</a></li>
-  <li><a href="#what-this-saved-you" id="toc-what-this-saved-you" class="nav-link" data-scroll-target="#what-this-saved-you">What this saved you</a></li>
-  <li><a href="#what-it-did-not-do" id="toc-what-it-did-not-do" class="nav-link" data-scroll-target="#what-it-did-not-do">What it did not do</a></li>
-  <li><a href="#common-traps-in-this-workflow" id="toc-common-traps-in-this-workflow" class="nav-link" data-scroll-target="#common-traps-in-this-workflow">Common traps in this workflow</a></li>
-  <li><a href="#next" id="toc-next" class="nav-link" data-scroll-target="#next">Next</a></li>
+  <li><a href="#agentic-ai" id="toc-agentic-ai" class="nav-link active" data-scroll-target="#agentic-ai">Agentic AI</a></li>
+  <li><a href="#git-and-version-control" id="toc-git-and-version-control" class="nav-link" data-scroll-target="#git-and-version-control">Git and version control</a></li>
+  <li><a href="#terminal-and-files" id="toc-terminal-and-files" class="nav-link" data-scroll-target="#terminal-and-files">Terminal and files</a></li>
+  <li><a href="#tooling" id="toc-tooling" class="nav-link" data-scroll-target="#tooling">Tooling</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../examples/latex-paper.html">Worked examples</a></li><li class="breadcrumb-item"><a href="../examples/latex-paper.html">Worked example — editing a LaTeX paper</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Worked example — editing a LaTeX paper</h1>
-<p class="subtitle lead">Bibliography cleanup, table reformatting, and a careful section rewrite.</p>
+<h1 class="title">Glossary</h1>
+<p class="subtitle lead">Plain-English definitions of the terms used across this site.</p>
 </div>
 
 
@@ -360,156 +285,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This walks through using Claude Code on a paper draft. The tasks are intentionally pedestrian — they’re the kind of thing you’d otherwise hand to an RA, except the loop here is minutes instead of days.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The prompts below are verbatim — you can copy them. Replace file names with yours.</p>
-</div>
-</div>
-<section id="setup" class="level2">
-<h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop/papers/wage-paper</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Before doing anything, give Claude an orientation pass:</p>
-<blockquote class="blockquote">
-<p>“Read the project. Tell me what’s here, what <code>paper.tex</code> is about in one paragraph, and which auxiliary files (.bib, tables, figures) it depends on.”</p>
-</blockquote>
-<p>This takes 30 seconds. The benefit is that subsequent prompts can refer to “the main paper” or “the auxiliary files” without you re-explaining each time.</p>
+<p>If a word on another page is unfamiliar, it’s probably here. Definitions are written for an economist, not a software engineer.</p>
+<section id="agentic-ai" class="level2">
+<h2 class="anchored" data-anchor-id="agentic-ai">Agentic AI</h2>
+<p><strong>Agentic coding</strong> — giving an AI direct access to your project files so it can read them, edit them, and run code on your behalf, under your supervision. Contrasted with chatting in a browser, where you copy and paste by hand. See <a href="./big-picture/what-is-agentic.html">What is agentic coding?</a>.</p>
+<p><strong>Agent</strong> — the AI working on your behalf. Claude Code is an agent.</p>
+<p><strong>Prompt</strong> — what you type to the AI: your instruction or question.</p>
+<p><strong>Plan mode</strong> — a Claude Code setting where it reads the relevant files and writes out a plan for your approval <em>before</em> changing anything. You turn it on with <code>Shift+Tab</code>. Good for multi-file changes.</p>
+<p><strong>Tool call</strong> — an action the agent takes, shown to you as it works: reading a file, running a command, editing a file. You’ll see labels like <code>Read</code>, <code>Bash</code>, or <code>Edit</code>.</p>
+<p><strong>Hallucination</strong> — when the model states something false with full confidence — a made-up citation, a regression number it didn’t actually compute. See <a href="./pitfalls/hallucinations.html">Hallucinations</a>.</p>
+<p><strong>Skill</strong> — a reusable instruction set you can invoke by name (<code>/name</code>), so you don’t retype a multi-step request. See <a href="./workflow/building-skills.html">Building your own skills</a>.</p>
+<p><strong><code>CLAUDE.md</code></strong> — a plain-text file in your project that Claude reads at the start of every session, holding project-specific notes (software versions, conventions, what’s off-limits).</p>
+<p><strong>Context window</strong> — how much text the model can consider at once. A large one is why an agent can read a whole replication package or paper.</p>
 </section>
-<section id="task-1-bibliography-cleanup" class="level2">
-<h2 class="anchored" data-anchor-id="task-1-bibliography-cleanup">Task 1 — bibliography cleanup</h2>
-<p>Bibliography files drift out of date. Entries get added over time and never cleaned up; some are cited, some aren’t, some have subtly wrong years.</p>
-<blockquote class="blockquote">
-<p>“Look at every <code>\cite</code>, <code>\citet</code>, and <code>\citep</code> in <code>paper.tex</code> and appendix.tex. List entries in <code>references.bib</code> that are <strong>never</strong> cited. Don’t delete anything — just give me the list.”</p>
-</blockquote>
-<p>You’ll get something like:</p>
-<pre><code>Unused entries (12 of 87):
-  - smith2003
-  - jones1999  (note: cited as `jones99` elsewhere — possible typo)
-  - ...</code></pre>
-<p>The flag on <code>jones1999</code> is a real win: it’s the kind of thing you’d miss on a manual pass. Now:</p>
-<blockquote class="blockquote">
-<p>“Remove the unused entries from <code>references.bib</code>. For <code>jones1999</code>, fix the citation key inconsistency: replace <code>\cite{jones99}</code> with <code>\cite{jones1999}</code> everywhere, and keep the <code>jones1999</code> entry.”</p>
-</blockquote>
-<p>Read the diff (the exact lines that changed) before approving. Compile. Done.</p>
+<section id="git-and-version-control" class="level2">
+<h2 class="anchored" data-anchor-id="git-and-version-control">Git and version control</h2>
+<p><strong>Git</strong> — a tool that takes snapshots of your project so you can review changes and undo them. See the <a href="./getting-started/git.html">Git page</a>.</p>
+<p><strong>Repository (repo)</strong> — a folder that Git is tracking.</p>
+<p><strong>Commit</strong> — one saved snapshot, with a short message describing it.</p>
+<p><strong>Diff</strong> — the exact before/after lines a change touched. “Read the diff” means look at precisely what changed before accepting it.</p>
+<p><strong>Branch</strong> — a parallel line of work you can develop and then merge back.</p>
+<p><strong>Merge / merge conflict</strong> — combining two lines of work; a <em>conflict</em> is when both edited the same line and Git asks you to choose.</p>
+<p><strong>Hash</strong> — a commit’s short ID, like <code>8dad523</code>.</p>
+<p><strong>HEAD</strong> — Git’s name for the commit you’re currently on.</p>
+<p><strong>Staging</strong> — marking which changes go into the next commit (<code>git add</code>).</p>
+<p><strong>Remote / push / pull</strong> — a copy of the repo hosted elsewhere (e.g. GitHub); <em>push</em> sends your commits there, <em>pull</em> fetches others’.</p>
+<p><strong>Clone</strong> — download a copy of a remote repository.</p>
+<p><strong>Worktree</strong> — a second working folder backed by the same repository, on its own branch — useful for working on two versions at once.</p>
+<p><strong><code>.gitignore</code></strong> — a file listing things Git should not track (build artifacts, large data, secrets).</p>
 </section>
-<section id="task-2-table-reformatting" class="level2">
-<h2 class="anchored" data-anchor-id="task-2-table-reformatting">Task 2 — table reformatting</h2>
-<p>You inherit a paper from a co-author and the tables are a mix of hand-written <code>tabular</code> environments, <code>booktabs</code>, and one orphaned <code>longtable</code>. You want everything on <code>booktabs</code> with a consistent style.</p>
-<blockquote class="blockquote">
-<p>“Show me the source of each <code>table</code> environment in <code>paper.tex</code> and the standalone .tex files in <code>tables/</code>. Identify which use <code>\toprule</code>, <code>\midrule</code>, <code>\bottomrule</code> (booktabs) and which still use <code>\hline</code>. Don’t change anything yet.”</p>
-</blockquote>
-<p>Once you see the inventory:</p>
-<blockquote class="blockquote">
-<p>“Convert all <code>\hline</code>-based tables to booktabs style: <code>\toprule</code> at the top, <code>\midrule</code> between header and body and around any subgroup, and <code>\bottomrule</code> at the end. Keep column alignments and content untouched. Make sure <code>\usepackage{booktabs}</code> is in <code>paper.tex</code>.”</p>
-</blockquote>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Here is where you must read the diffs carefully. Table edits are the classic place where an LLM “tidies up” content you didn’t ask it to tidy — a stray digit gets reformatted, a column header gets rephrased. Read every diff and reject anything that touches the <em>content</em> rather than the <em>formatting</em>.</p>
-</div>
-</div>
+<section id="terminal-and-files" class="level2">
+<h2 class="anchored" data-anchor-id="terminal-and-files">Terminal and files</h2>
+<p><strong>Terminal</strong> — the text window where you type commands. See the <a href="./getting-started/terminal-and-bash.html">terminal primer</a>.</p>
+<p><strong>Shell (bash, zsh)</strong> — the program inside the terminal that runs your commands. <code>zsh</code> is the Mac default; <code>bash</code> is near-identical for our purposes.</p>
+<p><strong>CLI (command-line interface)</strong> — using a program by typing commands rather than clicking. Claude Code is a CLI tool.</p>
+<p><strong>IDE</strong> — an integrated development environment: a code editor with extra tooling built in. VS Code and RStudio are examples.</p>
+<p><strong>Flag / argument</strong> — extras after a command: a <em>flag</em> is an option (<code>--vanilla</code>), an <em>argument</em> is what you act on (<code>analysis.R</code>).</p>
+<p><strong>Path</strong> — a file’s address. <em>Absolute</em> starts from the disk root (<code>/Users/you/…</code>); <em>relative</em> starts from where you are (<code>data/raw.dta</code>).</p>
+<p><strong>Symlink</strong> — a shortcut that points one location at another.</p>
+<p><strong>Recursive</strong> — applied to a folder and everything inside it.</p>
+<p><strong>Wildcard</strong> — a pattern like <code>*.do</code> meaning “every file ending in <code>.do</code>”.</p>
 </section>
-<section id="task-3-a-careful-section-rewrite" class="level2">
-<h2 class="anchored" data-anchor-id="task-3-a-careful-section-rewrite">Task 3 — a careful section rewrite</h2>
-<p>This is the one where you should slow down. Claude can rewrite prose beautifully and confidently, including arguments you don’t actually make. Treat this as <strong>collaborative editing</strong>, not delegation.</p>
-<blockquote class="blockquote">
-<p>“Read section 3 (Empirical Strategy) of <code>paper.tex</code>. Don’t change anything yet. Tell me: (a) what the central identification claim is in your reading; (b) any place where the text references something that’s not in the data section or the appendix; (c) any sentences that are longer than 35 words or have more than two subordinate clauses.”</p>
-</blockquote>
-<p>That’s an audit, not a rewrite. Read what it says.</p>
-<p>If you agree with the audit:</p>
-<blockquote class="blockquote">
-<p>“Rewrite only the sentences you flagged in (c) for length. Preserve every claim. Do not introduce new arguments. Do not change any numbers or citations. Show me the diff sentence by sentence.”</p>
-</blockquote>
-<p>Approve, reject, or tweak each sentence individually. You stay the author.</p>
-</section>
-<section id="task-4-compile-and-check" class="level2">
-<h2 class="anchored" data-anchor-id="task-4-compile-and-check">Task 4 — compile and check</h2>
-<blockquote class="blockquote">
-<p>“Run <code>latexmk -pdf paper.tex</code> and tell me if there are any errors, warnings, or unresolved citations.”</p>
-</blockquote>
-<p>Claude runs the build, parses the log, and tells you what’s broken. If a table now has a misaligned column, you’ll find out before you re-read the PDF.</p>
-</section>
-<section id="what-this-saved-you" class="level2">
-<h2 class="anchored" data-anchor-id="what-this-saved-you">What this saved you</h2>
-<ul>
-<li><strong>Bibliography cleanup:</strong> ~2 hours of tedious work compressed to ~10 minutes of supervision.</li>
-<li><strong>Table reformatting:</strong> would have taken half a day; now ~15 minutes.</li>
-<li><strong>Section audit:</strong> the slowest task, but most valuable — Claude is willing to flag long sentences your eye no longer sees.</li>
-</ul>
-</section>
-<section id="what-it-did-not-do" class="level2">
-<h2 class="anchored" data-anchor-id="what-it-did-not-do">What it did not do</h2>
-<ul>
-<li>It did not decide what your contribution is.</li>
-<li>It did not check whether your identification strategy is credible — it read what you wrote and described it back to you.</li>
-<li>It did not fact-check your citations against the cited papers.</li>
-</ul>
-<p>These remain your job.</p>
-</section>
-<section id="common-traps-in-this-workflow" class="level2">
-<h2 class="anchored" data-anchor-id="common-traps-in-this-workflow">Common traps in this workflow</h2>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Don’t let it “improve” prose you didn’t ask it to.</strong> Tell it explicitly what to change and what to leave alone. “Don’t introduce new arguments” is a sentence worth typing every single time.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Don’t trust new citations it adds.</strong> If it adds a <code>\cite{...}</code> for a paper you didn’t tell it about, treat that as a hallucinated citation until you’ve personally confirmed the entry exists in your <code>.bib</code> and the cited claim matches the source. See <a href="../pitfalls/hallucinations.html">Hallucinations</a>.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Use plan mode for multi-file edits.</strong> Hit <code>Shift+Tab</code> until you see “plan mode”, then ask. Claude will write a plan (“I’ll change these 4 files, here’s what each change does”), wait for your approval, and only then edit.</p>
-</div>
-</div>
-</section>
-<section id="next" class="level2">
-<h2 class="anchored" data-anchor-id="next">Next</h2>
-<ul>
-<li><a href="../examples/replication-package.html">Replication package audit →</a> — the other fully-worked example.</li>
-<li><a href="../workflow/how-to-ask.html">How to ask →</a> — the prompting habits this page uses, made explicit.</li>
-</ul>
+<section id="tooling" class="level2">
+<h2 class="anchored" data-anchor-id="tooling">Tooling</h2>
+<p><strong>Orchestrator / master script</strong> — one script that runs every step of a project in order (clean → estimate → tables → compile).</p>
+<p><strong>Makefile</strong> — a script that re-runs only the steps affected by a change; useful for slow pipelines.</p>
+<p><strong>Lockfile</strong> — a file recording the exact package versions a project used, so it reproduces elsewhere. Examples: R’s <code>renv.lock</code>, Julia’s <code>Manifest.toml</code>.</p>
+<p><strong>Dependencies</strong> — the external packages your code needs to run.</p>
+<p><strong>Build artifacts</strong> — files produced by running things (<code>.aux</code>, <code>.log</code>, compiled output) that you don’t keep in version control.</p>
+<p><strong>Node.js / npm</strong> — the runtime and package installer used to install Claude Code (a one-time setup step).</p>
+<p><strong>WSL</strong> — Windows Subsystem for Linux: a way to run a Linux terminal on Windows.</p>
 
 
 </section>
@@ -937,15 +762,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../examples/replication-package.html" class="pagination-link" aria-label="Worked example — auditing a replication package">
-        <span class="nav-page-text">Worked example — auditing a replication package</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -964,5 +780,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

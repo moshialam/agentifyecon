@@ -1,0 +1,125 @@
+---
+title: "Glossary"
+subtitle: "Plain-English definitions of the terms used across this site."
+---
+
+If a word on another page is unfamiliar, it's probably here. Definitions are
+written for an economist, not a software engineer.
+
+## Agentic AI
+
+**Agentic coding** — giving an AI direct access to your project files so it
+can read them, edit them, and run code on your behalf, under your
+supervision. Contrasted with chatting in a browser, where you copy and paste
+by hand. See [What is agentic coding?](big-picture/what-is-agentic.qmd).
+
+**Agent** — the AI working on your behalf. Claude Code is an agent.
+
+**Prompt** — what you type to the AI: your instruction or question.
+
+**Plan mode** — a Claude Code setting where it reads the relevant files and
+writes out a plan for your approval *before* changing anything. You turn it
+on with `Shift+Tab`. Good for multi-file changes.
+
+**Tool call** — an action the agent takes, shown to you as it works: reading
+a file, running a command, editing a file. You'll see labels like `Read`,
+`Bash`, or `Edit`.
+
+**Hallucination** — when the model states something false with full
+confidence — a made-up citation, a regression number it didn't actually
+compute. See [Hallucinations](pitfalls/hallucinations.qmd).
+
+**Skill** — a reusable instruction set you can invoke by name (`/name`), so
+you don't retype a multi-step request. See [Building your own
+skills](workflow/building-skills.qmd).
+
+**`CLAUDE.md`** — a plain-text file in your project that Claude reads at the
+start of every session, holding project-specific notes (software versions,
+conventions, what's off-limits).
+
+**Context window** — how much text the model can consider at once. A large
+one is why an agent can read a whole replication package or paper.
+
+## Git and version control
+
+**Git** — a tool that takes snapshots of your project so you can review
+changes and undo them. See the [Git page](getting-started/git.qmd).
+
+**Repository (repo)** — a folder that Git is tracking.
+
+**Commit** — one saved snapshot, with a short message describing it.
+
+**Diff** — the exact before/after lines a change touched. "Read the diff"
+means look at precisely what changed before accepting it.
+
+**Branch** — a parallel line of work you can develop and then merge back.
+
+**Merge / merge conflict** — combining two lines of work; a *conflict* is
+when both edited the same line and Git asks you to choose.
+
+**Hash** — a commit's short ID, like `8dad523`.
+
+**HEAD** — Git's name for the commit you're currently on.
+
+**Staging** — marking which changes go into the next commit (`git add`).
+
+**Remote / push / pull** — a copy of the repo hosted elsewhere (e.g.
+GitHub); *push* sends your commits there, *pull* fetches others'.
+
+**Clone** — download a copy of a remote repository.
+
+**Worktree** — a second working folder backed by the same repository, on its
+own branch — useful for working on two versions at once.
+
+**`.gitignore`** — a file listing things Git should not track (build
+artifacts, large data, secrets).
+
+## Terminal and files
+
+**Terminal** — the text window where you type commands. See the [terminal
+primer](getting-started/terminal-and-bash.qmd).
+
+**Shell (bash, zsh)** — the program inside the terminal that runs your
+commands. `zsh` is the Mac default; `bash` is near-identical for our
+purposes.
+
+**CLI (command-line interface)** — using a program by typing commands rather
+than clicking. Claude Code is a CLI tool.
+
+**IDE** — an integrated development environment: a code editor with extra
+tooling built in. VS Code and RStudio are examples.
+
+**Flag / argument** — extras after a command: a *flag* is an option
+(`--vanilla`), an *argument* is what you act on (`analysis.R`).
+
+**Path** — a file's address. *Absolute* starts from the disk root
+(`/Users/you/…`); *relative* starts from where you are (`data/raw.dta`).
+
+**Symlink** — a shortcut that points one location at another.
+
+**Recursive** — applied to a folder and everything inside it.
+
+**Wildcard** — a pattern like `*.do` meaning "every file ending in `.do`".
+
+## Tooling
+
+**Orchestrator / master script** — one script that runs every step of a
+project in order (clean → estimate → tables → compile).
+
+**Makefile** — a script that re-runs only the steps affected by a change;
+useful for slow pipelines.
+
+**Lockfile** — a file recording the exact package versions a project used,
+so it reproduces elsewhere. Examples: R's `renv.lock`, Julia's
+`Manifest.toml`.
+
+**Dependencies** — the external packages your code needs to run.
+
+**Build artifacts** — files produced by running things (`.aux`, `.log`,
+compiled output) that you don't keep in version control.
+
+**Node.js / npm** — the runtime and package installer used to install Claude
+Code (a one-time setup step).
+
+**WSL** — Windows Subsystem for Linux: a way to run a Linux terminal on
+Windows.

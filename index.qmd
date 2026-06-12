@@ -5,11 +5,13 @@ toc: false
 ---
 
 ::: {.lead-large}
-A field guide to one specific way of using LLMs:
-**giving an AI agent direct access to your project files** so it can write
-code, edit your LaTeX, audit a replication package, and run things on your
-behalf — under your supervision.
+A field guide to **agentic coding**: giving an AI agent direct access to
+your project files so it can write code, edit your LaTeX, audit a
+replication package, and run things on your behalf — under your supervision.
 :::
+
+New to terms like *diff*, *repo*, or *plan mode*? The
+[Glossary](glossary.qmd) keeps plain-English definitions in one place.
 
 ## Suggested reading order
 

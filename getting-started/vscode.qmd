@@ -4,12 +4,12 @@ subtitle: "The friendlier entry point if you'd rather not work in a bare termina
 ---
 
 If you've spent your career in graphical environments — RStudio, Stata's
-window, Matlab's IDE — running Claude Code in a bare terminal can feel
+window, Matlab's editor — running Claude Code in a bare terminal can feel
 awkward. **Visual Studio Code ("VS Code") is the gentlest landing pad.**
 It is free and graphical, has a built-in terminal, shows proposed code
-edits in a normal side-by-side diff view, and knows about Git. I'd start
-here, and drop back to the bare terminal only if it starts getting in the
-way.
+edits in a side-by-side diff view (the changed lines, before and after),
+and knows about Git. I'd start here, and drop back to the bare terminal
+only if it starts getting in the way.
 
 ::: {.callout-tip}
 You'll still want to skim the [terminal primer](terminal-and-bash.qmd) so
@@ -43,7 +43,7 @@ If you already have VS Code, skip this step.
 
 VS Code has an extension marketplace. The official **Claude Code**
 extension by Anthropic gives you in-editor integration with the
-CLI you installed earlier. It is optional — you can use Claude Code in
+command-line `claude` tool you installed earlier. It is optional — you can use Claude Code in
 VS Code's integrated terminal without it — but it is a small install
 that pays for itself the first time you accept a diff inside the editor
 instead of squinting at one in the terminal.

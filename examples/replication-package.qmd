@@ -51,7 +51,7 @@ hunting for.
 > in the code but not declared, hard-coded paths that point outside the
 > package."
 
-Claude will give you a clean punch list. Common findings:
+Claude will give you a clean checklist of gaps. Common findings:
 
 - A path like `/Users/coauthor/Dropbox/...` hardcoded into a `.do` file.
 - A `library(haven)` call without `haven` declared in a `requirements.R`

@@ -56,7 +56,8 @@ inspect the model's reasoning step by step in real time, and you have to
 trust that it's editing the right files in the right way.
 
 You keep — and *must* exercise — **direction and review**. You decide what
-to ask for. You read the diff before accepting it. You run the regression
+to ask for. You read the diff — the exact lines that changed — before accepting it.
+You run the regression
 yourself before believing the number. See
 [verifying output](../workflow/verifying.qmd).
 

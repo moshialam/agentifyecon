@@ -31,8 +31,8 @@ time.
 
 ## Task 1 — bibliography cleanup
 
-Bibtex files rot. Entries get added during a co-author binge and never
-cleaned up; some are cited, some aren't, some have subtly wrong years.
+Bibliography files drift out of date. Entries get added over time and
+never cleaned up; some are cited, some aren't, some have subtly wrong years.
 
 > "Look at every `\cite`, `\citet`, and `\citep` in `paper.tex` and
 > appendix.tex. List entries in `references.bib` that are **never** cited.
@@ -54,7 +54,8 @@ on a manual pass. Now:
 > the citation key inconsistency: replace `\cite{jones99}` with
 > `\cite{jones1999}` everywhere, and keep the `jones1999` entry."
 
-Read the diff before approving. Compile. Done.
+Read the diff (the exact lines that changed) before approving. Compile.
+Done.
 
 ## Task 2 — table reformatting
 
@@ -115,7 +116,7 @@ PDF.
 
 ## What this saved you
 
-- **Bibliography cleanup:** ~2 hours of grunt work compressed to ~10
+- **Bibliography cleanup:** ~2 hours of tedious work compressed to ~10
   minutes of supervision.
 - **Table reformatting:** would have taken half a day; now ~15 minutes.
 - **Section audit:** the slowest task, but most valuable — Claude is

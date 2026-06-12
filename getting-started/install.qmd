@@ -116,7 +116,8 @@ out tools like `Read` and `Bash`. Nothing is modified.
 > "Add a comment at the top of every `.do` file naming the script and what
 > it does. Show me each diff before applying."
 
-Claude proposes a change per file; you approve or reject each one.
+Claude proposes a change per file — each diff is the exact lines that
+would change — and you approve or reject each one.
 :::
 
 ::: {.callout-tip appearance="simple"}

@@ -61,6 +61,8 @@ website:
             text: "Confidential data"
           - href: pitfalls/judgment.qmd
             text: "What you must still do"
+      - text: "Glossary"
+        href: glossary.qmd
       - icon: github
         href: https://github.com/moshialam/agentifyecon
         aria-label: GitHub repository
@@ -109,6 +111,9 @@ website:
             - pitfalls/hallucinations.qmd
             - pitfalls/confidential-data.qmd
             - pitfalls/judgment.qmd
+    - title: "Glossary"
+      contents:
+        - glossary.qmd
   page-footer:
     left: "© 2026 · For colleagues at the Department of Economics"
     right: "Built with [Quarto](https://quarto.org/)"

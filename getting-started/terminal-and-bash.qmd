@@ -179,7 +179,7 @@ sed -i '' 's/OLD/NEW/g' file.txt       # macOS (note the empty '')
 ```
 
 ::: {.callout-warning}
-**Mac vs. Linux foot-gun.** macOS uses BSD `sed`; Linux uses GNU `sed`.
+**Mac vs. Linux pitfall.** macOS uses BSD `sed`; Linux uses GNU `sed`.
 The `-i` flag works differently on each. On macOS you must follow `-i`
 with an empty string `''` (the "backup suffix"). On Linux you don't.
 This bites everyone the first time. If you're following a script written

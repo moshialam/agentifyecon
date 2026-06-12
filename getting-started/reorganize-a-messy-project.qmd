@@ -124,7 +124,7 @@ protocol all propose variations — pick one and stick to it.
 
 Each step has the prompt you'd give Claude Code (in the integrated
 terminal of [VS Code](vscode.qmd) or in a bare terminal — your choice).
-Read every diff before approving.
+Read every diff — the exact lines each change touched — before approving.
 
 ### Step 1 — Copy the project to a working directory
 

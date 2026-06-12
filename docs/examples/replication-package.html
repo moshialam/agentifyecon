@@ -243,6 +243,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../glossary.html"> 
+<span class="menu-text">Glossary</span></a>
+  </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/moshialam/agentifyecon"> <i class="bi bi-github" role="img" aria-label="GitHub repository">
 </i> 
@@ -393,7 +397,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p>“Based on the dependency map, list everything required to reproduce this paper that is <strong>not</strong> in the package: missing raw data files, missing intermediate files that no script produces, packages or libraries used in the code but not declared, hard-coded paths that point outside the package.”</p>
 </blockquote>
-<p>Claude will give you a clean punch list. Common findings:</p>
+<p>Claude will give you a clean checklist of gaps. Common findings:</p>
 <ul>
 <li>A path like <code>/Users/coauthor/Dropbox/...</code> hardcoded into a <code>.do</code> file.</li>
 <li>A <code>library(haven)</code> call without <code>haven</code> declared in a <code>requirements.R</code> or <code>renv.lock</code>.</li>
