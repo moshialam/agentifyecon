@@ -18,8 +18,9 @@ by hand. See [What is agentic coding?](big-picture/what-is-agentic.qmd).
 **Prompt** — what you type to the AI: your instruction or question.
 
 **Plan mode** — a Claude Code setting where it reads the relevant files and
-writes out a plan for your approval *before* changing anything. You turn it
-on with `Shift+Tab`. Good for multi-file changes.
+writes out a plan *before* changing anything. You turn it on with
+`Shift+Tab`. Read the plan and suggest edits or missing detail before you
+approve it, rather than rubber-stamping it. Good for multi-file changes.
 
 **Tool call** — an action the agent takes, shown to you as it works: reading
 a file, running a command, editing a file. You'll see labels like `Read`,

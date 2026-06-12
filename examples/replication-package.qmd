@@ -103,7 +103,8 @@ You've got a paper accepted; the journal wants a replication package.
 > raw data, intermediate data, code, output. Don't touch the files yet —
 > just propose the layout."
 
-Approve the proposal.
+Read the proposed layout carefully — add any structure it's missing and
+correct anything that's wrong — then tell it to go ahead.
 
 > "Now reorganize accordingly, *copying* (not moving) files from the
 > current project into a new `replication-package/` directory. Update

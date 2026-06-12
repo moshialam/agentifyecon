@@ -355,7 +355,7 @@ Read the proposed mapping. Adjust anything that's wrong. Then:
 > Matlab (`addpath`, `cd`, `load`, `readtable`).
 > Show me each path-fix diff before applying."*
 
-Plan mode again. Approve diffs one at a time. Commit when done:
+Plan mode again. Read and approve the diffs one at a time. Commit when done:
 
 ```bash
 git commit -am "Reorganize live files into standard structure"

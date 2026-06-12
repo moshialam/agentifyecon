@@ -15,8 +15,11 @@ the tool feels day-to-day.
 What: Claude reads the relevant files, thinks about the change, and writes
 a **plan** for your approval *before* touching anything.
 
-Why it matters: catches misunderstandings before they become bad edits.
-Especially valuable for multi-file changes.
+Why it matters: it catches misunderstandings before they become bad edits
+— but only if you actually read the plan. Treat the plan as a draft: add
+the detail Claude is missing, correct anything off, and push back on vague
+steps before you approve, rather than rubber-stamping it. Especially
+valuable for multi-file changes.
 
 How: hit `Shift+Tab` until the prompt says "plan mode", or type
 `/plan` style invocations.

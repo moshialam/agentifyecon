@@ -616,7 +616,7 @@ Tip
 <blockquote class="blockquote">
 <p><em>“Execute the mapping. Use <code>git mv</code>. Do not modify file contents — only move and rename. After every move, update path references in the remaining live files so the project still resolves. Cover each language’s idioms: Stata (<code>include</code>, <code>do</code>, <code>use ... , clear</code>, <code>save</code>, <code>import delimited</code>), R (<code>source()</code>, <code>here::here()</code>, <code>readr::read_*()</code>, <code>setwd()</code>, <code>ggsave()</code>), Julia (<code>include()</code>, <code>using</code>, <code>CSV.read</code>, <code>joinpath()</code>, <code>Pkg.activate</code>), Python (<code>import</code>, <code>from ... import</code>, <code>pathlib.Path</code>, <code>pd.read_*</code>, <code>open()</code>), LaTeX (<code>\input{}</code>, <code>\includegraphics{}</code>, <code>\addbibresource{}</code>), Matlab (<code>addpath</code>, <code>cd</code>, <code>load</code>, <code>readtable</code>). Show me each path-fix diff before applying.”</em></p>
 </blockquote>
-<p>Plan mode again. Approve diffs one at a time. Commit when done:</p>
+<p>Plan mode again. Read and approve the diffs one at a time. Commit when done:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-am</span> <span class="st">"Reorganize live files into standard structure"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="step-8-find-and-fix-hardcoded-paths" class="level3">

@@ -4,6 +4,8 @@ subtitle: "Example-based guidance for agentic coding with Claude Code."
 toc: false
 ---
 
+*By Moshi Alam and Claude Code*
+
 ::: {.lead-large}
 A field guide to **agentic coding**: giving an AI agent direct access to
 your project files so it can write code, edit your LaTeX, audit a
