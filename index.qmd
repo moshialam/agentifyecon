@@ -4,7 +4,7 @@ subtitle: "Example-based guidance for agentic coding with Claude Code."
 toc: false
 ---
 
-*By Moshi Alam and Claude Code*
+*By [Moshi Alam](https://moshialam.github.io) and Claude Code*
 
 ::: {.lead-large}
 A field guide to **agentic coding**: giving an AI agent direct access to
