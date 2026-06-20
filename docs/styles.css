@@ -28,6 +28,23 @@ a:hover {
   color: #B8653A !important;
 }
 
+/* Mobile hamburger menu fix.
+   Quarto renders the navbar with data-bs-theme="dark", so Bootstrap draws a
+   white toggler icon. Our navbar background is a light cream (#FFFDF8), which
+   made the three-line hamburger invisible on phones. Force a dark icon and a
+   visible border so the menu shows on small screens. */
+.navbar-toggler {
+  border-color: rgba(58, 58, 58, 0.3) !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 0.2rem rgba(184, 101, 58, 0.35) !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(58, 58, 58, 0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
 h1, h2, h3, h4 {
   color: #3A3A3A;
 }
